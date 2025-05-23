@@ -1,0 +1,486 @@
+/* === Global Resets & Base === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    height: 100%;
+}
+
+body.htmlbackground {
+    background-color: rgb(30, 30, 30); 
+    background-image: url(/Images/tuck.png); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; 
+    min-height: 100%;
+    color: #f0f0f0; 
+}
+
+.page-content-wrapper {
+    width: 100%;
+    max-width: 1140px; 
+    min-height: calc(100vh - 40px); 
+    margin: 0 auto; 
+    padding: 110px 20px 40px 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+}
+
+a { text-decoration: none; color: #61dafb; transition: color 0.2s ease-in-out; }
+a:hover { color: #82eaff; }
+a:visited { color: #b392ff; }
+
+/* === Fixed Navigation === */
+.navbar { position: fixed; top: 15px; left: 15px; z-index: 10002; }
+
+.dropdown { 
+    position: relative; 
+    display: inline-block; 
+    padding-bottom: 10px; /* <<<< THIS IS THE "INVISIBLE BRIDGE" */
+}
+
+.logo-container { 
+    width: 105px; height: 105px; 
+    border-radius: 50%;
+    background-color: rgba(50, 50, 50, 0.8); border: 1px solid rgba(200,200,200,0.25);
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; overflow: hidden; /* overflow:hidden is important if image is larger than container */
+    transition: background-color 0.2s;
+}
+
+.logo-container:hover { background-color: rgba(70, 70, 70, 0.9); }
+
+.logo-container img {
+    max-width: 100px;   /* INCREASED - e.g., to 95% or even 100% */
+    max-height: 100px;  /* INCREASED - e.g., to 95% or even 100% */
+    object-fit: contain; /* Ensures the whole logo is visible, scaled to fit */
+    padding-bottom: 12px;
+}
+
+.dropdown-content {
+    display: none; position: absolute; background-color: #282c34; 
+    border: 1px solid #444c56; border-radius: 6px; min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.5); z-index: 1; 
+    top: 100%; left: 0; padding: 8px 0; margin-top: 6px; 
+}
+.dropdown-content a { 
+    color: #c5c8c6; padding: 12px 22px; display: block; text-align: left; 
+    font-size: 0.95rem;
+}
+.dropdown-content a:hover { background-color: #007bff; color: #ffffff; }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* === Header (Main Logo) === */
+header { width: 100%; margin-bottom: 30px; }
+.mikessign { max-width: 330px; height: auto; display: block; margin: 0 auto; }
+
+/* === General Headings === */
+h1 { font-size: 2.3rem; margin-bottom: 30px; color: #ffffff; font-weight: 500; text-align: center;}
+h2 { font-size: 1.8rem; margin-bottom: 20px; color: #f0f0f0; border-bottom: 1px solid #4a4a4a; padding-bottom: 12px; text-align: left; margin-top: 30px;}
+h3 { font-size: 1.4rem; margin-bottom: 18px; color: #e0e0e0; text-align: left; font-weight: 500;}
+.content-block h1, .content-block h2 { text-align: center; } 
+.content-block h3 { text-align: left; }
+
+
+/* === Shared Content Block Styling === */
+.content-block {
+    background-color: rgba(40, 40, 40, 0.9);
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #202020;
+    text-align: left; 
+}
+
+/* === Form Styling === */
+form {
+    display: flex; flex-direction: column; gap: 18px; 
+    width: 100%; max-width: 400px; margin: 20px auto; 
+}
+.form-group {
+    display: flex; flex-direction: column; text-align: left;
+    margin-bottom: 5px; 
+}
+.form-group label {
+    color: #b0b0b0; margin-bottom: 7px; font-size: 0.95rem; font-weight: 600;
+}
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    padding: 12px 15px; font-size: 1rem; border-radius: 6px;
+    border: 1px solid #484848; background-color: #1e1e1e; color: #e0e0e0;
+    width: 100%; transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none; border-color: #007bff;
+    box-shadow: 0 0 0 0.15rem rgba(0,123,255,.3);
+}
+select {
+    appearance: none; 
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23cccccc%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right .9rem center;
+    background-size: .8em auto;
+    padding-right: 2.5rem; 
+}
+textarea { resize: vertical; min-height: 90px; }
+
+/* Button Styling */
+button, .action-button { 
+    padding: 12px 25px; font-size: 1rem; font-weight: 600; color: white;
+    border: none; border-radius: 6px; cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: center; letter-spacing: 0.5px;
+    background-color: #4a5568; /* DEFAULT DARK BACKGROUND FOR BUTTONS */
+}
+button:hover, .action-button:hover { opacity: 0.85; transform: translateY(-1px); }
+button:disabled, .action-button:disabled { background-color: #505050 !important; cursor: not-allowed; opacity: 0.6 !important; }
+
+/* Login Form Specifics (index.html & manager.html manager-login-form) */
+#login-form-container, .manager-login-form-wrapper { 
+    padding-top: 20px;    /* Example: reduce top padding */
+    padding-bottom: 15px; /* Example: reduce bottom padding */
+    max-width: 75%;
+}
+/* Ensure the <form> itself within manager-login-form-wrapper is centered */
+.manager-login-form-wrapper form#login-form.manager-login-form {
+    gap: 15px; /* Adjust gap between form elements */
+    margin-top: 0;
+    margin-bottom: 15px; /* Space after the form, before any potential error messages */
+}
+
+/* Adjust the submit button's top margin if needed */
+.manager-login-form-wrapper form#login-form.manager-login-form button[type="submit"] {
+    margin-top: 10px; 
+}
+
+#login-form-container button[type="submit"], 
+.manager-login-form button[type="submit"] { /* Target submit buttons inside these forms */
+    background-color: #007bff; width: 100%; margin-top: 10px;
+}
+#login-form-container button[type="submit"]:hover,
+.manager-login-form button[type="submit"]:hover { background-color: #0056b3; }
+#login-error { color: #e74c3c !important; font-weight: bold; margin-top: 15px; }
+
+/* === INDEX.HTML - Calculator & Items === */
+#main-content { width: 100%; } 
+.calculator-container { 
+    max-width: 1030px; 
+    text-align: center; 
+}
+.employee-selection { margin-bottom: 25px; text-align: center; }
+.employee-selection label { font-size: 1.1rem; color: #e0e0e0; margin-right: 8px; }
+.employee-selection select { width: auto; min-width: 280px; display: inline-block; }
+
+#category-buttons-container { margin-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.category-button { 
+    background-color: #4a5568; color: #e2e8f0; border: 1px solid #2d3748;
+    font-size: 0.9rem; padding: 10px 18px;
+}
+.category-button:hover { background-color: #2d3748; border-color: #1a202c;}
+.category-button.active { background-color: #2b6cb0; color: white; border-color: #2c5282; }
+
+.items-container { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-bottom: 30px; }
+.item {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    border: 1px solid #4a5568; border-radius: 8px; padding: 15px;
+    background-color: rgba(74, 85, 104, 0.6); 
+    width: 150px; box-sizing: border-box; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+.item:hover { transform: translateY(-4px); box-shadow: 0 7px 14px rgba(0,0,0,0.25); }
+.item img { width: 100px; height: 100px; object-fit: cover; margin-bottom: 12px; border-radius: 6px; pointer-events: none; }
+.item p { font-size: 0.9rem; margin: 8px 0 5px 0; color: #e2e8f0; font-weight: 600; pointer-events: none; }
+.item label { font-size: 0.8rem; color: #a0aec0; margin-top: 8px; pointer-events: none; }
+.quantity { 
+    width: 65px; margin-top: 8px; text-align: center; padding: 8px; font-size: 0.95rem;
+    border-radius: 4px; border: 1px solid #718096; background-color: #e2e8f0; color: #2d3748;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#hac-membership-item .add-to-cart-hac { 
+    background-color: #3182ce; width: 100%; margin-top: auto; 
+    padding: 10px; font-size: 0.9rem;
+}
+#hac-membership-item .add-to-cart-hac:hover { background-color: #2b6cb0; }
+
+.cart-actions { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
+.clear-cart-btn { background-color: #e53e3e; border-color: #c53030; color:white; font-size: 0.9rem; padding: 10px 20px;}
+.clear-cart-btn:hover { background-color: #c53030; border-color: #9b2c2c; }
+.calculator-container > h1 { margin: 25px 0; font-size: 2.8rem; color: #48bb78; font-weight: bold; }
+.checkout-button { background-color: #38a169; color:white; margin-top: 0;} 
+.checkout-button:hover { background-color: #2f855a; }
+
+/* HAC Signup Modal (index.html) */
+.modal {
+    display: none; position: fixed; z-index: 10003; 
+    left: 0; top: 0; width: 100%; height: 100%; 
+    overflow-y: auto; background-color: rgba(0,0,0,0.75);
+    padding: 20px; 
+    display: flex; align-items: center; justify-content: center;
+}
+.modal-content {
+    background-color: #2d3748; color: #e2e8f0; padding: 30px; 
+    border: 1px solid #4a5568; width: 100%; max-width: 550px; 
+    border-radius: 10px; position: relative; box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    max-height: 90vh; overflow-y: auto; 
+}
+.modal-content h3 { 
+    margin-top: 0; color: #fff; border-bottom: 1px solid #4a5568; 
+    padding-bottom: 15px; margin-bottom: 25px; font-size: 1.6rem; text-align: center;
+}
+#hac-signup-form-fields { display: flex; flex-direction: column; gap: 15px; }
+#hac-signup-form-fields .form-group label { font-weight: bold; margin-bottom: 4px; text-align: left; color: #a0aec0; }
+#hac-signup-form-fields input[type="text"],
+#hac-signup-form-fields input[type="email"] { 
+    background-color: #1a202c; border-color: #4a5568; color: #e2e8f0;
+}
+#submit-hac-signup-button { margin-top: 25px; width: 100%; background-color: #38a169; }
+#submit-hac-signup-button:hover { background-color: #2f855a; }
+.close-hac-modal {
+    color: #a0aec0; font-size: 32px; font-weight: bold;
+    position: absolute; top: 10px; right: 15px; line-height: 1; cursor: pointer;
+}
+.close-hac-modal:hover, .close-hac-modal:focus { color: #fff; text-decoration: none; }
+#hac-modal-status { margin-top: 15px; font-weight: bold; text-align: center; }
+
+/* HAC Member Lookup Section (index.html) */
+.hac-lookup-section { /* Will have .content-block in HTML */
+    max-width: 800px; 
+    margin-top: 30px; 
+}
+.hac-lookup-section h2 { text-align: center; }
+.hac-search-container-staff { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; }
+.hac-search-container-staff .form-group { flex-grow: 1; margin-bottom: 0; }
+.hac-search-container-staff .form-group label { color: #e0e0e0; font-weight: normal; }
+.hac-search-container-staff .action-button { padding: 12px 18px; height: 46px; /* Match input height */ } 
+.hac-search-container-staff .clear-cart-btn { background-color: #718096; border-color: #4a5568;}
+.hac-search-container-staff .clear-cart-btn:hover { background-color: #4a5568;}
+
+.hac-member-results-display { margin-top: 20px; text-align: left; color: #e0e0e0; max-height: 300px; overflow-y: auto; }
+.hac-member-results-display .member-result-item {
+    background-color: rgba(74, 85, 104, 0.5); padding: 12px 15px;
+    margin-bottom: 8px; border-radius: 5px; border: 1px solid #4a5568;
+    line-height: 1.6;
+}
+.hac-member-results-display .member-result-item strong { color: #fff; }
+
+.hac-eligibility-status { font-weight: bold; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; margin-left: 8px; display: inline-block;}
+.hac-eligible { background-color: #38a169; color: white; } 
+.hac-not-eligible { background-color: #e53e3e; color: white; } 
+
+.current-promo-staff {
+    margin-top: 20px; padding: 15px; background-color: rgba(30, 30, 30, 0.6);
+    border: 1px solid #4a5568; border-radius: 6px; text-align: left;
+}
+.current-promo-staff h3 { margin-top: 0; margin-bottom: 8px; color: #f0f0f0; font-size: 1.2em; }
+.current-promo-staff p { margin: 0; line-height: 1.5; color: #cbd5e0; }
+.current-promo-staff strong { color: #f6e05e; }
+
+
+/* === MANAGER PAGE & TAXES PAGE === */
+.manager-container, .taxes-container { /* These will have .content-block in HTML */
+    max-width: 1000px; 
+}
+.manager-container hr, .taxes-container hr { 
+    border: 0; height: 1px; 
+    background-image: linear-gradient(to right, rgba(100,100,100,0), rgba(100,100,100,0.5), rgba(100,100,100,0));
+    margin: 35px auto; width: 90%; 
+}
+
+/* Section Wrappers on Manager/Taxes Page */
+.employee-management-section, 
+.shared-password-section,
+.hac-management-section, 
+.hac-promo-section { 
+    /* These will also have .content-block class in HTML for base styling */
+    max-width: 900px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+.employee-management-section h2, .employee-management-section h3,
+.shared-password-section h2,
+.hac-management-section h2, .hac-management-section h3,
+.hac-promo-section h3,
+.taxes-container h1, .taxes-container h2 { /* h1 on taxes page, h2 on manager */
+    text-align: left; 
+}
+
+/* Forms within manager/taxes sections */
+/* .add-employee-form, .password-form, .hac-promo-edit use general form styles */
+.employee-form-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: flex-start; }
+/* Specific button colors within manager forms */
+#save-employee-button, 
+#save-hac-member-button, /* Assuming this is the button ID in HAC edit form on manager page */
+#save-hac-promo-button { background-color: #38a169; } /* Green */
+
+#save-employee-password-button { background-color: #3182ce; } /* Blue */
+
+#cancel-edit-button, 
+#cancel-edit-hac-member-button { background-color: #dd6b20; } /* Orange */
+
+
+/* Lists (Employees, HAC Members) on Manager Page */
+.employee-list { 
+    list-style: none; padding: 10px; max-height: 400px; overflow-y: auto;
+    border: 1px solid #4a5568; border-radius: 5px; background-color: rgba(26,32,44,0.4);
+}
+.employee-list-item {
+    background-color: rgba(74, 85, 104, 0.6); padding: 12px 15px;
+    margin-bottom: 8px; border-radius: 5px; display: flex;
+    justify-content: space-between; align-items: center; font-size: 0.95rem;
+    border: 1px solid #5a6578;
+}
+.employee-list-item .employee-details { flex-grow: 1; text-align: left; line-height: 1.5; }
+.employee-list-item .employee-details strong { color: #fff; }
+.employee-list-item .action-buttons-cell { display: flex; gap: 8px; align-items: center; }
+.employee-list-item .action-buttons-cell .action-button { /* Edit/Remove buttons in lists */
+    padding: 6px 10px; font-size: 0.8rem; min-width: 60px; text-align: center; 
+}
+/* Specific colors for buttons in lists */
+.edit-employee-btn, .edit-hac-member-btn { background-color: #3182ce; } 
+.remove-employee-btn, .remove-hac-member-btn { background-color: #c53030; } 
+
+/* HAC Search (Manager Page) */
+.hac-search-container { 
+    display: flex; align-items: flex-end; 
+    gap:10px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.hac-search-container .form-group { flex-grow:1; margin-bottom: 0;} 
+/* .hac-search-container input and button use general styles */
+
+/* HAC Eligibility Reset (Manager Page) */
+.hac-eligibility-reset-container { text-align: left; margin-top:25px; padding-top:20px; border-top:1px dashed #4a5568;} 
+#reset-hac-eligibility-button { background-color: #2c5282; border-color: #2a4365; color:white; }
+#reset-hac-eligibility-button:hover { background-color: #2a4365; }
+#hac-reset-status { font-size: 0.9em; margin-top: 8px; font-style: italic; }
+
+/* Shared Password Section */
+.shared-password-section input[readonly] {
+    background-color: #2d3748 !important; 
+    color: #a0aec0 !important;
+    cursor: default;
+}
+#employee-password-status { font-weight: bold; margin-top: 10px; text-align: left; }
+
+/* Transactions Table (Manager Page) */
+.transactions-table-container { margin-top: 20px; max-height: 600px; overflow-y: auto; border: 1px solid #4a5568; border-radius: 5px; }
+#transactions table { width: 100%; border-collapse: collapse; color: #e2e8f0; }
+#transactions th, #transactions td {
+    border: 1px solid #4a5568; padding: 10px 12px; text-align: left;
+    font-size: 0.9rem; white-space: nowrap;
+}
+#transactions td:nth-child(4) { white-space: normal; } 
+#transactions th { background-color: #2d3748; font-weight: bold; position: sticky; top: 0; z-index: 10; }
+#transactions tr:nth-child(even) { background-color: rgba(74, 85, 104, 0.3); }
+#transactions tr:hover { background-color: rgba(74, 85, 104, 0.6); }
+
+/* Taxes Page Specific Styles */
+/* .taxes-container is styled via .content-block in HTML */
+.taxes-container h1 { text-align: center; }
+.taxes-container h2 { text-align: left; } 
+.employee-selection-taxes .form-group label { font-size: 1.1rem; color: #e0e0e0; font-weight: bold; } 
+.employee-selection-taxes select { /* Uses general form styles */ text-align: center; width: 100%; max-width: 450px; }
+#tax-details-container {
+    background-color: rgba(74, 85, 104, 0.4); padding: 25px; border-radius: 8px;
+    text-align: left; border: 1px solid #4a5568; margin-top:20px;
+}
+.taxes-owed-display { font-size: 1.6rem; margin-bottom: 12px; color: #e0e0e0; }
+.taxes-owed-display strong { color: #f6e05e; font-size: 1.8rem; }
+.account-info { font-size: 1.1rem; margin-bottom: 25px; color: #a0aec0; }
+.account-info strong { color: #e2e8f0; font-family: monospace; background-color: rgba(0,0,0,0.3); padding: 3px 6px; border-radius: 3px;}
+.mark-paid-section {
+    margin-top: 25px; padding-top: 20px; border-top: 1px dashed #4a5568;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 15px; 
+}
+.mark-paid-section label { font-size: 1.1rem; color: #e0e0e0; cursor: pointer; display: flex; align-items: center; }
+.mark-paid-section input[type="checkbox"] { 
+    margin-right: 10px; width: 20px; height: 20px; cursor: pointer; 
+    accent-color: #3182ce; 
+    vertical-align: middle;
+}
+#mark-taxes-paid-button { padding: 12px 25px; font-size: 1.1rem; background-color: #38a169; }
+#mark-taxes-paid-button:disabled { background-color: #718096 !important; border-color: #4a5568 !important; color: #a0aec0 !important; }
+#taxes-status-message { font-weight: bold; font-size: 1rem; margin-top: 15px; padding: 10px; border-radius: 4px; text-align: center; }
+
+/* In mikes.css */
+
+/* ... (existing styles for .hac-member-results-display, .member-result-item, etc.) ... */
+
+.hac-member-results-display .member-result-item .claim-benefit-button {
+    /* Re-use .action-button styles and add specific ones */
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-left: 15px; /* Space it from the eligibility status */
+    background-color: #f0ad4e; /* Orange/Warning color for action */
+    color: white;
+    border-color: #eea236;
+    vertical-align: middle; /* Align with text if status is inline-block */
+}
+
+.hac-member-results-display .member-result-item .claim-benefit-button:hover {
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+
+.hac-member-results-display .member-result-item .claim-benefit-button:disabled {
+    background-color: #777 !important;
+    color: #ccc !important;
+    cursor: not-allowed;
+}
+
+input.quantity {
+  width: 4.5ch;
+  border: none;
+  background: none;
+  text-align: center;
+  font-weight: bold;
+  pointer-events: all; /* disable manual editing */
+  font-size: 1rem;
+  padding: 0;
+  appearance: textfield;
+}
+
+/* Remove spinner buttons (Chrome) */
+input.quantity::-webkit-inner-spin-button,
+input.quantity::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#buy-section.items-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+#sell-section.items-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px; /* Maintain 5px gap */
+  row-gap: 12px;
+  width: fit-content; /* Adjust width to fit content */
+  margin: auto; /* Center the grid */
+}

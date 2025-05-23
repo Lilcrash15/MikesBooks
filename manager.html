@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Portal</title>
+    <link rel="stylesheet" href="mikes.css">
+
+    <!-- START: Firebase SDK and Configuration -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; // Added Timestamp
+      const firebaseConfig = {
+        apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10", // YOUR ACTUAL API KEY
+        authDomain: "msg-website-bca5f.firebaseapp.com",
+        projectId: "msg-website-bca5f",
+        storageBucket: "msg-website-bca5f.appspot.com",
+        messagingSenderId: "270369234579",
+        appId: "1:270369234579:web:ee0674958f7676227d7766",
+        measurementId: "G-VXLB48L4LF"
+      };
+      try {
+        console.log(document.title + " HTML: Attempting Firebase init...");
+        if (!firebaseConfig || !firebaseConfig.projectId) {
+            console.error(document.title + " HTML CRITICAL: firebaseConfig or projectId missing!", firebaseConfig);
+            throw new Error("Firebase config error: projectId is missing!");
+        }
+        const app = initializeApp(firebaseConfig);
+        window.db = getFirestore(app);
+        console.log(document.title + " HTML: Firebase initialized, window.db set.");
+        window.firestoreFunctions = {
+            collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy,
+            serverTimestamp, getDoc, setDoc, Timestamp // Added Timestamp
+        };
+        console.log(document.title + " HTML: Firestore functions exposed.");
+        window.isFirebaseReady = true;
+        console.log(document.title + " HTML: window.isFirebaseReady set to true.");
+        const firebaseReadyEvent = new CustomEvent('firebaseReady', {
+            detail: { db: window.db, functions: window.firestoreFunctions }
+        });
+        document.dispatchEvent(firebaseReadyEvent);
+        console.log(document.title + " HTML: Dispatched 'firebaseReady' event.");
+      } catch (error) {
+        console.error(document.title + " HTML FATAL: Error initializing Firebase SDK:", error);
+        window.isFirebaseReady = false;
+        const firebaseErrorEvent = new CustomEvent('firebaseError', { detail: { error: error } });
+        document.dispatchEvent(firebaseErrorEvent);
+      }
+    </script>
+    <!-- END: Firebase SDK and Configuration -->
+
+    <script src="utility.js"></script> <!-- UTILITY.JS FIRST (NO DEFER) -->
+    <script defer src="manager.js"></script> <!-- MANAGER.JS (CAN DEFER) -->
+
+</head>
+<body class="htmlbackground">
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="logo-container">
+                <img src="/Images/MikesDeerLogo.png" alt="Mikes Deer Logo">
+            </button>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="taxes.html">Employee Taxes</a>
+                <a href="manager.html">Manager Portal</a>
+                <!-- Logout button will be added here by utility.js -->
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content-wrapper">
+        <header>
+            <div>
+                <img class="mikessign" src="/Images/MikesLogo.png" alt="Mikes Logo Sign">
+            </div>
+        </header>
+
+        <!-- Manager Login Form Container -->
+        <div id="manager-login-wrapper" class="content-block" style="max-width: 450px; margin: 30px auto;"> <!-- Wrapper ID -->
+             <h1>Manager Portal Access</h1>
+            <form id="manager-page-login-form"> <!-- Unique Form ID -->
+                <div class="form-group">
+                    <label for="manager-page-password">Enter Manager Password:</label> <!-- Unique Password Input ID -->
+                    <input type="password" id="manager-page-password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p id="manager-page-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Manager Password.</p> <!-- Unique Error Message ID -->
+        </div>
+        <!-- End Manager Login Form Container -->
+
+        <div id="manager-content" style="display: none; width: 100%;">
+            <div class="manager-container">
+                <div class="employee-management-section content-block">
+                    <h2>Manage Employees</h2>
+                    <form id="employee-form-actual">
+                        <div id="employee-form-container" class="add-employee-form">
+                            <h3 id="employee-form-title">Add New Employee</h3>
+                            <input type="hidden" id="edit-employee-id">
+                            <div class="form-group">
+                                <label for="employee-full-name">Full Name:</label>
+                                <input type="text" id="employee-full-name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="employee-number-ssn">Employee Number (SSN):</label>
+                                <input type="text" id="employee-number-ssn" placeholder="Employee Number (SSN)" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="employee-rank-select">Rank:</label>
+                                <select id="employee-rank-select">
+                                    <option value="Trainee">Trainee</option>
+                                    <option value="Staff">Staff</option>
+                                    <option value="Senior Staff">Senior Staff</option>
+                                    <option value="Manager">Manager</option>
+                                </select>
+                            </div>
+                            <div class="employee-form-buttons">
+                                <button type="button" id="save-employee-button" class="action-button">Add Employee</button>
+                                <button type="button" id="cancel-edit-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h3>Current Employees</h3>
+                    <div id="employee-list-display" class="employee-list">
+                        <p><i>Loading employees...</i></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="shared-password-section content-block">
+                    <h2>Manage Shared Employee Login Password</h2>
+                    <form id="shared-password-form">
+                        <div class="password-form">
+                            <div class="form-group">
+                                <label for="current-employee-password-display">Current Shared Password:</label>
+                                <input type="text" id="current-employee-password-display" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-employee-password">Set New Shared Password:</label>
+                                <input type="text" id="new-employee-password" placeholder="Enter new employee password">
+                            </div>
+                            <button type="button" id="save-employee-password-button" class="action-button">Update Employee Password</button>
+                            <p id="employee-password-status" style="margin-top:10px;"></p>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="hac-management-section content-block">
+                    <h2>Manage HAC Members</h2>
+                    <form id="hac-edit-form-actual">
+                        <div id="hac-member-form-container" class="add-employee-form" style="display:none;">
+                            <h3 id="hac-member-form-title">Edit HAC Member Details</h3>
+                            <input type="hidden" id="edit-hac-member-id">
+                            <div class="form-group">
+                                <label for="hac-first-name">First Name:</label>
+                                <input type="text" id="hac-first-name" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hac-last-name">Last Name:</label>
+                                <input type="text" id="hac-last-name" placeholder="Last Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hac-phone-number">Phone Number:</label>
+                                <input type="text" id="hac-phone-number" placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <label for="hac-driver-license">Driver License #:</label>
+                                <input type="text" id="hac-driver-license" placeholder="DL Number">
+                            </div>
+                            <div class="form-group">
+                                <label for="hac-email">Email:</label>
+                                <input type="email" id="hac-email" placeholder="Email Address">
+                            </div>
+                            <div class="employee-form-buttons">
+                                <button type="button" id="save-hac-member-button" class="action-button">Save HAC Changes</button>
+                                <button type="button" id="cancel-edit-hac-member-button" class="action-button clear-cart-btn">Cancel Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h3>Current HAC Members</h3>
+                    <div class="hac-search-container">
+                        <div class="form-group" style="flex-grow: 1;">
+                            <label for="hac-search-term">Search HAC by Name, Phone, DL, or Email:</label>
+                            <input type="text" id="hac-search-term" placeholder="Enter search term...">
+                        </div>
+                        <button id="hac-search-button" class="action-button" type="button">Search</button>
+                        <button id="hac-clear-search-button" class="action-button clear-cart-btn" type="button">Clear Search</button>
+                    </div>
+                    <div id="hac-member-list-display" class="employee-list">
+                        <p><i>Search for HAC members to display their details.</i></p>
+                    </div>
+                    <div class="hac-eligibility-reset-container" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #555;">
+                        <label for="reset-hac-eligibility-button" style="display:block; margin-bottom:10px;">Monthly HAC Status Management:</label>
+                         <button id="reset-hac-eligibility-button" class="action-button" style="background-color: #31708f;">Reset All Members to ELIGIBLE for New Month</button>
+                         <p id="hac-reset-status" style="font-size: 0.9em; margin-top: 10px;"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="hac-promo-section content-block">
+                    <h3>Current HAC Promo</h3>
+                    <form id="hac-promo-form">
+                        <div class="hac-promo-edit">
+                            <div class="form-group">
+                                <label for="hac-promo-month">Promo Month (e.g., August 2024):</label>
+                                <input type="text" id="hac-promo-month" placeholder="Current Month & Year">
+                            </div>
+                            <div class="form-group">
+                                <label for="hac-promo-text">Promo Text:</label>
+                                <textarea id="hac-promo-text" rows="3" placeholder="Enter current promo details..."></textarea>
+                            </div>
+                            <button type="button" id="save-hac-promo-button" class="action-button">Save Promo</button>
+                            <p id="hac-promo-status" style="margin-top:10px;"></p>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="content-block">
+                    <h2>Transaction Records</h2>
+                    <button id="export" class="checkout-button" style="margin-bottom:15px;">Export to CSV</button>
+                    <div id="transactions" class="transactions-table-container">
+                        <p><i>Loading transactions...</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

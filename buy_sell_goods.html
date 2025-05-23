@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy/Sell Goods</title>
+  <link rel="stylesheet" href="mikes.css" />
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"; 
+      import { 
+          getFirestore, 
+          collection, addDoc, getDocs, doc, updateDoc, deleteDoc, 
+          query, where, orderBy, serverTimestamp,
+          getDoc, 
+          setDoc  
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; 
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10", // YOUR ACTUAL API KEY
+        authDomain: "msg-website-bca5f.firebaseapp.com",
+        projectId: "msg-website-bca5f", 
+        storageBucket: "msg-website-bca5f.appspot.com", 
+        messagingSenderId: "270369234579",
+        appId: "1:270369234579:web:ee0674958f7676227d7766",
+        measurementId: "G-VXLB48L4LF"
+      };
+
+      try {
+        console.log(document.title + " HTML: Attempting Firebase init...");
+        if (!firebaseConfig || !firebaseConfig.projectId) {
+            console.error(document.title + " HTML CRITICAL: firebaseConfig or projectId missing!", firebaseConfig);
+            throw new Error("Firebase config error: projectId is missing!"); 
+        }
+        const app = initializeApp(firebaseConfig); 
+        
+        window.db = getFirestore(app); 
+        console.log(document.title + " HTML: Firebase initialized, window.db set.");
+
+        window.firestoreFunctions = {
+            collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy,
+            serverTimestamp, getDoc, setDoc 
+        };
+        console.log(document.title + " HTML: Firestore functions exposed.");
+
+        window.isFirebaseReady = true; 
+        console.log(document.title + " HTML: window.isFirebaseReady set to true.");
+
+        const firebaseReadyEvent = new CustomEvent('firebaseReady', { 
+            detail: { 
+                db: window.db, 
+                functions: window.firestoreFunctions 
+            } 
+        });
+        document.dispatchEvent(firebaseReadyEvent);
+        console.log(document.title + " HTML: Dispatched 'firebaseReady' event.");
+
+      } catch (error) {
+        console.error(document.title + " HTML FATAL: Error initializing Firebase SDK:", error);
+        window.isFirebaseReady = false; 
+        const firebaseErrorEvent = new CustomEvent('firebaseError', { detail: { error: error } });
+        document.dispatchEvent(firebaseErrorEvent);
+      }
+    </script>
+  <script defer src="utility.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body class="htmlbackground">
+  <div class="navbar">
+    <div class="dropdown">
+      <button class="logo-container">
+        <img src="/Images/MikesDeerLogo.png" alt="Mikes Deer Logo" />
+      </button>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="buy_sell_goods.html">Buy/Sell Goods</a>
+                <a href="taxes.html">Employee Taxes</a> 
+                <a href="manager.html">Manager Portal</a>
+            </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper">
+    <header>
+      <img class="mikessign" src="/Images/MikesLogo.png" alt="Mikes Logo Sign" />
+    </header>
+
+    <div id="login-form-container" class="content-block">
+      <h1>Employee Login</h1>
+      <form id="employee-login-form">
+        <div class="form-group">
+          <label for="employee-shared-password">Enter Access Password:</label>
+          <input type="password" id="employee-shared-password" required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p id="login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Password. Please try again.</p>
+    </div>
+
+    <div id="main-content" style="display: none; width: 100%;">
+      <div class="calculator-container content-block">
+        <div class="employee-selection form-group">
+          <select id="employee" style="text-align: center;">
+            <option value="">Select Your Name</option>
+          </select>
+        </div>
+
+        <div class="mode-switch" style="text-align:center; margin-bottom:15px;">
+          <button id="buy-mode" class="action-button active">Buy</button>
+          <button id="sell-mode" class="action-button">Sell</button>
+        </div>
+
+        <div class="items-container" id="buy-section"></div>
+        <div class="items-container" id="sell-section" style="display: none;"></div>
+
+        <div class="cart-actions">
+          <button id="clear-cart-button" class="action-button clear-cart-btn">Clear Cart</button>
+          <button id="checkout-button" class="checkout-button">Checkout</button>
+          <h2 style="text-align:center;">Total: $<span id="total-amount">0.00</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
