@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikes Staff Portal</title> 
+    <title>Mikes Staff Portal</title>
     <link rel="stylesheet" type="text/css" href="mikes.css">
 
     <!-- START: Firebase SDK and Configuration -->
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"; 
-      import { 
-          getFirestore, 
-          collection, addDoc, getDocs, doc, updateDoc, deleteDoc, 
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import {
+          getFirestore,
+          collection, addDoc, getDocs, doc, updateDoc, deleteDoc,
           query, where, orderBy, serverTimestamp,
-          getDoc, 
-          setDoc  
-      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; 
+          getDoc,
+          setDoc
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10", // YOUR ACTUAL API KEY
         authDomain: "msg-website-bca5f.firebaseapp.com",
-        projectId: "msg-website-bca5f", 
-        storageBucket: "msg-website-bca5f.appspot.com", 
+        projectId: "msg-website-bca5f",
+        storageBucket: "msg-website-bca5f.appspot.com",
         messagingSenderId: "270369234579",
         appId: "1:270369234579:web:ee0674958f7676227d7766",
         measurementId: "G-VXLB48L4LF"
@@ -31,40 +31,40 @@
         console.log(document.title + " HTML: Attempting Firebase init...");
         if (!firebaseConfig || !firebaseConfig.projectId) {
             console.error(document.title + " HTML CRITICAL: firebaseConfig or projectId missing!", firebaseConfig);
-            throw new Error("Firebase config error: projectId is missing!"); 
+            throw new Error("Firebase config error: projectId is missing!");
         }
-        const app = initializeApp(firebaseConfig); 
-        
-        window.db = getFirestore(app); 
+        const app = initializeApp(firebaseConfig);
+
+        window.db = getFirestore(app);
         console.log(document.title + " HTML: Firebase initialized, window.db set.");
 
         window.firestoreFunctions = {
             collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy,
-            serverTimestamp, getDoc, setDoc 
+            serverTimestamp, getDoc, setDoc
         };
         console.log(document.title + " HTML: Firestore functions exposed.");
 
-        window.isFirebaseReady = true; 
+        window.isFirebaseReady = true;
         console.log(document.title + " HTML: window.isFirebaseReady set to true.");
 
-        const firebaseReadyEvent = new CustomEvent('firebaseReady', { 
-            detail: { 
-                db: window.db, 
-                functions: window.firestoreFunctions 
-            } 
+        const firebaseReadyEvent = new CustomEvent('firebaseReady', {
+            detail: {
+                db: window.db,
+                functions: window.firestoreFunctions
+            }
         });
         document.dispatchEvent(firebaseReadyEvent);
         console.log(document.title + " HTML: Dispatched 'firebaseReady' event.");
 
       } catch (error) {
         console.error(document.title + " HTML FATAL: Error initializing Firebase SDK:", error);
-        window.isFirebaseReady = false; 
+        window.isFirebaseReady = false;
         const firebaseErrorEvent = new CustomEvent('firebaseError', { detail: { error: error } });
         document.dispatchEvent(firebaseErrorEvent);
       }
     </script>
     <!-- END: Firebase SDK and Configuration -->
-
+    <script src="utility.js"></script>
     <script defer src="script.js"></script>
 </head>
 <body class="htmlbackground">
@@ -72,139 +72,147 @@
     <div class="navbar">
         <div class="dropdown">
             <button class="logo-container">
-                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo"> 
+                <img src="Images/MikesDeerLogo.png" alt="Mikes Deer Logo">
             </button>
             <div class="dropdown-content">
                 <a href="index.html">Home</a>
-                <a href="buy_sell_goods.html">Buy/Sell Goods</a>
-                <a href="taxes.html">Employee Taxes</a> 
+                <a href="taxes.html">Employee Taxes</a>
                 <a href="manager.html">Manager Portal</a>
+                <!-- Logout button will be added by utility.js -->
             </div>
         </div>
     </div>
 
-    <div class="page-content-wrapper"> 
+    <div class="page-content-wrapper">
         <header>
             <div>
-                <img class="mikessign" src="MikesLogo.png" alt="Mikes Logo Sign"> 
+                <img class="mikessign" src="Images/MikesLogo.png" alt="Mikes Logo Sign">
             </div>
         </header>
 
-        <div id="login-form-container" class="content-block">
-            <h1>Employee Login</h1>
-            <form id="employee-login-form">
+        <div id="employee-login-container" class="content-block" style="max-width: 450px; margin: 20px auto;">
+            <h1>Employee Access</h1>
+            <form id="main-employee-login-form">
                 <div class="form-group">
-                    <label for="employee-shared-password">Enter Access Password:</label>
-                    <input type="password" id="employee-shared-password" required> 
+                    <label for="main-employee-password">Enter Access Password:</label>
+                    <input type="password" id="main-employee-password" required>
                 </div>
                 <button type="submit">Login</button>
             </form>
-            <p id="login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Password. Please try again.</p>
+            <p id="main-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Password.</p>
         </div>
 
-        <div id="main-content" style="display: none; width: 100%;"> 
-            <div class="calculator-container content-block" id="main-calculator-content">
-                <div class="employee-selection form-group">
-                    <select id="employee" style="text-align: center;">
-                    </select>
-                </div>
+        <div id="application-main-content" style="display: none; width: 100%;">
+            <div class="employee-selection form-group" style="text-align:center; margin-bottom:20px;">
+                <label for="processing-employee-select" style="display:block; margin-bottom:8px;">Processing Employee:</label>
+                <select id="processing-employee-select" style="min-width: 300px; text-align:center; padding:10px;"></select>
+            </div>
 
+            <div id="view-switcher" style="text-align: center; margin-bottom: 25px; display:flex; justify-content:center; gap:15px;">
+                <button id="show-pos-view-btn" class="action-button active">Inventory</button>
+                <button id="show-buysell-view-btn" class="action-button">Buy/Sell Goods</button>
+            </div>
+
+            <!-- POS View Container -->
+            <div id="pos-view-container" class="calculator-container content-block">
                 <div id="category-buttons-container">
                     <button class="category-button action-button" data-category-filter="All">All Items</button>
                     <button class="category-button action-button" data-category-filter="Hunting">Hunting</button>
                     <button class="category-button action-button" data-category-filter="Fishing">Fishing</button>
                     <button class="category-button action-button" data-category-filter="General">General Gear</button>
                     <button class="category-button action-button" data-category-filter="Consumables">Consumables</button>
-                    <button class="category-button action-button" data-category-filter="Specialty">Specialty</button> 
+                    <button class="category-button action-button" data-category-filter="Specialty">Specialty</button>
                 </div>
 
-                <div class="items-container">
+                <div class="items-container" id="pos-items-container">
+                    <!-- START OF POS ITEMS (from your original index.html.txt) -->
                     <div class="item" data-price="50000" data-category="Specialty" id="hac-membership-item">
-                        <img src="placeholder_hac_membership.jpg" alt="HAC Membership"> 
-                        <p>HAC MEMBERSHIP: $50,000</p> 
+                        <img src="placeholder_hac_membership.jpg" alt="HAC Membership">
+                        <p>$50,000</p>
                         <button class="action-button add-to-cart-hac">Sign Up Member</button>
                         <input type="number" id="quantity_hac_membership" value="0" class="quantity" style="display:none;">
                     </div>
-                    
-                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_swine_bait.jpg" alt="SWINE BAIT"><p>SWINE BAIT: $100</p><label for="quantity_swine_bait">Quantity:</label><input type="number" id="quantity_swine_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_cervid_bait.jpg" alt="CERVID BAIT"><p>CERVID BAIT: $100</p><label for="quantity_cervid_bait">Quantity:</label><input type="number" id="quantity_cervid_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_leporid_bait.jpg" alt="LEPORID BAIT"><p>LEPORID BAIT: $100</p><label for="quantity_leporid_bait">Quantity:</label><input type="number" id="quantity_leporid_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_rodent_bait.jpg" alt="RODENT BAIT"><p>RODENT BAIT: $100</p><label for="quantity_rodent_bait">Quantity:</label><input type="number" id="quantity_rodent_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1" data-category="General"><img src="placeholder_flare_cartridge.jpg" alt="FLARE CARTRIDGE"><p>FLARE CARTRIDGE: $1</p><label for="quantity_flare_cartridge">Quantity:</label><input type="number" id="quantity_flare_cartridge" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="3000" data-category="General"><img src="placeholder_flare_gun.jpg" alt="FLARE GUN"><p>FLARE GUN: $3000</p><label for="quantity_flare_gun">Quantity:</label><input type="number" id="quantity_flare_gun" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1" data-category="Hunting"><img src="placeholder_hunting_map.jpg" alt="HUNTING MAP"><p>HUNTING MAP: $1</p><label for="quantity_hunting_map">Quantity:</label><input type="number" id="quantity_hunting_map" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="4000" data-category="Hunting"><img src="placeholder_hunting_rifle.jpg" alt="HUNTING RIFLE"><p>HUNTING RIFLE: $4000</p><label for="quantity_hunting_rifle">Quantity:</label><input type="number" id="quantity_hunting_rifle" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="6000" data-category="Hunting"><img src="placeholder_scoped_rifle.jpg" alt="SCOPED RIFLE"><p>SCOPED RIFLE: $6000</p><label for="quantity_scoped_rifle">Quantity:</label><input type="number" id="quantity_scoped_rifle" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="400" data-category="Hunting"><img src="placeholder_knife.jpg" alt="KNIFE"><p>KNIFE: $400</p><label for="quantity_knife">Quantity:</label><input type="number" id="quantity_knife" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1000" data-category="Hunting"><img src="placeholder_orange_vest.jpg" alt="ORANGE VEST"><p>ORANGE VEST: $1000</p><label for="quantity_orange_vest">Quantity:</label><input type="number" id="quantity_orange_vest" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="General"><img src="placeholder_bandages.jpg" alt="BANDAGES"><p>BANDAGES: $50</p><label for="quantity_bandages">Quantity:</label><input type="number" id="quantity_bandages" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="250" data-category="General"><img src="placeholder_binoculars.jpg" alt="BINOCULARS"><p>BINOCULARS: $250</p><label for="quantity_binoculars">Quantity:</label><input type="number" id="quantity_binoculars" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="400" data-category="General"><img src="placeholder_radio.jpg" alt="RADIO"><p>RADIO: $400</p><label for="quantity_radio">Quantity:</label><input type="number" id="quantity_radio" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="500" data-category="General"><img src="placeholder_scuba_tanks.jpg" alt="SCUBA TANKS"><p>SCUBA TANKS: $500</p><label for="quantity_scuba_tanks">Quantity:</label><input type="number" id="quantity_scuba_tanks" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="250" data-category="General"><img src="placeholder_repair_kits.jpg" alt="REPAIR KITS (VH OR TIRE)"><p>REPAIR KITS (VH OR TIRE): $250</p><label for="quantity_repair_kits">Quantity:</label><input type="number" id="quantity_repair_kits" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="5000" data-category="General"><img src="placeholder_duffle_bag.jpg" alt="DUFFLE BAG"><p>DUFFLE BAG: $5000</p><label for="quantity_duffle_bag">Quantity:</label><input type="number" id="quantity_duffle_bag" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="2500" data-category="General"><img src="placeholder_scuba_pack.jpg" alt="SCUBA PACK"><p>SCUBA PACK: $2500</p><label for="quantity_scuba_pack">Quantity:</label><input type="number" id="quantity_scuba_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="10000" data-category="General"><img src="placeholder_camping_pack.jpg" alt="CAMPING PACK"><p>CAMPING PACK: $10000</p><label for="quantity_camping_pack">Quantity:</label><input type="number" id="quantity_camping_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="30" data-category="Consumables"><img src="placeholder_cigarettes.jpg" alt="CIGARETTES"><p>CIGARETTES: $30</p><label for="quantity_cigarettes">Quantity:</label><input type="number" id="quantity_cigarettes" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="75" data-category="Consumables"><img src="placeholder_beer.jpg" alt="BEER"><p>BEER: $75</p><label for="quantity_beer">Quantity:</label><input type="number" id="quantity_beer" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="150" data-category="Consumables"><img src="placeholder_buckshot_boost.jpg" alt="BUCKSHOT BOOST"><p>BUCKSHOT BOOST: $150</p><label for="quantity_buckshot_boost">Quantity:</label><input type="number" id="quantity_buckshot_boost" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="400" data-category="Consumables"><img src="placeholder_boar_deer_jerky.jpg" alt="BOAR OR DEER JERKY"><p>BOAR OR DEER JERKY: $400</p><label for="quantity_boar_deer_jerky">Quantity:</label><input type="number" id="quantity_boar_deer_jerky" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1500" data-category="Specialty"><img src="placeholder_armor.jpg" alt="ARMOR"><p>ARMOR: $1500</p><label for="quantity_armor">Quantity:</label><input type="number" id="quantity_armor" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1500" data-category="Specialty"><img src="placeholder_jerry_cans.jpg" alt="JERRY CANS"><p>JERRY CANS: $1500</p><label for="quantity_jerry_cans">Quantity:</label><input type="number" id="quantity_jerry_cans" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1000" data-category="Specialty"><img src="placeholder_msg_cup.jpg" alt="MSG CUP"><p>MSG CUP: $1000</p><label for="quantity_msg_cup">Quantity:</label><input type="number" id="quantity_msg_cup" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="7500" data-category="Specialty"><img src="placeholder_deer_boar_mount.jpg" alt="DEER OR BOAR MOUNT"><p>DEER OR BOAR MOUNT: $7500</p><label for="quantity_deer_boar_mount">Quantity:</label><input type="number" id="quantity_deer_boar_mount" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="3500" data-category="Specialty"><img src="placeholder_msg_tailgate_chair.jpg" alt="MSG TAILGATE CHAIR"><p>MSG TAILGATE CHAIR: $3500</p><label for="quantity_msg_tailgate_chair">Quantity:</label><input type="number" id="quantity_msg_tailgate_chair" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="2500" data-category="Specialty"><img src="placeholder_coolers.jpg" alt="COOLERS"><p>COOLERS: $2500</p><label for="quantity_coolers">Quantity:</label><input type="number" id="quantity_coolers" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="5000" data-category="Specialty"><img src="placeholder_mk2_skins.jpg" alt="MK2 SKINS"><p>MK2 SKINS: $5000</p><label for="quantity_mk2_skins">Quantity:</label><input type="number" id="quantity_mk2_skins" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="500" data-category="Specialty"><img src="placeholder_shark_repellent.jpg" alt="SHARK REPELLENT"><p>SHARK REPELLENT: $500</p><label for="quantity_shark_repellent">Quantity:</label><input type="number" id="quantity_shark_repellent" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="500" data-category="Specialty"><img src="placeholder_gold_pan.jpg" alt="GOLD PAN"><p>GOLD PAN: $500</p><label for="quantity_gold_pan">Quantity:</label><input type="number" id="quantity_gold_pan" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="5000" data-category="Hunting"><img src="placeholder_hunting_pack.jpg" alt="HUNTING PACK"><p>HUNTING PACK: $5000</p><label for="quantity_hunting_pack">Quantity:</label><input type="number" id="quantity_hunting_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="6000" data-category="Hunting"><img src="placeholder_scoped_hunting_pack.jpg" alt="SCOPED HUNTING PACK"><p>SCOPED HUNTING PACK: $6000</p><label for="quantity_scoped_hunting_pack">Quantity:</label><input type="number" id="quantity_scoped_hunting_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1000" data-category="Fishing"><img src="placeholder_broke_ass_reel.jpg" alt="BROKE ASS REEL"><p>BROKE ASS REEL: $1000</p><label for="quantity_broke_ass_reel">Quantity:</label><input type="number" id="quantity_broke_ass_reel" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1500" data-category="Fishing"><img src="placeholder_line_sniffer_reel.jpg" alt="LINE SNIFFER REEL"><p>LINE SNIFFER REEL: $1500</p><label for="quantity_line_sniffer_reel">Quantity:</label><input type="number" id="quantity_line_sniffer_reel" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="2000" data-category="Fishing"><img src="placeholder_rock_bottom_reel.jpg" alt="ROCK BOTTOM REEL"><p>ROCK BOTTOM REEL: $2000</p><label for="quantity_rock_bottom_reel">Quantity:</label><input type="number" id="quantity_rock_bottom_reel" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="2500" data-category="Fishing"><img src="placeholder_fishrus_reel.jpg" alt="FISHRUS REEL"><p>FISHRUS REEL: $2500</p><label for="quantity_fishrus_reel">Quantity:</label><input type="number" id="quantity_fishrus_reel" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="3000" data-category="Fishing"><img src="placeholder_thunder_reel.jpg" alt="THUNDER REEL"><p>THUNDER REEL: $3000</p><label for="quantity_thunder_reel">Quantity:</label><input type="number" id="quantity_thunder_reel" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="3500" data-category="Fishing"><img src="placeholder_zilla_reel.jpg" alt="ZILLA REEL"><p>ZILLA REEL: $3500</p><label for="quantity_zilla_reel">Quantity:</label><input type="number" id="quantity_zilla_reel" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1500" data-category="Fishing"><img src="placeholder_value_cast_rod.jpg" alt="VALUE CAST ROD"><p>VALUE CAST ROD: $1500</p><label for="quantity_value_cast_rod">Quantity:</label><input type="number" id="quantity_value_cast_rod" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="2500" data-category="Fishing"><img src="placeholder_elemental_rod.jpg" alt="ELEMENTAL ROD"><p>ELEMENTAL ROD: $2500</p><label for="quantity_elemental_rod">Quantity:</label><input type="number" id="quantity_elemental_rod" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="3500" data-category="Fishing"><img src="placeholder_nero_rod.jpg" alt="NERO ROD"><p>NERO ROD: $3500</p><label for="quantity_nero_rod">Quantity:</label><input type="number" id="quantity_nero_rod" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="4500" data-category="Fishing"><img src="placeholder_brutas_rod.jpg" alt="BRUTAS ROD"><p>BRUTAS ROD: $4500</p><label for="quantity_brutas_rod">Quantity:</label><input type="number" id="quantity_brutas_rod" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="5500" data-category="Fishing"><img src="placeholder_zeus_rod.jpg" alt="ZEUS ROD"><p>ZEUS ROD: $5500</p><label for="quantity_zeus_rod">Quantity:</label><input type="number" id="quantity_zeus_rod" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="6500" data-category="Fishing"><img src="placeholder_magnum_xl_rod.jpg" alt="MAGNUM XL ROD"><p>MAGNUM XL ROD: $6500</p><label for="quantity_magnum_xl_rod">Quantity:</label><input type="number" id="quantity_magnum_xl_rod" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_bread_bait.jpg" alt="BREAD BAIT"><p>BREAD BAIT: $50</p><label for="quantity_bread_bait">Quantity:</label><input type="number" id="quantity_bread_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_leech_bait.jpg" alt="LEECH BAIT"><p>LEECH BAIT: $50</p><label for="quantity_leech_bait">Quantity:</label><input type="number" id="quantity_leech_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_maggots_bait.jpg" alt="MAGGOTS BAIT"><p>MAGGOTS BAIT: $50</p><label for="quantity_maggots_bait">Quantity:</label><input type="number" id="quantity_maggots_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_mealworms_bait.jpg" alt="MEALWORMS BAIT"><p>MEALWORMS BAIT: $50</p><label for="quantity_mealworms_bait">Quantity:</label><input type="number" id="quantity_mealworms_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_nightworms_bait.jpg" alt="NIGHTWORMS BAIT"><p>NIGHTWORMS BAIT: $50</p><label for="quantity_nightworms_bait">Quantity:</label><input type="number" id="quantity_nightworms_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_redworms_bait.jpg" alt="REDWORMS BAIT"><p>REDWORMS BAIT: $50</p><label for="quantity_redworms_bait">Quantity:</label><input type="number" id="quantity_redworms_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_waxworms_bait.jpg" alt="WAXWORMS BAIT"><p>WAXWORMS BAIT: $50</p><label for="quantity_waxworms_bait">Quantity:</label><input type="number" id="quantity_waxworms_bait" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_1.jpg" alt="HOOK #1"><p>HOOK #1: $200</p><label for="quantity_hook_1">Quantity:</label><input type="number" id="quantity_hook_1" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_2.jpg" alt="HOOK #2"><p>HOOK #2: $200</p><label for="quantity_hook_2">Quantity:</label><input type="number" id="quantity_hook_2" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_3.jpg" alt="HOOK #3"><p>HOOK #3: $200</p><label for="quantity_hook_3">Quantity:</label><input type="number" id="quantity_hook_3" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_6.jpg" alt="HOOK #6"><p>HOOK #6: $200</p><label for="quantity_hook_6">Quantity:</label><input type="number" id="quantity_hook_6" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="250" data-category="Fishing"><img src="placeholder_hook_10.jpg" alt="HOOK #10"><p>HOOK #10: $250</p><label for="quantity_hook_10">Quantity:</label><input type="number" id="quantity_hook_10" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="300" data-category="Fishing"><img src="placeholder_tow_hook.jpg" alt="TOW HOOK"><p>TOW HOOK: $300</p><label for="quantity_tow_hook">Quantity:</label><input type="number" id="quantity_tow_hook" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_cheap_mono_line.jpg" alt="CHEAP MONO LINE"><p>CHEAP MONO LINE: $50</p><label for="quantity_cheap_mono_line">Quantity:</label><input type="number" id="quantity_cheap_mono_line" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="70" data-category="Fishing"><img src="placeholder_bite_size_line.jpg" alt="BITE SIZE LINE"><p>BITE SIZE LINE: $70</p><label for="quantity_bite_size_line">Quantity:</label><input type="number" id="quantity_bite_size_line" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="90" data-category="Fishing"><img src="placeholder_mobey_mono_line.jpg" alt="MOBEY MONO LINE"><p>MOBEY MONO LINE: $90</p><label for="quantity_mobey_mono_line">Quantity:</label><input type="number" id="quantity_mobey_mono_line" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="110" data-category="Fishing"><img src="placeholder_noodle_line.jpg" alt="NOODLE LINE"><p>NOODLE LINE: $110</p><label for="quantity_noodle_line">Quantity:</label><input type="number" id="quantity_noodle_line" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="130" data-category="Fishing"><img src="placeholder_lightning_line.jpg" alt="LIGHTNING LINE"><p>LIGHTNING LINE: $130</p><label for="quantity_lightning_line">Quantity:</label><input type="number" id="quantity_lightning_line" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="150" data-category="Fishing"><img src="placeholder_king_braid_line.jpg" alt="KING BRAID LINE"><p>KING BRAID LINE: $150</p><label for="quantity_king_braid_line">Quantity:</label><input type="number" id="quantity_king_braid_line" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1000" data-category="Fishing"><img src="placeholder_fish_finder.jpg" alt="FISH FINDER"><p>FISH FINDER: $1000</p><label for="quantity_fish_finder">Quantity:</label><input type="number" id="quantity_fish_finder" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="2500" data-category="Fishing"><img src="placeholder_tackle_box.jpg" alt="TACKLE BOX"><p>TACKLE BOX: $2500</p><label for="quantity_tackle_box">Quantity:</label><input type="number" id="quantity_tackle_box" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="6000" data-category="Fishing"><img src="placeholder_tiny_biters_pack.jpg" alt="TINY BITERS PACK"><p>TINY BITERS PACK: $6000</p><label for="quantity_tiny_biters_pack">Quantity:</label><input type="number" id="quantity_tiny_biters_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="6000" data-category="Fishing"><img src="placeholder_trout_pack.jpg" alt="TROUT PACK"><p>TROUT PACK: $6000</p><label for="quantity_trout_pack">Quantity:</label><input type="number" id="quantity_trout_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="7000" data-category="Fishing"><img src="placeholder_big_boy_pack.jpg" alt="BIG BOY PACK"><p>BIG BOY PACK: $7000</p><label for="quantity_big_boy_pack">Quantity:</label><input type="number" id="quantity_big_boy_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="7000" data-category="Fishing"><img src="placeholder_dock_special_pack.jpg" alt="DOCK SPECIAL PACK"><p>DOCK SPECIAL PACK: $7000</p><label for="quantity_dock_special_pack">Quantity:</label><input type="number" id="quantity_dock_special_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="7000" data-category="Fishing"><img src="placeholder_pike_pack.jpg" alt="PIKE PACK"><p>PIKE PACK: $7000</p><label for="quantity_pike_pack">Quantity:</label><input type="number" id="quantity_pike_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="8000" data-category="Fishing"><img src="placeholder_tuna_pack.jpg" alt="TUNA PACK"><p>TUNA PACK: $8000</p><label for="quantity_tuna_pack">Quantity:</label><input type="number" id="quantity_tuna_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="8000" data-category="Fishing"><img src="placeholder_mahi_pack_cayo.jpg" alt="MAHI PACK (CAYO)"><p>MAHI PACK (CAYO): $8000</p><label for="quantity_mahi_pack">Quantity:</label><input type="number" id="quantity_mahi_pack" min="0" value="0" class="quantity"></div>
-                </div> 
+                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_swine_bait.jpg" alt="SWINE BAIT"><p>$100</p><label for="quantity_swine_bait">Quantity:</label><input type="number" id="quantity_swine_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_cervid_bait.jpg" alt="CERVID BAIT"><p>$100</p><label for="quantity_cervid_bait">Quantity:</label><input type="number" id="quantity_cervid_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_leporid_bait.jpg" alt="LEPORID BAIT"><p>$100</p><label for="quantity_leporid_bait">Quantity:</label><input type="number" id="quantity_leporid_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="100" data-category="Hunting"><img src="placeholder_rodent_bait.jpg" alt="RODENT BAIT"><p>$100</p><label for="quantity_rodent_bait">Quantity:</label><input type="number" id="quantity_rodent_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1" data-category="General"><img src="placeholder_flare_cartridge.jpg" alt="FLARE CARTRIDGE"><p>$1</p><label for="quantity_flare_cartridge">Quantity:</label><input type="number" id="quantity_flare_cartridge" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="3000" data-category="General"><img src="placeholder_flare_gun.jpg" alt="FLARE GUN"><p>$3000</p><label for="quantity_flare_gun">Quantity:</label><input type="number" id="quantity_flare_gun" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1" data-category="Hunting"><img src="placeholder_hunting_map.jpg" alt="HUNTING MAP"><p>$1</p><label for="quantity_hunting_map">Quantity:</label><input type="number" id="quantity_hunting_map" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="4000" data-category="Hunting"><img src="placeholder_hunting_rifle.jpg" alt="HUNTING RIFLE"><p>$4000</p><label for="quantity_hunting_rifle">Quantity:</label><input type="number" id="quantity_hunting_rifle" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="6000" data-category="Hunting"><img src="placeholder_scoped_rifle.jpg" alt="SCOPED RIFLE"><p>$6000</p><label for="quantity_scoped_rifle">Quantity:</label><input type="number" id="quantity_scoped_rifle" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="400" data-category="Hunting"><img src="placeholder_knife.jpg" alt="KNIFE"><p>$400</p><label for="quantity_knife">Quantity:</label><input type="number" id="quantity_knife" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1000" data-category="Hunting"><img src="placeholder_orange_vest.jpg" alt="ORANGE VEST"><p>$1000</p><label for="quantity_orange_vest">Quantity:</label><input type="number" id="quantity_orange_vest" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="General"><img src="placeholder_bandages.jpg" alt="BANDAGES"><p>$50</p><label for="quantity_bandages">Quantity:</label><input type="number" id="quantity_bandages" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="250" data-category="General"><img src="placeholder_binoculars.jpg" alt="BINOCULARS"><p>$250</p><label for="quantity_binoculars">Quantity:</label><input type="number" id="quantity_binoculars" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="400" data-category="General"><img src="placeholder_radio.jpg" alt="RADIO"><p>$400</p><label for="quantity_radio">Quantity:</label><input type="number" id="quantity_radio" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="500" data-category="General"><img src="placeholder_scuba_tanks.jpg" alt="SCUBA TANKS"><p>$500</p><label for="quantity_scuba_tanks">Quantity:</label><input type="number" id="quantity_scuba_tanks" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="250" data-category="General"><img src="placeholder_repair_kits.jpg" alt="REPAIR KITS (VH OR TIRE)"><p>$250</p><label for="quantity_repair_kits">Quantity:</label><input type="number" id="quantity_repair_kits" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="5000" data-category="General"><img src="placeholder_duffle_bag.jpg" alt="DUFFLE BAG"><p>$5000</p><label for="quantity_duffle_bag">Quantity:</label><input type="number" id="quantity_duffle_bag" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="2500" data-category="General" data-pack="true" id="item_scuba_pack"><img src="placeholder_scuba_pack.jpg" alt="SCUBA PACK"><p>$2500</p><label for="quantity_scuba_pack">Quantity:</label><input type="number" id="quantity_scuba_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="10000" data-category="General" data-pack="true" id="item_camping_pack"><img src="placeholder_camping_pack.jpg" alt="CAMPING PACK"><p>$10000</p><label for="quantity_camping_pack">Quantity:</label><input type="number" id="quantity_camping_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="30" data-category="Consumables"><img src="placeholder_cigarettes.jpg" alt="CIGARETTES"><p>$30</p><label for="quantity_cigarettes">Quantity:</label><input type="number" id="quantity_cigarettes" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="75" data-category="Consumables"><img src="placeholder_beer.jpg" alt="BEER"><p>$75</p><label for="quantity_beer">Quantity:</label><input type="number" id="quantity_beer" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="150" data-category="Consumables"><img src="placeholder_buckshot_boost.jpg" alt="BUCKSHOT BOOST"><p>$150</p><label for="quantity_buckshot_boost">Quantity:</label><input type="number" id="quantity_buckshot_boost" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="400" data-category="Consumables"><img src="placeholder_boar_deer_jerky.jpg" alt="BOAR OR DEER JERKY"><p>$400</p><label for="quantity_boar_deer_jerky">Quantity:</label><input type="number" id="quantity_boar_deer_jerky" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1500" data-category="Specialty"><img src="placeholder_armor.jpg" alt="ARMOR"><p>$1500</p><label for="quantity_armor">Quantity:</label><input type="number" id="quantity_armor" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1500" data-category="Specialty"><img src="placeholder_jerry_cans.jpg" alt="JERRY CANS"><p>$1500</p><label for="quantity_jerry_cans">Quantity:</label><input type="number" id="quantity_jerry_cans" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1000" data-category="Specialty"><img src="placeholder_msg_cup.jpg" alt="MSG CUP"><p>$1000</p><label for="quantity_msg_cup">Quantity:</label><input type="number" id="quantity_msg_cup" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="7500" data-category="Specialty"><img src="placeholder_deer_boar_mount.jpg" alt="DEER OR BOAR MOUNT"><p>$7500</p><label for="quantity_deer_boar_mount">Quantity:</label><input type="number" id="quantity_deer_boar_mount" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="3500" data-category="Specialty"><img src="placeholder_msg_tailgate_chair.jpg" alt="MSG TAILGATE CHAIR"><p>$3500</p><label for="quantity_msg_tailgate_chair">Quantity:</label><input type="number" id="quantity_msg_tailgate_chair" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="2500" data-category="Specialty"><img src="placeholder_coolers.jpg" alt="COOLERS"><p>$2500</p><label for="quantity_coolers">Quantity:</label><input type="number" id="quantity_coolers" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="5000" data-category="Specialty"><img src="placeholder_mk2_skins.jpg" alt="MK2 SKINS"><p>$5000</p><label for="quantity_mk2_skins">Quantity:</label><input type="number" id="quantity_mk2_skins" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="500" data-category="Specialty"><img src="placeholder_shark_repellent.jpg" alt="SHARK REPELLENT"><p>$500</p><label for="quantity_shark_repellent">Quantity:</label><input type="number" id="quantity_shark_repellent" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="500" data-category="Specialty"><img src="placeholder_gold_pan.jpg" alt="GOLD PAN"><p>$500</p><label for="quantity_gold_pan">Quantity:</label><input type="number" id="quantity_gold_pan" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="5000" data-category="Hunting" data-pack="true" id="item_hunting_pack"><img src="placeholder_hunting_pack.jpg" alt="HUNTING PACK"><p>$5000</p><label for="quantity_hunting_pack">Quantity:</label><input type="number" id="quantity_hunting_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="6000" data-category="Hunting" data-pack="true" id="item_scoped_hunting_pack"><img src="placeholder_scoped_hunting_pack.jpg" alt="SCOPED HUNTING PACK"><p>$6000</p><label for="quantity_scoped_hunting_pack">Quantity:</label><input type="number" id="quantity_scoped_hunting_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1000" data-category="Fishing"><img src="placeholder_broke_ass_reel.jpg" alt="BROKE ASS REEL"><p>$1000</p><label for="quantity_broke_ass_reel">Quantity:</label><input type="number" id="quantity_broke_ass_reel" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1500" data-category="Fishing"><img src="placeholder_line_sniffer_reel.jpg" alt="LINE SNIFFER REEL"><p>$1500</p><label for="quantity_line_sniffer_reel">Quantity:</label><input type="number" id="quantity_line_sniffer_reel" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="2000" data-category="Fishing"><img src="placeholder_rock_bottom_reel.jpg" alt="ROCK BOTTOM REEL"><p>$2000</p><label for="quantity_rock_bottom_reel">Quantity:</label><input type="number" id="quantity_rock_bottom_reel" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="2500" data-category="Fishing"><img src="placeholder_fishrus_reel.jpg" alt="FISHRUS REEL"><p>$2500</p><label for="quantity_fishrus_reel">Quantity:</label><input type="number" id="quantity_fishrus_reel" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="3000" data-category="Fishing"><img src="placeholder_thunder_reel.jpg" alt="THUNDER REEL"><p>$3000</p><label for="quantity_thunder_reel">Quantity:</label><input type="number" id="quantity_thunder_reel" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="3500" data-category="Fishing"><img src="placeholder_zilla_reel.jpg" alt="ZILLA REEL"><p>$3500</p><label for="quantity_zilla_reel">Quantity:</label><input type="number" id="quantity_zilla_reel" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1500" data-category="Fishing"><img src="placeholder_value_cast_rod.jpg" alt="VALUE CAST ROD"><p>$1500</p><label for="quantity_value_cast_rod">Quantity:</label><input type="number" id="quantity_value_cast_rod" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="2500" data-category="Fishing"><img src="placeholder_elemental_rod.jpg" alt="ELEMENTAL ROD"><p>$2500</p><label for="quantity_elemental_rod">Quantity:</label><input type="number" id="quantity_elemental_rod" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="3500" data-category="Fishing"><img src="placeholder_nero_rod.jpg" alt="NERO ROD"><p>$3500</p><label for="quantity_nero_rod">Quantity:</label><input type="number" id="quantity_nero_rod" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="4500" data-category="Fishing"><img src="placeholder_brutas_rod.jpg" alt="BRUTAS ROD"><p>$4500</p><label for="quantity_brutas_rod">Quantity:</label><input type="number" id="quantity_brutas_rod" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="5500" data-category="Fishing"><img src="placeholder_zeus_rod.jpg" alt="ZEUS ROD"><p>$5500</p><label for="quantity_zeus_rod">Quantity:</label><input type="number" id="quantity_zeus_rod" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="6500" data-category="Fishing"><img src="placeholder_magnum_xl_rod.jpg" alt="MAGNUM XL ROD"><p>$6500</p><label for="quantity_magnum_xl_rod">Quantity:</label><input type="number" id="quantity_magnum_xl_rod" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_bread_bait.jpg" alt="BREAD BAIT"><p>$50</p><label for="quantity_bread_bait">Quantity:</label><input type="number" id="quantity_bread_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_leech_bait.jpg" alt="LEECH BAIT"><p>$50</p><label for="quantity_leech_bait">Quantity:</label><input type="number" id="quantity_leech_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_maggots_bait.jpg" alt="MAGGOTS BAIT"><p>$50</p><label for="quantity_maggots_bait">Quantity:</label><input type="number" id="quantity_maggots_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_mealworms_bait.jpg" alt="MEALWORMS BAIT"><p>$50</p><label for="quantity_mealworms_bait">Quantity:</label><input type="number" id="quantity_mealworms_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_nightworms_bait.jpg" alt="NIGHTWORMS BAIT"><p>$50</p><label for="quantity_nightworms_bait">Quantity:</label><input type="number" id="quantity_nightworms_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_redworms_bait.jpg" alt="REDWORMS BAIT"><p>$50</p><label for="quantity_redworms_bait">Quantity:</label><input type="number" id="quantity_redworms_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_waxworms_bait.jpg" alt="WAXWORMS BAIT"><p>$50</p><label for="quantity_waxworms_bait">Quantity:</label><input type="number" id="quantity_waxworms_bait" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_1.jpg" alt="HOOK #1"><p>$200</p><label for="quantity_hook_1">Quantity:</label><input type="number" id="quantity_hook_1" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_2.jpg" alt="HOOK #2"><p>$200</p><label for="quantity_hook_2">Quantity:</label><input type="number" id="quantity_hook_2" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_3.jpg" alt="HOOK #3"><p>$200</p><label for="quantity_hook_3">Quantity:</label><input type="number" id="quantity_hook_3" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="200" data-category="Fishing"><img src="placeholder_hook_6.jpg" alt="HOOK #6"><p>$200</p><label for="quantity_hook_6">Quantity:</label><input type="number" id="quantity_hook_6" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="250" data-category="Fishing"><img src="placeholder_hook_10.jpg" alt="HOOK #10"><p>$250</p><label for="quantity_hook_10">Quantity:</label><input type="number" id="quantity_hook_10" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="300" data-category="Fishing"><img src="placeholder_tow_hook.jpg" alt="TOW HOOK"><p>$300</p><label for="quantity_tow_hook">Quantity:</label><input type="number" id="quantity_tow_hook" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="50" data-category="Fishing"><img src="placeholder_cheap_mono_line.jpg" alt="CHEAP MONO LINE"><p>$50</p><label for="quantity_cheap_mono_line">Quantity:</label><input type="number" id="quantity_cheap_mono_line" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="70" data-category="Fishing"><img src="placeholder_bite_size_line.jpg" alt="BITE SIZE LINE"><p>$70</p><label for="quantity_bite_size_line">Quantity:</label><input type="number" id="quantity_bite_size_line" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="90" data-category="Fishing"><img src="placeholder_mobey_mono_line.jpg" alt="MOBEY MONO LINE"><p>$90</p><label for="quantity_mobey_mono_line">Quantity:</label><input type="number" id="quantity_mobey_mono_line" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="110" data-category="Fishing"><img src="placeholder_noodle_line.jpg" alt="NOODLE LINE"><p>$110</p><label for="quantity_noodle_line">Quantity:</label><input type="number" id="quantity_noodle_line" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="130" data-category="Fishing"><img src="placeholder_lightning_line.jpg" alt="LIGHTNING LINE"><p>$130</p><label for="quantity_lightning_line">Quantity:</label><input type="number" id="quantity_lightning_line" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="150" data-category="Fishing"><img src="placeholder_king_braid_line.jpg" alt="KING BRAID LINE"><p>$150</p><label for="quantity_king_braid_line">Quantity:</label><input type="number" id="quantity_king_braid_line" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="1000" data-category="Fishing"><img src="placeholder_fish_finder.jpg" alt="FISH FINDER"><p>$1000</p><label for="quantity_fish_finder">Quantity:</label><input type="number" id="quantity_fish_finder" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="2500" data-category="Fishing"><img src="placeholder_tackle_box.jpg" alt="TACKLE BOX"><p>$2500</p><label for="quantity_tackle_box">Quantity:</label><input type="number" id="quantity_tackle_box" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="6000" data-category="Fishing" data-pack="true" id="item_tiny_biters_pack"><img src="placeholder_tiny_biters_pack.jpg" alt="TINY BITERS PACK"><p>$6000</p><label for="quantity_tiny_biters_pack">Quantity:</label><input type="number" id="quantity_tiny_biters_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="6000" data-category="Fishing" data-pack="true" id="item_trout_pack"><img src="placeholder_trout_pack.jpg" alt="TROUT PACK"><p>$6000</p><label for="quantity_trout_pack">Quantity:</label><input type="number" id="quantity_trout_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="7000" data-category="Fishing" data-pack="true" id="item_big_boy_pack"><img src="placeholder_big_boy_pack.jpg" alt="BIG BOY PACK"><p>$7000</p><label for="quantity_big_boy_pack">Quantity:</label><input type="number" id="quantity_big_boy_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="7000" data-category="Fishing" data-pack="true" id="item_dock_special_pack"><img src="placeholder_dock_special_pack.jpg" alt="DOCK SPECIAL PACK"><p>$7000</p><label for="quantity_dock_special_pack">Quantity:</label><input type="number" id="quantity_dock_special_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="7000" data-category="Fishing" data-pack="true" id="item_pike_pack"><img src="placeholder_pike_pack.jpg" alt="PIKE PACK"><p>$7000</p><label for="quantity_pike_pack">Quantity:</label><input type="number" id="quantity_pike_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="8000" data-category="Fishing" data-pack="true" id="item_tuna_pack"><img src="placeholder_tuna_pack.jpg" alt="TUNA PACK"><p>$8000</p><label for="quantity_tuna_pack">Quantity:</label><input type="number" id="quantity_tuna_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="8000" data-category="Fishing" data-pack="true" id="item_mahi_pack_cayo"><img src="placeholder_mahi_pack_cayo.jpg" alt="MAHI PACK (CAYO)"><p>$8000</p><label for="quantity_mahi_pack">Quantity:</label><input type="number" id="quantity_mahi_pack" min="0" value="0" class="quantity"></div>
+
+                    <!-- END OF POS ITEMS -->
+                </div>
 
                 <hr style="margin: 30px 0; border-color: #555;">
 
-                <div class="hac-lookup-section content-block"> 
+                <div class="hac-lookup-section content-block">
                     <h2>HAC Member Lookup</h2>
                     <div class="hac-search-container-staff">
                         <div class="form-group" style="flex-grow:1;">
@@ -222,22 +230,71 @@
                         <p><strong id="hac-promo-month-staff"></strong>: <span id="hac-promo-text-staff"></span></p>
                     </div>
                 </div>
-                
+
                 <hr style="margin: 30px 0; border-color: #555;">
 
-                <div class="cart-actions">
-                    <button id="clear-cart-button" class="action-button clear-cart-btn">Clear Cart</button>
+                <!-- PACK DISPLAY BOX - Hardcoded in HTML -->
+                <div id="pack-display-box" style="display:none; margin-top: 0; padding:0; background-color: rgba(30,30,30,0.7); border-radius: 8px; border-width: 0px; width:100%; max-width: 600px; margin-left:auto; margin-right:auto; max-height:0; overflow:hidden; transition: max-height 0.4s ease, padding 0.3s ease, margin-top 0.3s ease, border-width 0.3s ease;">
+                    <h3 style="text-align:center; margin: 10px 0 10px 0; border-bottom: 1px solid #555; padding-bottom: 5px;">Combined Pack Contents</h3>
+                    <div id="pack-item-list" style="padding: 0 15px 10px 15px; max-height: 200px; overflow-y: auto;"></div>
                 </div>
-                <h1>Total: $<span id="total">0.00</span></h1>
-                <button id="checkout" class="checkout-button">Checkout</button>
-            </div> 
-        </div> 
+                <!-- END PACK DISPLAY BOX -->
 
+                <div class="cart-actions"> <!-- POS Cart Actions -->
+                    <button id="clear-cart-button-pos" class="action-button clear-cart-btn">Clear Cart</button>
+                </div>
+                <h1>Total: $<span id="total">0.00</span></h1> <!-- POS Total -->
+                <button id="checkout-button-pos" class="checkout-button">Checkout</button> <!-- POS Checkout -->
+            </div>
+            <!-- End POS View Container -->
+
+
+            <!-- Buy/Sell View Container (Initially Hidden by JS) -->
+            <div id="buysell-view-container" class="content-block" style="display: none;">
+                <h1>Checkout</h1>
+                <!-- Employee select is global (processing-employee-select) -->
+                <hr class="section-hr">
+                <div class="buysell-sections-container">
+                    <div class="buysell-section" id="mikes-buys-section">
+                        <h2 style="color: aquamarine;">BUYING FISH</h2>
+                        <div class="items-container buysell-items-container" id="mikes-buys-items-container">
+                            <p class="loading-message">Loading items...</p>
+                        </div>
+                        <h3>Total: <span id="total-owed-to-customer">$0.00</span></h3>
+                    </div>
+                    <div class="buysell-section" id="mikes-sells-section">
+                        <h2 style="color: red;">Selling Fish</h2>
+                        <div class="items-container buysell-items-container" id="mikes-sells-items-container">
+                             <p class="loading-message">Loading items...</p>
+                        </div>
+                        <h3>Total: <span id="total-owed-to-mikes">$0.00</span></h3>
+                    </div>
+                </div>
+                <hr class="section-hr">
+                <div class="buysell-summary">
+                    <h2>Transaction Summary</h2>
+                    <p>Buying Fish Total: <strong id="summary-owed-customer">$0.00</strong></p>
+                    <p>Selling Fish Total: <strong id="summary-owed-mikes">$0.00</strong></p>
+                    <p class="net-transaction-display">Net Transaction: <strong id="net-transaction-amount">$0.00</strong>
+                        <span id="net-transaction-party"></span>
+                    </p>
+                </div>
+                <div class="cart-actions"> <!-- Buy/Sell Cart Actions -->
+                    <button id="buysell-clear-button" class="action-button clear-cart-btn">Clear Cart</button>
+                    <button id="buysell-checkout-button" class="action-button checkout-button">Checkout</button>
+                </div>
+                 <p id="buysell-status-message" style="margin-top:15px; font-weight:bold;"></p>
+            </div>
+             <!-- End Buy/Sell View Container -->
+
+        </div> <!-- End #application-main-content -->
+
+        <!-- HAC Signup Modal -->
         <div id="hac-signup-modal" class="modal" style="display:none;">
             <div class="modal-content">
                 <span class="close-hac-modal">×</span>
                 <h3>HAC Membership Signup</h3>
-                <form id="hac-signup-form"> 
+                <form id="hac-signup-form">
                     <div id="hac-signup-form-fields">
                         <div class="form-group">
                             <label for="hac-modal-first-name">First Name:</label>
@@ -265,6 +322,7 @@
                 <p id="hac-modal-status" style="margin-top:10px;"></p>
             </div>
         </div>
-    </div> 
+        <!-- End HAC Signup Modal -->
+    </div>
 </body>
 </html>

@@ -48,21 +48,21 @@
       }
     </script>
     <!-- END: Firebase SDK and Configuration-->
-    <script defer src="utility.js"></script>
-    <script defer src="script.js"></script>
-    <script defer src="taxes.js"></script>
+    <script src="utility.js"></script> <!-- LOAD UTILITY.JS FIRST (NO DEFER) -->
+    <!-- REMOVE <script defer src="script.js"></script> FROM HERE -->
+    <script defer src="taxes.js"></script>   <!-- TAXES.JS (CAN DEFER) -->
 </head>
 <body class="htmlbackground">
     <div class="navbar">
         <div class="dropdown">
             <button class="logo-container">
-                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo">
+                <img src="Images/MikesDeerLogo.png" alt="Mikes Deer Logo">
             </button>
             <div class="dropdown-content">
                 <a href="index.html">Home</a>
-                <a href="manager.html">Manager Portal</a>
                 <a href="taxes.html">Employee Taxes</a>
-                <!-- <a href="buy_sell_goods.html">Buy/Sell Goods</a> Link to the new separate page if you create it -->
+                <a href="manager.html">Manager Portal</a>
+                <!-- Logout button will be added by utility.js -->
             </div>
         </div>
     </div>
@@ -70,14 +70,13 @@
     <div class="page-content-wrapper">
         <header>
             <div>
-                <img class="mikessign" src="MikesLogo.png" alt="Mikes Logo Sign">
+                <img class="mikessign" src="Images/MikesLogo.png" alt="Mikes Logo Sign">
             </div>
         </header>
 
-        <!-- Login Form for Taxes Page -->
         <div id="taxes-login-form-container" class="content-block" style="max-width: 450px; margin: 30px auto;">
             <h1>Taxes Page Access</h1>
-            <form id="taxes-page-login-form"> <!-- Unique ID for this form -->
+            <form id="taxes-page-login-form">
                 <div class="form-group">
                     <label for="taxes-page-password">Enter Access Password:</label>
                     <input type="password" id="taxes-page-password" required>
@@ -86,22 +85,18 @@
             </form>
             <p id="taxes-page-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Password.</p>
         </div>
-        <!-- END: Login Form for Taxes Page -->
 
-        <!-- Main Taxes Content - Initially Hidden -->
         <div id="taxes-main-content" class="taxes-container content-block" style="display: none;">
             <h1>Employee Taxes Due</h1>
-
             <div class="employee-selection-taxes form-group" style="align-items: center;">
                 <label for="employee-tax-select" style="text-align: center;">Select Employee:</label>
                 <select id="employee-tax-select">
                     <option value="">-- Select Employee --</option>
-                    <!-- Options will be populated by taxes.js -->
                 </select>
             </div>
-            <hr> <!-- This will use the .taxes-container > hr style from mikes.css if defined, or general .content-block hr -->
+            <hr>
             <div id="tax-details-container" style="display: none;">
-                <h2 id="selected-employee-name">Employee Name</h2>
+                 <h2 id="selected-employee-name">Employee Name</h2>
                 <p class="taxes-owed-display">
                     Total Taxes Owed to Mikes:
                     <strong id="total-taxes-owed">$0.00</strong>
@@ -109,7 +104,6 @@
                 <p class="account-info">
                     MSG Account #: <strong>9219157</strong>
                 </p>
-
                 <div class="mark-paid-section">
                     <label for="taxes-paid-checkbox">
                         <input type="checkbox" id="taxes-paid-checkbox"> Confirm Taxes Paid
@@ -119,7 +113,6 @@
                 <p id="taxes-status-message" style="margin-top: 10px;"></p>
             </div>
         </div>
-        <!-- End Main Taxes Content -->
     </div>
 </body>
 </html>

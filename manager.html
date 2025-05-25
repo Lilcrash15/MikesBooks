@@ -57,13 +57,13 @@
     <div class="navbar">
         <div class="dropdown">
             <button class="logo-container">
-                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo">
+                <img src="Images/MikesDeerLogo.png" alt="Mikes Deer Logo">
             </button>
             <div class="dropdown-content">
                 <a href="index.html">Home</a>
                 <a href="taxes.html">Employee Taxes</a>
                 <a href="manager.html">Manager Portal</a>
-                <!-- Logout button will be added here by utility.js -->
+                <!-- Logout button will be added by utility.js -->
             </div>
         </div>
     </div>
@@ -219,8 +219,17 @@
                     <div id="transactions" class="transactions-table-container">
                         <p><i>Loading transactions...</i></p>
                     </div>
+
+                                        <h2>Tax Payment Log</h2>
+                    <div id="tax-payment-logs-display" class="transactions-table-container" style="max-height: 400px;">
+                        <!-- Logs will be rendered here by manager.js -->
+                        <p><i>Loading tax payment logs...</i></p>
+                    </div>
+
                 </div>
             </div>
+            </div> <!-- This was closing your .manager-container -->
+        </div> <!-- End #manager-content -->
         </div>
     </div>
 </body>
