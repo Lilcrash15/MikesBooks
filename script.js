@@ -1,1 +1,928 @@
-function _0x21b6(_0x426fbf,_0x4690fb){const _0x11c01b=_0x11c0();return _0x21b6=function(_0x21b67f,_0x4df4a0){_0x21b67f=_0x21b67f-0x1e6;let _0x5458a5=_0x11c01b[_0x21b67f];return _0x5458a5;},_0x21b6(_0x426fbf,_0x4690fb);}const _0xcc9057=_0x21b6;function _0x11c0(){const _0x254556=['Images/buy_sell/rabbit_hide.png','Mark\x20','Error\x20loading\x20employees:','phoneNumber','HAC\x20Search\x20error','6WGJOcE','N/A',':\x20$','Images/buy_sell/slimy_fish_meat.png','orderBy','toLocaleString','style','NOT\x20ELIGIBLE','functions','.buysell-page-item','fs-stripedbass.webp','pack-display-box','All','Unknown\x20Item','query','show-pos-view-btn','#pos-view-container\x20.cart-actions','entries','Index:\x20Firebase\x20error\x20flag\x20IS\x20SET\x20via\x20window\x20(timeout).\x20Calling\x20setupErrorUI.','value','type','true','sell','disabled','categoryFilter','sort','#category-buttons-container\x20.category-button[data-category-filter=\x22All\x22]','200bhOWWs','Images/buy_sell/rabbit_meat.png','script.js\x20(Index\x20Main):\x20Attaching\x20App\x20Event\x20Listeners','siteSettings','push','submit-hac-signup-button','object','#buysell-view-container\x20.buysell-page-item\x20input.quantity','Images/placeholder_buysell.jpg','No\x20items.','getDocs','input.quantity','buysell-clear-button','setAttribute','main-login-error','firebaseError','Images/buy_sell/salmon_meat_chunk_buy.png','Critical\x20error\x20on\x20Home\x20page:\x20','Images/buy_sell/rat_hide.png','hac-eligible','hac-modal-email','Images/buy_sell/salmon_meat_chunk_sell.png','POS\x20Transaction\x20Completed\x20for:\x20','error','text','limegreen','target','Customer\x20Owes\x20Mikes','data-new-hac-member-id','insertBefore','hac-modal-first-name','detail','buysell-view-container','borderWidth','Images/buy_sell/deer_meat.png','updateDoc','main-employee-password','#a0aec0','hasChildNodes','processing-employee-select','textContent','tagName','Even\x20Trade','1224923toWISP','Enter','</strong>\x20<span\x20class=\x22','red','selectedIndex','4px','buysell-checkout-button','submit','hac-signup-modal','every','button[type=\x22submit\x22]','Mikes\x20Owes\x20Customer','maxHeight','buysell-status-message','display','Index:\x20Firebase\x20ready\x20event\x20RECEIVED\x20by\x20script.js.','firstName','#pos-view-container\x20>\x20h1#total','flex','from','---------------------------------------\x0a','script.js\x20(Index\x20Main):\x20Running\x20executeMainAppLogic.','Images/buy_sell/boar_meat.png','lastName','.item:not(.buysell-page-item)','1210972WHKgZH','20px','image','overflowY','hac-modal-phone-number','Index:\x20Firebase\x20error\x20event\x20RECEIVED\x20by\x20script.js:','children','removeAttribute','quantity_','pos-items-container','getAttribute','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20justify-content:\x20space-between;\x20align-items:\x20center;\x20margin-bottom:\x205px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span><strong>','Login\x20form\x20submitted.\x20Entered:','some','querySelectorAll','preventDefault','className','classList','fs-pollock.webp','driverLicense','fs-northernpike.webp','img','warn','Index:\x20Processing\x20\x27firebaseReady\x27\x20event.','accessSettings','price','Submit\x20&\x20Add\x20to\x20Cart','serverTimestamp','addDoc','input','77277QhJLzD','Index\x20page:\x20checkEmployeeSession\x20from\x20utility.js\x20is\x20not\x20available!','15px','exists','function','<p><i>No\x20HAC\x20members\x20found.</i></p>','\x22>Claim\x20Benefit</button>','Pack\x20Tracker:\x20Skipping\x20item,\x20input\x20or\x20ID\x20malformed','...','Pack\x20Tracker:\x20No\x20pack\x20items\x20found.','innerHTML','contains','Claim\x20Benefit','color','Fee\x20to\x20Mikes\x20(','trim','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22font-size:\x200.85em;\x20color:\x20#ccc;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Phone:\x20','toDate','add','Error.','click','button','net-transaction-party','month','pointerEvents','clear-cart-button-pos','length','focus','.close-hac-modal','hacConfiguration','\x20|\x20DL:\x20','category','localeCompare','updateDisplayBox:\x20#pack-item-list\x20structure\x20missing.\x20Rebuilding.','Error:\x20','Main\x20POS\x20Cart\x20cleared.','keys','74347XCxnHf','summary-owed-customer','includes','transactions','memberName','application-main-content','dispatchEvent','paddingTop','Firebase\x20SDK\x20init\x20failed\x20in\x20HTML.\x20','replace','min','marginTop','Images/buy_sell/deer_hide.png','net-transaction-amount','hac-staff-search-results','Password\x20MISMATCH\x20on\x20index\x20page.','options','data-hac-member-sale','summary-owed-mikes','Err\x20loading\x20HAC\x20promo','No\x20promo\x20text.','fs-tuna.webp','fs-crab.webp','Images/buy_sell/white_fish_meat_chunk_buy.png','Total\x20Sale\x20Amount:\x20$','No\x20POS\x20items\x20selected.','\x22\x20data-member-name=\x22','currentTarget','Load\x20failed.','.item[data-pack=\x22true\x22]','Processing...','remove','Invalid\x20Password.','6492110ILtKhB','#pack-item-list','main-employee-login-form','none','doc','quantity','fs-trout.webp','\x27s\x20benefit\x20as\x20claimed?','hacMembers','employeeNumber','getDoc','membershipPurchaseDate','data-category','Failed/Default','parentNode','%):\x20$','Password\x20MATCH\x20on\x20index\x20page!','\x20|\x20Purchased:\x20','values','Pack\x20Tracker:\x20Initialized.','App\x20init\x20timeout.\x20Firebase\x20reported\x20an\x20error\x20during\x20HTML\x20setup.','en-US','data-name','No\x20promo\x20configured.','querySelector','green','hac-promo-text-staff','toLocaleDateString','.quantity','Failed\x20to\x20save\x20POS\x20transaction.\x20','\x20Some\x20functionality\x20will\x20be\x20disabled.','Submitting...','Error\x20adding\x20HAC\x20member','hac-staff-search-button','Buy/Sell\x20Trade','appendChild','<p><i>Enter\x20a\x20name\x20or\x20phone\x20to\x20look\x20up\x20HAC\x20member\x20status.</i></p>','stopPropagation','grantEmployeeSession\x20is\x20not\x20defined','split','item\x20buysell-page-item','isFirebaseReady','App\x20init\x20timeout.\x20Firebase\x20status\x20unknown.','auto','Manager','fs-haddock.webp','offsetHeight','alt','firestoreFunctions','hidden','substring','Images/buy_sell/white_fish_meat_chunk_sell.png','updateDisplayBox:\x20pack-display-box\x20not\x20found.','addEventListener','pos-view-container','POS\x20Transaction\x20saved\x20ID:\x20','117801nvXbjI','Pack\x20Tracker:\x20Definition\x20not\x20found\x20for\x20pack\x20ID:\x20','checkout-button-pos','Firestore\x20\x27doc\x27\x20or\x20\x27getDoc\x27\x20function\x20is\x20not\x20available\x20in\x20loadSharedEmployeePassword.','toFixed','Index:\x20\x27firebaseReady\x27\x20received,\x20but\x20app\x20logic\x20already\x20run.','data','pack','3395615zdeLtB','div','getElementById','MikesEmployee','0px','.claim-benefit-button','createElement','\x27s\x20benefit\x20claimed.','1px','hac-modal-last-name','Error','<option\x20value=\x22\x22>--\x20Select\x20Employee\x20--</option>','active','pack-item-list','POS\x20Sale','isEligible','block','hac-current-promo-display-staff','abs','data-price','#category-buttons-container\x20.category-button.active','message','Index:\x20\x27firebaseReady\x27\x20received,\x20but\x20already\x20processed\x20by\x20this\x20listener.','Preston\x20Stone','fs-garfish.webp','fullName','Pack\x20Tracker:\x20Could\x20not\x20find\x20insertion\x20point\x20for\x20display\x20box.','Index:\x20Firebase\x20IS\x20ready\x20via\x20window\x20flag\x20(timeout).\x20Calling\x20executeMainAppLogic.','hac-staff-clear-search-button','closest','<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Email:\x20','B/S\x20save\x20err','mikes-sells-items-container','.loading-message','LABEL','collection','data-type','Index:\x20Firebase\x20ready\x20state\x20UNKNOWN\x20after\x20timeout.\x20Calling\x20setupErrorUI.','dataset','fs-rainbowtrout.webp','toLowerCase','Index:\x20Timeout.\x20Checking\x20Firebase\x20manually\x20because\x20\x27firebaseReady\x27/\x27firebaseError\x27\x20event\x20was\x20missed.','ELIGIBLE','total','filter','employee-login-container','keypress','Pack\x20Tracker:\x20pack-display-box\x20created.','Please\x20select\x20the\x20processing\x20employee.','buy','#category-buttons-container\x20.category-button','number','mikes-buys-items-container','member-result-item','padding','DOMContentLoaded','<button\x20class=\x22action-button\x20claim-benefit-button\x22\x20data-member-id=\x22','view-switcher','log','<h3\x20style=\x22text-align:center;\x20margin:\x2010px\x200\x2010px\x200;\x20border-bottom:\x201px\x20solid\x20#555;\x20padding-bottom:\x205px;\x22>Combined\x20Pack\x20Contents</h3><div\x20id=\x22pack-item-list\x22\x20style=\x22padding:\x200\x2015px\x2010px\x2015px;\x20max-height:\x20200px;\x20overflow-y:\x20auto;\x22></div>','overflow','forEach','hac-not-eligible','cssText','Index:\x20initializePageContentAfterLogin\x20called','paddingBottom','fs-crappie.webp','Unknown\x20error.','script.js\x20(Index\x20Main):\x20App\x20logic\x20already\x20run.','Pass\x20load\x20error','marginBottom','script.js\x20(Index\x20Main):\x20Firebase\x20critical\x20error:','Images/buy_sell/animal_bones.png','hac-membership-item','Index:\x20initializePageOnLoad\x20called','Trade\x20finalized!','Claim\x20benefit\x20error','rank','</span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','Loading...','8KNuXWT','fs-salmon.png','INPUT','itemName','Images/buy_sell/rat_meat.png'];_0x11c0=function(){return _0x254556;};return _0x11c0();}(function(_0x28f21c,_0x48bcd0){const _0x2a04d0=_0x21b6,_0x37caa7=_0x28f21c();while(!![]){try{const _0x551cc3=parseInt(_0x2a04d0(0x288))/0x1+-parseInt(_0x2a04d0(0x339))/0x2*(-parseInt(_0x2a04d0(0x263))/0x3)+-parseInt(_0x2a04d0(0x245))/0x4+parseInt(_0x2a04d0(0x2e9))/0x5+-parseInt(_0x2a04d0(0x1e6))/0x6*(-parseInt(_0x2a04d0(0x22c))/0x7)+parseInt(_0x2a04d0(0x201))/0x8*(parseInt(_0x2a04d0(0x2e1))/0x9)+-parseInt(_0x2a04d0(0x2a9))/0xa;if(_0x551cc3===_0x48bcd0)break;else _0x37caa7['push'](_0x37caa7['shift']());}catch(_0x5d73a9){_0x37caa7['push'](_0x37caa7['shift']());}}}(_0x11c0,0x634ee),document['addEventListener'](_0xcc9057(0x320),()=>{const _0x8daccd=_0xcc9057;console[_0x8daccd(0x323)]('script.js\x20(Index\x20Main):\x20DOMContentLoaded.\x20Waiting\x20for\x20Firebase...');let _0x297681=![];function _0x52db2c(_0x4f2f4c){const _0x5084a6=_0x8daccd;if(_0x297681&&!_0x4f2f4c[_0x5084a6(0x28a)]('Manually\x20initializing'))return;_0x297681=!![],console['error'](_0x5084a6(0x330),_0x4f2f4c),alert(_0x5084a6(0x212)+_0x4f2f4c+_0x5084a6(0x2c7));const _0x238bc2=document['getElementById'](_0x5084a6(0x2ab));if(_0x238bc2){const _0x2c1684=_0x238bc2['querySelector'](_0x5084a6(0x236));_0x2c1684&&(_0x2c1684[_0x5084a6(0x1fd)]=!![],_0x2c1684[_0x5084a6(0x229)]='Login\x20Disabled\x20(DB\x20Error)');}const _0x52468b=document[_0x5084a6(0x2eb)](_0x5084a6(0x28d));if(_0x52468b)_0x52468b['style'][_0x5084a6(0x23a)]=_0x5084a6(0x2ac);}async function _0x2e9ac8(_0x20424f){const _0x503049=_0x8daccd;if(_0x297681){console[_0x503049(0x323)](_0x503049(0x32d));return;}_0x297681=!![],console[_0x503049(0x323)](_0x503049(0x241));if(!_0x20424f||!_0x20424f['db']||!_0x20424f[_0x503049(0x1ee)]){_0x52db2c('Firebase\x20details\x20not\x20properly\x20passed\x20to\x20main\x20app\x20logic.');return;}const _0x2b3c79=_0x20424f['db'],_0x208975=_0x20424f[_0x503049(0x1ee)],_0x4cdc6d=document[_0x503049(0x2eb)](_0x503049(0x316)),_0x15b68a=document[_0x503049(0x2eb)]('main-employee-login-form'),_0x4c6240=document[_0x503049(0x2eb)](_0x503049(0x225)),_0x143c83=document['getElementById'](_0x503049(0x20f)),_0x2101eb=document['getElementById'](_0x503049(0x28d)),_0x12793a=document['getElementById'](_0x503049(0x322)),_0x1cecf8=document[_0x503049(0x2eb)](_0x503049(0x1f5)),_0x418602=document[_0x503049(0x2eb)]('show-buysell-view-btn'),_0x2d041e=document[_0x503049(0x2eb)](_0x503049(0x2df)),_0x2e3fda=document[_0x503049(0x2eb)](_0x503049(0x221)),_0x1333da=document[_0x503049(0x2eb)](_0x503049(0x228)),_0x2854c9=document['getElementById'](_0x503049(0x24e)),_0x477956=document[_0x503049(0x253)](_0x503049(0x31b)),_0x70fe38=document['getElementById'](_0x503049(0x314)),_0x3610de=document[_0x503049(0x2eb)](_0x503049(0x2e3)),_0x350cf9=document[_0x503049(0x2eb)](_0x503049(0x27c)),_0xfc7e10=document[_0x503049(0x2eb)](_0x503049(0x332)),_0x41c86d=document[_0x503049(0x2eb)](_0x503049(0x234)),_0xb3805d=_0x41c86d?_0x41c86d[_0x503049(0x2c1)](_0x503049(0x27f)):null,_0x22bc4e=document[_0x503049(0x2eb)](_0x503049(0x206)),_0x5b1130=document['getElementById'](_0x503049(0x21f)),_0x19ffdb=document[_0x503049(0x2eb)](_0x503049(0x2f2)),_0x21bf7e=document[_0x503049(0x2eb)](_0x503049(0x249)),_0x228834=document['getElementById']('hac-modal-driver-license'),_0x21b407=document['getElementById'](_0x503049(0x215)),_0x253a48=document['getElementById']('hac-modal-status'),_0x1cce24=document[_0x503049(0x2eb)]('hac-staff-search-term'),_0xa93027=document['getElementById'](_0x503049(0x2ca)),_0x2558a6=document[_0x503049(0x2eb)](_0x503049(0x305)),_0x39ceb4=document['getElementById'](_0x503049(0x296)),_0x1f9f34=document['getElementById'](_0x503049(0x2fa)),_0x55bf80=document[_0x503049(0x2eb)]('hac-promo-month-staff'),_0x201386=document[_0x503049(0x2eb)](_0x503049(0x2c3)),_0x30f1f1=document[_0x503049(0x2eb)](_0x503049(0x31d)),_0x487c2d=document['getElementById'](_0x503049(0x309)),_0xa3ebea=document[_0x503049(0x2eb)]('total-owed-to-customer'),_0x5669cd=document[_0x503049(0x2eb)]('total-owed-to-mikes'),_0x4a22a1=document[_0x503049(0x2eb)](_0x503049(0x289)),_0x3dbfcf=document[_0x503049(0x2eb)](_0x503049(0x29a)),_0x2c7275=document['getElementById'](_0x503049(0x295)),_0x302119=document[_0x503049(0x2eb)](_0x503049(0x279)),_0x378396=document[_0x503049(0x2eb)](_0x503049(0x20d)),_0x2b4acb=document[_0x503049(0x2eb)](_0x503049(0x232)),_0x3c3547=document[_0x503049(0x2eb)](_0x503049(0x239)),_0x235524=_0x2854c9?Array[_0x503049(0x23f)](_0x2854c9['querySelectorAll'](_0x503049(0x244))):[];let _0x51ee15=null;const _0x1091cf=_0x503049(0x25d),_0x447cc8='employeeLoginPassword';let _0x47c646=[];const _0x59294f={'Trainee':0.2,'Staff':0.15,'Senior\x20Staff':0.1,'Manager':0x0},_0x21feba={'buy':{'Crab':{'price':0x57,'image':'fs-crab.webp'},'Minnow':{'price':0xaf,'image':'fs-minnow.webp'},'Haddock':{'price':0xaf,'image':_0x503049(0x2d6)},'Pollock':{'price':0xaf,'image':_0x503049(0x257)},'Crappie':{'price':0xaf,'image':_0x503049(0x32b)},'Trout':{'price':0xaf,'image':_0x503049(0x2af)},'Rainbow\x20Trout':{'price':0xaf,'image':_0x503049(0x310)},'Garfish':{'price':0xb9,'image':_0x503049(0x301)},'Striped\x20Bass':{'price':0xc8,'image':_0x503049(0x1f0)},'Salmon':{'price':0xc8,'image':_0x503049(0x33a)},'Northern\x20Pike':{'price':0xe1,'image':_0x503049(0x259)},'Tuna':{'price':0xfa,'image':_0x503049(0x29d)},'Deer\x20Meat':{'price':0x4b,'image':_0x503049(0x223)},'Boar\x20Meat':{'price':0xaf,'image':_0x503049(0x242)},'Rabbit\x20Meat':{'price':0x177,'image':_0x503049(0x202)},'Rat\x20Meat':{'price':0x1db,'image':_0x503049(0x33d)},'Animal\x20Bones':{'price':0xe1,'image':_0x503049(0x331)},'Salmon\x20Meat':{'price':0xa,'image':_0x503049(0x211)},'Slimy\x20Fish\x20Meat':{'price':0x2,'image':_0x503049(0x1e9)},'White\x20Fish\x20Meat':{'price':0xa,'image':_0x503049(0x29f)},'Deer\x20Hide':{'price':0x7d,'image':_0x503049(0x294)},'Boar\x20Hide':{'price':0xe1,'image':'Images/buy_sell/boar_hide.png'},'Rabbit\x20Hide':{'price':0x145,'image':_0x503049(0x33e)},'Rat\x20Hide':{'price':0x20d,'image':_0x503049(0x213)}},'sell':{'White\x20Fish\x20Meat':{'price':0x11,'image':_0x503049(0x2dc)},'Salmon\x20Meat':{'price':0x14,'image':_0x503049(0x216)},'Crab':{'price':0x5a,'image':_0x503049(0x29e)}}},_0x2d8ada={'buy':{},'sell':{}};let _0x477655={'month':_0x503049(0x1e7),'text':_0x503049(0x338)};async function _0x2eb5c3(){const _0x3e39cd=_0x503049;if(!_0x208975['doc']||!_0x208975[_0x3e39cd(0x2b3)]){console['error'](_0x3e39cd(0x2e4)),_0x51ee15=_0x3e39cd(0x2ec);return;}try{const _0x2413b7=_0x208975[_0x3e39cd(0x2ad)](_0x2b3c79,_0x3e39cd(0x204),_0x1091cf),_0x4d1587=await _0x208975[_0x3e39cd(0x2b3)](_0x2413b7);_0x4d1587[_0x3e39cd(0x266)]()&&_0x4d1587[_0x3e39cd(0x2e7)]()[_0x447cc8]?_0x51ee15=_0x4d1587[_0x3e39cd(0x2e7)]()[_0x447cc8]:_0x51ee15=_0x3e39cd(0x2ec),console[_0x3e39cd(0x323)]('Shared\x20employee\x20password\x20loaded:',_0x51ee15?_0x51ee15[_0x3e39cd(0x2db)](0x0,0x3)+_0x3e39cd(0x26b):_0x3e39cd(0x2b6));}catch(_0xc2b9c2){console['error'](_0x3e39cd(0x32e),_0xc2b9c2),_0x51ee15='MikesEmployee';}}function _0x2bf604(_0x126ec8){const _0x537d68=_0x503049;console[_0x537d68(0x323)]('Index:\x20updateLoginView\x20called\x20with\x20isLoggedIn:',_0x126ec8);if(_0x126ec8){if(_0x4cdc6d)_0x4cdc6d[_0x537d68(0x1ec)][_0x537d68(0x23a)]=_0x537d68(0x2ac);if(_0x2101eb)_0x2101eb[_0x537d68(0x1ec)]['display']=_0x537d68(0x2f9);if(_0x143c83)_0x143c83[_0x537d68(0x1ec)][_0x537d68(0x23a)]=_0x537d68(0x2ac);if(typeof addLogoutButton===_0x537d68(0x267))addLogoutButton();else console['error']('addLogoutButton\x20not\x20defined');if(_0x12793a)_0x12793a[_0x537d68(0x1ec)]['display']=_0x537d68(0x23e);if(_0x1cecf8&&typeof _0x1cecf8[_0x537d68(0x277)]===_0x537d68(0x267))_0x1cecf8[_0x537d68(0x277)]();else _0xa08147();}else{if(_0x4cdc6d)_0x4cdc6d[_0x537d68(0x1ec)]['display']='block';if(_0x2101eb)_0x2101eb['style'][_0x537d68(0x23a)]=_0x537d68(0x2ac);if(_0x12793a)_0x12793a[_0x537d68(0x1ec)][_0x537d68(0x23a)]=_0x537d68(0x2ac);}}async function _0x570d84(){const _0x48429a=_0x503049;let _0x34f4c0=[];try{const _0x34e85c=_0x208975[_0x48429a(0x1f4)](_0x208975[_0x48429a(0x30c)](_0x2b3c79,'employees'),_0x208975[_0x48429a(0x1ea)](_0x48429a(0x302))),_0x90bb57=await _0x208975[_0x48429a(0x20b)](_0x34e85c);_0x90bb57['forEach'](_0x2ca4b0=>_0x34f4c0[_0x48429a(0x205)]({'id':_0x2ca4b0['id'],..._0x2ca4b0[_0x48429a(0x2e7)]()}));}catch(_0x5b8bb2){console[_0x48429a(0x218)](_0x48429a(0x340),_0x5b8bb2);}const _0x2a6b1f=[{'fullName':_0x48429a(0x300),'rank':_0x48429a(0x2d5),'employeeNumber':'40262'}];_0x47c646=[..._0x34f4c0],_0x2a6b1f[_0x48429a(0x326)](_0x3960e1=>{const _0x15233a=_0x48429a;if(!_0x47c646[_0x15233a(0x252)](_0x894b48=>_0x894b48[_0x15233a(0x302)]===_0x3960e1[_0x15233a(0x302)]))_0x47c646[_0x15233a(0x205)](_0x3960e1);}),_0x47c646[_0x48429a(0x1ff)]((_0x2c6f1c,_0x596ed6)=>_0x2c6f1c[_0x48429a(0x302)][_0x48429a(0x283)](_0x596ed6[_0x48429a(0x302)])),_0x1333da&&(_0x1333da['innerHTML']=_0x48429a(0x2f4),_0x47c646['forEach'](_0x3abfc9=>{const _0xab6d95=_0x48429a,_0x3a7052=new Option(_0x3abfc9[_0xab6d95(0x302)],_0x3abfc9[_0xab6d95(0x302)]);_0x3a7052['dataset'][_0xab6d95(0x336)]=_0x3abfc9[_0xab6d95(0x336)]||'N/A',_0x3a7052[_0xab6d95(0x30f)][_0xab6d95(0x2b2)]=_0x3abfc9[_0xab6d95(0x2b2)]||_0xab6d95(0x1e7),_0x1333da[_0xab6d95(0x2cc)](_0x3a7052);}));}function _0xa08147(){const _0x452362=_0x503049;if(_0x2d041e)_0x2d041e[_0x452362(0x1ec)][_0x452362(0x23a)]=_0x452362(0x2f9);else console['warn']('POS\x20View\x20Container\x20not\x20found');if(_0x2e3fda)_0x2e3fda[_0x452362(0x1ec)]['display']=_0x452362(0x2ac);else console[_0x452362(0x25b)]('Buy/Sell\x20View\x20Container\x20not\x20found');if(_0x1cecf8)_0x1cecf8[_0x452362(0x256)]['add'](_0x452362(0x2f5));if(_0x418602)_0x418602[_0x452362(0x256)][_0x452362(0x2a7)](_0x452362(0x2f5));console['log']('Switched\x20to\x20POS\x20View');const _0x566625=document[_0x452362(0x2c1)](_0x452362(0x200));if(_0x566625&&!_0x566625[_0x452362(0x256)][_0x452362(0x26e)](_0x452362(0x2f5)))_0x566625[_0x452362(0x277)]();else{if(_0x477956['length']>0x0&&!document[_0x452362(0x2c1)](_0x452362(0x2fd)))_0x477956[0x0]['click']();else _0x477956[_0x452362(0x27d)]>0x0&&document[_0x452362(0x2c1)](_0x452362(0x2fd))&&document['querySelector'](_0x452362(0x2fd))['click']();}_0x52cf76();if(typeof updateDisplayBox===_0x452362(0x267))updateDisplayBox();}function _0x2f92f7(){const _0x3aac8a=_0x503049;if(_0x2d041e)_0x2d041e[_0x3aac8a(0x1ec)][_0x3aac8a(0x23a)]=_0x3aac8a(0x2ac);if(_0x2e3fda)_0x2e3fda[_0x3aac8a(0x1ec)][_0x3aac8a(0x23a)]=_0x3aac8a(0x2f9);if(_0x1cecf8)_0x1cecf8[_0x3aac8a(0x256)][_0x3aac8a(0x2a7)](_0x3aac8a(0x2f5));if(_0x418602)_0x418602['classList'][_0x3aac8a(0x275)]('active');console[_0x3aac8a(0x323)]('Switched\x20to\x20Buy/Sell\x20View');if(_0x30f1f1&&(!_0x30f1f1[_0x3aac8a(0x227)]()||_0x30f1f1[_0x3aac8a(0x24b)]['length']===0x1&&_0x30f1f1[_0x3aac8a(0x2c1)](_0x3aac8a(0x30a))))_0x9c1e3b();else{if(_0x487c2d&&(!_0x487c2d[_0x3aac8a(0x227)]()||_0x487c2d[_0x3aac8a(0x24b)]['length']===0x1&&_0x487c2d[_0x3aac8a(0x2c1)](_0x3aac8a(0x30a))))_0x30f1f1&&!_0x30f1f1[_0x3aac8a(0x2c1)](_0x3aac8a(0x1ef))&&_0x9c1e3b();else _0x30f1f1&&!_0x30f1f1[_0x3aac8a(0x2c1)](_0x3aac8a(0x1ef))&&_0x9c1e3b();}_0x11864e();}function _0x540283(){const _0x55a484=_0x503049;_0x235524['forEach'](_0x238f97=>{const _0x170831=_0x21b6,_0x56930d=_0x238f97[_0x170831(0x2c1)](_0x170831(0x2c5));_0x56930d&&(_0x56930d['value']=0x0,_0x56930d['dispatchEvent'](new Event(_0x170831(0x262),{'bubbles':!![]})));if(_0x238f97['id']===_0x170831(0x332)){_0x238f97[_0x170831(0x24c)](_0x170831(0x299)),_0x238f97[_0x170831(0x24c)](_0x170831(0x21d));const _0x304ce5=document[_0x170831(0x2c1)](_0x170831(0x2fd))?.[_0x170831(0x30f)]['categoryFilter']||'All',_0xedfb42=_0x238f97[_0x170831(0x30f)][_0x170831(0x282)];_0x238f97[_0x170831(0x1ec)][_0x170831(0x23a)]=_0x304ce5===_0x170831(0x1f2)||_0xedfb42===_0x304ce5?_0x170831(0x23e):_0x170831(0x2ac);}}),typeof updateDisplayBox===_0x55a484(0x267)&&typeof displayedPackItems===_0x55a484(0x207)?(Object[_0x55a484(0x287)](displayedPackItems)['forEach'](_0x17b2a4=>displayedPackItems[_0x17b2a4]=0x0),typeof selectedPackQuantities===_0x55a484(0x207)&&Object['keys'](selectedPackQuantities)[_0x55a484(0x326)](_0x114272=>selectedPackQuantities[_0x114272]=0x0),updateDisplayBox()):_0x52cf76(),console[_0x55a484(0x323)](_0x55a484(0x286));}function _0x52cf76(){const _0x39da88=_0x503049;let _0x38995f=0x0;_0x235524['forEach'](_0x236471=>{const _0x2ad4f4=_0x21b6,_0x48555b=_0x236471['id']===_0x2ad4f4(0x332)&&_0x236471[_0x2ad4f4(0x24f)](_0x2ad4f4(0x299))==='true',_0x33d939=_0x236471['id']!==_0x2ad4f4(0x332)&&_0x236471['style'][_0x2ad4f4(0x23a)]!==_0x2ad4f4(0x2ac);if(!(_0x48555b||_0x33d939))return;const _0x28fbc2=parseFloat(_0x236471[_0x2ad4f4(0x24f)]('data-price'));let _0x450e4a=0x0;const _0x2466a0=_0x236471[_0x2ad4f4(0x2c1)]('.quantity');_0x48555b?(_0x450e4a=0x1,_0x2466a0&&(_0x2466a0[_0x2ad4f4(0x1ec)]['color']=_0x2ad4f4(0x21a))):_0x2466a0&&(_0x450e4a=parseInt(_0x2466a0[_0x2ad4f4(0x1f9)])||0x0,_0x2466a0[_0x2ad4f4(0x1ec)][_0x2ad4f4(0x270)]=_0x450e4a>0x0?_0x2ad4f4(0x21a):_0x2ad4f4(0x226));if(!isNaN(_0x28fbc2)&&_0x450e4a>0x0)_0x38995f+=_0x28fbc2*_0x450e4a;else _0x450e4a===0x0&&_0x2466a0&&_0x236471['id']!=='hac-membership-item'&&(_0x2466a0['style'][_0x2ad4f4(0x270)]='#a0aec0');}),_0x70fe38&&(_0x70fe38[_0x39da88(0x229)]=_0x38995f[_0x39da88(0x1eb)](_0x39da88(0x2be),{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2}));}async function _0x5d4d0a(){const _0x4b7c41=_0x503049;if(!_0x1333da||!_0x1333da['value']){alert(_0x4b7c41(0x319));return;}const _0x14d7ab=_0x1333da['options'][_0x1333da[_0x4b7c41(0x230)]],_0x57c341=_0x14d7ab[_0x4b7c41(0x1f9)],_0x53c8c8=_0x14d7ab[_0x4b7c41(0x30f)][_0x4b7c41(0x336)],_0x218cb3=parseFloat(_0x70fe38[_0x4b7c41(0x229)][_0x4b7c41(0x291)](/,/g,''))||0x0;let _0x4996a5=![];if(_0xfc7e10&&_0xfc7e10[_0x4b7c41(0x24f)](_0x4b7c41(0x299))===_0x4b7c41(0x1fb)){const _0x433e7d=_0x235524['reduce']((_0x3849b9,_0x12ec89)=>{const _0x35d4ca=_0x4b7c41;if(_0x12ec89['id']!==_0x35d4ca(0x332)&&_0x12ec89[_0x35d4ca(0x1ec)][_0x35d4ca(0x23a)]!==_0x35d4ca(0x2ac)){const _0x5cf0f7=_0x12ec89['querySelector'](_0x35d4ca(0x2c5));return _0x3849b9+(parseInt(_0x5cf0f7?.[_0x35d4ca(0x1f9)])||0x0);}return _0x3849b9;},0x0);if(_0x433e7d===0x0)_0x4996a5=!![];}if(_0x218cb3===0x0&&!_0x4996a5){alert(_0x4b7c41(0x2a1));return;}const _0x171aa0=_0x59294f[_0x53c8c8]!==undefined?_0x59294f[_0x53c8c8]:0x0,_0x3da781=_0x218cb3*_0x171aa0,_0x2fed54=_0x218cb3-_0x3da781;let _0x3455b7=[];_0x235524[_0x4b7c41(0x326)](_0x23fc13=>{const _0xaa2a26=_0x4b7c41;let _0xaa3ada=0x0;const _0x290101=_0x23fc13[_0xaa2a26(0x2c1)]('p'),_0x450857=_0x290101?_0x290101['textContent']['split'](':')[0x0][_0xaa2a26(0x272)]():_0xaa2a26(0x1f3),_0x18717f=_0x23fc13['id']===_0xaa2a26(0x332)&&_0x23fc13['getAttribute']('data-hac-member-sale')===_0xaa2a26(0x1fb),_0x1ad62e=_0x23fc13['id']!==_0xaa2a26(0x332)&&_0x23fc13[_0xaa2a26(0x1ec)][_0xaa2a26(0x23a)]!=='none';if(_0x18717f)_0xaa3ada=0x1;else{if(_0x1ad62e){const _0x5e5d80=_0x23fc13[_0xaa2a26(0x2c1)](_0xaa2a26(0x2c5));if(_0x5e5d80)_0xaa3ada=parseInt(_0x5e5d80[_0xaa2a26(0x1f9)])||0x0;}}if(_0xaa3ada>0x0)_0x3455b7[_0xaa2a26(0x205)]({'itemName':_0x450857,'quantity':_0xaa3ada,'price':parseFloat(_0x23fc13[_0xaa2a26(0x24f)](_0xaa2a26(0x2fc)))});});if(_0x3455b7['length']===0x0){if(_0x4996a5&&_0x218cb3>0x0&&_0xfc7e10&&_0xfc7e10[_0x4b7c41(0x24f)](_0x4b7c41(0x299))===_0x4b7c41(0x1fb)){const _0x3256f3=_0xfc7e10[_0x4b7c41(0x2c1)]('p'),_0x571d2c=_0x3256f3?_0x3256f3[_0x4b7c41(0x229)][_0x4b7c41(0x2d0)](':')[0x0]['trim']():'HAC\x20MEMBERSHIP';!_0x3455b7['some'](_0x7758ed=>_0x7758ed[_0x4b7c41(0x33c)]===_0x571d2c)&&_0x3455b7[_0x4b7c41(0x205)]({'itemName':_0x571d2c,'quantity':0x1,'price':parseFloat(_0xfc7e10[_0x4b7c41(0x24f)](_0x4b7c41(0x2fc)))});}else{alert('No\x20POS\x20items\x20with\x20quantity\x20>\x200.');return;}}const _0x332277={'transactionType':_0x4b7c41(0x2f7),'employeeName':_0x57c341,'employeeRank':_0x53c8c8,'items':_0x3455b7,'subTotal':parseFloat(_0x218cb3[_0x4b7c41(0x2e5)](0x2)),'taxRateApplied':(_0x171aa0*0x64)[_0x4b7c41(0x2e5)](0x0)+'%','taxAmountPaidToMikes':parseFloat(_0x3da781[_0x4b7c41(0x2e5)](0x2)),'netTotalForEmployee':parseFloat(_0x2fed54['toFixed'](0x2)),'fullSaleTotal':parseFloat(_0x218cb3[_0x4b7c41(0x2e5)](0x2)),'taxesCleared':![],'createdAt':_0x208975[_0x4b7c41(0x260)]()};try{const _0x56592f=await _0x208975[_0x4b7c41(0x261)](_0x208975[_0x4b7c41(0x30c)](_0x2b3c79,_0x4b7c41(0x28b)),_0x332277);console[_0x4b7c41(0x323)](_0x4b7c41(0x2e0),_0x56592f['id']),_0x540283(),alert(_0x4b7c41(0x217)+_0x57c341+'\x20('+(_0x53c8c8||'N/A')+')\x0a'+_0x4b7c41(0x240)+(_0x4b7c41(0x2a0)+_0x218cb3[_0x4b7c41(0x1eb)]('en-US',{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2})+'\x0a')+(_0x4b7c41(0x271)+(_0x171aa0*0x64)[_0x4b7c41(0x2e5)](0x0)+_0x4b7c41(0x2b8)+_0x3da781[_0x4b7c41(0x1eb)]('en-US',{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2})+'\x0a')+('Net\x20Amount\x20for\x20Employee:\x20$'+_0x2fed54[_0x4b7c41(0x1eb)](_0x4b7c41(0x2be),{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2})));}catch(_0x1625e2){console[_0x4b7c41(0x218)]('Error\x20saving\x20POS\x20transaction:\x20',_0x1625e2),alert(_0x4b7c41(0x2c6)+_0x1625e2['message']);}}function _0x2a8f43(){const _0x10af61=_0x503049;if(_0x41c86d){if(_0x5b1130)_0x5b1130['value']='';if(_0x19ffdb)_0x19ffdb[_0x10af61(0x1f9)]='';if(_0x21bf7e)_0x21bf7e['value']='';if(_0x228834)_0x228834[_0x10af61(0x1f9)]='';if(_0x21b407)_0x21b407[_0x10af61(0x1f9)]='';_0x253a48&&(_0x253a48[_0x10af61(0x229)]='',_0x253a48['style'][_0x10af61(0x270)]='green'),_0x41c86d[_0x10af61(0x1ec)][_0x10af61(0x23a)]=_0x10af61(0x23e);}}function _0x45b021(){const _0x51cf35=_0x503049;if(_0x41c86d)_0x41c86d[_0x51cf35(0x1ec)][_0x51cf35(0x23a)]=_0x51cf35(0x2ac);}async function _0x429cfd(){const _0x2abb6d=_0x503049;if(!_0x5b1130||!_0x19ffdb||!_0x5b1130[_0x2abb6d(0x1f9)]['trim']()||!_0x19ffdb[_0x2abb6d(0x1f9)]['trim']()){_0x253a48&&(_0x253a48[_0x2abb6d(0x229)]='First\x20and\x20Last\x20name\x20are\x20required.',_0x253a48[_0x2abb6d(0x1ec)]['color']='red');return;}_0x22bc4e&&(_0x22bc4e[_0x2abb6d(0x1fd)]=!![],_0x22bc4e[_0x2abb6d(0x229)]=_0x2abb6d(0x2c8));const _0xba45df={'firstName':_0x5b1130[_0x2abb6d(0x1f9)][_0x2abb6d(0x272)](),'lastName':_0x19ffdb[_0x2abb6d(0x1f9)]['trim'](),'phoneNumber':_0x21bf7e['value']['trim']()||null,'driverLicense':_0x228834[_0x2abb6d(0x1f9)][_0x2abb6d(0x272)]()||null,'email':_0x21b407[_0x2abb6d(0x1f9)]['trim']()[_0x2abb6d(0x311)]()||null,'isEligible':!![],'membershipPurchaseDate':_0x208975['serverTimestamp'](),'createdAt':_0x208975[_0x2abb6d(0x260)]()};try{const _0x372702=await _0x208975[_0x2abb6d(0x261)](_0x208975[_0x2abb6d(0x30c)](_0x2b3c79,_0x2abb6d(0x2b1)),_0xba45df);_0x253a48&&(_0x253a48['textContent']='Signup\x20successful!',_0x253a48[_0x2abb6d(0x1ec)]['color']=_0x2abb6d(0x2c2));if(_0xfc7e10){_0xfc7e10[_0x2abb6d(0x20e)](_0x2abb6d(0x299),_0x2abb6d(0x1fb)),_0xfc7e10['setAttribute'](_0x2abb6d(0x21d),_0x372702['id']);const _0x34b525=_0xfc7e10['querySelector'](_0x2abb6d(0x2c5));if(_0x34b525)_0x34b525[_0x2abb6d(0x1f9)]=0x1;const _0x48ea6a=document['querySelector'](_0x2abb6d(0x2fd))?.[_0x2abb6d(0x30f)][_0x2abb6d(0x1fe)];(_0x48ea6a===_0x2abb6d(0x1f2)||_0x48ea6a===_0xfc7e10['dataset'][_0x2abb6d(0x282)])&&(_0xfc7e10[_0x2abb6d(0x1ec)][_0x2abb6d(0x23a)]=_0x2abb6d(0x23e));}_0x52cf76(),setTimeout(()=>{const _0x12e159=_0x2abb6d;_0x45b021(),_0x22bc4e&&(_0x22bc4e['disabled']=![],_0x22bc4e['textContent']=_0x12e159(0x25f));},0x5dc);}catch(_0x531bc0){console[_0x2abb6d(0x218)](_0x2abb6d(0x2c9),_0x531bc0),_0x253a48&&(_0x253a48[_0x2abb6d(0x229)]=_0x2abb6d(0x285)+_0x531bc0[_0x2abb6d(0x2fe)],_0x253a48[_0x2abb6d(0x1ec)][_0x2abb6d(0x270)]='red'),_0x22bc4e&&(_0x22bc4e['disabled']=![],_0x22bc4e[_0x2abb6d(0x229)]='Submit\x20&\x20Add\x20to\x20Cart');}}async function _0x3020a7(){const _0x4958b1=_0x503049;try{const _0xd46f53=_0x208975[_0x4958b1(0x2ad)](_0x2b3c79,_0x4958b1(0x204),_0x4958b1(0x280)),_0x536c66=await _0x208975[_0x4958b1(0x2b3)](_0xd46f53);_0x536c66[_0x4958b1(0x266)]()?_0x477655={'month':_0x536c66['data']()['currentPromoMonth']||_0x4958b1(0x1e7),'text':_0x536c66[_0x4958b1(0x2e7)]()['currentPromoText']||'No\x20promo\x20text.'}:_0x477655={'month':_0x4958b1(0x1e7),'text':_0x4958b1(0x2c0)};if(_0x55bf80)_0x55bf80[_0x4958b1(0x229)]=_0x477655[_0x4958b1(0x27a)];if(_0x201386)_0x201386[_0x4958b1(0x229)]=_0x477655[_0x4958b1(0x219)];}catch(_0x3e707e){console[_0x4958b1(0x218)](_0x4958b1(0x29b),_0x3e707e),_0x477655={'month':_0x4958b1(0x2f3),'text':_0x4958b1(0x2a4)};}}async function _0x461c7c(){const _0x216802=_0x503049;if(!_0x1cce24||!_0x39ceb4)return;const _0x517efc=_0x1cce24[_0x216802(0x1f9)][_0x216802(0x272)]()[_0x216802(0x311)]();if(!_0x517efc){_0x39ceb4[_0x216802(0x26d)]='<p><i>Enter\x20a\x20name\x20or\x20phone\x20to\x20search.</i></p>';if(_0x1f9f34)_0x1f9f34[_0x216802(0x1ec)][_0x216802(0x23a)]=_0x216802(0x2ac);return;}_0x39ceb4[_0x216802(0x26d)]='<p><i>Searching...</i></p>';try{const _0x5f2db2=_0x208975['query'](_0x208975[_0x216802(0x30c)](_0x2b3c79,_0x216802(0x2b1)),_0x208975[_0x216802(0x1ea)](_0x216802(0x243)),_0x208975['orderBy']('firstName')),_0x5986df=await _0x208975[_0x216802(0x20b)](_0x5f2db2);let _0x1f4b1d=[];_0x5986df[_0x216802(0x326)](_0x236e01=>_0x1f4b1d['push']({'id':_0x236e01['id'],..._0x236e01[_0x216802(0x2e7)]()}));const _0x5e39e7=_0x1f4b1d[_0x216802(0x315)](_0x6f23cf=>((_0x6f23cf[_0x216802(0x23c)]||'')+'\x20'+(_0x6f23cf[_0x216802(0x243)]||''))[_0x216802(0x311)]()['includes'](_0x517efc)||_0x6f23cf['phoneNumber']?.[_0x216802(0x28a)](_0x517efc)||_0x6f23cf[_0x216802(0x258)]?.[_0x216802(0x311)]()[_0x216802(0x28a)](_0x517efc)||_0x6f23cf['email']?.[_0x216802(0x311)]()[_0x216802(0x28a)](_0x517efc));_0x3ac00f(_0x5e39e7);}catch(_0xaf96d8){console['error'](_0x216802(0x342),_0xaf96d8),_0x39ceb4['innerHTML']='<p>Search\x20error.</p>';}}function _0x3ac00f(_0x167b65){const _0x78b366=_0x503049;if(!_0x39ceb4)return;_0x39ceb4['innerHTML']='';if(_0x167b65[_0x78b366(0x27d)]===0x0){_0x39ceb4[_0x78b366(0x26d)]=_0x78b366(0x268);if(_0x1f9f34)_0x1f9f34[_0x78b366(0x1ec)][_0x78b366(0x23a)]='none';return;}_0x167b65[_0x78b366(0x326)](_0x35b6c5=>{const _0x2992b3=_0x78b366,_0x3d0680=document[_0x2992b3(0x2ef)](_0x2992b3(0x2ea));_0x3d0680[_0x2992b3(0x255)]=_0x2992b3(0x31e);const _0x4770a3=_0x35b6c5[_0x2992b3(0x2f8)]?_0x2992b3(0x214):_0x2992b3(0x327),_0x4ca0e2=_0x35b6c5['isEligible']?_0x2992b3(0x313):_0x2992b3(0x1ed),_0x4477f4=_0x35b6c5[_0x2992b3(0x2b4)]?.[_0x2992b3(0x274)]?_0x35b6c5[_0x2992b3(0x2b4)][_0x2992b3(0x274)]()[_0x2992b3(0x2c4)]():_0x2992b3(0x1e7);let _0x2c66b2='';if(_0x35b6c5['isEligible'])_0x2c66b2=_0x2992b3(0x321)+_0x35b6c5['id']+_0x2992b3(0x2a2)+_0x35b6c5['firstName']+'\x20'+_0x35b6c5[_0x2992b3(0x243)]+_0x2992b3(0x269);_0x3d0680['innerHTML']=_0x2992b3(0x250)+_0x35b6c5['firstName']+'\x20'+_0x35b6c5[_0x2992b3(0x243)]+_0x2992b3(0x22e)+_0x4770a3+'\x22>'+_0x4ca0e2+_0x2992b3(0x337)+_0x2c66b2+_0x2992b3(0x273)+(_0x35b6c5[_0x2992b3(0x341)]||'N/A')+_0x2992b3(0x281)+(_0x35b6c5[_0x2992b3(0x258)]||_0x2992b3(0x1e7))+_0x2992b3(0x307)+(_0x35b6c5['email']||_0x2992b3(0x1e7))+_0x2992b3(0x2ba)+_0x4477f4+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>',_0x39ceb4[_0x2992b3(0x2cc)](_0x3d0680);}),_0x39ceb4['querySelectorAll'](_0x78b366(0x2ee))['forEach'](_0x23c76c=>_0x23c76c[_0x78b366(0x2de)]('click',_0x3875c9)),_0x55bf80&&_0x201386&&_0x1f9f34&&(_0x55bf80[_0x78b366(0x229)]=_0x477655[_0x78b366(0x27a)],_0x201386[_0x78b366(0x229)]=_0x477655[_0x78b366(0x219)],_0x1f9f34[_0x78b366(0x1ec)][_0x78b366(0x23a)]=_0x477655[_0x78b366(0x27a)]&&_0x477655['month']!==_0x78b366(0x1e7)&&_0x477655[_0x78b366(0x219)]&&_0x477655[_0x78b366(0x219)]!==_0x78b366(0x2c0)&&_0x477655[_0x78b366(0x219)]!==_0x78b366(0x29c)?_0x78b366(0x2f9):_0x78b366(0x2ac));}async function _0x3875c9(_0x188d5a){const _0x1f75f1=_0x503049,_0x33593c=_0x188d5a[_0x1f75f1(0x2a3)],_0x4313d7=_0x33593c[_0x1f75f1(0x30f)]['memberId'],_0x205f62=_0x33593c[_0x1f75f1(0x30f)][_0x1f75f1(0x28c)];if(!confirm(_0x1f75f1(0x33f)+_0x205f62+_0x1f75f1(0x2b0)))return;_0x33593c[_0x1f75f1(0x1fd)]=!![],_0x33593c[_0x1f75f1(0x229)]=_0x1f75f1(0x2a6);try{await _0x208975[_0x1f75f1(0x224)](_0x208975[_0x1f75f1(0x2ad)](_0x2b3c79,_0x1f75f1(0x2b1),_0x4313d7),{'isEligible':![]}),alert(_0x205f62+_0x1f75f1(0x2f0)),_0x461c7c();}catch(_0x58585e){console[_0x1f75f1(0x218)](_0x1f75f1(0x335),_0x58585e),alert(_0x1f75f1(0x276)),_0x33593c[_0x1f75f1(0x1fd)]=![],_0x33593c['textContent']=_0x1f75f1(0x26f);}}function _0x9c1e3b(){const _0x1ae8b6=_0x503049;if(!_0x30f1f1||!_0x487c2d)return;_0x30f1f1[_0x1ae8b6(0x26d)]='',_0x487c2d[_0x1ae8b6(0x26d)]='',Object[_0x1ae8b6(0x1f7)](_0x21feba[_0x1ae8b6(0x31a)])['forEach'](([_0x1633a7,_0x53c4b2])=>{const _0x55fba1=_0x1ae8b6;_0x30f1f1[_0x55fba1(0x2cc)](_0x43677d(_0x1633a7,_0x53c4b2,'buy'));}),Object['entries'](_0x21feba[_0x1ae8b6(0x1fc)])['forEach'](([_0x1b5197,_0x3d1fd8])=>{const _0x5b9cf5=_0x1ae8b6;_0x487c2d['appendChild'](_0x43677d(_0x1b5197,_0x3d1fd8,_0x5b9cf5(0x1fc)));});}function _0x43677d(_0x3a053b,_0x5d4a76,_0x2910de){const _0x5050d3=_0x503049,_0x5e80a1=document[_0x5050d3(0x2ef)](_0x5050d3(0x2ea));_0x5e80a1['className']=_0x5050d3(0x2d1),_0x5e80a1[_0x5050d3(0x20e)](_0x5050d3(0x2fc),_0x5d4a76[_0x5050d3(0x25e)]),_0x5e80a1[_0x5050d3(0x20e)](_0x5050d3(0x2bf),_0x3a053b),_0x5e80a1[_0x5050d3(0x20e)](_0x5050d3(0x30d),_0x2910de);const _0x80d14c=document[_0x5050d3(0x2ef)](_0x5050d3(0x25a));_0x80d14c['src']=_0x5d4a76[_0x5050d3(0x247)]||_0x5050d3(0x209),_0x80d14c[_0x5050d3(0x2d8)]=_0x3a053b,_0x80d14c[_0x5050d3(0x1ec)][_0x5050d3(0x27b)]=_0x5050d3(0x2ac);const _0xeef8b1=document['createElement']('p');_0xeef8b1[_0x5050d3(0x229)]=_0x3a053b+_0x5050d3(0x1e8)+_0x5d4a76[_0x5050d3(0x25e)]['toLocaleString'](),_0xeef8b1[_0x5050d3(0x1ec)][_0x5050d3(0x27b)]='none';const _0x1456c8=document[_0x5050d3(0x2ef)](_0x5050d3(0x262));_0x1456c8[_0x5050d3(0x1fa)]=_0x5050d3(0x31c),_0x1456c8[_0x5050d3(0x255)]=_0x5050d3(0x2ae),_0x1456c8[_0x5050d3(0x292)]='0';!_0x2d8ada[_0x2910de]&&(_0x2d8ada[_0x2910de]={});!_0x2d8ada[_0x2910de][_0x3a053b]&&(_0x2d8ada[_0x2910de][_0x3a053b]={'quantity':0x0,'price':_0x5d4a76['price']});_0x1456c8[_0x5050d3(0x1f9)]=_0x2d8ada[_0x2910de][_0x3a053b][_0x5050d3(0x2ae)];function _0x44b70a(){const _0xb906f7=_0x5050d3,_0x5b3647=parseInt(_0x1456c8[_0xb906f7(0x1f9)])||0x0;_0x1456c8[_0xb906f7(0x1ec)][_0xb906f7(0x270)]=_0x5b3647>0x0?_0xb906f7(0x21a):_0xb906f7(0x226);}return _0x44b70a(),_0x1456c8['addEventListener']('input',()=>{const _0x56786d=_0x5050d3;let _0x152e1b=parseInt(_0x1456c8['value'])||0x0;_0x152e1b<0x0&&(_0x152e1b=0x0,_0x1456c8[_0x56786d(0x1f9)]=0x0),!_0x2d8ada[_0x2910de][_0x3a053b]&&(_0x2d8ada[_0x2910de][_0x3a053b]={'quantity':0x0,'price':_0x5d4a76[_0x56786d(0x25e)]}),_0x2d8ada[_0x2910de][_0x3a053b][_0x56786d(0x2ae)]=_0x152e1b,_0x44b70a(),_0x11864e();}),_0x5e80a1[_0x5050d3(0x2de)](_0x5050d3(0x277),_0x37c86a=>{const _0x587f19=_0x5050d3;if(_0x37c86a[_0x587f19(0x21b)]===_0x1456c8){_0x1456c8['focus']();return;}!_0x2d8ada[_0x2910de][_0x3a053b]&&(_0x2d8ada[_0x2910de][_0x3a053b]={'quantity':0x0,'price':_0x5d4a76[_0x587f19(0x25e)]}),_0x2d8ada[_0x2910de][_0x3a053b][_0x587f19(0x2ae)]++,_0x1456c8[_0x587f19(0x1f9)]=_0x2d8ada[_0x2910de][_0x3a053b][_0x587f19(0x2ae)],_0x1456c8[_0x587f19(0x28e)](new Event(_0x587f19(0x262),{'bubbles':!![]}));}),_0x5e80a1['appendChild'](_0x80d14c),_0x5e80a1[_0x5050d3(0x2cc)](_0xeef8b1),_0x5e80a1[_0x5050d3(0x2cc)](_0x1456c8),_0x5e80a1;}function _0x11864e(){const _0x3df0fc=_0x503049;let _0x304229=0x0;Object[_0x3df0fc(0x2bb)](_0x2d8ada[_0x3df0fc(0x31a)])['forEach'](_0x2b6c63=>{const _0x23ee7e=_0x3df0fc;if(_0x2b6c63)_0x304229+=_0x2b6c63[_0x23ee7e(0x2ae)]*_0x2b6c63[_0x23ee7e(0x25e)];});let _0x396a6a=0x0;Object[_0x3df0fc(0x2bb)](_0x2d8ada['sell'])[_0x3df0fc(0x326)](_0x16d9e4=>{const _0x5a01f4=_0x3df0fc;if(_0x16d9e4)_0x396a6a+=_0x16d9e4[_0x5a01f4(0x2ae)]*_0x16d9e4['price'];});if(_0xa3ebea)_0xa3ebea['textContent']=_0x304229[_0x3df0fc(0x1eb)](undefined,{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2});if(_0x5669cd)_0x5669cd[_0x3df0fc(0x229)]=_0x396a6a[_0x3df0fc(0x1eb)](undefined,{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2});if(_0x4a22a1)_0x4a22a1[_0x3df0fc(0x229)]='$'+_0x304229[_0x3df0fc(0x1eb)](undefined,{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2});if(_0x3dbfcf)_0x3dbfcf[_0x3df0fc(0x229)]='$'+_0x396a6a[_0x3df0fc(0x1eb)](undefined,{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2});const _0x333fbb=_0x396a6a-_0x304229;if(_0x2c7275)_0x2c7275[_0x3df0fc(0x229)]='$'+Math[_0x3df0fc(0x2fb)](_0x333fbb)[_0x3df0fc(0x1eb)](undefined,{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2});if(_0x302119)_0x302119[_0x3df0fc(0x229)]=_0x333fbb>0x0?_0x3df0fc(0x21c):_0x333fbb<0x0?_0x3df0fc(0x237):_0x3df0fc(0x22b);}function _0x1242d7(){const _0x313d18=_0x503049;_0x2d8ada[_0x313d18(0x31a)]={},_0x2d8ada[_0x313d18(0x1fc)]={},document[_0x313d18(0x253)](_0x313d18(0x208))[_0x313d18(0x326)](_0x266db0=>{const _0x25502a=_0x313d18;_0x266db0[_0x25502a(0x1f9)]=0x0,_0x266db0[_0x25502a(0x1ec)][_0x25502a(0x270)]=_0x25502a(0x226);}),_0x11864e();if(_0x3c3547)_0x3c3547[_0x313d18(0x229)]='';}async function _0x3e0131(){const _0x58666b=_0x503049;if(!_0x1333da||!_0x1333da[_0x58666b(0x1f9)]){alert('Select\x20employee.');return;}const _0x3983b0=_0x1333da[_0x58666b(0x298)][_0x1333da[_0x58666b(0x230)]],_0x56f466=_0x3983b0[_0x58666b(0x1f9)],_0x49b435=_0x3983b0[_0x58666b(0x30f)][_0x58666b(0x336)];let _0x1a6089=0x0;Object[_0x58666b(0x2bb)](_0x2d8ada[_0x58666b(0x31a)])[_0x58666b(0x326)](_0x8f8245=>{const _0x54aa70=_0x58666b;if(_0x8f8245)_0x1a6089+=_0x8f8245['price']*_0x8f8245[_0x54aa70(0x2ae)];});let _0x1902fd=0x0;Object[_0x58666b(0x2bb)](_0x2d8ada[_0x58666b(0x1fc)])[_0x58666b(0x326)](_0x1f2c23=>{const _0x40cece=_0x58666b;if(_0x1f2c23)_0x1902fd+=_0x1f2c23[_0x40cece(0x25e)]*_0x1f2c23[_0x40cece(0x2ae)];});if(_0x1a6089===0x0&&_0x1902fd===0x0){alert(_0x58666b(0x20a));return;}let _0x455523=[];for(const _0x8614ac of[_0x58666b(0x31a),_0x58666b(0x1fc)]){Object[_0x58666b(0x1f7)](_0x2d8ada[_0x8614ac])[_0x58666b(0x326)](([_0x279555,_0x2e2c9a])=>{const _0x431415=_0x58666b;if(_0x2e2c9a&&_0x2e2c9a['quantity']>0x0)_0x455523[_0x431415(0x205)]({'itemName':_0x279555,'quantity':_0x2e2c9a['quantity'],'pricePerUnit':_0x2e2c9a[_0x431415(0x25e)],'type':_0x8614ac});});}const _0xc8f82={'transactionType':_0x58666b(0x2cb),'employeeName':_0x56f466,'employeeRank':_0x49b435||_0x58666b(0x1e7),'itemsTraded':_0x455523,'totalValueBoughtFromCustomer':_0x1a6089,'totalValueSoldToCustomer':_0x1902fd,'netAmountForMikes':_0x1902fd-_0x1a6089,'createdAt':_0x208975[_0x58666b(0x260)]()};try{const _0x37f397=await _0x208975[_0x58666b(0x261)](_0x208975[_0x58666b(0x30c)](_0x2b3c79,_0x58666b(0x28b)),_0xc8f82);_0x3c3547&&(_0x3c3547['textContent']=_0x58666b(0x334),_0x3c3547[_0x58666b(0x1ec)]['color']=_0x58666b(0x2c2)),_0x1242d7(),setTimeout(()=>{if(_0x3c3547)_0x3c3547['textContent']='';},0xbb8);}catch(_0x320da8){console[_0x58666b(0x218)](_0x58666b(0x308),_0x320da8),_0x3c3547&&(_0x3c3547[_0x58666b(0x229)]=_0x58666b(0x285)+_0x320da8['message'],_0x3c3547[_0x58666b(0x1ec)][_0x58666b(0x270)]=_0x58666b(0x22f));}}function _0x39937f(){const _0x47bf8d=_0x503049;console[_0x47bf8d(0x323)](_0x47bf8d(0x203));_0x15b68a&&_0x15b68a[_0x47bf8d(0x2de)](_0x47bf8d(0x233),async _0x48c45c=>{const _0x30bcb3=_0x47bf8d;_0x48c45c[_0x30bcb3(0x254)]();const _0x2a4c61=_0x4c6240['value'];console[_0x30bcb3(0x323)](_0x30bcb3(0x251),_0x2a4c61);!_0x51ee15&&(console[_0x30bcb3(0x323)]('Password\x20not\x20pre-loaded,\x20loading\x20now\x20for\x20main\x20login...'),await _0x2eb5c3());console[_0x30bcb3(0x323)]('Comparing\x20with\x20actual\x20password\x20for\x20main\x20login:',_0x51ee15);if(_0x2a4c61===_0x51ee15){console[_0x30bcb3(0x323)](_0x30bcb3(0x2b9));if(typeof grantEmployeeSession===_0x30bcb3(0x267))grantEmployeeSession();else console[_0x30bcb3(0x218)](_0x30bcb3(0x2cf));_0x2bf604(!![]),await _0x537875();}else{console[_0x30bcb3(0x323)](_0x30bcb3(0x297));_0x143c83&&(_0x143c83[_0x30bcb3(0x229)]=_0x30bcb3(0x2a8),_0x143c83[_0x30bcb3(0x1ec)][_0x30bcb3(0x23a)]='block');if(_0x4c6240)_0x4c6240[_0x30bcb3(0x1f9)]='';}});if(_0x1cecf8)_0x1cecf8[_0x47bf8d(0x2de)](_0x47bf8d(0x277),_0xa08147);if(_0x418602)_0x418602[_0x47bf8d(0x2de)]('click',_0x2f92f7);if(_0x350cf9)_0x350cf9[_0x47bf8d(0x2de)](_0x47bf8d(0x277),_0x540283);if(_0x3610de)_0x3610de[_0x47bf8d(0x2de)]('click',_0x5d4d0a);if(_0x378396)_0x378396[_0x47bf8d(0x2de)](_0x47bf8d(0x277),_0x1242d7);if(_0x2b4acb)_0x2b4acb[_0x47bf8d(0x2de)](_0x47bf8d(0x277),_0x3e0131);_0x477956&&_0x477956['forEach'](_0xec1a25=>{const _0xcab901=_0x47bf8d;_0xec1a25[_0xcab901(0x2de)]('click',()=>{const _0x29e491=_0xcab901;if(!_0x2d041e||_0x2d041e[_0x29e491(0x1ec)][_0x29e491(0x23a)]===_0x29e491(0x2ac))_0xa08147();const _0x57251a=_0xec1a25[_0x29e491(0x24f)]('data-category-filter');_0x477956[_0x29e491(0x326)](_0x1ea156=>_0x1ea156[_0x29e491(0x256)][_0x29e491(0x2a7)]('active')),_0xec1a25[_0x29e491(0x256)]['add'](_0x29e491(0x2f5)),_0x235524[_0x29e491(0x326)](_0x29a67c=>{const _0x1adfcc=_0x29e491,_0x392570=_0x29a67c[_0x1adfcc(0x24f)](_0x1adfcc(0x2b5));_0x29a67c['id']===_0x1adfcc(0x332)&&_0x29a67c[_0x1adfcc(0x24f)](_0x1adfcc(0x299))==='true'?_0x29a67c[_0x1adfcc(0x1ec)][_0x1adfcc(0x23a)]=_0x1adfcc(0x23e):_0x29a67c[_0x1adfcc(0x1ec)]['display']=_0x57251a==='All'||_0x392570===_0x57251a?_0x1adfcc(0x23e):_0x1adfcc(0x2ac);}),_0x52cf76();});});_0x235524[_0x47bf8d(0x326)](_0x32bb26=>{const _0x4807cd=_0x47bf8d,_0x169c92=_0x32bb26[_0x4807cd(0x2c1)]('.quantity');if(_0x32bb26['id']===_0x4807cd(0x332)){const _0x2c9c5a=_0x32bb26[_0x4807cd(0x2c1)]('.add-to-cart-hac');if(_0x2c9c5a)_0x2c9c5a['addEventListener'](_0x4807cd(0x277),_0x2a8f43);}else _0x169c92&&_0x169c92[_0x4807cd(0x2de)]('input',()=>{const _0x2f7dfc=_0x4807cd;_0x2d041e?.['style'][_0x2f7dfc(0x23a)]!==_0x2f7dfc(0x2ac)&&_0x52cf76();}),_0x32bb26[_0x4807cd(0x30f)][_0x4807cd(0x2e8)]!==_0x4807cd(0x1fb)&&_0x32bb26[_0x4807cd(0x2de)](_0x4807cd(0x277),_0x3cf6f6=>{const _0x1b6f79=_0x4807cd;if(_0x2d041e?.[_0x1b6f79(0x1ec)][_0x1b6f79(0x23a)]===_0x1b6f79(0x2ac))return;if(_0x3cf6f6[_0x1b6f79(0x21b)][_0x1b6f79(0x22a)]==='INPUT'||_0x3cf6f6[_0x1b6f79(0x21b)][_0x1b6f79(0x22a)]===_0x1b6f79(0x30b)||_0x3cf6f6[_0x1b6f79(0x21b)][_0x1b6f79(0x306)](_0x1b6f79(0x278))){if(_0x3cf6f6[_0x1b6f79(0x21b)][_0x1b6f79(0x22a)]===_0x1b6f79(0x33b))_0x3cf6f6[_0x1b6f79(0x21b)][_0x1b6f79(0x27e)]();return;}_0x169c92&&(_0x169c92['value']=(parseInt(_0x169c92[_0x1b6f79(0x1f9)])||0x0)+0x1,_0x169c92[_0x1b6f79(0x28e)](new Event(_0x1b6f79(0x262),{'bubbles':!![]})));});});if(_0xb3805d)_0xb3805d[_0x47bf8d(0x2de)](_0x47bf8d(0x277),_0x45b021);if(_0x41c86d)window[_0x47bf8d(0x2de)](_0x47bf8d(0x277),_0x1c1731=>{const _0x148d41=_0x47bf8d;if(_0x1c1731[_0x148d41(0x21b)]===_0x41c86d)_0x45b021();});if(_0x22bc4e)_0x22bc4e[_0x47bf8d(0x2de)](_0x47bf8d(0x277),_0x429cfd);if(_0xa93027)_0xa93027['addEventListener']('click',_0x461c7c);if(_0x1cce24)_0x1cce24[_0x47bf8d(0x2de)](_0x47bf8d(0x317),_0x18abf5=>{const _0x2c013a=_0x47bf8d;_0x18abf5['key']===_0x2c013a(0x22d)&&(_0x18abf5['preventDefault'](),_0x461c7c());});_0x2558a6&&_0x2558a6[_0x47bf8d(0x2de)](_0x47bf8d(0x277),()=>{const _0x53d1b4=_0x47bf8d;if(_0x1cce24)_0x1cce24['value']='';if(_0x39ceb4)_0x39ceb4[_0x53d1b4(0x26d)]=_0x53d1b4(0x2cd);if(_0x1f9f34)_0x1f9f34[_0x53d1b4(0x1ec)][_0x53d1b4(0x23a)]='none';});}async function _0x537875(){const _0x580d58=_0x503049;console[_0x580d58(0x323)](_0x580d58(0x329)),await _0x570d84();_0x1cecf8&&typeof _0x1cecf8[_0x580d58(0x277)]===_0x580d58(0x267)?_0x1cecf8['click']():_0xa08147();if(_0x2d041e&&_0x2d041e['style'][_0x580d58(0x23a)]!=='none'){_0x52cf76();if(typeof initPackTracker==='function'&&_0x2854c9?.[_0x580d58(0x2c1)](_0x580d58(0x2a5)))initPackTracker();else{const _0x2fdfeb=document[_0x580d58(0x2eb)](_0x580d58(0x1f1));if(_0x2fdfeb)_0x2fdfeb['style']['display']=_0x580d58(0x2ac);}await _0x3020a7();}}async function _0x1d32be(){const _0x3fec51=_0x503049;console[_0x3fec51(0x323)](_0x3fec51(0x333)),_0x39937f();if(typeof checkEmployeeSession===_0x3fec51(0x267)&&checkEmployeeSession())console['log']('script.js\x20(Index\x20Main):\x20Employee\x20session\x20active\x20from\x20previous\x20login.'),_0x2bf604(!![]),await _0x537875();else{console['log']('script.js\x20(Index\x20Main):\x20No\x20active\x20session.\x20Showing\x20login\x20form.');if(typeof checkEmployeeSession!==_0x3fec51(0x267))console['error'](_0x3fec51(0x264));_0x2bf604(![]),await _0x2eb5c3();}}_0x1d32be();}let _0x4620d0=![];document[_0x8daccd(0x2de)]('firebaseReady',_0x55ce7e=>{const _0x420c18=_0x8daccd;console[_0x420c18(0x323)](_0x420c18(0x23b));if(!_0x297681&&!_0x4620d0)_0x4620d0=!![],console[_0x420c18(0x323)](_0x420c18(0x25c)),_0x2e9ac8(_0x55ce7e['detail']);else{if(_0x297681)console['log'](_0x420c18(0x2e6));else _0x4620d0&&console[_0x420c18(0x323)](_0x420c18(0x2ff));}}),document[_0x8daccd(0x2de)](_0x8daccd(0x210),_0x3bff57=>{const _0x18991f=_0x8daccd;console[_0x18991f(0x218)](_0x18991f(0x24a),_0x3bff57[_0x18991f(0x220)]?.[_0x18991f(0x218)]),!_0x297681&&!_0x4620d0&&(_0x4620d0=!![],_0x52db2c(_0x18991f(0x290)+(_0x3bff57[_0x18991f(0x220)]?.['error']?.['message']||_0x18991f(0x32c))));}),setTimeout(()=>{const _0x51396a=_0x8daccd;if(!_0x297681&&!_0x4620d0){console[_0x51396a(0x25b)](_0x51396a(0x312));if(window['isFirebaseReady']===!![]&&window['db']&&window[_0x51396a(0x2d9)])console[_0x51396a(0x323)](_0x51396a(0x304)),_0x2e9ac8({'db':window['db'],'functions':window['firestoreFunctions']});else window[_0x51396a(0x2d2)]===![]?(console[_0x51396a(0x218)](_0x51396a(0x1f8)),_0x52db2c(_0x51396a(0x2bd))):(console[_0x51396a(0x218)](_0x51396a(0x30e)),_0x52db2c(_0x51396a(0x2d3)));}else{}},0xdac);}));const packDefinitions={'hunting_pack':{'Hunting\x20Rifle':0x1,'30.06\x20Ammo':0x64,'Bait\x20(Choice\x20Of)':0xa,'Knife':0x1,'Hunting\x20Map':0x1,'Orange\x20Hunting\x20Vest':0x1},'scoped_hunting_pack':{'Scoped\x20Rifle':0x1,'30.06\x20Ammo':0x64,'Bait\x20(Choice\x20Of)':0xa,'Knife':0x1,'Hunting\x20Map':0x1},'fishing_pack':{'COOLERS':0x1,'Beer':0xa,'MSG\x20TAILGATE\x20CHAIR':0x2},'scuba_pack':{'Scuba\x20Tank':0x2,'Shark\x20Repellent':0x2,'Bandages':0xa},'camping_pack':{'COOLERS':0x2,'MSG\x20TAILGATE\x20CHAIR':0x2,'Beer':0x14,'Binoculars':0x2},'tiny_biters_pack':{'Value\x20Cast\x20Rod':0x1,'Broke\x20Ass\x20Reel':0x1,'Cheap\x20Mono\x20Line':0xa,'HOOK\x20#1':0xa,'MAGGOTS\x20BAIT':0x32},'trout_pack':{'Value\x20Cast\x20Rod':0x1,'Broke\x20Ass\x20Reel':0x1,'Cheap\x20Mono\x20Line':0xa,'HOOK\x20#2':0xa,'WAXWORMS\x20BAIT':0x32},'big_boy_pack':{'Elemental\x20Rod':0x1,'LINE\x20SNIFFER\x20REEL':0x1,'BITE\x20SIZE\x20LINE':0xa,'HOOK\x20#2':0xa,'HOOK\x20#6':0xa,'NIGHTWORMS\x20BAIT':0x32},'dock_special_pack':{'Brutas\x20Rod':0x1,'FISHRUS\x20REEL':0x1,'NOODLE\x20LINE':0xa,'HOOK\x20#3':0xa,'MAGGOTS\x20BAIT':0x32},'pike_pack':{'Nero\x20Rod':0x1,'Rock\x20Bottom\x20Reel':0x1,'Mobey\x20Mono\x20Line':0xa,'HOOK\x20#3':0xa,'NIGHTWORMS\x20BAIT':0x32},'tuna_pack':{'Zeus\x20Rod':0x1,'Thunder\x20Reel':0x1,'LIGHTNING\x20LINE':0xa,'HOOK\x20#10':0xa,'LEECH\x20BAIT':0x32},'mahi_pack':{'Elemental\x20Rod':0x1,'LINE\x20SNIFFER\x20REEL':0x1,'BITE\x20SIZE\x20LINE':0xa,'HOOK\x20#1':0xa}},displayedPackItems={},selectedPackQuantities={};function initPackTracker(){const _0x6c859=_0xcc9057;console[_0x6c859(0x323)]('Pack\x20Tracker:\x20Initializing...');const _0x2056c5=document[_0x6c859(0x253)]('#pos-items-container\x20.item[data-pack=\x22true\x22]');let _0x556fcd=document[_0x6c859(0x2eb)]('pack-display-box');if(!_0x556fcd){const _0x27f67f=document[_0x6c859(0x2c1)](_0x6c859(0x23d)),_0x11e6db=document[_0x6c859(0x2c1)](_0x6c859(0x1f6));let _0x186dc7=_0x11e6db||_0x27f67f;if(_0x186dc7&&_0x186dc7[_0x6c859(0x2b7)])_0x556fcd=document[_0x6c859(0x2ef)]('div'),_0x556fcd['id']='pack-display-box',_0x556fcd[_0x6c859(0x1ec)][_0x6c859(0x328)]='margin-top:\x200px;\x20padding:0px;\x20background-color:\x20rgba(30,30,30,0.7);\x20border-radius:\x208px;\x20display:none;\x20border-width:\x200px;\x20width:100%;\x20max-width:\x20600px;\x20margin-left:auto;\x20margin-right:auto;\x20max-height:0px;\x20overflow:hidden;\x20transition:\x20max-height\x200.4s\x20ease,\x20padding\x200.3s\x20ease,\x20margin-top\x200.3s\x20ease,\x20border-width\x200.3s\x20ease;',_0x556fcd[_0x6c859(0x26d)]=_0x6c859(0x324),_0x186dc7['parentNode'][_0x6c859(0x21e)](_0x556fcd,_0x186dc7),console['log'](_0x6c859(0x318));else{console[_0x6c859(0x25b)](_0x6c859(0x303));return;}}if(_0x2056c5[_0x6c859(0x27d)]===0x0){console[_0x6c859(0x323)](_0x6c859(0x26c));if(_0x556fcd)_0x556fcd[_0x6c859(0x1ec)][_0x6c859(0x23a)]='none';return;}_0x2056c5[_0x6c859(0x326)](_0x5e044c=>{const _0x29c368=_0x6c859,_0x2959e=_0x5e044c[_0x29c368(0x2c1)](_0x29c368(0x20c));if(!_0x2959e||!_0x2959e['id']||!_0x2959e['id']['startsWith'](_0x29c368(0x24d))){console['warn'](_0x29c368(0x26a),_0x5e044c);return;}const _0x4d076b=_0x2959e['id']['replace'](_0x29c368(0x24d),'');if(!packDefinitions[_0x4d076b]){console[_0x29c368(0x25b)](_0x29c368(0x2e2)+_0x4d076b);return;}const _0x1e1b77=parseInt(_0x2959e['value'])||0x0;selectedPackQuantities[_0x4d076b]=0x0,_0x1e1b77>0x0&&handlePackChange(_0x4d076b,_0x1e1b77,!![]),_0x5e044c[_0x29c368(0x2de)]('click',_0x5ccbe0=>{const _0x56d250=_0x29c368;if(_0x5ccbe0['target'][_0x56d250(0x22a)]===_0x56d250(0x33b)||_0x5ccbe0['target'][_0x56d250(0x22a)]===_0x56d250(0x30b))return;_0x5ccbe0[_0x56d250(0x2ce)](),_0x5ccbe0[_0x56d250(0x254)]();if(document[_0x56d250(0x2eb)](_0x56d250(0x2df))?.['style'][_0x56d250(0x23a)]==='none')return;_0x2959e[_0x56d250(0x1f9)]=(parseInt(_0x2959e[_0x56d250(0x1f9)])||0x0)+0x1,_0x2959e['dispatchEvent'](new Event(_0x56d250(0x262)));}),_0x2959e[_0x29c368(0x2de)](_0x29c368(0x262),()=>{const _0x1236dd=_0x29c368;if(document[_0x1236dd(0x2eb)](_0x1236dd(0x2df))?.[_0x1236dd(0x1ec)][_0x1236dd(0x23a)]==='none')return;handlePackChange(_0x4d076b,parseInt(_0x2959e[_0x1236dd(0x1f9)])||0x0);if(typeof calculateMainPOSTotal==='function')calculateMainPOSTotal();});}),updateDisplayBox(),console[_0x6c859(0x323)](_0x6c859(0x2bc));}function handlePackChange(_0x44edaa,_0x48f141,_0x34d266=![]){const _0x33e059=selectedPackQuantities[_0x44edaa]||0x0,_0x3afed8=packDefinitions[_0x44edaa];if(!_0x3afed8||_0x48f141<0x0)return;let _0x16181a=_0x48f141-_0x33e059;if(_0x34d266){}for(const [_0x1b1307,_0x836d83]of Object['entries'](_0x3afed8)){displayedPackItems[_0x1b1307]=(displayedPackItems[_0x1b1307]||0x0)+_0x836d83*_0x16181a;if(displayedPackItems[_0x1b1307]<0x0)displayedPackItems[_0x1b1307]=0x0;}selectedPackQuantities[_0x44edaa]=_0x48f141,updateDisplayBox();}function updateDisplayBox(){const _0x576a53=_0xcc9057,_0x1ffefa=document[_0x576a53(0x2eb)]('pack-display-box');if(!_0x1ffefa){console[_0x576a53(0x25b)](_0x576a53(0x2dd));return;}let _0x1eb159=_0x1ffefa[_0x576a53(0x2c1)]('#pack-item-list');if(!_0x1eb159){_0x1ffefa['innerHTML'][_0x576a53(0x28a)](_0x576a53(0x2f6))&&(_0x1eb159=_0x1ffefa[_0x576a53(0x2c1)]('#pack-item-list'));if(!_0x1eb159){console[_0x576a53(0x25b)](_0x576a53(0x284)),_0x1ffefa[_0x576a53(0x26d)]=_0x576a53(0x324),_0x1eb159=_0x1ffefa[_0x576a53(0x2c1)](_0x576a53(0x2aa));if(!_0x1eb159){console['error']('updateDisplayBox:\x20Failed\x20to\x20ensure\x20#pack-item-list.\x20Hiding\x20box.'),_0x1ffefa['style'][_0x576a53(0x23a)]='none';return;}}}_0x1eb159[_0x576a53(0x26d)]='';const _0x149425=Object[_0x576a53(0x1f7)](displayedPackItems)[_0x576a53(0x315)](([_0x258480,_0x2bb436])=>_0x2bb436>0x0);if(_0x149425[_0x576a53(0x27d)]===0x0){_0x1ffefa[_0x576a53(0x1ec)]['maxHeight']='0px',_0x1ffefa['style'][_0x576a53(0x28f)]=_0x576a53(0x2ed),_0x1ffefa[_0x576a53(0x1ec)][_0x576a53(0x32a)]=_0x576a53(0x2ed),_0x1ffefa['style'][_0x576a53(0x222)]=_0x576a53(0x2ed),_0x1ffefa[_0x576a53(0x1ec)][_0x576a53(0x293)]='0px',_0x1ffefa[_0x576a53(0x1ec)][_0x576a53(0x325)]=_0x576a53(0x2da);getComputedStyle(_0x1ffefa)['display']!==_0x576a53(0x2ac)&&setTimeout(()=>{const _0x4578f5=_0x576a53;Object[_0x4578f5(0x2bb)](displayedPackItems)[_0x4578f5(0x235)](_0x31d4f6=>_0x31d4f6===0x0)&&(_0x1ffefa[_0x4578f5(0x1ec)][_0x4578f5(0x23a)]='none');},0x190);return;}_0x1ffefa[_0x576a53(0x1ec)][_0x576a53(0x23a)]=_0x576a53(0x2f9),_0x1ffefa[_0x576a53(0x1ec)][_0x576a53(0x222)]=_0x576a53(0x2f1),_0x1ffefa[_0x576a53(0x1ec)][_0x576a53(0x31f)]=_0x576a53(0x265),_0x1ffefa['style'][_0x576a53(0x293)]=_0x576a53(0x246),_0x1ffefa['style'][_0x576a53(0x325)]=_0x576a53(0x2da),_0x149425[_0x576a53(0x326)](([_0x4d03e6,_0x18d337])=>{const _0x5b167c=_0x576a53,_0x123918=document[_0x5b167c(0x2ef)](_0x5b167c(0x2ea));_0x123918['textContent']=_0x4d03e6+':\x20'+_0x18d337,_0x123918[_0x5b167c(0x1ec)][_0x5b167c(0x32f)]=_0x5b167c(0x231),_0x1eb159[_0x5b167c(0x2cc)](_0x123918);}),_0x1ffefa[_0x576a53(0x1ec)][_0x576a53(0x238)]=_0x576a53(0x2ac),requestAnimationFrame(()=>{const _0x23fc21=_0x576a53,_0x571420=_0x1ffefa[_0x23fc21(0x2c1)]('h3'),_0x16149c=_0x571420?_0x571420[_0x23fc21(0x2d7)]+parseInt(getComputedStyle(_0x571420)['marginBottom']||0x0)+parseInt(getComputedStyle(_0x571420)[_0x23fc21(0x32a)]||0x0):0x0,_0x4d39fd=_0x1eb159['scrollHeight']||0x0,_0x3385e9=getComputedStyle(_0x1ffefa),_0x2ed407=parseInt(_0x3385e9['paddingTop'])+parseInt(_0x3385e9[_0x23fc21(0x32a)]);let _0x3dd85e=_0x16149c+_0x4d39fd+_0x2ed407;const _0x3c578e=0x3e8;_0x4d39fd>_0x3c578e?(_0x1eb159[_0x23fc21(0x1ec)][_0x23fc21(0x238)]=_0x3c578e+'px',_0x1eb159[_0x23fc21(0x1ec)]['overflowY']=_0x23fc21(0x2d4),_0x3dd85e=_0x16149c+_0x3c578e+_0x2ed407+0xa):(_0x1eb159[_0x23fc21(0x1ec)][_0x23fc21(0x238)]='none',_0x1eb159['style'][_0x23fc21(0x248)]=_0x23fc21(0x2da)),_0x1ffefa[_0x23fc21(0x1ec)]['maxHeight']=(_0x3dd85e<0x32&&_0x149425[_0x23fc21(0x27d)]>0x0?0x32:_0x3dd85e)+'px';});}
+// FILE: script.js (Consolidated for index.html: POS, Buy/Sell, HAC, Packs)
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("script.js (Index Main): DOMContentLoaded. Waiting for Firebase...");
+    let appLogicHasRun = false;
+
+    function setupErrorUI(errorMessage) {
+        if (appLogicHasRun && !errorMessage.includes("Manually initializing")) return;
+        appLogicHasRun = true;
+        console.error("script.js (Index Main): Firebase critical error:", errorMessage);
+        alert("Critical error on Home page: " + errorMessage + " Some functionality will be disabled.");
+        const loginForm = document.getElementById('main-employee-login-form');
+        if (loginForm) {
+            const loginButton = loginForm.querySelector('button[type="submit"]');
+            if (loginButton) { loginButton.disabled = true; loginButton.textContent = "Login Disabled (DB Error)";}
+        }
+        const appContent = document.getElementById('application-main-content');
+        if (appContent) appContent.style.display = 'none';
+    }
+
+    async function executeMainAppLogic(firebaseDetail) {
+        if (appLogicHasRun) { console.log("script.js (Index Main): App logic already run."); return; }
+        appLogicHasRun = true;
+        console.log("script.js (Index Main): Running executeMainAppLogic.");
+
+        if (!firebaseDetail || !firebaseDetail.db || !firebaseDetail.functions) {
+            setupErrorUI("Firebase details not properly passed to main app logic."); return;
+        }
+        const db = firebaseDetail.db;
+        const firestore = firebaseDetail.functions;
+
+        const employeeLoginContainer = document.getElementById('employee-login-container');
+        const employeeLoginForm = document.getElementById('main-employee-login-form');
+        const employeePasswordInput = document.getElementById('main-employee-password');
+        const mainLoginError = document.getElementById('main-login-error');
+        const applicationMainContent = document.getElementById('application-main-content');
+        const viewSwitcher = document.getElementById('view-switcher');
+        const showPosViewBtn = document.getElementById('show-pos-view-btn');
+        const showBuySellViewBtn = document.getElementById('show-buysell-view-btn');
+        const posViewContainer = document.getElementById('pos-view-container');
+        const buySellViewContainer = document.getElementById('buysell-view-container');
+        const processingEmployeeSelect = document.getElementById('processing-employee-select');
+        const posItemsContainer = document.getElementById('pos-items-container');
+        const categoryButtons = document.querySelectorAll('#category-buttons-container .category-button');
+        const posTotalDisplay = document.getElementById('total');
+        const posCheckoutButton = document.getElementById('checkout-button-pos');
+        const posClearCartButton = document.getElementById('clear-cart-button-pos');
+        const hacMembershipItemEl = document.getElementById('hac-membership-item');
+        const hacSignupModalEl = document.getElementById('hac-signup-modal');
+        const closeHacModalButtonEl = hacSignupModalEl ? hacSignupModalEl.querySelector('.close-hac-modal') : null;
+        const submitHacSignupButtonEl = document.getElementById('submit-hac-signup-button');
+        const hacModalFirstNameInput = document.getElementById('hac-modal-first-name');
+        const hacModalLastNameInput = document.getElementById('hac-modal-last-name');
+        const hacModalPhoneNumberInput = document.getElementById('hac-modal-phone-number');
+        const hacModalDriverLicenseInput = document.getElementById('hac-modal-driver-license');
+        const hacModalEmailInput = document.getElementById('hac-modal-email');
+        const hacModalStatusEl = document.getElementById('hac-modal-status');
+        const hacStaffSearchTermInputEl = document.getElementById('hac-staff-search-term');
+        const hacStaffSearchButtonEl = document.getElementById('hac-staff-search-button');
+        const hacStaffClearSearchButtonEl = document.getElementById('hac-staff-clear-search-button');
+        const hacStaffSearchResultsDisplayEl = document.getElementById('hac-staff-search-results');
+        const hacCurrentPromoDisplayStaffEl = document.getElementById('hac-current-promo-display-staff');
+        const hacPromoMonthStaffDisplayEl = document.getElementById('hac-promo-month-staff');
+        const hacPromoTextStaffDisplayEl = document.getElementById('hac-promo-text-staff');
+        const mikesBuysItemsContainer = document.getElementById('mikes-buys-items-container');
+        const mikesSellsItemsContainer = document.getElementById('mikes-sells-items-container');
+        const totalOwedToCustomerDisplay = document.getElementById('total-owed-to-customer');
+        const totalOwedToMikesDisplay = document.getElementById('total-owed-to-mikes');
+        const summaryOwedCustomerDisplay = document.getElementById('summary-owed-customer');
+        const summaryOwedMikesDisplay = document.getElementById('summary-owed-mikes');
+        const netTransactionAmountDisplay = document.getElementById('net-transaction-amount');
+        const netTransactionPartyDisplay = document.getElementById('net-transaction-party');
+        const buySellClearButton = document.getElementById('buysell-clear-button');
+        const buySellCheckoutButton = document.getElementById('buysell-checkout-button');
+        const buySellStatusMessage = document.getElementById('buysell-status-message');
+        const posHardcodedItems = posItemsContainer ? Array.from(posItemsContainer.querySelectorAll('.item:not(.buysell-page-item)')) : [];
+
+        let currentSharedEmployeePassword = null;
+        const EMPLOYEE_PASSWORD_DOC_ID = "accessSettings";
+        const EMPLOYEE_PASSWORD_FIELD = "employeeLoginPassword";
+        let managedEmployees = [];
+        const taxRatesByRank = { "Trainee": 0.20, "Staff": 0.15, "Senior Staff": 0.10, "Manager": 0.00 };
+        const buySellItemDefinitions = {
+            buy: {
+                "Crab": { price: 87, image: "fs-crab.webp" }, // Assuming a generic crab image for buy
+                "Minnow": { price: 175, image: "fs-minnow.webp" },
+                "Haddock": { price: 175, image: "fs-haddock.webp" },
+                "Pollock": { price: 175, image: "fs-pollock.webp" },
+                "Crappie": { price: 175, image: "fs-crappie.webp" },
+                "Trout": { price: 175, image: "fs-trout.webp" },
+                "Rainbow Trout": { price: 175, image: "fs-rainbowtrout.webp" },
+                "Garfish": { price: 185, image: "fs-garfish.webp" },
+                "Striped Bass": { price: 200, image: "fs-stripedbass.webp" },
+                "Salmon": { price: 200, image: "fs-salmon.png" }, // Whole fish
+                "Northern Pike": { price: 225, image: "fs-northernpike.webp" },
+                "Tuna": { price: 250, image: "fs-tuna.webp" }, // Whole fish
+                "Deer Meat": { price: 75, image: "meat.webp" },
+                "Boar Meat": { price: 175, image: "meat.webp" },
+                "Rabbit Meat": { price: 375, image: "meat.webp" },
+                "Rat Meat": { price: 475, image: "meat.webp" },
+                "Animal Bones": { price: 225, image: "animal_bones.webp" },
+                "Salmon Meat": { price: 10, image: "fishmeat_salmon.webp" }, // Chunk
+                "Slimy Fish Meat": { price: 2, image: "fishmeat_slimy.webp" },
+                "White Fish Meat": { price: 10, image: "fishmeat_white.webp" }, // Chunk
+                "Deer Hide": { price: 125, image: "hide.webp" },
+                "Boar Hide": { price: 225, image: "hide.webp" },
+                "Rabbit Hide": { price: 325, image: "hide.webp" },
+                "Rat Hide": { price: 525, image: "hide.webp" },
+                "Boar Tusk": { price: 3000, image: "boar_tusk.webp" },
+                "Deer Antler": { price: 2000, image: "deer_antlers.webp" },
+                "Rabbit Foot": { price: 5000, image: "rabbit_foot.webp" },
+                "Rat Tail": { price: 6000, image: "rat_tail.webp" },
+            },
+            sell: {
+                "White Fish Meat": { price: 17, image: "fishmeat_white.webp" },
+                "Salmon Meat": { price: 20, image: "fishmeat_salmon.webp" },
+                "Crab": { price: 90, image: "fs-crab.webp" }, // Crab Mikes Sells
+            }
+        };
+        // ***** END MODIFIED buySellItemDefinitions *****
+        const buySellCart = { buy: {}, sell: {} };
+        let currentHacPromo = { month: 'N/A', text: 'Loading...'};
+
+        async function loadSharedEmployeePassword() {
+            if (!firestore.doc || !firestore.getDoc) {
+                console.error("Firestore 'doc' or 'getDoc' function is not available in loadSharedEmployeePassword.");
+                currentSharedEmployeePassword = "MikesEmployee"; return;
+            }
+            try {
+                const passwordDocRef = firestore.doc(db, "siteSettings", EMPLOYEE_PASSWORD_DOC_ID);
+                const docSnap = await firestore.getDoc(passwordDocRef);
+                if (docSnap.exists() && docSnap.data()[EMPLOYEE_PASSWORD_FIELD]) {
+                    currentSharedEmployeePassword = docSnap.data()[EMPLOYEE_PASSWORD_FIELD];
+                } else { currentSharedEmployeePassword = "MikesEmployee"; }
+                console.log("Shared employee password loaded:", currentSharedEmployeePassword ? currentSharedEmployeePassword.substring(0,3)+"..." : "Failed/Default");
+            } catch (e) { console.error("Pass load error", e); currentSharedEmployeePassword = "MikesEmployee"; }
+        }
+
+        function updateLoginView(isLoggedIn) {
+            console.log("Index: updateLoginView called with isLoggedIn:", isLoggedIn);
+            if (isLoggedIn) {
+                if (employeeLoginContainer) employeeLoginContainer.style.display = 'none';
+                if (applicationMainContent) applicationMainContent.style.display = 'block';
+                if (mainLoginError) mainLoginError.style.display = 'none';
+                if (typeof addLogoutButton === "function") addLogoutButton(); else console.error("addLogoutButton not defined");
+                if (viewSwitcher) viewSwitcher.style.display = 'flex';
+                if (showPosViewBtn && typeof showPosViewBtn.click === 'function') showPosViewBtn.click(); else switchToPosView();
+            } else {
+                if (employeeLoginContainer) employeeLoginContainer.style.display = 'block';
+                if (applicationMainContent) applicationMainContent.style.display = 'none';
+                if (viewSwitcher) viewSwitcher.style.display = 'none';
+            }
+        }
+
+        async function loadAndPopulateEmployees() {
+            let firestoreEmployees = [];
+            try {
+                const q = firestore.query(firestore.collection(db, "employees"), firestore.orderBy("fullName"));
+                const snap = await firestore.getDocs(q);
+                snap.forEach(doc => firestoreEmployees.push({ id: doc.id, ...doc.data() }));
+            } catch (e) { console.error("Error loading employees:", e); }
+            const fallbacks = [{ fullName: "Preston Stone", rank: "Manager", employeeNumber:"40262"}];
+            managedEmployees = [...firestoreEmployees];
+            fallbacks.forEach(fb => { if (!managedEmployees.some(e => e.fullName === fb.fullName)) managedEmployees.push(fb); });
+            managedEmployees.sort((a, b) => a.fullName.localeCompare(b.fullName));
+
+            if (processingEmployeeSelect) {
+                processingEmployeeSelect.innerHTML = '<option value="">-- Select Employee --</option>';
+                managedEmployees.forEach(emp => {
+                    const opt = new Option(emp.fullName, emp.fullName);
+                    opt.dataset.rank = emp.rank || "N/A";
+                    opt.dataset.employeeNumber = emp.employeeNumber || "N/A";
+                    processingEmployeeSelect.appendChild(opt);
+                });
+            }
+        }
+
+        function switchToPosView() {
+            if (posViewContainer) posViewContainer.style.display = 'block'; else console.warn("POS View Container not found");
+            if (buySellViewContainer) buySellViewContainer.style.display = 'none'; else console.warn("Buy/Sell View Container not found");
+            if (showPosViewBtn) showPosViewBtn.classList.add('active');
+            if (showBuySellViewBtn) showBuySellViewBtn.classList.remove('active');
+            console.log("Switched to POS View");
+            const allCategoryButton = document.querySelector('#category-buttons-container .category-button[data-category-filter="All"]');
+            if (allCategoryButton && !allCategoryButton.classList.contains('active')) {
+                 allCategoryButton.click();
+            } else if (categoryButtons.length > 0 && !document.querySelector('#category-buttons-container .category-button.active')) {
+                categoryButtons[0].click();
+            } else if (categoryButtons.length > 0 && document.querySelector('#category-buttons-container .category-button.active')) {
+                document.querySelector('#category-buttons-container .category-button.active').click();
+            }
+             calculateMainPOSTotal();
+             if (typeof updateDisplayBox === 'function') updateDisplayBox();
+        }
+
+        function switchToBuySellView() {
+            if (posViewContainer) posViewContainer.style.display = 'none';
+            if (buySellViewContainer) buySellViewContainer.style.display = 'block';
+            if (showPosViewBtn) showPosViewBtn.classList.remove('active');
+            if (showBuySellViewBtn) showBuySellViewBtn.classList.add('active');
+            console.log("Switched to Buy/Sell View");
+            if (mikesBuysItemsContainer && (!mikesBuysItemsContainer.hasChildNodes() || (mikesBuysItemsContainer.children.length === 1 && mikesBuysItemsContainer.querySelector('.loading-message')))) {
+                 renderBuySellPageItems();
+            } else if (mikesSellsItemsContainer && (!mikesSellsItemsContainer.hasChildNodes() || (mikesSellsItemsContainer.children.length === 1 && mikesSellsItemsContainer.querySelector('.loading-message')))) {
+                if (mikesBuysItemsContainer && !mikesBuysItemsContainer.querySelector('.buysell-page-item')) {
+                     renderBuySellPageItems();
+                }
+            } else if (mikesBuysItemsContainer && !mikesBuysItemsContainer.querySelector('.buysell-page-item')) {
+                 renderBuySellPageItems();
+            }
+            updateBuySellViewTotals();
+        }
+
+        function clearMainPOSCart() {
+            posHardcodedItems.forEach(item => {
+                const quantityInput = item.querySelector('.quantity');
+                if (quantityInput) {
+                    quantityInput.value = 0;
+                    quantityInput.dispatchEvent(new Event('input', {bubbles: true}));
+                }
+                if (item.id === 'hac-membership-item') {
+                    item.removeAttribute('data-hac-member-sale');
+                    item.removeAttribute('data-new-hac-member-id');
+                    const currentFilter = document.querySelector('#category-buttons-container .category-button.active')?.dataset.categoryFilter || 'All';
+                    const itemCategory = item.dataset.category;
+                    item.style.display = (currentFilter === 'All' || itemCategory === currentFilter) ? 'flex' : 'none';
+                }
+            });
+            if (typeof updateDisplayBox === 'function' && typeof displayedPackItems === 'object') {
+                Object.keys(displayedPackItems).forEach(k => displayedPackItems[k] = 0);
+                 if (typeof selectedPackQuantities === 'object') {
+                    Object.keys(selectedPackQuantities).forEach(k => selectedPackQuantities[k] = 0);
+                 }
+                updateDisplayBox(); // This will also call calculateMainPOSTotal through pack item listeners
+            } else {
+                calculateMainPOSTotal(); // Call if no pack logic to ensure total updates
+            }
+            console.log("Main POS Cart cleared.");
+        }
+
+        function calculateMainPOSTotal() {
+            let total = 0;
+            posHardcodedItems.forEach(item => {
+                const isHacActiveSale = item.id === 'hac-membership-item' && item.getAttribute('data-hac-member-sale') === 'true';
+                const isVisibleNonHac = item.id !== 'hac-membership-item' && item.style.display !== 'none';
+                if (!(isHacActiveSale || isVisibleNonHac)) return;
+
+                const price = parseFloat(item.getAttribute('data-price'));
+                let quantity = 0;
+                const quantityInput = item.querySelector('.quantity');
+
+                if (isHacActiveSale) {
+                    quantity = 1;
+                    if (quantityInput) { quantityInput.style.color = 'limegreen'; }
+                } else {
+                    if (quantityInput) {
+                        quantity = parseInt(quantityInput.value) || 0;
+                        quantityInput.style.color = quantity > 0 ? 'limegreen' : '#a0aec0';
+                        // CSS handles background transparency, so JS only needs to manage text color
+                    }
+                }
+                if (!isNaN(price) && quantity > 0) {
+                    total += price * quantity;
+                } else if (quantity === 0 && quantityInput && item.id !== 'hac-membership-item') {
+                     quantityInput.style.color = '#a0aec0';
+                }
+            });
+            if (posTotalDisplay) {
+                posTotalDisplay.textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+        }
+
+        async function checkoutPOS() {
+            if (!processingEmployeeSelect || !processingEmployeeSelect.value) {
+                alert("Please select the processing employee."); return;
+            }
+            const selectedOpt = processingEmployeeSelect.options[processingEmployeeSelect.selectedIndex];
+            const employeeName = selectedOpt.value;
+            const employeeRank = selectedOpt.dataset.rank;
+            const currentTotal = parseFloat(posTotalDisplay.textContent.replace(/,/g, '')) || 0;
+            let isHacSaleOnly = false;
+            if (hacMembershipItemEl && hacMembershipItemEl.getAttribute('data-hac-member-sale') === 'true') {
+                const otherItemsQuantity = posHardcodedItems.reduce((acc, item) => {
+                    if (item.id !== 'hac-membership-item' && item.style.display !== 'none') {
+                        const qtyInput = item.querySelector('.quantity');
+                        return acc + (parseInt(qtyInput?.value) || 0);
+                    } return acc;
+                }, 0);
+                if (otherItemsQuantity === 0) isHacSaleOnly = true;
+            }
+            if (currentTotal === 0 && !isHacSaleOnly) { alert("No POS items selected."); return; }
+
+            const taxRate = taxRatesByRank[employeeRank] !== undefined ? taxRatesByRank[employeeRank] : 0.00;
+            const taxAmount = currentTotal * taxRate;
+            const netTotalAfterTax = currentTotal - taxAmount;
+            let saleItemsStructured = [];
+            posHardcodedItems.forEach(item => {
+                let quantity = 0;
+                const pTag = item.querySelector('p');
+                const itemName = pTag ? pTag.textContent.split(':')[0].trim() : 'Unknown Item';
+                const isHacActiveSaleInLoop = item.id === 'hac-membership-item' && item.getAttribute('data-hac-member-sale') === 'true';
+                const isVisibleNonHacInLoop = item.id !== 'hac-membership-item' && item.style.display !== 'none';
+
+                if (isHacActiveSaleInLoop) { quantity = 1; }
+                else if (isVisibleNonHacInLoop) {
+                    const quantityInput = item.querySelector('.quantity');
+                    if (quantityInput) quantity = parseInt(quantityInput.value) || 0;
+                }
+                if (quantity > 0) saleItemsStructured.push({ itemName, quantity, price: parseFloat(item.getAttribute('data-price')) });
+            });
+             if (saleItemsStructured.length === 0) {
+                 if (isHacSaleOnly && currentTotal > 0 && hacMembershipItemEl && hacMembershipItemEl.getAttribute('data-hac-member-sale') === 'true') {
+                    const hacP = hacMembershipItemEl.querySelector('p');
+                    const hacName = hacP ? hacP.textContent.split(':')[0].trim() : 'HAC MEMBERSHIP';
+                    if (!saleItemsStructured.some(si => si.itemName === hacName)) {
+                        saleItemsStructured.push({itemName: hacName, quantity: 1, price: parseFloat(hacMembershipItemEl.getAttribute('data-price'))});
+                    }
+                 } else { alert("No POS items with quantity > 0."); return; }
+            }
+            const transactionData = {
+                transactionType: "POS Sale", employeeName, employeeRank, items: saleItemsStructured,
+                subTotal: parseFloat(currentTotal.toFixed(2)), taxRateApplied: `${(taxRate * 100).toFixed(0)}%`,
+                taxAmountPaidToMikes: parseFloat(taxAmount.toFixed(2)), netTotalForEmployee: parseFloat(netTotalAfterTax.toFixed(2)),
+                fullSaleTotal: parseFloat(currentTotal.toFixed(2)), taxesCleared: false, createdAt: firestore.serverTimestamp()
+            };
+            try {
+                const docRef = await firestore.addDoc(firestore.collection(db, "transactions"), transactionData);
+                console.log("POS Transaction saved ID: ", docRef.id);
+                clearMainPOSCart();
+                alert(
+                    `POS Transaction Completed for: ${employeeName} (${employeeRank || 'N/A'})\n` +
+                    `---------------------------------------\n` +
+                    `Total Sale Amount: $${currentTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n` +
+                    `Fee to Mikes (${(taxRate * 100).toFixed(0)}%): $${taxAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n` +
+                    `Net Amount for Employee: $${netTotalAfterTax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                );
+            }catch (error) { console.error("Error saving POS transaction: ", error); alert(`Failed to save POS transaction. ${error.message}`);}
+        }
+
+        function openHacSignupModal() {
+            if (hacSignupModalEl) {
+                if(hacModalFirstNameInput) hacModalFirstNameInput.value = '';
+                if(hacModalLastNameInput) hacModalLastNameInput.value = '';
+                if(hacModalPhoneNumberInput) hacModalPhoneNumberInput.value = '';
+                if(hacModalDriverLicenseInput) hacModalDriverLicenseInput.value = '';
+                if(hacModalEmailInput) hacModalEmailInput.value = '';
+                if(hacModalStatusEl) { hacModalStatusEl.textContent = ''; hacModalStatusEl.style.color = 'green';  }
+                hacSignupModalEl.style.display = "flex";
+            }
+        }
+        function closeHacSignupModal() { if (hacSignupModalEl) hacSignupModalEl.style.display = "none"; }
+
+        async function submitHacMemberSignup() {
+             if (!hacModalFirstNameInput || !hacModalLastNameInput || !hacModalFirstNameInput.value.trim() || !hacModalLastNameInput.value.trim()) {
+                if(hacModalStatusEl) { hacModalStatusEl.textContent = "First and Last name are required."; hacModalStatusEl.style.color = "red"; } return;
+            }
+            if(submitHacSignupButtonEl) {submitHacSignupButtonEl.disabled = true; submitHacSignupButtonEl.textContent = "Submitting...";}
+            const newMemberData = {
+                firstName: hacModalFirstNameInput.value.trim(), lastName: hacModalLastNameInput.value.trim(),
+                phoneNumber: hacModalPhoneNumberInput.value.trim() || null, driverLicense: hacModalDriverLicenseInput.value.trim() || null,
+                email: hacModalEmailInput.value.trim().toLowerCase() || null,
+                isEligible: true, membershipPurchaseDate: firestore.serverTimestamp(), createdAt: firestore.serverTimestamp() };
+            try {
+                const docRef = await firestore.addDoc(firestore.collection(db, "hacMembers"), newMemberData);
+                if(hacModalStatusEl) { hacModalStatusEl.textContent = "Signup successful!"; hacModalStatusEl.style.color = "green"; }
+                if(hacMembershipItemEl) {
+                    hacMembershipItemEl.setAttribute('data-hac-member-sale', 'true');
+                    hacMembershipItemEl.setAttribute('data-new-hac-member-id', docRef.id);
+                    const hacQtyInput = hacMembershipItemEl.querySelector('.quantity');
+                    if(hacQtyInput) hacQtyInput.value = 1;
+                    const activeFilter = document.querySelector('#category-buttons-container .category-button.active')?.dataset.categoryFilter;
+                    if (activeFilter === 'All' || activeFilter === hacMembershipItemEl.dataset.category) {
+                        hacMembershipItemEl.style.display = 'flex';
+                    }
+                }
+                calculateMainPOSTotal();
+                setTimeout(() => { closeHacSignupModal(); if(submitHacSignupButtonEl){ submitHacSignupButtonEl.disabled = false; submitHacSignupButtonEl.textContent = "Submit & Add to Cart";} }, 1500);
+            } catch (error) {
+                console.error("Error adding HAC member", error);
+                if(hacModalStatusEl) { hacModalStatusEl.textContent = "Error: "+error.message; hacModalStatusEl.style.color = "red"; }
+                if(submitHacSignupButtonEl){ submitHacSignupButtonEl.disabled = false; submitHacSignupButtonEl.textContent = "Submit & Add to Cart";}
+            }
+        }
+        async function loadHacPromoForStaff() {
+            try {
+                const promoDocRef = firestore.doc(db, "siteSettings", "hacConfiguration");
+                const docSnap = await firestore.getDoc(promoDocRef);
+                if (docSnap.exists()) {
+                    currentHacPromo = { month: docSnap.data().currentPromoMonth || 'N/A', text: docSnap.data().currentPromoText || 'No promo text.' };
+                } else { currentHacPromo = { month: 'N/A', text: 'No promo configured.' };}
+                if(hacPromoMonthStaffDisplayEl) hacPromoMonthStaffDisplayEl.textContent = currentHacPromo.month;
+                if(hacPromoTextStaffDisplayEl) hacPromoTextStaffDisplayEl.textContent = currentHacPromo.text;
+            } catch (e) { console.error("Err loading HAC promo", e); currentHacPromo = { month: 'Error', text: 'Load failed.' };}
+        }
+        async function searchHacMembersForStaff() {
+            if (!hacStaffSearchTermInputEl || !hacStaffSearchResultsDisplayEl) return;
+            const searchTerm = hacStaffSearchTermInputEl.value.trim().toLowerCase();
+            if (!searchTerm) {
+                hacStaffSearchResultsDisplayEl.innerHTML = "<p><i>Enter a name or phone to search.</i></p>";
+                if(hacCurrentPromoDisplayStaffEl) hacCurrentPromoDisplayStaffEl.style.display = 'none'; return;
+            }
+            hacStaffSearchResultsDisplayEl.innerHTML = "<p><i>Searching...</i></p>";
+            try {
+                const q = firestore.query(firestore.collection(db, "hacMembers"), firestore.orderBy("lastName"), firestore.orderBy("firstName"));
+                const snap = await firestore.getDocs(q);
+                let all = []; snap.forEach(d => all.push({id: d.id, ...d.data()}));
+                const filtered = all.filter(m => `${m.firstName||''} ${m.lastName||''}`.toLowerCase().includes(searchTerm) || m.phoneNumber?.includes(searchTerm) || m.driverLicense?.toLowerCase().includes(searchTerm) || m.email?.toLowerCase().includes(searchTerm)  );
+                renderHacSearchResultsForStaff(filtered);
+            } catch(e) { console.error("HAC Search error", e); hacStaffSearchResultsDisplayEl.innerHTML = "<p>Search error.</p>"; }
+        }
+        function renderHacSearchResultsForStaff(members) {
+             if (!hacStaffSearchResultsDisplayEl) return;
+            hacStaffSearchResultsDisplayEl.innerHTML = '';
+            if (members.length === 0) {
+                hacStaffSearchResultsDisplayEl.innerHTML = "<p><i>No HAC members found.</i></p>";
+                if (hacCurrentPromoDisplayStaffEl) hacCurrentPromoDisplayStaffEl.style.display = 'none'; return;
+            }
+            members.forEach(mem => {
+                const itemDiv = document.createElement('div'); itemDiv.className = 'member-result-item';
+                const eligClass = mem.isEligible ? 'hac-eligible' : 'hac-not-eligible';
+                const eligText = mem.isEligible ? 'ELIGIBLE' : 'NOT ELIGIBLE';
+                const purchaseDate = mem.membershipPurchaseDate?.toDate ? mem.membershipPurchaseDate.toDate().toLocaleDateString() : 'N/A';
+                let claimBtnHTML = ''; if (mem.isEligible) claimBtnHTML = `<button class="action-button claim-benefit-button" data-member-id="${mem.id}" data-member-name="${mem.firstName} ${mem.lastName}">Claim Benefit</button>`;
+                itemDiv.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                        <span><strong>${mem.firstName} ${mem.lastName}</strong> <span class="${eligClass}">${eligText}</span></span>
+                        ${claimBtnHTML}
+                    </div>
+                    <div style="font-size: 0.85em; color: #ccc;">
+                        Phone: ${mem.phoneNumber || 'N/A'} | DL: ${mem.driverLicense || 'N/A'}<br>
+                        Email: ${mem.email || 'N/A'} | Purchased: ${purchaseDate}
+                    </div>`;
+                hacStaffSearchResultsDisplayEl.appendChild(itemDiv);
+            });
+            hacStaffSearchResultsDisplayEl.querySelectorAll('.claim-benefit-button').forEach(b => b.addEventListener('click', handleClaimBenefitClick));
+            if(hacPromoMonthStaffDisplayEl && hacPromoTextStaffDisplayEl && hacCurrentPromoDisplayStaffEl){
+                hacPromoMonthStaffDisplayEl.textContent = currentHacPromo.month;
+                hacPromoTextStaffDisplayEl.textContent = currentHacPromo.text;
+                hacCurrentPromoDisplayStaffEl.style.display = (currentHacPromo.month && currentHacPromo.month !== 'N/A' && currentHacPromo.text && currentHacPromo.text !== 'No promo configured.' && currentHacPromo.text !== 'No promo text.') ? 'block' : 'none';
+            }
+        }
+        async function handleClaimBenefitClick(event) {
+            const btn = event.currentTarget; const id = btn.dataset.memberId; const name = btn.dataset.memberName;
+            if(!confirm(`Mark ${name}'s benefit as claimed?`)) return;
+            btn.disabled = true; btn.textContent = "Processing...";
+            try {
+                await firestore.updateDoc(firestore.doc(db, "hacMembers", id), { isEligible: false });
+                alert(`${name}'s benefit claimed.`); searchHacMembersForStaff();
+            } catch (e) { console.error("Claim benefit error", e); alert("Error."); btn.disabled = false; btn.textContent = "Claim Benefit"; }
+        }
+
+        function renderBuySellPageItems() {
+            if (!mikesBuysItemsContainer || !mikesSellsItemsContainer) return;
+            mikesBuysItemsContainer.innerHTML = ''; mikesSellsItemsContainer.innerHTML = '';
+            Object.entries(buySellItemDefinitions.buy).forEach(([name, price]) => {
+                mikesBuysItemsContainer.appendChild(createBuySellPageItemDiv(name, price, 'buy'));
+            });
+            Object.entries(buySellItemDefinitions.sell).forEach(([name, price]) => {
+                mikesSellsItemsContainer.appendChild(createBuySellPageItemDiv(name, price, 'sell'));
+            });
+        }
+
+        function createBuySellPageItemDiv(name, itemData, type) { // itemData is {price, image}
+            const div = document.createElement('div');
+            div.className = 'item buysell-page-item';
+            div.setAttribute('data-price', itemData.price);
+            div.setAttribute('data-name', name);
+            div.setAttribute('data-type', type);
+
+            const img = document.createElement('img');
+            img.src = itemData.image || "Images/placeholder_buysell.jpg"; // Use item's image or fallback
+            img.alt = name;
+            img.style.pointerEvents = "none";
+
+            const p = document.createElement('p');
+            p.textContent = `${name}: $${itemData.price.toLocaleString()}`;
+            p.style.pointerEvents = "none";
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'quantity';
+            input.min = "0";
+
+            // Ensure cart entry exists for this item and type
+            if (!buySellCart[type]) {
+                buySellCart[type] = {};
+            }
+            if (!buySellCart[type][name]) {
+                buySellCart[type][name] = { quantity: 0, price: itemData.price };
+            }
+            input.value = buySellCart[type][name].quantity;
+
+            // Inside createBuySellPageItemDiv (and similar for POS items)
+            function updateInputStyleFromValue() {
+                const val = parseInt(input.value) || 0;
+                input.style.color = val > 0 ? 'limegreen' : '#a0aec0'; // Default color for 0
+                // input.style.backgroundColor = val > 0 ? 'lightgreen' : '#e2e8f0'; // NO LONGER NEEDED if background is transparent
+            }
+            updateInputStyleFromValue();
+
+            input.addEventListener('input', () => {
+                let currentQuantity = parseInt(input.value) || 0;
+                if (currentQuantity < 0) {
+                    currentQuantity = 0;
+                    input.value = 0;
+                }
+                // Ensure cart entry exists if user clears input then types again
+                if (!buySellCart[type][name]) {
+                     buySellCart[type][name] = { quantity: 0, price: itemData.price };
+                }
+                buySellCart[type][name].quantity = currentQuantity;
+                updateInputStyleFromValue();
+                updateBuySellViewTotals();
+            });
+
+            div.addEventListener('click', (event) => {
+                if (event.target === input) {
+                    input.focus(); return;
+                }
+                if (!buySellCart[type][name]) {
+                    buySellCart[type][name] = { quantity: 0, price: itemData.price };
+                }
+                buySellCart[type][name].quantity++;
+                input.value = buySellCart[type][name].quantity;
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+            });
+            div.appendChild(img); div.appendChild(p); div.appendChild(input);
+            return div;
+        }
+
+function updateBuySellViewTotals() {
+        let toCust = 0; Object.values(buySellCart.buy).forEach(i => {if(i) toCust += i.quantity * i.price});
+        let toMikes = 0; Object.values(buySellCart.sell).forEach(i => {if(i)toMikes += i.quantity * i.price});
+
+        if(totalOwedToCustomerDisplay) totalOwedToCustomerDisplay.textContent = toCust.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if(totalOwedToMikesDisplay) totalOwedToMikesDisplay.textContent = toMikes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        if(summaryOwedCustomerDisplay) summaryOwedCustomerDisplay.textContent = `$${toCust.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        if(summaryOwedMikesDisplay) summaryOwedMikesDisplay.textContent = `$${toMikes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+        const net = toMikes - toCust;
+        if(netTransactionAmountDisplay) netTransactionAmountDisplay.textContent = `$${Math.abs(net).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+        if(netTransactionPartyDisplay) netTransactionPartyDisplay.textContent = net > 0 ? "Customer Owes Mikes" : net < 0 ? "Mikes Owes Customer" : "Even Trade";
+    }
+        function clearBuySellSelections() {
+            buySellCart.buy = {}; buySellCart.sell = {};
+            document.querySelectorAll('#buysell-view-container .buysell-page-item input.quantity').forEach(i => {
+                i.value = 0; i.style.color = '#a0aec0'; // CSS handles background
+            });
+            updateBuySellViewTotals();
+            if(buySellStatusMessage) buySellStatusMessage.textContent = '';
+        }
+        async function finalizeBuySellTrade() {
+            if (!processingEmployeeSelect || !processingEmployeeSelect.value) { alert("Select employee."); return; }
+            const empOpt = processingEmployeeSelect.options[processingEmployeeSelect.selectedIndex];
+            const empName = empOpt.value; const empRank = empOpt.dataset.rank;
+            let boughtVal = 0; Object.values(buySellCart.buy).forEach(i=>{if(i)boughtVal+=i.price*i.quantity});
+            let soldVal = 0; Object.values(buySellCart.sell).forEach(i=>{if(i)soldVal+=i.price*i.quantity});
+            if(boughtVal === 0 && soldVal === 0) {alert("No items."); return;}
+            let itemsTraded = [];
+            for(const type of ['buy', 'sell']) {Object.entries(buySellCart[type]).forEach(([n,d])=>{if(d && d.quantity>0)itemsTraded.push({itemName:n,quantity:d.quantity,pricePerUnit:d.price,type})})}
+            const data = {
+                transactionType:"Buy/Sell Trade", employeeName:empName, employeeRank:empRank || 'N/A', itemsTraded,
+                totalValueBoughtFromCustomer:boughtVal, totalValueSoldToCustomer:soldVal,
+                netAmountForMikes: soldVal - boughtVal, createdAt: firestore.serverTimestamp()
+            };
+            try {
+                const ref = await firestore.addDoc(firestore.collection(db, "transactions"), data);
+                if(buySellStatusMessage){buySellStatusMessage.textContent="Trade finalized!";buySellStatusMessage.style.color="green";}
+                clearBuySellSelections(); setTimeout(()=> {if(buySellStatusMessage)buySellStatusMessage.textContent=''},3000);
+            } catch(e){console.error("B/S save err",e); if(buySellStatusMessage){buySellStatusMessage.textContent="Error: " + e.message ;buySellStatusMessage.style.color="red";}}
+        }
+
+        function attachAppEventListeners() {
+            console.log("script.js (Index Main): Attaching App Event Listeners");
+            if (employeeLoginForm) {
+                 employeeLoginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const enteredPassword = employeePasswordInput.value;
+                    console.log("Login form submitted. Entered:", enteredPassword);
+                    if (!currentSharedEmployeePassword) {
+                        console.log("Password not pre-loaded, loading now for main login...");
+                        await loadSharedEmployeePassword();
+                    }
+                    console.log("Comparing with actual password for main login:", currentSharedEmployeePassword);
+                    if (enteredPassword === currentSharedEmployeePassword) {
+                        console.log("Password MATCH on index page!");
+                        if (typeof grantEmployeeSession === "function") grantEmployeeSession(); else console.error("grantEmployeeSession is not defined");
+                        updateLoginView(true);
+                        await initializePageContentAfterLogin();
+                    } else {
+                         console.log("Password MISMATCH on index page.");
+                         if(mainLoginError) { mainLoginError.textContent = "Invalid Password."; mainLoginError.style.display = 'block';}
+                         if(employeePasswordInput) employeePasswordInput.value = "";
+                    }
+                });
+            }
+
+            if (showPosViewBtn) showPosViewBtn.addEventListener('click', switchToPosView);
+            if (showBuySellViewBtn) showBuySellViewBtn.addEventListener('click', switchToBuySellView);
+
+            if (posClearCartButton) posClearCartButton.addEventListener('click', clearMainPOSCart);
+            if (posCheckoutButton) posCheckoutButton.addEventListener('click', checkoutPOS);
+            if (buySellClearButton) buySellClearButton.addEventListener('click', clearBuySellSelections);
+            if (buySellCheckoutButton) buySellCheckoutButton.addEventListener('click', finalizeBuySellTrade);
+
+            if (categoryButtons) {
+                categoryButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (!posViewContainer || posViewContainer.style.display === 'none') switchToPosView();
+                        const filter = button.getAttribute('data-category-filter');
+                        categoryButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        posHardcodedItems.forEach(item => {
+                            const itemCategory = item.getAttribute('data-category');
+                            if (item.id === 'hac-membership-item' && item.getAttribute('data-hac-member-sale') === 'true') {
+                                item.style.display = 'flex';
+                            } else {
+                                item.style.display = (filter === 'All' || itemCategory === filter) ? 'flex' : 'none';
+                            }
+                        });
+                        calculateMainPOSTotal();
+                    });
+                });
+            }
+
+            posHardcodedItems.forEach(item => {
+                const quantityInput = item.querySelector('.quantity');
+                if (item.id === 'hac-membership-item') {
+                    const hacButton = item.querySelector('.add-to-cart-hac');
+                    if (hacButton) hacButton.addEventListener('click', openHacSignupModal);
+                } else {
+                    if (quantityInput) {
+                         quantityInput.addEventListener('input', () => {
+                            if (posViewContainer?.style.display !== 'none') {
+                                calculateMainPOSTotal();
+                            }
+                        });
+                    }
+                    if (item.dataset.pack !== 'true') { // Non-pack POS item click
+                        item.addEventListener('click', (event) => {
+                            if (posViewContainer?.style.display === 'none') return;
+                            if (event.target.tagName === 'INPUT' || event.target.tagName === 'LABEL' || event.target.closest('button')) {
+                                if(event.target.tagName === 'INPUT') event.target.focus();
+                                return;
+                            }
+                            if (quantityInput) {
+                                quantityInput.value = (parseInt(quantityInput.value) || 0) + 1;
+                                quantityInput.dispatchEvent(new Event('input', {bubbles: true}));
+                            }
+                        });
+                    }
+                }
+            });
+
+            if (closeHacModalButtonEl) closeHacModalButtonEl.addEventListener('click', closeHacSignupModal);
+            if (hacSignupModalEl) window.addEventListener('click', (event) => { if (event.target === hacSignupModalEl) closeHacSignupModal(); });
+            if (submitHacSignupButtonEl) submitHacSignupButtonEl.addEventListener('click', submitHacMemberSignup);
+            if(hacStaffSearchButtonEl) hacStaffSearchButtonEl.addEventListener('click', searchHacMembersForStaff);
+            if(hacStaffSearchTermInputEl) hacStaffSearchTermInputEl.addEventListener('keypress', (e) => { if(e.key === 'Enter') {e.preventDefault(); searchHacMembersForStaff();} });
+            if(hacStaffClearSearchButtonEl) {
+                hacStaffClearSearchButtonEl.addEventListener('click', () => {
+                    if(hacStaffSearchTermInputEl) hacStaffSearchTermInputEl.value = '';
+                    if(hacStaffSearchResultsDisplayEl) hacStaffSearchResultsDisplayEl.innerHTML = "<p><i>Enter a name or phone to look up HAC member status.</i></p>";
+                    if(hacCurrentPromoDisplayStaffEl) hacCurrentPromoDisplayStaffEl.style.display = 'none';
+                });
+            }
+        }
+
+        async function initializePageContentAfterLogin() {
+            console.log("Index: initializePageContentAfterLogin called");
+            await loadAndPopulateEmployees();
+            if (showPosViewBtn && typeof showPosViewBtn.click === 'function') {
+                 showPosViewBtn.click();
+            } else { switchToPosView(); }
+
+            if (posViewContainer && posViewContainer.style.display !== 'none') { // Check if POS view is actually active
+                calculateMainPOSTotal();
+                if (typeof initPackTracker === 'function' && posItemsContainer?.querySelector('.item[data-pack="true"]')) {
+                    initPackTracker(); // This will call updateDisplayBox
+                } else { // If no pack items, ensure pack box is hidden
+                    const packBox = document.getElementById('pack-display-box');
+                    if (packBox) packBox.style.display = 'none';
+                }
+                await loadHacPromoForStaff();
+            }
+        }
+
+        async function initializePageOnLoad() {
+            console.log("Index: initializePageOnLoad called");
+            attachAppEventListeners();
+            if (typeof checkEmployeeSession === "function" && checkEmployeeSession()) {
+                console.log("script.js (Index Main): Employee session active from previous login.");
+                updateLoginView(true);
+                await initializePageContentAfterLogin();
+            } else {
+                console.log("script.js (Index Main): No active session. Showing login form.");
+                 if(typeof checkEmployeeSession !== "function") console.error("Index page: checkEmployeeSession from utility.js is not available!");
+                updateLoginView(false);
+                await loadSharedEmployeePassword();
+            }
+        }
+        initializePageOnLoad();
+    } // End of executeMainAppLogic
+
+    let firebaseReadyProcessed = false;
+    document.addEventListener('firebaseReady', (e) => {
+        console.log("Index: Firebase ready event RECEIVED by script.js.");
+        if (!appLogicHasRun && !firebaseReadyProcessed) {
+            firebaseReadyProcessed = true;
+            console.log("Index: Processing 'firebaseReady' event.");
+            executeMainAppLogic(e.detail);
+        } else if (appLogicHasRun) { console.log("Index: 'firebaseReady' received, but app logic already run."); }
+        else if (firebaseReadyProcessed) { console.log("Index: 'firebaseReady' received, but already processed by this listener.");}
+    });
+    document.addEventListener('firebaseError', (e) => {
+        console.error("Index: Firebase error event RECEIVED by script.js:", e.detail?.error);
+        if (!appLogicHasRun && !firebaseReadyProcessed) {
+            firebaseReadyProcessed = true;
+            setupErrorUI("Firebase SDK init failed in HTML. " + (e.detail?.error?.message || "Unknown error."));
+        }
+    });
+    setTimeout(() => {
+        if (!appLogicHasRun && !firebaseReadyProcessed) {
+            console.warn("Index: Timeout. Checking Firebase manually because 'firebaseReady'/'firebaseError' event was missed.");
+            if (window.isFirebaseReady === true && window.db && window.firestoreFunctions) {
+                console.log("Index: Firebase IS ready via window flag (timeout). Calling executeMainAppLogic.");
+                executeMainAppLogic({ db: window.db, functions: window.firestoreFunctions });
+            } else if (window.isFirebaseReady === false) {
+                 console.error("Index: Firebase error flag IS SET via window (timeout). Calling setupErrorUI.");
+                setupErrorUI("App init timeout. Firebase reported an error during HTML setup.");
+            } else {
+                console.error("Index: Firebase ready state UNKNOWN after timeout. Calling setupErrorUI.");
+                setupErrorUI("App init timeout. Firebase status unknown.");
+            }
+        } else {
+            // console.log("Index: Timeout check, but appLogicHasRun or firebaseReadyProcessed is true. No action needed from timeout.");
+        }
+    }, 3500);
+});
+
+// === Global Pack Tracker Definitions ===
+const packDefinitions = {
+  hunting_pack: { "Hunting Rifle": 1, "30.06 Ammo": 100, "Bait (Choice Of)": 10, "Knife": 1, "Hunting Map": 1, "Orange Hunting Vest": 1, },
+  scoped_hunting_pack: { "Scoped Rifle": 1, "30.06 Ammo": 100, "Bait (Choice Of)": 10, "Knife": 1, "Hunting Map": 1, },
+  fishing_pack: { "COOLERS": 1, "Beer": 10, "MSG TAILGATE CHAIR": 2, },
+  scuba_pack: { "Scuba Tank": 2, "Shark Repellent": 2, "Bandages": 10, },
+  camping_pack: { "COOLERS": 2, "MSG TAILGATE CHAIR": 2, "Beer": 20, "Binoculars": 2, },
+  tiny_biters_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #1": 10, "MAGGOTS BAIT": 50, },
+  trout_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #2": 10, "WAXWORMS BAIT": 50, },
+  big_boy_pack: { "Elemental Rod": 1, "LINE SNIFFER REEL": 1, "BITE SIZE LINE": 10, "HOOK #2": 10, "HOOK #6": 10, "NIGHTWORMS BAIT": 50, },
+  dock_special_pack: { "Brutas Rod": 1, "FISHRUS REEL": 1, "NOODLE LINE": 10, "HOOK #3": 10, "MAGGOTS BAIT": 50, },
+  pike_pack: { "Nero Rod": 1, "Rock Bottom Reel": 1, "Mobey Mono Line": 10, "HOOK #3": 10, "NIGHTWORMS BAIT": 50, },
+  tuna_pack: { "Zeus Rod": 1, "Thunder Reel": 1, "LIGHTNING LINE": 10, "HOOK #10": 10, "LEECH BAIT": 50, },
+  mahi_pack: { "Elemental Rod": 1, "LINE SNIFFER REEL": 1, "BITE SIZE LINE": 10, "HOOK #1": 10, },
+};
+const displayedPackItems = {};
+const selectedPackQuantities = {};
+
+function initPackTracker() {
+    console.log("Pack Tracker: Initializing...");
+    const packItemElements = document.querySelectorAll('#pos-items-container .item[data-pack="true"]');
+    let packBox = document.getElementById('pack-display-box');
+
+    // Ensure packBox exists or create it
+    if (!packBox) {
+        const posTotalH1 = document.querySelector('#pos-view-container > h1#total');
+        const cartActionsDiv = document.querySelector('#pos-view-container .cart-actions');
+        let insertionPoint = cartActionsDiv || posTotalH1;
+
+        if (insertionPoint && insertionPoint.parentNode) {
+            packBox = document.createElement('div');
+            packBox.id = 'pack-display-box';
+            packBox.style.cssText = "margin-top: 0px; padding:0px; background-color: rgba(30,30,30,0.7); border-radius: 8px; display:none; border-width: 0px; width:100%; max-width: 600px; margin-left:auto; margin-right:auto; max-height:0px; overflow:hidden; transition: max-height 0.4s ease, padding 0.3s ease, margin-top 0.3s ease, border-width 0.3s ease;";
+            packBox.innerHTML = '<h3 style="text-align:center; margin: 10px 0 10px 0; border-bottom: 1px solid #555; padding-bottom: 5px;">Combined Pack Contents</h3><div id="pack-item-list" style="padding: 0 15px 10px 15px; max-height: 200px; overflow-y: auto;"></div>';
+            insertionPoint.parentNode.insertBefore(packBox, insertionPoint);
+            console.log("Pack Tracker: pack-display-box created.");
+        } else {
+            console.warn("Pack Tracker: Could not find insertion point for display box.");
+            return;
+        }
+    }
+
+    if (packItemElements.length === 0) {
+        console.log("Pack Tracker: No pack items found.");
+        if (packBox) packBox.style.display = 'none';
+        return;
+    }
+
+    packItemElements.forEach(itemDiv => {
+        const input = itemDiv.querySelector('input.quantity');
+        if (!input || !input.id || !input.id.startsWith('quantity_')) {
+             console.warn("Pack Tracker: Skipping item, input or ID malformed", itemDiv); return;
+        }
+        const packId = input.id.replace('quantity_', '');
+        if (!packDefinitions[packId]) {
+            console.warn(`Pack Tracker: Definition not found for pack ID: ${packId}`); return;
+        }
+
+        // Initialize from current input value, then update displayedPackItems
+        const initialQty = parseInt(input.value) || 0;
+        selectedPackQuantities[packId] = 0; // Start with 0 for delta calculation in handlePackChange
+        if (initialQty > 0) {
+             handlePackChange(packId, initialQty, true); // Pass true for isInitialLoad
+        }
+
+
+        itemDiv.addEventListener('click', e => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
+            e.stopPropagation(); e.preventDefault();
+            if (document.getElementById('pos-view-container')?.style.display === 'none') return;
+            input.value = (parseInt(input.value) || 0) + 1;
+            input.dispatchEvent(new Event('input'));
+        });
+        input.addEventListener('input', () => {
+            if (document.getElementById('pos-view-container')?.style.display === 'none') return;
+            handlePackChange(packId, parseInt(input.value) || 0);
+            if (typeof calculateMainPOSTotal === 'function') calculateMainPOSTotal();
+        });
+    });
+    updateDisplayBox();
+    console.log("Pack Tracker: Initialized.");
+}
+
+function handlePackChange(packId, newQuantity, isInitialLoad = false) {
+    const oldQuantity = selectedPackQuantities[packId] || 0;
+    const packContents = packDefinitions[packId];
+    if (!packContents || newQuantity < 0) return;
+
+    let quantityChange = newQuantity - oldQuantity;
+
+    if (isInitialLoad) { // If it's the initial load from an existing input value
+        // We want displayedPackItems to reflect the sum of *all* initial pack quantities
+        // So, the "change" is effectively the newQuantity if oldQuantity was 0 (or not yet set for this pack)
+        // If oldQuantity (from selectedPackQuantities) was >0 from a previous pack, that's fine,
+        // this logic correctly adds the new pack's items.
+        // The key is that displayedPackItems should accumulate.
+        // No, this logic was flawed. `isInitialLoad` implies we are setting it fresh.
+        // We need to clear previous contribution if `oldQuantity` in `selectedPackQuantities` was from *this specific pack*.
+        // The current `quantityChange = newQuantity - oldQuantity` handles this correctly if selectedPackQuantities[packId]
+        // was accurately reflecting the *previous state of this specific packId*.
+        // The issue was likely that selectedPackQuantities[packId] was not reset for initial calculation.
+        // Let's stick to delta for general updates.
+        // The initPackTracker loop should handle initial setup.
+    }
+
+    for (const [item, countPerPack] of Object.entries(packContents)) {
+        displayedPackItems[item] = (displayedPackItems[item] || 0) + (countPerPack * quantityChange);
+        if (displayedPackItems[item] < 0) displayedPackItems[item] = 0;
+    }
+    selectedPackQuantities[packId] = newQuantity;
+    updateDisplayBox();
+}
+
+function updateDisplayBox() {
+    const boxDiv = document.getElementById('pack-display-box');
+    if (!boxDiv) { console.warn("updateDisplayBox: pack-display-box not found."); return; }
+
+    let listDiv = boxDiv.querySelector('#pack-item-list');
+    if (!listDiv) {
+        if (boxDiv.innerHTML.includes('pack-item-list')) {
+             listDiv = boxDiv.querySelector('#pack-item-list');
+        }
+        if (!listDiv) {
+            console.warn("updateDisplayBox: #pack-item-list structure missing. Rebuilding.");
+            boxDiv.innerHTML = '<h3 style="text-align:center; margin: 10px 0 10px 0; border-bottom: 1px solid #555; padding-bottom: 5px;">Combined Pack Contents</h3><div id="pack-item-list" style="padding: 0 15px 10px 15px; max-height: 200px; overflow-y: auto;"></div>';
+            listDiv = boxDiv.querySelector('#pack-item-list');
+            if(!listDiv) { console.error("updateDisplayBox: Failed to ensure #pack-item-list. Hiding box."); boxDiv.style.display = 'none'; return; }
+        }
+    }
+
+    listDiv.innerHTML = '';
+    const entries = Object.entries(displayedPackItems).filter(([itemName, count]) => count > 0);
+
+    if (entries.length === 0) {
+        boxDiv.style.maxHeight = '0px';
+        boxDiv.style.paddingTop = '0px';
+        boxDiv.style.paddingBottom = '0px';
+        boxDiv.style.borderWidth = '0px';
+        boxDiv.style.marginTop = '0px';
+        boxDiv.style.overflow = 'hidden';
+        if (getComputedStyle(boxDiv).display !== 'none') {
+            setTimeout(() => {
+                if (Object.values(displayedPackItems).every(c => c === 0)) {
+                    boxDiv.style.display = 'none';
+                }
+            }, 400); // Animation time
+        }
+        return;
+    }
+
+    boxDiv.style.display = 'block';
+    boxDiv.style.borderWidth = '1px';
+    boxDiv.style.padding = '15px';
+    boxDiv.style.marginTop = '20px';
+    boxDiv.style.overflow = 'hidden'; // For maxHeight animation
+
+    entries.forEach(([item, count]) => {
+        const div = document.createElement('div');
+        div.textContent = `${item}: ${count}`;
+        div.style.marginBottom = '4px';
+        listDiv.appendChild(div);
+    });
+
+    boxDiv.style.maxHeight = 'none'; // Reset to measure
+    requestAnimationFrame(() => {
+        const h3El = boxDiv.querySelector('h3');
+        const h3Height = h3El ? h3El.offsetHeight + parseInt(getComputedStyle(h3El).marginBottom || 0) + parseInt(getComputedStyle(h3El).paddingBottom || 0) : 0;
+        const listActualHeight = listDiv.scrollHeight || 0;
+        const boxStyle = getComputedStyle(boxDiv);
+        const boxPaddingVertical = parseInt(boxStyle.paddingTop) + parseInt(boxStyle.paddingBottom);
+
+        let targetBoxHeight = h3Height + listActualHeight + boxPaddingVertical; // Total internal height needed by box
+        const maxListContentHeight = 1000; // Max height for the list content itself
+
+        if (listActualHeight > maxListContentHeight) {
+            listDiv.style.maxHeight = maxListContentHeight + 'px';
+            listDiv.style.overflowY = 'auto';
+            targetBoxHeight = h3Height + maxListContentHeight + boxPaddingVertical + 10; // +10 buffer
+        } else {
+            listDiv.style.maxHeight = 'none';
+            listDiv.style.overflowY = 'hidden';
+        }
+        // Cap overall box height if needed, or let it grow
+        // For now, let it grow based on list content + H3 + its own padding
+        boxDiv.style.maxHeight = (targetBoxHeight < 50 && entries.length > 0 ? 50 : targetBoxHeight) + 'px'; // Min height if showing with just h3
+    });
+}
