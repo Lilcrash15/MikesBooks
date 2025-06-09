@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sky Ads - Mikes Portal</title>
+  <link rel="stylesheet" type="text/css" href="mikes.css" />
+  <style>
+    .ad-list-container {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: rgba(30, 30, 30, 0.7);
+      padding: 8px;
+    }
+    .ad-list-item {
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 4px;
+      background-color: #444;
+      color: #fff;
+      cursor: pointer;
+      white-space: pre-wrap;
+    }
+    .ad-list-item:hover {
+      background-color: #31708f;
+    }
+    #copy-status {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="htmlbackground">
+  <div class="navbar">
+    <div class="dropdown">
+      <button class="logo-container">
+        <img src="MikesDeerLogo.png" alt="Mikes Deer Logo" />
+      </button>
+      <div class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="taxes.html">Employee Taxes</a>
+        <a href="manager.html">Manager Portal</a>
+        <a href="ads.html">Sky Ads</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper">
+    <div class="content-block" style="max-width: 600px; margin: 30px auto;">
+      <h2 style="text-align:center;">Select Ad to Copy</h2>
+
+      <!-- Ad Type Selector -->
+      <div class="form-group">
+        <label for="ad-status-selector">Ad Type:</label>
+        <select id="ad-status-selector" class="form-control" style="width: 100%; font-size: 0.95rem; padding: 8px;">
+          <option value="OPEN">Open</option>
+          <option value="CLOSING">Closing</option>
+        </select>
+      </div>
+
+      <!-- Ad List Display -->
+      <div id="ad-list" class="ad-list-container"></div>
+
+      <!-- Copy Status -->
+      <div class="form-group" style="text-align: center;">
+        <p id="copy-status"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="ads.js"></script>
+  <script src="utility.js"></script>
+</body>
+</html>
