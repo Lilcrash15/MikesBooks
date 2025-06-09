@@ -549,3 +549,19 @@ input.quantity::-webkit-outer-spin-button {
 #pack-contents-display li strong {
     color: #f0f0f0; /* Brighter color for quantity */
 }
+
+/* Limit dropdown size and prevent stretching */
+select.form-control {
+  width: 100%;
+  max-width: 100%;
+  font-size: 0.95rem;
+  padding: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Optional: Style ad dropdown container */
+.form-group {
+  margin-bottom: 16px;
+}
