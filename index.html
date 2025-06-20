@@ -64,26 +64,25 @@
       }
     </script>
     <!-- END: Firebase SDK and Configuration -->
-     
-        <script defer src="utility.js"></script>
-        <script src="script.js"></script>
-
+    <script src="utility.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body class="htmlbackground">
 
-  <div class="navbar">
-    <div class="dropdown">
-      <button class="logo-container">
-        <img src="MikesDeerLogo.png" alt="Mikes Deer Logo" />
-      </button>
-      <div class="dropdown-content">
-        <a href="index.html">Home</a>
-        <a href="taxes.html">Employee Taxes</a>
-        <a href="manager.html">Manager Portal</a>
-        <a href="ads.html">Sky Ads</a>
-      </div>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="logo-container">
+                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo">
+            </button>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="taxes.html">Employee Taxes</a>
+                <a href="manager.html">Manager Portal</a>
+                <a href="ads.html">Sky Ads</a>
+                <!-- Logout button will be added by utility.js -->
+            </div>
+        </div>
     </div>
-  </div>
 
     <div class="page-content-wrapper">
         <header>
@@ -117,6 +116,15 @@
 
             <!-- POS View Container -->
             <div id="pos-view-container" class="calculator-container content-block">
+
+                <div id="pos-item-search-container" class="form-group" style="margin-bottom: 20px; max-width: 500px; margin-left:auto; margin-right:auto;">
+                    <label for="pos-item-search-input" style="font-weight:bold; margin-bottom: 8px;">Search Items:</label>
+                    <div style="display:flex; gap: 10px;">
+                        <input type="text" id="pos-item-search-input" placeholder="E.g., Rifle, Bait, Pack..." style="flex-grow:1;">
+                        <button id="pos-item-search-clear-btn" class="action-button clear-cart-btn" type="button" style="padding: 10px 15px; height:auto; min-width:auto;">Clear</button>
+                    </div>
+                </div>
+
                 <div id="category-buttons-container">
                     <button class="category-button action-button" data-category-filter="All">All Items</button>
                     <button class="category-button action-button" data-category-filter="Hunting">Hunting</button>
@@ -340,5 +348,40 @@
         </div>
         <!-- End HAC Signup Modal -->
     </div>
+
+<button id="scroll-to-bottom-btn"
+  style="
+    position: fixed;
+    right: 205px;
+    bottom: 40px;
+    padding: 12px 18px;
+    background: limegreen;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+    display: none; /* hidden by default */
+  ">
+  <strong style="color: white;">Jump to checkout</strong>
+</button>
 </body>
+
+<footer>
+
+<div style="text-align: center; margin-top: 40px;">
+  <small style="
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px black, -1px -1px 2px black;
+  ">
+    Website designed by Preston Stone / Lilcrash15.<br>
+    Website to be used by Mikes Sporting Goods employees on BLRP only.
+  </small>
+</div>
+
+
+</footer>
 </html>
