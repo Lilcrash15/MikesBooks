@@ -9,7 +9,7 @@
     <!-- START: Firebase SDK and Configuration -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; // Added Timestamp
+      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       const firebaseConfig = {
         apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10", // YOUR ACTUAL API KEY
         authDomain: "msg-website-bca5f.firebaseapp.com",
@@ -30,7 +30,7 @@
         console.log(document.title + " HTML: Firebase initialized, window.db set.");
         window.firestoreFunctions = {
             collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy,
-            serverTimestamp, getDoc, setDoc, Timestamp // Added Timestamp
+            serverTimestamp, getDoc, setDoc, Timestamp
         };
         console.log(document.title + " HTML: Firestore functions exposed.");
         window.isFirebaseReady = true;
@@ -49,25 +49,21 @@
     </script>
     <!-- END: Firebase SDK and Configuration -->
 
-    <script defer src="utility.js"></script> <!-- UTILITY.JS FIRST (NO DEFER) -->
-    <script defer src="manager.js"></script> <!-- MANAGER.JS (CAN DEFER) -->   
-    <script defer src="script.js"></script>
-
-
+    <script src="utility.js"></script>
+    <script defer src="manager.js"></script>
 
 </head>
 <body class="htmlbackground">
     <div class="navbar">
         <div class="dropdown">
             <button class="logo-container">
-                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo">
+                <img src="Images/MikesDeerLogo.png" alt="Mikes Deer Logo">
             </button>
             <div class="dropdown-content">
                 <a href="index.html">Home</a>
                 <a href="taxes.html">Employee Taxes</a>
                 <a href="manager.html">Manager Portal</a>
                 <a href="ads.html">Sky Ads</a>
-                <!-- Logout button will be added by utility.js -->
             </div>
         </div>
     </div>
@@ -75,23 +71,21 @@
     <div class="page-content-wrapper">
         <header>
             <div>
-                <img class="mikessign" src="MikesLogo.png" alt="Mikes Logo Sign">
+                <img class="mikessign" src="Images/MikesLogo.png" alt="Mikes Logo Sign">
             </div>
         </header>
 
-        <!-- Manager Login Form Container -->
-        <div id="manager-login-wrapper" class="content-block" style="max-width: 450px; margin: 30px auto;"> <!-- Wrapper ID -->
+        <div id="manager-login-wrapper" class="content-block" style="max-width: 450px; margin: 30px auto;">
              <h1>Manager Portal Access</h1>
-            <form id="manager-page-login-form"> <!-- Unique Form ID -->
+            <form id="manager-page-login-form">
                 <div class="form-group">
-                    <label for="manager-page-password">Enter Manager Password:</label> <!-- Unique Password Input ID -->
+                    <label for="manager-page-password">Enter Manager Password:</label>
                     <input type="password" id="manager-page-password" required>
                 </div>
                 <button type="submit">Login</button>
             </form>
-            <p id="manager-page-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Manager Password.</p> <!-- Unique Error Message ID -->
+            <p id="manager-page-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Manager Password.</p>
         </div>
-        <!-- End Manager Login Form Container -->
 
         <div id="manager-content" style="display: none; width: 100%;">
             <div class="manager-container">
@@ -118,6 +112,12 @@
                                     <option value="Manager">Manager</option>
                                 </select>
                             </div>
+                            <!-- ***** NEW BANK ACCOUNT FIELD ***** -->
+                            <div class="form-group">
+                                <label for="employee-bank-account">In-Game Bank Account #:</label>
+                                <input type="text" id="employee-bank-account" placeholder="Bank Account Number">
+                            </div>
+                            <!-- ***** END NEW BANK ACCOUNT FIELD ***** -->
                             <div class="employee-form-buttons">
                                 <button type="button" id="save-employee-button" class="action-button">Add Employee</button>
                                 <button type="button" id="cancel-edit-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
@@ -131,7 +131,8 @@
                 </div>
                 <hr>
                 <div class="shared-password-section content-block">
-                    <h2>Manage Shared Employee Login Password</h2>
+                    <!-- ... Shared Password Section ... -->
+                     <h2>Manage Shared Employee Login Password</h2>
                     <form id="shared-password-form">
                         <div class="password-form">
                             <div class="form-group">
@@ -149,7 +150,8 @@
                 </div>
                 <hr>
                 <div class="hac-management-section content-block">
-                    <h2>Manage HAC Members</h2>
+                    <!-- ... HAC Management Section ... -->
+                     <h2>Manage HAC Members</h2>
                     <form id="hac-edit-form-actual">
                         <div id="hac-member-form-container" class="add-employee-form" style="display:none;">
                             <h3 id="hac-member-form-title">Edit HAC Member Details</h3>
@@ -200,6 +202,7 @@
                 </div>
                 <hr>
                 <div class="hac-promo-section content-block">
+                    <!-- ... HAC Promo Section ... -->
                     <h3>Current HAC Promo</h3>
                     <form id="hac-promo-form">
                         <div class="hac-promo-edit">
@@ -224,32 +227,22 @@
                         <p><i>Loading transactions...</i></p>
                     </div>
 
-                        <h2>Tax Payment Log</h2>
-                    <button id="export-tax-logs" class="checkout-button" style="margin-bottom: 15px;">
-                    Export
-                    </button>
+                    <h2>Tax Payment Log</h2>
+                    <button id="export-tax-logs" class="checkout-button" style="margin-bottom: 15px;">Export Tax Logs</button>
                     <div id="tax-payment-logs-display" class="transactions-table-container" style="max-height: 400px;">
-                        <!-- Logs will be rendered here by manager.js -->
                         <p><i>Loading tax payment logs...</i></p>
                     </div>
                 </div>
             </div>
-            </div> <!-- This was closing your .manager-container -->
         </div> <!-- End #manager-content -->
-        </div>
     </div>
+    <footer>
+      <div style="text-align: center; margin-top: 40px;">
+      <small style="font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px black, -1px -1px 2px black;">
+        Website designed by Preston Stone / Lilcrash15.<br>
+        Website to be used by Mikes Sporting Goods employees on BLRP only.
+      </small>
+    </div>
+    </footer>
 </body>
-<footer>
-  <div style="text-align: center; margin-top: 40px;">
-  <small style="
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 2px black, -1px -1px 2px black;
-  ">
-    Website designed by Preston Stone / Lilcrash15.<br>
-    Website to be used by Mikes Sporting Goods employees on BLRP only.
-  </small>
-</div>
-</footer>
 </html>
