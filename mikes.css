@@ -395,17 +395,16 @@ input[type=number] {
 }
 #employee-password-status { font-weight: bold; margin-top: 10px; text-align: left; }
 
-/* Transactions Table (Manager Page) */
 .transactions-table-container { margin-top: 20px; max-height: 600px; overflow-y: auto; border: 1px solid #4a5568; border-radius: 5px; }
-#transactions table { width: 100%; border-collapse: collapse; color: #e2e8f0; }
-#transactions th, #transactions td {
+.transactions-table-container table { width: 100%; border-collapse: collapse; color: #e2e8f0; }
+.transactions-table-container th, .transactions-table-container td {
     border: 1px solid #4a5568; padding: 10px 12px; text-align: left;
     font-size: 0.9rem; white-space: nowrap;
 }
-#transactions td:nth-child(4) { white-space: normal; } 
-#transactions th { background-color: #2d3748; font-weight: bold; position: sticky; top: 0; z-index: 10; }
-#transactions tr:nth-child(even) { background-color: rgba(74, 85, 104, 0.3); }
-#transactions tr:hover { background-color: rgba(74, 85, 104, 0.6); }
+.transactions-table-container td:nth-child(4) { white-space: normal; } 
+.transactions-table-container th { background-color: #2d3748; font-weight: bold; position: sticky; top: 0; z-index: 10; }
+.transactions-table-container tr:nth-child(even) { background-color: rgba(74, 85, 104, 0.3); }
+.transactions-table-container tr:hover { background-color: rgba(74, 85, 104, 0.6); }
 
 /* Taxes Page Specific Styles */
 /* .taxes-container is styled via .content-block in HTML */
@@ -575,4 +574,148 @@ input.quantity::-webkit-outer-spin-button {
 
 #scroll-to-bottom-btn {
   animation: pulse 2s infinite;
+}
+
+/* === MANAGER PAGE - REIMBURSEMENT CALCULATOR === */
+
+.reimbursement-section h2 {
+    text-align: center; /* Match other section headers */
+}
+
+/* Styles for the employee dropdown area */
+.employee-selection-reimbursement {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.employee-selection-reimbursement .form-group label {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Styling for the employee profile box that appears */
+#employee-profile {
+    border: 1px solid #4a5568;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Fine-tune the display of items in the reimbursement grid */
+.reimbursement-section .items-container.pos-grid {
+    padding: 10px;
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    background-color: rgba(26, 32, 44, 0.4);
+    margin-top: 15px;
+}
+
+/* Adjust the label inside the reimbursement item to better display the price */
+.reimbursement-section .item label {
+    color: #f6e05e; /* Yellow, like other prices */
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+/* Wrapper for the calculate button and results */
+#reimbursement-results-wrapper {
+    padding-top: 20px;
+    border-top: 1px dashed #4a5568;
+    margin-top: 25px;
+}
+
+/* Status message for success or error feedback */
+#reimbursement-status-message {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Styling for the reimbursement log section */
+.reimbursement-log-section h2 {
+    text-align: center;
+}
+
+
+.reimbursement-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.item {
+    -webkit-tap-highlight-color: transparent; /* For mobile devices */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    outline: none;
+}
+/* Force the main container for manager content to center its text */
+.manager-container {
+    text-align: center;
+}
+
+/* Center all h2 and h3 headings within the manager page */
+.manager-container h2,
+.manager-container h3 {
+    text-align: center;
+}
+
+/* Make the bottom border on h2 headings span the container width for a cleaner look */
+.manager-container h2 {
+    width: 100%;
+    max-width: 600px; /* Optional: keeps the line from getting too wide on large screens */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Center the content of form groups, including labels */
+.manager-container .form-group {
+    align-items: center; /* Centers the label and input box horizontally */
+}
+
+/* Center the form buttons (Add/Cancel/Save) */
+.manager-container .employee-form-buttons {
+    justify-content: center;
+}
+
+/* Center the HAC eligibility reset button and its status text */
+.manager-container .hac-eligibility-reset-container {
+    text-align: center;
+}
+
+/* Center the password status message */
+.manager-container #employee-password-status {
+    text-align: center;
+}
+/* PASTE THIS at the end of mikes.css */
+
+/* --- Collapsible Reimbursement Section Styles --- */
+.collapsible-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.collapsible-header h2 {
+    margin: 0; /* Prevents spacing issues inside the flex container */
+}
+
+#reimbursement-content-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding-top 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+    padding-top: 0;
+    margin-top: 0;
+    border-top: none;
+}
+
+#reimbursement-content-wrapper.open {
+    max-height: 3000px; /* A large value to accommodate all content */
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #4a5568;
 }

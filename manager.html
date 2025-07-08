@@ -201,8 +201,9 @@
                     </div>
                 </div>
                 <hr>
+                
                 <div class="hac-promo-section content-block">
-                    <!-- ... HAC Promo Section ... -->
+                    <!-- ... Existing HAC Promo Section ... -->
                     <h3>Current HAC Promo</h3>
                     <form id="hac-promo-form">
                         <div class="hac-promo-edit">
@@ -220,6 +221,49 @@
                     </form>
                 </div>
                 <hr>
+                <!-- START: NEW REIMBURSEMENT SECTION -->
+                <div class="reimbursement-section content-block">
+                    <h2>Reimbursement Calculator</h2>
+                    <div class="employee-selection-reimbursement" style="margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        <div class="form-group">
+                            <label for="reimbursement-employee-select">Select Employee for Reimbursement:</label>
+                            <select id="reimbursement-employee-select">
+                                <option value="">-- Loading Employees --</option>
+                            </select>
+                        </div>
+                        <div id="employee-profile" class="content-block" style="display: none; background-color: rgba(0,0,0,0.2); padding: 15px; margin-top: 15px; text-align: left;">
+                            <p style="margin: 0; font-size: 1.1em;"><strong>Selected:</strong> <span id="employee-profile-name"></span></p>
+                            <p style="margin: 5px 0 0 0; font-size: 1em;"><strong>Bank Account #:</strong> <span id="employee-profile-bank" style="font-family: monospace; background-color: #1e1e1e; padding: 2px 5px; border-radius: 3px;"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="items-container pos-grid" id="reimbursement-items-container">
+                        <p><i>Loading reimbursement items...</i></p>
+                    </div>
+
+                    <div id="reimbursement-summary-section" class="content-block" style="background-color: rgba(0,0,0,0.2); text-align: center; margin-top: 25px; border-top: 1px dashed #4a5568; padding-top: 20px;">
+                        <h3 style="font-size: 1.8rem; margin-top:0; margin-bottom: 20px;">Total Reimbursement: $<span id="reimbursement-total">0.00</span></h3>
+                    <div class="reimbursement-buttons-container">
+                        <button id="log-reimbursement-button" class="action-button checkout-button" style="display: none;">Log Reimbursement</button>
+                        <button id="clear-reimbursement-button" class="action-button clear-cart-btn">Clear All</button>
+                    </div>
+                    </div>
+                    
+                <p id="reimbursement-status-message" style="margin-top: 15px; font-weight: bold; text-align:center;"></p>
+                </div>
+
+                <div class="content-block">
+
+                <h2>Manager logs</h2>
+
+                <div class="reimbursement-log-section content-block">
+                    <h2>Reimbursement Log</h2>
+                    <button id="export-reimbursement-log-button" class="checkout-button" style="margin-bottom: 15px;">Export Log to CSV</button>
+                    <div id="reimbursement-log-display" class="transactions-table-container" style="max-height: 400px;">
+                        <p><i>Loading reimbursement logs...</i></p>
+                    </div>
+                </div>
+
                 <div class="content-block">
                     <h2>Transaction Records</h2>
                     <button id="export" class="checkout-button" style="margin-bottom:15px;">Export to CSV</button>
