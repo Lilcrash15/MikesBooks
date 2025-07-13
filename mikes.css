@@ -719,3 +719,25 @@ input.quantity::-webkit-outer-spin-button {
     padding-top: 20px;
     border-top: 1px solid #4a5568;
 }
+
+/* PASTE THIS at the end of mikes.css */
+
+/* --- Staff Page: Center HAC Lookup Section --- */
+
+/* 1. Center the main container block on the page */
+.hac-lookup-section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Center the search bar and its buttons as a group */
+.hac-search-container-staff {
+    max-width: 600px; /* Constrain its width for a cleaner look */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Override the default left-alignment for the promo box content */
+.current-promo-staff {
+    text-align: center;
+}
