@@ -122,9 +122,11 @@ form {
 .form-group label {
     color: #b0b0b0; margin-bottom: 7px; font-size: 0.95rem; font-weight: 600;
 }
+
 .form-group input[type="text"],
 .form-group input[type="password"],
 .form-group input[type="email"],
+.form-group input[type="number"],
 .form-group select,
 .form-group textarea {
     padding: 12px 15px; font-size: 1rem; border-radius: 6px;
@@ -311,8 +313,11 @@ input[type=number] {
 
 
 /* === MANAGER PAGE & TAXES PAGE === */
-.manager-container, .taxes-container { /* These will have .content-block in HTML */
-    max-width: 1000px; 
+.manager-container, .taxes-container { 
+    max-width: 1000px;
+    /* These two lines will center the entire block on the page */
+    margin-left: auto;
+    margin-right: auto;
 }
 .manager-container hr, .taxes-container hr { 
     border: 0; height: 1px; 
@@ -720,24 +725,59 @@ input.quantity::-webkit-outer-spin-button {
     border-top: 1px solid #4a5568;
 }
 
-/* PASTE THIS at the end of mikes.css */
-
-/* --- Staff Page: Center HAC Lookup Section --- */
-
-/* 1. Center the main container block on the page */
-.hac-lookup-section {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* 2. Center the search bar and its buttons as a group */
-.hac-search-container-staff {
-    max-width: 600px; /* Constrain its width for a cleaner look */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* 3. Override the default left-alignment for the promo box content */
-.current-promo-staff {
+#petty-cash-amount {
     text-align: center;
+}
+
+#reimbursement-employee-select {
+    text-align: center;
+    text-align-last: center; 
+}
+/* --- Loading Screen Styles --- */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.95); /* Dark, semi-transparent background */
+    z-index: 10005; /* Higher than the navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+#loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Prevents interaction when hidden */
+}
+
+.loading-content {
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.loading-content p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #61dafb; /* Accent color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
