@@ -781,3 +781,30 @@ input.quantity::-webkit-outer-spin-button {
         transform: rotate(360deg);
     }
 }
+
+/* PASTE THIS at the end of mikes.css */
+
+/* --- Staff Page (index.html): Center HAC Lookup Section --- */
+
+/* 1. Center the entire ".hac-lookup-section" block on the page */
+.hac-lookup-section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Center the "HAC Member Lookup" title inside the block */
+.hac-lookup-section h2 {
+    text-align: center;
+}
+
+/* 3. Center the search bar and its buttons as a group */
+.hac-search-container-staff {
+    max-width: 600px; /* Optional: keeps the search bar from getting too wide */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 4. Center the promo box content */
+.current-promo-staff {
+    text-align: center;
+}
