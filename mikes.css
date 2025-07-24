@@ -808,3 +808,45 @@ input.quantity::-webkit-outer-spin-button {
 .current-promo-staff {
     text-align: center;
 }
+
+/* Ads */
+
+.ad-list-container {
+    max-height: 500px; /* Increased height for better scrolling */
+    overflow-y: auto;
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    background-color: rgba(26, 32, 44, 0.4); /* Darker background */
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.ad-list-item {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    background-color: rgba(74, 85, 104, 0.6);
+    color: #e2e8f0;
+    cursor: pointer;
+    white-space: pre-wrap; /* Allows text to wrap */
+    word-break: break-all; /* Ensures long text without spaces breaks */
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.ad-list-item:hover {
+    background-color: #31708f; /* Existing hover color */
+}
+
+/* Fix for last item margin */
+.ad-list-item:last-child {
+    margin-bottom: 0;
+}
+
+#copy-status {
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}

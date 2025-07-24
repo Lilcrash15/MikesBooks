@@ -1,86 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sky Ads - Mikes Portal</title>
-  <link rel="stylesheet" type="text/css" href="mikes.css" />
-  <style>
-    .ad-list-container {
-      max-height: 300px;
-      overflow-y: auto;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: rgba(30, 30, 30, 0.7);
-      padding: 8px;
-    }
-    .ad-list-item {
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 4px;
-      background-color: #444;
-      color: #fff;
-      cursor: pointer;
-      white-space: pre-wrap;
-    }
-    .ad-list-item:hover {
-      background-color: #31708f;
-    }
-    #copy-status {
-      margin-top: 10px;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky Ads - Mikes Portal</title>
+    <link rel="stylesheet" type="text/css" href="mikes.css" />
 </head>
 <body class="htmlbackground">
-  <div class="navbar">
-    <div class="dropdown">
-      <button class="logo-container">
-        <img src="MikesDeerLogo.png" alt="Mikes Deer Logo" />
-      </button>
-      <div class="dropdown-content">
-        <a href="index.html">Home</a>
-        <a href="taxes.html">Employee Taxes</a>
-        <a href="manager.html">Manager Portal</a>
-        <a href="ads.html">Sky Ads</a>
-      </div>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="logo-container">
+                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo" />
+            </button>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="taxes.html">Employee Taxes</a>
+                <a href="manager.html">Manager Portal</a>
+                <a href="ads.html">Sky Ads</a>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="page-content-wrapper">
-    <div class="content-block" style="max-width: 600px; margin: 30px auto;">
-      <h2 style="text-align:center;">Select Ad to Copy</h2>
+    <div class="page-content-wrapper">
+        <div class="content-block" style="max-width: 800px; margin: 30px auto;">
+            <h2 style="text-align:center;">Select Ad to Copy</h2>
 
-      <!-- Ad Type Selector -->
-      <div class="form-group">
-        <label for="ad-status-selector">Ad Type:</label>
-        <select id="ad-status-selector" class="form-control" style="width: 100%; font-size: 0.95rem; padding: 8px;">
-          <option value="OPEN">Open</option>
-          <option value="CLOSING">Closing</option>
-        </select>
-      </div>
+            <!-- Ad Type Selector -->
+            <div class="form-group" style="max-width: 300px; margin-left: auto; margin-right: auto;">
+                <label for="ad-status-selector">Ad Type:</label>
+                <select id="ad-status-selector">
+                    <option value="OPEN">Open</option>
+                    <option value="CLOSING">Closing</option>
+                </select>
+            </div>
 
-      <!-- Ad List Display -->
-      <div id="ad-list" class="ad-list-container"></div>
+            <!-- This wrapper now contains both ad lists -->
+            <div id="ads-wrapper" class="ad-list-container">
+                <!-- List of OPEN Ads (Visible by default) -->
+                <div id="open-ads-list">
+                    <div class="ad-list-item" title="Click to copy">/ad 🐗^*^3MIKES' SPORTING GOODS ^7is ^2NOW OFFERING ^5DEER & BOAR MOUNTED TROPHIES! ^7BRING YOUR TROPHIES IN TODAY!!</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7IS ^2OPEN ^5AND BUYING YOUR FISH🐟, MEATS🥩, BONE🍖 AND HIDE🦌🐇🐭🐷! ^7STOP BY!</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7IS ^2OPEN! ^5JERRY CANS & ARMOR ARE AVAILABLE ^7| ^1LIMIT 2 PER CUSTOMER.^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7is ^2OPEN! ^7COME CHECK OUT OUR NEW ^5PACK SPECIALS!! ^2LOCATED IN HARMONY!</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7IS ^2OPEN!! ^1HAC MEMBERSHIPS / TROPHY SALES / HUNTING SUPPLIES.^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7IS ^2OPEN!! ^7GRAB AN MSG TAILGATE CHAIR!! ^3LOCATED IN HARMONY.^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7is ^2OPEN. ^1MK2 PISTOL SKINS AVAILABLE! ^5LOCATED IN HARMONY. ^2WOLF ON THE MAP!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7is ^2OPEN. ^1WE BUY TROPHIES!! ^5LOCATED IN HARMONY. ^2WOLF ON THE MAP!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7is ^2OPEN. ^7LOW ON SUPPLIES?^1 LOCATED IN HARMONY. ^2FISHING POLES, SCUBA TANKS, GOLD PANS & HUNTING GEAR!!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^4 is ^2OPEN!! ^5FEEL LIKE DOING SOMETHING DIFFERENT?^2WE NOW SELL GOLD PANS. ^7TRY YOUR LUCK AT FINDING THAT GOLD!⛺ </div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is ^2OPEN! ^1NEW PRICING ON MK2 SKINS! ^2STOP BY THE STORE TODAY!!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is ^2OPEN! ^2RESTOCK YOUR SUPPLIES! ^5LOCATED IN HARMONY!!⛺^*</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is ^2OPEN! ^7HAC MEMBERS COME PICK UP YOUR MONTHLY PROMO ITEMS!! ^5STOP BY THE STORE TODAY!!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is NOW OFFERING MEMBERSHIPS FOR THE HUNTERS' ASSOCIATION COMMUNITY!! ^2STOP BY THE STORE FOR MORE INFO!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad 🐗 ^*^3 MIKES' SPORTING GOODS ^7 |  NOW OFFERS ^2COOLERS!!^1 $2500 FOR OUR GREEN OR TAN COOLERS!! ^2LOCATED IN HARMONY.🐗</div>
+                    <div class="ad-list-item" title="Click to copy">/ad 🐗 ^*^3 MIKES' SPORTING GOODS ^7 |  TIRED OF SHARK ATTACKS? MSG NOW OFFERS ^5SHARK REPELLENT SPRAY!! ^3$500 PER CAN!! ^2LOCATED IN HARMONY.🐗</div>
+                </div>
+                <!-- List of CLOSING Ads (Hidden by default) -->
+                <div id="closing-ads-list" style="display: none;">
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7IS ^8CLOSED ^7STAY SAFE LS!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS ^7IS ^8CLOSING DUE TO STORM.^7 STAY SAFE LOS SANTOS!!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is ^1CLOSING IN 10 MIN!! ^2BRING YOUR TROPHIES BEFORE WE ^1CLOSE UP!!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is ^1CLOSING IN 30 MIN!! ^2RESTOCK ON YOUR EQUIPMENT BEFORE WE ^1CLOSE UP!!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is ^1CLOSING IN 45 MIN!! ^2BRING YOUR TROPHIES BEFORE WE ^1CLOSE UP!!^*⛺</div>
+                    <div class="ad-list-item" title="Click to copy">/ad ⛺^*^3 MIKES' SPORTING GOODS^7 is ^1CLOSING SOON!! ^2RESTOCK YOUR SUPPLIES AND COME GET YOUR MK2 SKINS BEFORE WE ^1CLOSE UP!!^*⛺</div>
+                </div>
+            </div>
 
-      <!-- Copy Status -->
-      <div class="form-group" style="text-align: center;">
-        <p id="copy-status"></p>
-      </div>
+            <!-- Copy Status -->
+            <div style="text-align: center;">
+                <p id="copy-status" style="height: 1.2em;"></p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script src="ads.js"></script>
-  <script src="utility.js"></script>
+    <script src="utility.js"></script>
+    <script src="ads.js"></script>
 </body>
 <footer>
   <div style="text-align: center; margin-top: 40px;">
-  <small style="
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 2px black, -1px -1px 2px black;
-  ">
+  <small style="font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px black, -1px -1px 2px black;">
     Website designed by Preston Stone / Lilcrash15.<br>
     Website to be used by Mikes Sporting Goods employees on BLRP only.
   </small>
