@@ -109,10 +109,6 @@
                                 <input type="text" id="employee-full-name" placeholder="Full Name" required>
                             </div>
                             <div class="form-group">
-                                <label for="employee-phone-number">Phone Number:</label>
-                                <input type="text" id="employee-phone-number" placeholder="Phone Number">
-                            </div>
-                            <div class="form-group">
                                 <label for="employee-number-ssn">Employee Number (SSN F6):</label>
                                 <input type="text" id="employee-number-ssn" placeholder="Employee Number (SSN)" required>
                             </div>
@@ -143,6 +139,49 @@
                     </div>
                 </div>
                 <hr>
+                <!-- START: POS ITEM MANAGEMENT SECTION -->
+                <div class="pos-item-management-section content-block">
+                    <h2>Manage POS Items</h2>
+                    <form id="pos-item-form-actual">
+                        <div id="pos-item-form-container" class="add-employee-form">
+                            <h3 id="pos-item-form-title">Add New POS Item</h3>
+                            <input type="hidden" id="edit-pos-item-id">
+                            <div class="form-group">
+                                <label for="pos-item-name">Item Name:</label>
+                                <input type="text" id="pos-item-name" placeholder="e.g., Camping Tent" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pos-item-price">Price ($):</label>
+                                <input type="number" id="pos-item-price" placeholder="e.g., 2500" required step="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="pos-item-image-url">Image URL:</label>
+                                <input type="text" id="pos-item-image-url" placeholder="e.g., images/tent.png">
+                            </div>
+                            <div class="form-group">
+                                <label for="pos-item-category-select">Category:</label>
+                                <select id="pos-item-category-select">
+                                    <option value="General">General Gear</option>
+                                    <option value="Hunting">Hunting</option>
+                                    <option value="Fishing">Fishing</option>
+                                    <option value="Consumables">Consumables</option>
+                                    <option value="Specialty">Specialty</option>
+                                </select>
+                            </div>
+                            <div class="employee-form-buttons">
+                                <button type="button" id="save-pos-item-button" class="action-button">Add Item</button>
+                                <button type="button" id="cancel-edit-pos-item-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
+                            </div>
+                             <p id="pos-item-status-message" style="margin-top:10px;"></p>
+                        </div>
+                    </form>
+                    <h3>Current Custom POS Items</h3>
+                    <div id="pos-item-list-display" class="employee-list">
+                        <p><i>Loading POS items...</i></p>
+                    </div>
+                </div>
+                <hr>
+                <!-- END: POS ITEM MANAGEMENT SECTION -->
                 <div class="shared-password-section content-block">
                     <!-- ... Shared Password Section ... -->
                      <h2>Manage Shared Employee Login Password</h2>
