@@ -1,5 +1,3 @@
-// PASTE THIS ENTIRE BLOCK to replace all content in script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- Loading screen logic ---
     const loadingOverlay = document.getElementById('loading-overlay');
@@ -964,4 +962,5 @@ function updateDisplayBox() {
     const listHeight = listDiv.scrollHeight;
     const totalHeight = h3Height + listHeight + 40;
     boxDiv.style.maxHeight = `${totalHeight}px`;
+
 }
