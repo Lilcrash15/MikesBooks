@@ -253,6 +253,38 @@
                     </div>
                 </div>
                 <hr>
+
+                <!-- START: TIER 2 SPECIAL MANAGEMENT SECTION -->
+
+                <div class="tier2-management-section content-block">
+                    <h2>Tier 2 Monthly Management</h2>
+                    <p style="text-align: center; color: #cbd5e0; margin-bottom: 20px;">Use this section to search, backup, and reset Tier 2 memberships independently.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Search Bar -->
+                        <div class="hac-search-container">
+                            <div class="form-group" style="flex-grow: 1; margin-bottom:0;">
+                                <input type="text" id="t2-search-term" placeholder="Search T2 Name or Phone...">
+                            </div>
+                            <button id="t2-search-button" class="action-button" type="button" style="margin-top:25px;">Search T2</button>
+                        </div>
+
+                        <!-- Display Area -->
+                        <div id="t2-member-list-display" class="employee-list" style="min-height: 50px;">
+                            <p><i>Results will appear here...</i></p>
+                        </div>
+
+                        <hr style="border-color: #444;">
+
+                        <!-- Maintenance Tools -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <button id="t2-backup-button" class="action-button" style="background-color: #3182ce;">Download HAC Backup (CSV)</button>
+                            <button id="t2-purge-button" class="action-button" style="background-color: #e53e3e;">Purge ALL Tier 2 Members</button>
+                        </div>
+                        <p id="t2-status-msg" style="text-align: center; font-weight: bold; height: 1.2em; margin-top: 10px;"></p>
+                    </div>
+                </div>
+                <!-- END: TIER 2 SPECIAL MANAGEMENT SECTION -->
                 
                 <div class="hac-promo-section content-block">
                     <!-- ... Existing HAC Promo Section ... -->
@@ -353,6 +385,29 @@
                 </div>
             </div>
         </div> <!-- End #manager-content -->
+
+        <!-- START: HAC PRIZE WHEEL SECTION -->
+        <div class="hac-prize-wheel-section content-block">
+            <h2>HAC Prize Wheel</h2>
+            <p style="text-align: center; color: #cbd5e0; margin-bottom: 20px;">
+                Tier 1 = 1 Entry | Tier 2 = 2 Entries
+            </p>
+
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <!-- The Visual Wheel -->
+                <canvas id="hac-wheel-canvas" width="500" height="500" style="max-width: 100%; height: auto; border-radius: 50%; border: 5px solid #4a5568; box-shadow: 0 0 20px rgba(0,0,0,0.5);"></canvas>
+                
+                <div class="wheel-controls">
+                    <button id="hac-wheel-load-btn" class="action-button" style="background-color: #3182ce;">Load Members</button>
+                    <button id="hac-wheel-spin-btn" class="action-button checkout-button" disabled>SPIN WHEEL</button>
+                </div>
+
+                <!-- Winner Display -->
+                <h3 id="hac-wheel-winner-display" style="text-align: center; color: #f6e05e; font-size: 2rem; height: 1.2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></h3>
+            </div>
+        </div>
+        <!-- END: HAC PRIZE WHEEL SECTION -->
+
     </div>
     <footer>
       <div style="text-align: center; margin-top: 40px;">

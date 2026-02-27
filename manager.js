@@ -1,1 +1,1177 @@
-function _0xfb62(_0x51760f,_0x10081b){const _0x2f92d4=_0x2f92();return _0xfb62=function(_0xfb6235,_0x289ab4){_0xfb6235=_0xfb6235-0x15d;let _0x49983d=_0x2f92d4[_0xfb6235];return _0x49983d;},_0xfb62(_0x51760f,_0x10081b);}function _0x2f92(){const _0x92e015=['Employee\x20(Taxes\x20For)','\x22\x20style=\x22width:\x2040px;\x20height:\x2040px;\x20border-radius:\x204px;\x20margin-right:\x2010px;\x20vertical-align:\x20middle;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>','add','accessSettings',')\x20[','pos-item-form-title','16370964nMumqX','</td>','object','Timestamp','bankAccount','table','A\x20reason/note\x20is\x20required\x20for\x20petty\x20cash.','price','clear-reimbursement-button','Item\x20added\x20successfully!','.remove-pos-item-btn','push','Emp\x20num\x20exists.','\x22>Remove</button></div>','reimbursements','hac-first-name','reimbursement-log-display','orderBy','textContent','fishmeat_slimy.webp','setDoc','name','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22employee-details\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong>','Edit\x20Employee:\x20','contains','qty','disabled','1ABAImj','MikesAdmin','bank','.edit-employee-btn',')\x20-\x20Rank:\x20','open','Please\x20select\x20an\x20employee.','Employee\x20added!','hac-email','function','employee-profile-bank','Net\x20Earned\x20($)','Error','Mikes_Transactions.csv','forEach','netAmountForMikes','rank','Add\x20Employee','collection','<thead><tr><th>Employee\x20(Taxes\x20For)</th><th>Processed\x20By</th><th>Amount\x20Cleared\x20($)</th><th>#\x20Trans.</th><th>Date\x20Cleared</th></tr></thead><tbody></tbody>','<p><i>No\x20transaction\x20records\x20found.</i></p>','join','<p><i>Eligibility\x20reset.\x20Search\x20to\x20see\x20updated\x20HAC\x20member\x20details.</i></p>','Min\x206\x20chars.','hac-member-list-display','Items','App\x20init\x20timeout\x20or\x20Firebase\x20not\x20ready\x20(manager).','hacMembers','Total\x20($)','dataset','save-hac-promo-button','preventDefault','functions','key','Mikes_TaxPayment_Logs.csv','save-employee-button','hacConfiguration','clearedAt','Processing...','items','32896PRMzpb','<p><i>No\x20reimbursement\x20logs\x20found.</i></p>','all','target','edit-hac-member-id','fs-pollock.webp','bankAccountNumber','lastName','<thead><tr><th>Employee</th><th>Bank\x20Acct</th><th>Total\x20($)</th><th>Items\x20/\x20Reason</th><th>Date</th></tr></thead><tbody></tbody>','isArray','\x22>Edit</button><button\x20class=\x22remove-hac-member-btn\x20action-button\x22\x20data-id=\x22','manager-login-wrapper','currentPromoText','firstName','reimbursement-status-message','.item','email','hac-reset-status','<thead><tr><th>Employee</th><th>Rank</th><th>Date</th><th>Details</th><th>SubTotal/Net\x20($)</th><th>Fee\x20Rate</th><th>Fee/MikesNet\x20($)</th><th>Emp.\x20Net\x20($)</th><th>Type</th></tr></thead><tbody></tbody>','</strong><br>Phone:\x20','manager-page-login-form','employeeNumber','<p><i>No\x20results\x20for\x20\x22','getElementById','displayDate','Manually\x20initializing','employee-rank-select','fs-minnow.webp','Fee\x20Paid\x20($)','change','Name\x20req.','Reset\x20ALL?','none','employee-form-container','date','text/csv;charset=utf-8;','#\x20Transactions','src','2121355vxiqEO','Amount\x20Cleared\x20($)','pos-item-status-message','img','6HSHMaV','hac-eligible','error','firebaseReady','totalValueBoughtFromCustomer','hac-clear-search-button','Unknown','Del\x20Emp\x20Error.','N/A','\x22.</i></p>','placeholder.png','transactions','</strong>\x20-\x20$','HAC\x20removed.','className','\x22>Remove</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','hac-not-eligible','Employee\x20updated!','map','color','hac-promo-status','save-pos-item-button','manager.js:\x20Firestore\x20DB\x20and\x20functions\x20successfully\x20obtained\x20for\x20manager.','addDoc','totalValueSoldToCustomer','employees','phoneNumber','selectedOptions','Essential\x20Firestore\x20functions\x20(or\x20Timestamp)\x20missing.','red','fs-rainbowtrout.webp','.edit-pos-item-btn','updateDoc','.remove-hac-member-btn','reimbursement-employee-select','<div\x20class=\x22employee-details\x22><strong>','input','imageUrl','3327baIUPK','loading-overlay','reimbursement-items-container','manager.js:\x20Running\x20executeManagerAppLogic.','Error\x20removing\x20POS\x20item:','focus','subTotal','fullSaleTotal','lastEligibilityReset','firestoreFunctions','tax-payment-logs-display','Type','pos-item-list-display','smooth','href','addEventListener','ref','itemName','toLowerCase','edit-pos-item-id','\x20|\x20Purchased:\x20','querySelectorAll','Login\x20Disabled\x20(DB\x20Error)','Manager:\x20addLogoutButton\x20(from\x20utility.js)\x20is\x20not\x20defined!','hac-search-button','\x20(x','hac-last-name','hac-member-form-title','value','Edit:\x20','<p><i>No\x20tax\x20payment\x20logs\x20found.</i></p>','General','totalAmountCleared','toggle','Item','Date','totalAmount','Petty\x20Cash:\x20','Save\x20Changes','type','doc','data','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br>Bank\x20Acc:\x20','hac-member-form-container','<p><i>Loading\x20logs...</i></p>','manager.js:\x20Error\x20loading\x20POS\x20items','Item\x20updated\x20successfully!','toDate','classList','Add\x20Item','revokeObjectURL','cancel-edit-button','Processed\x20By','appendChild','createElement','replace','Manager:\x20Error\x20loading\x20tax\x20payment\x20logs:','toLocaleDateString','desc','employee-profile','body','hac-search-term','createObjectURL','\x20|\x20DL:\x20','NOT\x20ELIGIBLE','export-tax-logs','</div>\x20<div\x20class=\x22action-buttons-cell\x22><button\x20class=\x22edit-hac-member-btn\x20action-button\x22\x20data-id=\x22','createdAt','message','Firebase\x20details\x20not\x20available\x20for\x20manager\x20app\x20logic.','HAC\x20updated.','transactionIds','petty-cash-amount','Manager\x20ERROR:\x20grantManagerSession\x20is\x20not\x20defined!','display','hac-promo-month','toggle-reimbursement-btn','taxAmountPaidToMikes','block','DB\x20funcs\x20missing','min','animal_bones.webp','Name\x20and\x20a\x20valid\x20price\x20are\x20required.','0.00','option','reimbursement-content-wrapper','No\x20amount\x20to\x20log.','11gQiRcO','export-reimbursement-log-button','innerHTML','Error.','transactionIdsCount','quantity','div','</strong>\x20(Num:\x20','<p><i>Error:\x20DB\x20functions\x20missing.</i></p>','fs-haddock.webp','Edit\x20HAC\x20Member','pos-item-price','style','18892812kEcSeR','getDocs','itemsTraded','item','scrollIntoView','employee-list-item','empty','manager.js:\x20DOMContentLoaded\x20fired.\x20Waiting\x20for\x20firebaseReady\x20event...','netTotalForEmployee','fullName','Logging...','(Not\x20Set)','<p><i>Error\x20loading\x20txns:\x20','HAC\x20update\x20err.','\x22>Edit</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22remove-pos-item-btn\x20action-button\x22\x20data-id=\x22','Buy/Sell\x20Trade','874518FpOExd','Remove?','<p><i>No\x20custom\x20POS\x20items\x20added\x20yet.</i></p>','querySelector','fs_salmon.webp','transactionIdsCleared','fs-northernpike.webp','.remove-employee-btn','\x22\x20alt=\x22','transactionType','driverLicense','taxPaymentLogs','4276iZRRxV','pos-item-form-container','Show','employeeName','save-hac-member-button','Trainee','toFixed','fs-trout.webp','includes','pos-item-image-url','DB\x20error.','tbody','fishmeat_salmon.webp','Name/Num\x20required.','(Reset:\x20','No\x20transactions\x20to\x20export.','DOMContentLoaded','#e74c3c','<p><i>Error\x20loading\x20POS\x20items.</i></p>','category','Manager:\x20Error\x20loading\x20txns:','getDoc','cancel-edit-pos-item-button','fs-crab.webp','mikes_reimbursement_log.csv','hide.webp','closest','length','#reimbursement-items-container\x20.quantity','membershipPurchaseDate','posItems','Bank\x20Account','manager-content','log','\x22>Edit</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22remove-employee-btn\x20action-button\x22\x20data-id=\x22','find','label','manager-page-password','Reimbursement\x20selections\x20cleared.','</strong>\x20-\x20<strong\x20class=\x22','entries','Enter','<p><i>Searching...</i></p>','download','insertCell','current-employee-password-display','query','docs','serverTimestamp',')\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22action-buttons-cell\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22edit-pos-item-btn\x20action-button\x22\x20data-id=\x22','click','localeCompare','reimbursement-total','petty-cash-note','fs-crappie.webp','fs-tuna.webp','Firebase\x20SDK\x20init\x20failed.\x20','<p>Search\x20Error.</p>','deleteDoc','isFirebaseReady','Add\x20New\x20Employee','toLocaleString','<td>','14598530ciYjLo','alt','isEligible','taxRateApplied','limegreen','detail','onerror','siteSettings','insertRow','1099uAZBlU','employeeRank','trim','filter','Emp\x20pass\x20updated!','submit','No\x20valid\x20data\x20to\x20export.','manager-page-login-error','removeChild','some','exists','inline-block','</i></p>','Error\x20removing\x20item:\x20','</td><td>','image','Error:\x20Could\x20not\x20log\x20reimbursement.','Error:\x20','keypress'];_0x2f92=function(){return _0x92e015;};return _0x2f92();}const _0x5066a5=_0xfb62;(function(_0x208442,_0x3a8f01){const _0x145a53=_0xfb62,_0x522b32=_0x208442();while(!![]){try{const _0x30188e=parseInt(_0x145a53(0x273))/0x1*(parseInt(_0x145a53(0x1eb))/0x2)+-parseInt(_0x145a53(0x177))/0x3*(parseInt(_0x145a53(0x1f7))/0x4)+-parseInt(_0x145a53(0x2c1))/0x5*(-parseInt(_0x145a53(0x2c5))/0x6)+-parseInt(_0x145a53(0x23f))/0x7*(parseInt(_0x145a53(0x29b))/0x8)+parseInt(_0x145a53(0x258))/0x9+-parseInt(_0x145a53(0x236))/0xa*(parseInt(_0x145a53(0x1ce))/0xb)+parseInt(_0x145a53(0x1db))/0xc;if(_0x30188e===_0x3a8f01)break;else _0x522b32['push'](_0x522b32['shift']());}catch(_0x3065c2){_0x522b32['push'](_0x522b32['shift']());}}}(_0x2f92,0xeb581),document[_0x5066a5(0x186)](_0x5066a5(0x207),()=>{const _0x3fe87f=_0x5066a5,_0x45bd93=document[_0x3fe87f(0x2b2)](_0x3fe87f(0x178));function _0x140479(){const _0x38c2da=_0x3fe87f;_0x45bd93&&_0x45bd93[_0x38c2da(0x1a7)][_0x38c2da(0x254)]('hidden');}console[_0x3fe87f(0x218)](_0x3fe87f(0x1e2));let _0x2ef1b3=![],_0x239e62,_0x59a6bb;const _0x1e4381=document['getElementById'](_0x3fe87f(0x2a6)),_0x292004=document[_0x3fe87f(0x2b2)](_0x3fe87f(0x2af)),_0x319812=document['getElementById'](_0x3fe87f(0x21c)),_0x1732dd=document['getElementById'](_0x3fe87f(0x246)),_0x55a4b2=document[_0x3fe87f(0x2b2)](_0x3fe87f(0x217));let _0x73d72d,_0x1cd8dc,_0x13be94,_0x4c97ab,_0x3f709c,_0x1a70d6,_0x46d25e,_0x2603fd,_0x4018d2,_0x5bf6f9,_0x164705,_0x490a27,_0x51590c,_0x1d339b,_0x25969a,_0x2a98ad,_0x1f0e7a,_0x1ddec4,_0x27e87e,_0x556737,_0xff7f27,_0x296a27,_0x5adab7,_0x1542b8,_0x3636fe,_0x38d362,_0x17f73f,_0x4938e4,_0x2e75fb,_0x2f9221,_0x4ef0dd,_0x86a030,_0x3b37ec,_0xb2fb5f,_0x163991,_0x4d8406,_0x21c483,_0xd88f6c,_0x11e2dc,_0xb4920d,_0x1961e1,_0x328e28,_0x3b2f3f,_0x4988b6,_0x35feab,_0xe083d5,_0x2da68e,_0x14193f;function _0x3001ed(_0x2569c8){const _0x4cc8ea=_0x3fe87f;if(_0x2ef1b3&&!_0x2569c8[_0x4cc8ea(0x1ff)](_0x4cc8ea(0x2b4)))return;_0x2ef1b3=!![],console[_0x4cc8ea(0x2c7)]('manager.js:\x20Firebase\x20critical\x20error\x20state:',_0x2569c8),alert('Critical\x20error\x20for\x20Manager\x20Portal:\x20'+_0x2569c8);if(_0x292004){const _0x8a8739=_0x292004[_0x4cc8ea(0x1ee)]('button[type=\x22submit\x22]');_0x8a8739&&(_0x8a8739[_0x4cc8ea(0x272)]=!![],_0x8a8739[_0x4cc8ea(0x26a)]=_0x4cc8ea(0x18d));}if(_0x55a4b2)_0x55a4b2[_0x4cc8ea(0x1da)]['display']=_0x4cc8ea(0x2bb);_0x140479();}function _0x592d5a(_0x15f5df){const _0x41e9ff=_0x3fe87f;console[_0x41e9ff(0x218)]('manager.js:\x20updateManagerView\x20called\x20with\x20isManagerLoggedIn:',_0x15f5df);if(_0x15f5df){if(_0x1e4381)_0x1e4381[_0x41e9ff(0x1da)]['display']='none';if(_0x55a4b2)_0x55a4b2['style']['display']=_0x41e9ff(0x1c5);if(_0x1732dd)_0x1732dd[_0x41e9ff(0x1da)][_0x41e9ff(0x1c1)]=_0x41e9ff(0x2bb);if(typeof addLogoutButton===_0x41e9ff(0x27c))addLogoutButton();else console[_0x41e9ff(0x2c7)](_0x41e9ff(0x18e));}else{if(_0x1e4381)_0x1e4381[_0x41e9ff(0x1da)][_0x41e9ff(0x1c1)]=_0x41e9ff(0x1c5);if(_0x55a4b2)_0x55a4b2['style'][_0x41e9ff(0x1c1)]=_0x41e9ff(0x2bb);typeof checkEmployeeSession===_0x41e9ff(0x27c)&&checkEmployeeSession()&&!(typeof checkManagerSession===_0x41e9ff(0x27c)&&checkManagerSession())&&(_0x1732dd&&(_0x1732dd['textContent']='Manager\x20credentials\x20required.',_0x1732dd[_0x41e9ff(0x1da)][_0x41e9ff(0x1c1)]=_0x41e9ff(0x1c5)));}}async function _0xa3c2e1(_0x817e47){const _0x275dc6=_0x3fe87f;if(_0x2ef1b3)return;if(!_0x817e47||!_0x817e47['db']||!_0x817e47['functions']){if(window[_0x275dc6(0x232)]&&window['db']&&window[_0x275dc6(0x180)])_0x817e47={'db':window['db'],'functions':window['firestoreFunctions']};else{_0x3001ed(_0x275dc6(0x1bc));return;}}_0x2ef1b3=!![],console[_0x275dc6(0x218)](_0x275dc6(0x17a)),_0x239e62=_0x817e47['db'],_0x59a6bb=_0x817e47[_0x275dc6(0x293)];if(!_0x59a6bb[_0x275dc6(0x285)]||!_0x59a6bb[_0x275dc6(0x19f)]||!_0x59a6bb[_0x275dc6(0x20c)]||!_0x59a6bb[_0x275dc6(0x25b)]){_0x3001ed(_0x275dc6(0x16d));return;}console[_0x275dc6(0x218)](_0x275dc6(0x167)),_0x73d72d=document[_0x275dc6(0x2b2)]('transactions'),_0x1cd8dc=document['getElementById']('export'),_0x13be94=document['getElementById'](_0x275dc6(0x2bc)),_0x4c97ab=document[_0x275dc6(0x2b2)]('employee-form-title'),_0x3f709c=document[_0x275dc6(0x2b2)]('edit-employee-id'),_0x1a70d6=document[_0x275dc6(0x2b2)]('employee-full-name'),_0x46d25e=document[_0x275dc6(0x2b2)]('employee-number-ssn'),_0x2603fd=document[_0x275dc6(0x2b2)](_0x275dc6(0x2b5)),_0x4018d2=document['getElementById']('employee-bank-account'),_0x5bf6f9=document[_0x275dc6(0x2b2)](_0x275dc6(0x296)),_0x164705=document['getElementById'](_0x275dc6(0x1aa)),_0x490a27=document[_0x275dc6(0x2b2)]('employee-list-display'),_0x51590c=document[_0x275dc6(0x2b2)](_0x275dc6(0x1a2)),_0x1d339b=document['getElementById'](_0x275dc6(0x192)),_0x25969a=document[_0x275dc6(0x2b2)](_0x275dc6(0x29f)),_0x2a98ad=document[_0x275dc6(0x2b2)](_0x275dc6(0x267)),_0x1f0e7a=document[_0x275dc6(0x2b2)](_0x275dc6(0x191)),_0x1ddec4=document[_0x275dc6(0x2b2)]('hac-phone-number'),_0x27e87e=document[_0x275dc6(0x2b2)]('hac-driver-license'),_0x556737=document['getElementById'](_0x275dc6(0x27b)),_0xff7f27=document[_0x275dc6(0x2b2)](_0x275dc6(0x1fb)),_0x296a27=document[_0x275dc6(0x2b2)]('cancel-edit-hac-member-button'),_0x5adab7=document['getElementById'](_0x275dc6(0x28b)),_0x1542b8=document[_0x275dc6(0x2b2)](_0x275dc6(0x1b4)),_0x3636fe=document['getElementById'](_0x275dc6(0x18f)),_0x38d362=document[_0x275dc6(0x2b2)](_0x275dc6(0x2ca)),_0x17f73f=document[_0x275dc6(0x2b2)](_0x275dc6(0x224)),_0x4938e4=document[_0x275dc6(0x2b2)]('new-employee-password'),_0x2e75fb=document[_0x275dc6(0x2b2)]('save-employee-password-button'),_0x2f9221=document[_0x275dc6(0x2b2)]('employee-password-status'),_0x4ef0dd=document['getElementById'](_0x275dc6(0x1c2)),_0x86a030=document['getElementById']('hac-promo-text'),_0x3b37ec=document[_0x275dc6(0x2b2)](_0x275dc6(0x291)),_0xb2fb5f=document['getElementById'](_0x275dc6(0x165)),_0x163991=document['getElementById']('reset-hac-eligibility-button'),_0x4d8406=document[_0x275dc6(0x2b2)](_0x275dc6(0x2ac)),_0x21c483=document[_0x275dc6(0x2b2)](_0x275dc6(0x181)),_0xd88f6c=document[_0x275dc6(0x2b2)](_0x275dc6(0x1b8)),_0x11e2dc=document[_0x275dc6(0x2b2)](_0x275dc6(0x257)),_0xb4920d=document[_0x275dc6(0x2b2)](_0x275dc6(0x18a)),_0x1961e1=document[_0x275dc6(0x2b2)]('pos-item-name'),_0x328e28=document[_0x275dc6(0x2b2)](_0x275dc6(0x1d9)),_0x3b2f3f=document[_0x275dc6(0x2b2)](_0x275dc6(0x200)),_0x4988b6=document[_0x275dc6(0x2b2)]('pos-item-category-select'),_0x35feab=document['getElementById'](_0x275dc6(0x166)),_0xe083d5=document['getElementById'](_0x275dc6(0x20d)),_0x2da68e=document[_0x275dc6(0x2b2)](_0x275dc6(0x183)),_0x14193f=document[_0x275dc6(0x2b2)](_0x275dc6(0x2c3));const _0x3e964d=_0x275dc6(0x274),_0x120eac=_0x275dc6(0x255),_0x53f855='employeeLoginPassword';let _0x583163=[],_0x328a93=null,_0x35d072=[],_0x175735=null,_0x8f7554=[],_0x4897fe=null;const _0x2f0090=_0x275dc6(0x297);let _0x1e1816=[],_0x187d18=[];function _0x50a29f(_0x3458f2,_0x1e19b9=![]){const _0x304ebe=_0x275dc6;if(!_0x14193f)return;_0x14193f[_0x304ebe(0x26a)]=_0x3458f2,_0x14193f[_0x304ebe(0x1da)]['color']=_0x1e19b9?_0x304ebe(0x208):_0x304ebe(0x23a),setTimeout(()=>{const _0x1863bc=_0x304ebe;_0x14193f[_0x1863bc(0x26a)]='';},0xfa0);}async function _0x3855f9(){const _0x48762c=_0x275dc6;try{const _0x5ad98d=_0x59a6bb[_0x48762c(0x225)](_0x59a6bb[_0x48762c(0x285)](_0x239e62,_0x48762c(0x215)),_0x59a6bb[_0x48762c(0x269)]('name')),_0x535198=await _0x59a6bb[_0x48762c(0x1dc)](_0x5ad98d);_0x35d072=_0x535198[_0x48762c(0x226)]['map'](_0x158513=>({'id':_0x158513['id'],..._0x158513[_0x48762c(0x1a0)]()})),_0xb64790();}catch(_0x5c5b89){console[_0x48762c(0x2c7)](_0x48762c(0x1a4),_0x5c5b89);if(_0x2da68e)_0x2da68e[_0x48762c(0x1d0)]=_0x48762c(0x209);}}function _0xb64790(){const _0x16ce79=_0x275dc6;if(!_0x2da68e)return;_0x2da68e[_0x16ce79(0x1d0)]='';if(_0x35d072[_0x16ce79(0x212)]===0x0){_0x2da68e['innerHTML']=_0x16ce79(0x1ed);return;}_0x35d072[_0x16ce79(0x281)](_0x2e4d33=>{const _0x22aff4=_0x16ce79,_0x47b90d=document[_0x22aff4(0x1ad)](_0x22aff4(0x1d4));_0x47b90d['className']=_0x22aff4(0x1e0),_0x47b90d[_0x22aff4(0x1d0)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22employee-details\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22'+(_0x2e4d33['imageUrl']||_0x22aff4(0x2cf))+_0x22aff4(0x1f3)+_0x2e4d33[_0x22aff4(0x26d)]+_0x22aff4(0x253)+_0x2e4d33[_0x22aff4(0x26d)]+_0x22aff4(0x15d)+_0x2e4d33['price']+'\x20('+_0x2e4d33[_0x22aff4(0x20a)]+_0x22aff4(0x228)+_0x2e4d33['id']+_0x22aff4(0x1e9)+_0x2e4d33['id']+_0x22aff4(0x160),_0x2da68e['appendChild'](_0x47b90d);}),_0x2da68e[_0x16ce79(0x18c)](_0x16ce79(0x170))['forEach'](_0x2d89eb=>_0x2d89eb['addEventListener']('click',_0x44199f=>_0x7689a0(_0x44199f[_0x16ce79(0x29e)][_0x16ce79(0x290)]['id']))),_0x2da68e[_0x16ce79(0x18c)](_0x16ce79(0x262))[_0x16ce79(0x281)](_0x574d2e=>_0x574d2e[_0x16ce79(0x186)](_0x16ce79(0x229),async _0xd0111e=>{if(confirm('Are\x20you\x20sure\x20you\x20want\x20to\x20remove\x20this\x20item?'))await _0xc28d43(_0xd0111e['target']['dataset']['id']);}));}function _0x5681f0(){const _0x1956ca=_0x275dc6;if(_0x11e2dc)_0x11e2dc[_0x1956ca(0x26a)]='Add\x20New\x20POS\x20Item';if(_0xb4920d)_0xb4920d['value']='';if(_0x1961e1)_0x1961e1[_0x1956ca(0x193)]='';if(_0x328e28)_0x328e28[_0x1956ca(0x193)]='';if(_0x3b2f3f)_0x3b2f3f[_0x1956ca(0x193)]='';if(_0x4988b6)_0x4988b6['value']=_0x1956ca(0x196);_0x175735=null;if(_0x35feab)_0x35feab[_0x1956ca(0x26a)]=_0x1956ca(0x1a8);if(_0xe083d5)_0xe083d5[_0x1956ca(0x1da)][_0x1956ca(0x1c1)]=_0x1956ca(0x2bb);}function _0x7689a0(_0x4c0407){const _0x4a7500=_0x275dc6,_0x9a482=_0x35d072['find'](_0x58060f=>_0x58060f['id']===_0x4c0407);if(!_0x9a482)return;_0x175735=_0x4c0407;if(_0x11e2dc)_0x11e2dc[_0x4a7500(0x26a)]=_0x4a7500(0x194)+_0x9a482[_0x4a7500(0x26d)];if(_0xb4920d)_0xb4920d[_0x4a7500(0x193)]=_0x4c0407;if(_0x1961e1)_0x1961e1[_0x4a7500(0x193)]=_0x9a482[_0x4a7500(0x26d)];if(_0x328e28)_0x328e28[_0x4a7500(0x193)]=_0x9a482['price'];if(_0x3b2f3f)_0x3b2f3f[_0x4a7500(0x193)]=_0x9a482[_0x4a7500(0x176)];if(_0x4988b6)_0x4988b6['value']=_0x9a482[_0x4a7500(0x20a)];if(_0x35feab)_0x35feab[_0x4a7500(0x26a)]=_0x4a7500(0x19d);if(_0xe083d5)_0xe083d5['style'][_0x4a7500(0x1c1)]=_0x4a7500(0x24a);document[_0x4a7500(0x2b2)](_0x4a7500(0x1f8))?.[_0x4a7500(0x1df)]({'behavior':_0x4a7500(0x184)});}async function _0xc3954(){const _0x512269=_0x275dc6,_0x4c7865=_0x1961e1[_0x512269(0x193)]['trim'](),_0x31df8d=parseFloat(_0x328e28['value']),_0x415047=_0x3b2f3f[_0x512269(0x193)][_0x512269(0x241)](),_0x4d1154=_0x4988b6[_0x512269(0x193)];if(!_0x4c7865||isNaN(_0x31df8d)||_0x31df8d<=0x0){_0x50a29f(_0x512269(0x1c9),!![]);return;}const _0xf77c43={'name':_0x4c7865,'price':_0x31df8d,'imageUrl':_0x415047,'category':_0x4d1154};try{_0x175735?(await _0x59a6bb[_0x512269(0x171)](_0x59a6bb[_0x512269(0x19f)](_0x239e62,'posItems',_0x175735),_0xf77c43),_0x50a29f(_0x512269(0x1a5))):(await _0x59a6bb[_0x512269(0x168)](_0x59a6bb[_0x512269(0x285)](_0x239e62,_0x512269(0x215)),_0xf77c43),_0x50a29f(_0x512269(0x261))),_0x5681f0(),await _0x3855f9();}catch(_0x251c43){console[_0x512269(0x2c7)]('Error\x20saving\x20POS\x20item:',_0x251c43),_0x50a29f(_0x512269(0x250)+_0x251c43[_0x512269(0x1bb)],!![]);}}async function _0xc28d43(_0x376d0b){const _0x208d75=_0x275dc6;try{await _0x59a6bb[_0x208d75(0x231)](_0x59a6bb[_0x208d75(0x19f)](_0x239e62,_0x208d75(0x215),_0x376d0b)),_0x50a29f('Item\x20removed.'),_0x175735===_0x376d0b&&_0x5681f0(),await _0x3855f9();}catch(_0x3eeff3){console[_0x208d75(0x2c7)](_0x208d75(0x17b),_0x3eeff3),_0x50a29f(_0x208d75(0x24c)+_0x3eeff3[_0x208d75(0x1bb)],!![]);}}async function _0x46dc5f(){const _0x538b41=_0x275dc6;if(!_0x59a6bb[_0x538b41(0x19f)]||!_0x59a6bb['getDoc']){if(_0x17f73f)_0x17f73f[_0x538b41(0x193)]=_0x538b41(0x1c6);return;}try{const _0x12ab94=_0x59a6bb['doc'](_0x239e62,'siteSettings',_0x120eac),_0x384bff=await _0x59a6bb[_0x538b41(0x20c)](_0x12ab94);if(_0x384bff[_0x538b41(0x249)]()&&_0x384bff[_0x538b41(0x1a0)]()[_0x53f855]){if(_0x17f73f)_0x17f73f[_0x538b41(0x193)]=_0x384bff[_0x538b41(0x1a0)]()[_0x53f855];}else{if(_0x17f73f)_0x17f73f[_0x538b41(0x193)]=_0x538b41(0x1e6);}}catch(_0x1ba004){console[_0x538b41(0x2c7)]('manager.js:\x20Error\x20loading\x20shared\x20emp\x20password:',_0x1ba004);if(_0x17f73f)_0x17f73f[_0x538b41(0x193)]=_0x538b41(0x27f);}}async function _0x42c422(){const _0x3da8e3=_0x275dc6;if(!_0x59a6bb[_0x3da8e3(0x19f)]||!_0x59a6bb['setDoc']){alert(_0x3da8e3(0x201));return;}const _0x232880=_0x4938e4['value'];if(!_0x232880||_0x232880[_0x3da8e3(0x212)]<0x6){alert(_0x3da8e3(0x28a));return;}try{await _0x59a6bb['setDoc'](_0x59a6bb[_0x3da8e3(0x19f)](_0x239e62,_0x3da8e3(0x23d),_0x120eac),{[_0x53f855]:_0x232880},{'merge':!![]});_0x2f9221&&(_0x2f9221[_0x3da8e3(0x26a)]=_0x3da8e3(0x243),_0x2f9221[_0x3da8e3(0x1da)][_0x3da8e3(0x164)]='green');if(_0x17f73f)_0x17f73f[_0x3da8e3(0x193)]=_0x232880;if(_0x4938e4)_0x4938e4[_0x3da8e3(0x193)]='';setTimeout(()=>{const _0x401dcd=_0x3da8e3;if(_0x2f9221)_0x2f9221[_0x401dcd(0x26a)]='';},0xbb8);}catch(_0x197763){console['error'](_0x197763),_0x2f9221&&(_0x2f9221[_0x3da8e3(0x26a)]=_0x3da8e3(0x250)+_0x197763[_0x3da8e3(0x1bb)],_0x2f9221[_0x3da8e3(0x1da)][_0x3da8e3(0x164)]=_0x3da8e3(0x16e));}}async function _0x1772bd(){const _0x3dcc0e=_0x275dc6;try{const _0x3508f8=_0x59a6bb[_0x3dcc0e(0x225)](_0x59a6bb[_0x3dcc0e(0x285)](_0x239e62,_0x3dcc0e(0x16a)),_0x59a6bb['orderBy'](_0x3dcc0e(0x1e4))),_0x25bc53=await _0x59a6bb[_0x3dcc0e(0x1dc)](_0x3508f8);_0x583163=[],_0x25bc53[_0x3dcc0e(0x281)](_0x3d7f7f=>_0x583163[_0x3dcc0e(0x263)]({'id':_0x3d7f7f['id'],..._0x3d7f7f[_0x3dcc0e(0x1a0)]()}));}catch(_0x2b9064){console['error'](_0x2b9064),_0x583163=[];}}function _0x4bb3db(){const _0x13a112=_0x275dc6;if(!_0x490a27)return;_0x490a27[_0x13a112(0x1d0)]='',_0x583163['sort']((_0x488556,_0x375ec9)=>_0x488556[_0x13a112(0x1e4)][_0x13a112(0x22a)](_0x375ec9['fullName']));if(_0x583163[_0x13a112(0x212)]===0x0){_0x490a27['innerHTML']='<p><i>No\x20employees.</i></p>';return;}_0x583163[_0x13a112(0x281)](_0x427e64=>{const _0x3d320f=_0x13a112,_0x232c87=document[_0x3d320f(0x1ad)]('div');_0x232c87[_0x3d320f(0x15f)]=_0x3d320f(0x1e0),_0x232c87[_0x3d320f(0x1d0)]=_0x3d320f(0x26e)+_0x427e64[_0x3d320f(0x1e4)]+_0x3d320f(0x1d5)+(_0x427e64['employeeNumber']||_0x3d320f(0x2cd))+_0x3d320f(0x277)+_0x427e64[_0x3d320f(0x283)]+_0x3d320f(0x1a1)+(_0x427e64[_0x3d320f(0x2a1)]||_0x3d320f(0x2cd))+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22action-buttons-cell\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22edit-employee-btn\x20action-button\x22\x20data-id=\x22'+_0x427e64['id']+_0x3d320f(0x219)+_0x427e64['id']+_0x3d320f(0x160),_0x490a27[_0x3d320f(0x1ac)](_0x232c87);}),_0x490a27[_0x13a112(0x18c)](_0x13a112(0x276))['forEach'](_0x31f2c2=>_0x31f2c2[_0x13a112(0x186)](_0x13a112(0x229),_0x255424=>_0x2efa7b(_0x255424[_0x13a112(0x29e)][_0x13a112(0x290)]['id']))),_0x490a27[_0x13a112(0x18c)](_0x13a112(0x1f2))[_0x13a112(0x281)](_0x4b650e=>_0x4b650e[_0x13a112(0x186)](_0x13a112(0x229),async _0x14882e=>{const _0x5dd7ee=_0x13a112;if(confirm(_0x5dd7ee(0x1ec)))await _0x482e55(_0x14882e['target'][_0x5dd7ee(0x290)]['id']);}));}function _0xabb19f(){const _0x34bd6d=_0x275dc6;if(_0x4c97ab)_0x4c97ab[_0x34bd6d(0x26a)]=_0x34bd6d(0x233);if(_0x3f709c)_0x3f709c[_0x34bd6d(0x193)]='';if(_0x1a70d6)_0x1a70d6[_0x34bd6d(0x193)]='';if(_0x46d25e)_0x46d25e[_0x34bd6d(0x193)]='';if(_0x2603fd)_0x2603fd['value']=_0x34bd6d(0x1fc);if(_0x4018d2)_0x4018d2[_0x34bd6d(0x193)]='';_0x328a93=null;if(_0x164705)_0x164705['style'][_0x34bd6d(0x1c1)]=_0x34bd6d(0x2bb);_0x5bf6f9&&(_0x5bf6f9[_0x34bd6d(0x26a)]=_0x34bd6d(0x284),_0x5bf6f9[_0x34bd6d(0x272)]=![]);}function _0x2efa7b(_0x9822d1){const _0x373d9e=_0x275dc6;if(!_0x9822d1)return;const _0x356a1f=_0x583163[_0x373d9e(0x21a)](_0x24100b=>_0x24100b['id']===_0x9822d1);if(_0x356a1f){_0x328a93=_0x9822d1;if(_0x4c97ab)_0x4c97ab[_0x373d9e(0x26a)]=_0x373d9e(0x26f)+_0x356a1f[_0x373d9e(0x1e4)];if(_0x3f709c)_0x3f709c[_0x373d9e(0x193)]=_0x356a1f['id'];if(_0x1a70d6)_0x1a70d6[_0x373d9e(0x193)]=_0x356a1f[_0x373d9e(0x1e4)]||'';if(_0x46d25e)_0x46d25e[_0x373d9e(0x193)]=_0x356a1f[_0x373d9e(0x2b0)]||'';if(_0x2603fd)_0x2603fd[_0x373d9e(0x193)]=_0x356a1f['rank']||_0x373d9e(0x1fc);_0x4018d2&&(_0x4018d2[_0x373d9e(0x193)]=_0x356a1f['bankAccountNumber']||'');_0x5bf6f9&&(_0x5bf6f9[_0x373d9e(0x26a)]=_0x373d9e(0x19d),_0x5bf6f9[_0x373d9e(0x272)]=![]);if(_0x164705)_0x164705[_0x373d9e(0x1da)][_0x373d9e(0x1c1)]='inline-block';if(_0x13be94&&typeof _0x13be94[_0x373d9e(0x1df)]===_0x373d9e(0x27c))_0x13be94[_0x373d9e(0x1df)]({'behavior':'smooth'});if(_0x1a70d6)_0x1a70d6[_0x373d9e(0x17c)]();}else _0xabb19f();}async function _0x1672ca(){const _0x2acc57=_0x275dc6,_0x54dfdf=_0x1a70d6[_0x2acc57(0x193)][_0x2acc57(0x241)](),_0x409d9c=_0x46d25e[_0x2acc57(0x193)][_0x2acc57(0x241)](),_0x28d1e3=_0x2603fd['value'],_0x39a0d8=_0x4018d2[_0x2acc57(0x193)][_0x2acc57(0x241)](),_0x38b83c=_0x328a93;if(!_0x54dfdf||!_0x409d9c){alert(_0x2acc57(0x204));return;}try{const _0x144b50=_0x59a6bb[_0x2acc57(0x285)](_0x239e62,_0x2acc57(0x16a)),_0x314e63={'fullName':_0x54dfdf,'employeeNumber':_0x409d9c,'rank':_0x28d1e3,'bankAccountNumber':_0x39a0d8||null};if(_0x38b83c){if(_0x583163[_0x2acc57(0x248)](_0x310521=>_0x310521[_0x2acc57(0x2b0)]===_0x409d9c&&_0x310521['id']!==_0x38b83c)){alert(_0x2acc57(0x264));return;}await _0x59a6bb[_0x2acc57(0x171)](_0x59a6bb['doc'](_0x239e62,_0x2acc57(0x16a),_0x38b83c),_0x314e63);}else{const _0x347aa4=_0x59a6bb['query'](_0x144b50,_0x59a6bb['where'](_0x2acc57(0x2b0),'==',_0x409d9c)),_0x16fb9e=await _0x59a6bb['getDocs'](_0x347aa4);if(!_0x16fb9e[_0x2acc57(0x1e1)]){alert(_0x2acc57(0x264));return;}_0x314e63[_0x2acc57(0x1ba)]=_0x59a6bb[_0x2acc57(0x227)](),await _0x59a6bb[_0x2acc57(0x168)](_0x144b50,_0x314e63);}await _0x1772bd(),_0x4bb3db(),_0xabb19f(),alert(_0x38b83c?_0x2acc57(0x162):_0x2acc57(0x27a));}catch(_0xe26957){console[_0x2acc57(0x2c7)](_0xe26957),alert('Save\x20Emp\x20Error:\x20'+_0xe26957[_0x2acc57(0x1bb)]);}}async function _0x482e55(_0x2a5f08){const _0x27d93a=_0x275dc6;try{await _0x59a6bb[_0x27d93a(0x231)](_0x59a6bb[_0x27d93a(0x19f)](_0x239e62,_0x27d93a(0x16a),_0x2a5f08)),await _0x1772bd(),_0x4bb3db();if(_0x328a93===_0x2a5f08)_0xabb19f();}catch(_0x25e7bd){console[_0x27d93a(0x2c7)](_0x25e7bd),alert(_0x27d93a(0x2cc));}}async function _0x2a1ac7(){const _0x4b2aea=_0x275dc6;try{const _0x5eaafd=await _0x59a6bb['getDoc'](_0x59a6bb[_0x4b2aea(0x19f)](_0x239e62,_0x4b2aea(0x23d),_0x2f0090));if(_0x5eaafd['exists']()){const _0x183a61=_0x5eaafd[_0x4b2aea(0x1a0)]();if(_0x4ef0dd)_0x4ef0dd[_0x4b2aea(0x193)]=_0x183a61['currentPromoMonth']||'';if(_0x86a030)_0x86a030[_0x4b2aea(0x193)]=_0x183a61[_0x4b2aea(0x2a7)]||'';}}catch(_0x63612b){console[_0x4b2aea(0x2c7)](_0x63612b);}}async function _0x3e9a49(){const _0x40dbcb=_0x275dc6,_0x3b55a7=_0x4ef0dd[_0x40dbcb(0x193)][_0x40dbcb(0x241)](),_0x5423cf=_0x86a030[_0x40dbcb(0x193)]['trim']();if(!_0x3b55a7||!_0x5423cf){alert('Promo\x20fields\x20req.');return;}try{await _0x59a6bb[_0x40dbcb(0x26c)](_0x59a6bb[_0x40dbcb(0x19f)](_0x239e62,'siteSettings',_0x2f0090),{'currentPromoMonth':_0x3b55a7,'currentPromoText':_0x5423cf},{'merge':!![]}),_0xb2fb5f&&(_0xb2fb5f[_0x40dbcb(0x26a)]='Promo\x20Saved.',setTimeout(()=>_0xb2fb5f[_0x40dbcb(0x26a)]='',0xbb8));}catch(_0x5a6b2c){console[_0x40dbcb(0x2c7)](_0x5a6b2c);if(_0xb2fb5f)_0xb2fb5f[_0x40dbcb(0x26a)]=_0x40dbcb(0x1d1);}}function _0x42496e(){const _0x4749dc=_0x275dc6;if(_0x1d339b)_0x1d339b[_0x4749dc(0x26a)]=_0x4749dc(0x1d8);if(_0x25969a)_0x25969a[_0x4749dc(0x193)]='';if(_0x2a98ad)_0x2a98ad[_0x4749dc(0x193)]='';if(_0x1f0e7a)_0x1f0e7a[_0x4749dc(0x193)]='';if(_0x1ddec4)_0x1ddec4[_0x4749dc(0x193)]='';if(_0x27e87e)_0x27e87e['value']='';if(_0x556737)_0x556737[_0x4749dc(0x193)]='';_0x4897fe=null;if(_0x51590c)_0x51590c['style'][_0x4749dc(0x1c1)]='none';if(_0xff7f27)_0xff7f27[_0x4749dc(0x272)]=!![];if(_0x296a27)_0x296a27[_0x4749dc(0x1da)][_0x4749dc(0x1c1)]=_0x4749dc(0x2bb);}function _0x537d5a(_0x2fb6d2){const _0x50e7f6=_0x275dc6,_0x3a7c77=_0x8f7554[_0x50e7f6(0x21a)](_0x5ae3c4=>_0x5ae3c4['id']===_0x2fb6d2);if(!_0x3a7c77){console[_0x50e7f6(0x2c7)]('HAC\x20mem\x20not\x20in\x20cache:',_0x2fb6d2);return;}_0x4897fe=_0x2fb6d2;if(_0x1d339b)_0x1d339b[_0x50e7f6(0x26a)]=_0x50e7f6(0x194)+_0x3a7c77[_0x50e7f6(0x2a8)]+'\x20'+_0x3a7c77[_0x50e7f6(0x2a2)];if(_0x25969a)_0x25969a[_0x50e7f6(0x193)]=_0x3a7c77['id'];if(_0x2a98ad)_0x2a98ad[_0x50e7f6(0x193)]=_0x3a7c77[_0x50e7f6(0x2a8)]||'';if(_0x1f0e7a)_0x1f0e7a[_0x50e7f6(0x193)]=_0x3a7c77[_0x50e7f6(0x2a2)]||'';if(_0x1ddec4)_0x1ddec4[_0x50e7f6(0x193)]=_0x3a7c77[_0x50e7f6(0x16b)]||'';if(_0x27e87e)_0x27e87e['value']=_0x3a7c77[_0x50e7f6(0x1f5)]||'';if(_0x556737)_0x556737[_0x50e7f6(0x193)]=_0x3a7c77[_0x50e7f6(0x2ab)]||'';if(_0x51590c)_0x51590c[_0x50e7f6(0x1da)][_0x50e7f6(0x1c1)]=_0x50e7f6(0x1c5);if(_0xff7f27)_0xff7f27['disabled']=![];if(_0x296a27)_0x296a27[_0x50e7f6(0x1da)][_0x50e7f6(0x1c1)]=_0x50e7f6(0x24a);}async function _0x459b9f(){const _0x39ab2f=_0x275dc6;if(!_0x4897fe)return;const _0x465481={'firstName':_0x2a98ad['value']['trim'](),'lastName':_0x1f0e7a[_0x39ab2f(0x193)][_0x39ab2f(0x241)](),'phoneNumber':_0x1ddec4[_0x39ab2f(0x193)][_0x39ab2f(0x241)]()||null,'driverLicense':_0x27e87e[_0x39ab2f(0x193)][_0x39ab2f(0x241)]()||null,'email':_0x556737['value'][_0x39ab2f(0x241)]()[_0x39ab2f(0x189)]()||null};if(!_0x465481['firstName']||!_0x465481[_0x39ab2f(0x2a2)]){alert(_0x39ab2f(0x2b9));return;}try{await _0x59a6bb[_0x39ab2f(0x171)](_0x59a6bb[_0x39ab2f(0x19f)](_0x239e62,'hacMembers',_0x4897fe),_0x465481),alert(_0x39ab2f(0x1bd)),await _0x143334(),_0x42496e();}catch(_0x89664f){console[_0x39ab2f(0x2c7)](_0x89664f),alert(_0x39ab2f(0x1e8));}}async function _0x272657(_0x5117d4){const _0x1cb02d=_0x275dc6;try{await _0x59a6bb[_0x1cb02d(0x231)](_0x59a6bb[_0x1cb02d(0x19f)](_0x239e62,_0x1cb02d(0x28e),_0x5117d4)),alert(_0x1cb02d(0x15e)),await _0x143334();if(_0x4897fe===_0x5117d4)_0x42496e();}catch(_0x2d36fd){console[_0x1cb02d(0x2c7)](_0x2d36fd),alert('HAC\x20delete\x20err.');}}async function _0x143334(){const _0x23f1d5=_0x275dc6;if(!_0x1542b8||!_0x5adab7)return;const _0x39ad45=_0x1542b8[_0x23f1d5(0x193)][_0x23f1d5(0x241)]()[_0x23f1d5(0x189)]();if(!_0x39ad45){_0x8f7554=[],_0xa70e0f(_0x8f7554);if(_0x5adab7)_0x5adab7[_0x23f1d5(0x1d0)]='<p><i>Enter\x20search\x20term.</i></p>';return;}_0x5adab7['innerHTML']=_0x23f1d5(0x221);try{const _0x4577bc=_0x59a6bb[_0x23f1d5(0x225)](_0x59a6bb['collection'](_0x239e62,_0x23f1d5(0x28e)),_0x59a6bb[_0x23f1d5(0x269)](_0x23f1d5(0x2a2))),_0x116fdb=await _0x59a6bb[_0x23f1d5(0x1dc)](_0x4577bc);let _0x478593=[];_0x116fdb[_0x23f1d5(0x281)](_0x1eefe4=>_0x478593[_0x23f1d5(0x263)]({'id':_0x1eefe4['id'],..._0x1eefe4[_0x23f1d5(0x1a0)]()})),_0x8f7554=_0x478593;const _0x1cda0c=_0x8f7554[_0x23f1d5(0x242)](_0x5d6de2=>((_0x5d6de2[_0x23f1d5(0x2a8)]||'')+'\x20'+(_0x5d6de2['lastName']||''))[_0x23f1d5(0x189)]()['includes'](_0x39ad45)||_0x5d6de2['phoneNumber']?.[_0x23f1d5(0x1ff)](_0x39ad45)||_0x5d6de2['driverLicense']?.['toLowerCase']()[_0x23f1d5(0x1ff)](_0x39ad45)||_0x5d6de2[_0x23f1d5(0x2ab)]?.[_0x23f1d5(0x189)]()[_0x23f1d5(0x1ff)](_0x39ad45));_0xa70e0f(_0x1cda0c);}catch(_0x5a7751){console['error'](_0x5a7751),_0x5adab7[_0x23f1d5(0x1d0)]=_0x23f1d5(0x230);}}function _0xa70e0f(_0x594274){const _0x4e07df=_0x275dc6;if(!_0x5adab7)return;_0x5adab7[_0x4e07df(0x1d0)]='';if(_0x594274[_0x4e07df(0x212)]===0x0){_0x5adab7['innerHTML']=_0x4e07df(0x2b1)+(_0x1542b8?_0x1542b8[_0x4e07df(0x193)]:'')+_0x4e07df(0x2ce);return;}_0x594274['forEach'](_0x7ef076=>{const _0x2f36dc=_0x4e07df,_0x2559a4=document[_0x2f36dc(0x1ad)]('div');_0x2559a4['className']=_0x2f36dc(0x1e0);const _0x28905a=_0x7ef076[_0x2f36dc(0x238)]?'ELIGIBLE':_0x2f36dc(0x1b7),_0x22118d=_0x7ef076[_0x2f36dc(0x238)]?_0x2f36dc(0x2c6):_0x2f36dc(0x161),_0x43718c=_0x7ef076[_0x2f36dc(0x214)]?.[_0x2f36dc(0x1a6)]?_0x7ef076[_0x2f36dc(0x214)][_0x2f36dc(0x1a6)]()[_0x2f36dc(0x1b0)]():_0x2f36dc(0x2cd),_0x10ab7b=_0x7ef076[_0x2f36dc(0x17f)]?.[_0x2f36dc(0x1a6)]?_0x7ef076[_0x2f36dc(0x17f)][_0x2f36dc(0x1a6)]()['toLocaleDateString']():'';_0x2559a4[_0x2f36dc(0x1d0)]=_0x2f36dc(0x174)+_0x7ef076['firstName']+'\x20'+_0x7ef076[_0x2f36dc(0x2a2)]+_0x2f36dc(0x21e)+_0x22118d+'\x22>'+_0x28905a+_0x2f36dc(0x2ae)+(_0x7ef076[_0x2f36dc(0x16b)]||_0x2f36dc(0x2cd))+_0x2f36dc(0x1b6)+(_0x7ef076['driverLicense']||_0x2f36dc(0x2cd))+'<br>Email:\x20'+(_0x7ef076[_0x2f36dc(0x2ab)]||_0x2f36dc(0x2cd))+_0x2f36dc(0x18b)+_0x43718c+'\x20'+(_0x10ab7b?_0x2f36dc(0x205)+_0x10ab7b+')':'')+_0x2f36dc(0x1b9)+_0x7ef076['id']+_0x2f36dc(0x2a5)+_0x7ef076['id']+_0x2f36dc(0x265),_0x5adab7[_0x2f36dc(0x1ac)](_0x2559a4);}),_0x5adab7[_0x4e07df(0x18c)]('.edit-hac-member-btn')['forEach'](_0x581da8=>_0x581da8[_0x4e07df(0x186)]('click',_0x42f147=>_0x537d5a(_0x42f147['target'][_0x4e07df(0x290)]['id']))),_0x5adab7['querySelectorAll'](_0x4e07df(0x172))['forEach'](_0x203a35=>_0x203a35[_0x4e07df(0x186)](_0x4e07df(0x229),async _0x577ed0=>{const _0x5c8d3d=_0x4e07df;if(confirm('Remove?'))await _0x272657(_0x577ed0[_0x5c8d3d(0x29e)][_0x5c8d3d(0x290)]['id']);}));}async function _0xb5edcf(){const _0xb07e31=_0x275dc6;if(!_0x59a6bb['collection']||!_0x59a6bb[_0xb07e31(0x225)]||!_0x59a6bb['orderBy']||!_0x59a6bb[_0xb07e31(0x1dc)]){_0x1e1816=[];if(_0x73d72d)_0x73d72d[_0xb07e31(0x1d0)]=_0xb07e31(0x1d6);return;}try{const _0x297ee2=_0x59a6bb[_0xb07e31(0x225)](_0x59a6bb[_0xb07e31(0x285)](_0x239e62,_0xb07e31(0x2d0)),_0x59a6bb[_0xb07e31(0x269)](_0xb07e31(0x1ba),'desc')),_0x5122be=await _0x59a6bb[_0xb07e31(0x1dc)](_0x297ee2);_0x1e1816=[],_0x5122be['forEach'](_0x2b771c=>{const _0x43a560=_0xb07e31,_0x4728cb=_0x2b771c[_0x43a560(0x1a0)]();let _0x2aad8d=_0x43a560(0x2cd);if(_0x4728cb[_0x43a560(0x1ba)]&&typeof _0x4728cb[_0x43a560(0x1ba)][_0x43a560(0x1a6)]===_0x43a560(0x27c))_0x2aad8d=_0x4728cb['createdAt']['toDate']()[_0x43a560(0x234)]();else _0x4728cb[_0x43a560(0x2bd)]&&(_0x2aad8d=_0x4728cb['date']);_0x1e1816['push']({'id':_0x2b771c['id'],..._0x4728cb,'displayDate':_0x2aad8d});});}catch(_0x38e750){console['error'](_0xb07e31(0x20b),_0x38e750),_0x1e1816=[];if(_0x73d72d)_0x73d72d['innerHTML']=_0xb07e31(0x1e7)+_0x38e750[_0xb07e31(0x1bb)]+_0xb07e31(0x24b);}}function _0x132e5e(_0x1e399f){const _0x402bc3=_0x275dc6,_0x5a9c7f=document[_0x402bc3(0x2b2)](_0x402bc3(0x2d0));if(!_0x5a9c7f)return;_0x5a9c7f['innerHTML']='';if(!_0x1e399f||_0x1e399f['length']===0x0){_0x5a9c7f[_0x402bc3(0x1d0)]=_0x402bc3(0x287);return;}const _0x117c5a=document[_0x402bc3(0x1ad)](_0x402bc3(0x25d));_0x117c5a[_0x402bc3(0x1d0)]=_0x402bc3(0x2ad);const _0x515eb9=_0x117c5a[_0x402bc3(0x1ee)](_0x402bc3(0x202));_0x1e399f[_0x402bc3(0x281)](_0x44b106=>{const _0x4d7640=_0x402bc3;if(!_0x44b106||typeof _0x44b106!==_0x4d7640(0x25a))return;const _0x157013=_0x515eb9[_0x4d7640(0x23e)]();let _0x284467=_0x4d7640(0x2cd);if(_0x44b106[_0x4d7640(0x29a)]&&Array[_0x4d7640(0x2a4)](_0x44b106['items'])&&_0x44b106[_0x4d7640(0x29a)]['length']>0x0)_0x284467=_0x44b106['items'][_0x4d7640(0x163)](_0x3e7d73=>(_0x3e7d73['itemName']||_0x4d7640(0x199))+_0x4d7640(0x190)+(_0x3e7d73['quantity']||0x1)+')')[_0x4d7640(0x288)](';\x20');else _0x44b106[_0x4d7640(0x1dd)]&&Array[_0x4d7640(0x2a4)](_0x44b106[_0x4d7640(0x1dd)])&&_0x44b106[_0x4d7640(0x1dd)][_0x4d7640(0x212)]>0x0&&(_0x284467=_0x44b106[_0x4d7640(0x1dd)]['map'](_0x79a752=>(_0x79a752[_0x4d7640(0x188)]||'Item')+_0x4d7640(0x190)+(_0x79a752['quantity']||0x1)+_0x4d7640(0x256)+(_0x79a752['type']||_0x4d7640(0x2cd))+']')[_0x4d7640(0x288)](';\x20'));_0x284467='\x22'+_0x284467['replace'](/"/g,'\x22\x22')+'\x22';let _0xb4c057=0x0;_0x44b106[_0x4d7640(0x1f4)]===_0x4d7640(0x1ea)?_0xb4c057=(parseFloat(_0x44b106[_0x4d7640(0x169)])||0x0)-(parseFloat(_0x44b106[_0x4d7640(0x2c9)])||0x0):_0xb4c057=parseFloat(_0x44b106[_0x4d7640(0x17d)]!==undefined?_0x44b106[_0x4d7640(0x17d)]:_0x44b106[_0x4d7640(0x17e)])||0x0;let _0x24eda0=0x0;_0x44b106[_0x4d7640(0x1f4)]==='Buy/Sell\x20Trade'?_0x24eda0=parseFloat(_0x44b106[_0x4d7640(0x282)])||0x0:_0x24eda0=parseFloat(_0x44b106[_0x4d7640(0x1c4)])||0x0;let _0x51373f=_0x4d7640(0x1ca);_0x44b106['transactionType']==='Buy/Sell\x20Trade'?_0x51373f=_0x4d7640(0x2cd):_0x51373f=(parseFloat(_0x44b106[_0x4d7640(0x1e3)])||0x0)[_0x4d7640(0x1fd)](0x2);const _0x2b7878=_0x44b106[_0x4d7640(0x239)]||(_0x44b106[_0x4d7640(0x1f4)]===_0x4d7640(0x1ea)?_0x4d7640(0x2cd):'0%'),_0x484372=_0x44b106[_0x4d7640(0x2b3)]||(_0x44b106[_0x4d7640(0x1ba)]&&_0x44b106[_0x4d7640(0x1ba)]['toDate']?_0x44b106[_0x4d7640(0x1ba)][_0x4d7640(0x1a6)]()[_0x4d7640(0x234)]():_0x4d7640(0x2cd));_0x157013[_0x4d7640(0x1d0)]=_0x4d7640(0x235)+(_0x44b106[_0x4d7640(0x1fa)]||'N/A')+'</td><td>'+(_0x44b106[_0x4d7640(0x240)]||_0x4d7640(0x2cd))+_0x4d7640(0x24d)+_0x484372+_0x4d7640(0x24d)+(_0x284467==='\x22N/A\x22'?'N/A':_0x284467['substring'](0x1,_0x284467[_0x4d7640(0x212)]-0x1))+_0x4d7640(0x24d)+_0xb4c057['toFixed'](0x2)+'</td><td>'+_0x2b7878+_0x4d7640(0x24d)+_0x24eda0['toFixed'](0x2)+'</td><td>'+_0x51373f+'</td><td>'+(_0x44b106[_0x4d7640(0x1f4)]||_0x4d7640(0x2cb))+_0x4d7640(0x259);}),_0x5a9c7f[_0x402bc3(0x1ac)](_0x117c5a);}async function _0x5bf47f(){const _0x3e369a=_0x275dc6;if(!confirm(_0x3e369a(0x2ba)))return;if(_0x163991)_0x163991[_0x3e369a(0x272)]=!![];if(_0x4d8406)_0x4d8406[_0x3e369a(0x26a)]=_0x3e369a(0x299);try{const _0x2eb12c=await _0x59a6bb[_0x3e369a(0x1dc)](_0x59a6bb[_0x3e369a(0x285)](_0x239e62,_0x3e369a(0x28e)));if(_0x2eb12c[_0x3e369a(0x1e1)]){if(_0x4d8406)_0x4d8406[_0x3e369a(0x26a)]='No\x20members.';if(_0x163991)_0x163991['disabled']=![];return;}const _0x246e13=_0x2eb12c[_0x3e369a(0x226)]['map'](_0x3e374b=>_0x59a6bb[_0x3e369a(0x171)](_0x3e374b[_0x3e369a(0x187)],{'isEligible':!![],'lastEligibilityReset':_0x59a6bb['serverTimestamp']()}));await Promise[_0x3e369a(0x29d)](_0x246e13);if(_0x4d8406)_0x4d8406[_0x3e369a(0x26a)]='Reset\x20'+_0x246e13[_0x3e369a(0x212)]+'.';if(_0x1542b8?.[_0x3e369a(0x193)]['trim']())await _0x143334();else{if(_0x5adab7)_0x5adab7[_0x3e369a(0x1d0)]=_0x3e369a(0x289);}}catch(_0x546491){console[_0x3e369a(0x2c7)](_0x546491);if(_0x4d8406)_0x4d8406[_0x3e369a(0x26a)]='Error.';}finally{if(_0x163991)_0x163991[_0x3e369a(0x272)]=![];setTimeout(()=>{const _0x31b0a8=_0x3e369a;if(_0x4d8406)_0x4d8406[_0x31b0a8(0x26a)]='';},0x1b58);}}async function _0x491c59(){const _0x5b15de=_0x275dc6;if(!_0x21c483)return;_0x21c483['innerHTML']=_0x5b15de(0x1a3);try{const _0x256df9=_0x59a6bb[_0x5b15de(0x285)](_0x239e62,_0x5b15de(0x1f6)),_0x3d2456=_0x59a6bb[_0x5b15de(0x225)](_0x256df9,_0x59a6bb['orderBy']('clearedAt',_0x5b15de(0x1b1))),_0x2294e2=await _0x59a6bb['getDocs'](_0x3d2456);_0x187d18=[],_0x2294e2['forEach'](_0x311a9b=>{const _0x312301=_0x5b15de,_0x10bc9a=_0x311a9b[_0x312301(0x1a0)]();_0x187d18[_0x312301(0x263)]({'id':_0x311a9b['id'],'employeeName':_0x10bc9a[_0x312301(0x1fa)],'processingEmployeeName':_0x10bc9a['processingEmployeeName'],'totalAmountCleared':_0x10bc9a[_0x312301(0x197)],'clearedAt':_0x10bc9a['clearedAt']?.[_0x312301(0x1a6)]?_0x10bc9a[_0x312301(0x298)][_0x312301(0x1a6)]()[_0x312301(0x234)]():'N/A','transactionIdsCount':_0x10bc9a[_0x312301(0x1be)]?_0x10bc9a[_0x312301(0x1be)][_0x312301(0x212)]:_0x10bc9a[_0x312301(0x1f0)]?_0x10bc9a['transactionIdsCleared'][_0x312301(0x212)]:0x0});}),_0x463c80();}catch(_0x25d203){console[_0x5b15de(0x2c7)](_0x5b15de(0x1af),_0x25d203);if(_0x21c483)_0x21c483['innerHTML']='<p><i>Error\x20loading\x20logs.</i></p>';}}function _0x463c80(){const _0x560ada=_0x275dc6;if(!_0x21c483)return;_0x21c483[_0x560ada(0x1d0)]='';if(_0x187d18[_0x560ada(0x212)]===0x0){_0x21c483[_0x560ada(0x1d0)]=_0x560ada(0x195);return;}const _0x312269=document['createElement'](_0x560ada(0x25d));_0x312269[_0x560ada(0x1d0)]=_0x560ada(0x286);const _0x45dacf=_0x312269[_0x560ada(0x1ee)](_0x560ada(0x202));_0x187d18[_0x560ada(0x281)](_0x49fce8=>{const _0x3de006=_0x560ada,_0x24e887=_0x45dacf[_0x3de006(0x23e)]();_0x24e887['insertCell']()[_0x3de006(0x26a)]=_0x49fce8[_0x3de006(0x1fa)]||_0x3de006(0x2cd),_0x24e887[_0x3de006(0x223)]()[_0x3de006(0x26a)]=_0x49fce8['processingEmployeeName']||_0x3de006(0x2cd),_0x24e887[_0x3de006(0x223)]()[_0x3de006(0x26a)]=_0x49fce8[_0x3de006(0x197)]!==undefined?parseFloat(_0x49fce8[_0x3de006(0x197)])[_0x3de006(0x1fd)](0x2):'0.00',_0x24e887[_0x3de006(0x223)]()[_0x3de006(0x26a)]=_0x49fce8[_0x3de006(0x1d2)]||0x0,_0x24e887[_0x3de006(0x223)]()[_0x3de006(0x26a)]=_0x49fce8[_0x3de006(0x298)];}),_0x21c483['appendChild'](_0x312269);}function _0x5a183d(){const _0x192799=_0x275dc6;if(_0x5bf6f9)_0x5bf6f9[_0x192799(0x186)](_0x192799(0x229),_0x1672ca);if(_0x164705)_0x164705['addEventListener'](_0x192799(0x229),_0xabb19f);if(_0x35feab)_0x35feab[_0x192799(0x186)](_0x192799(0x229),_0xc3954);if(_0xe083d5)_0xe083d5['addEventListener']('click',_0x5681f0);if(_0xff7f27)_0xff7f27[_0x192799(0x186)](_0x192799(0x229),_0x459b9f);if(_0x296a27)_0x296a27[_0x192799(0x186)]('click',_0x42496e);if(_0x3636fe)_0x3636fe[_0x192799(0x186)](_0x192799(0x229),_0x143334);if(_0x1542b8)_0x1542b8[_0x192799(0x186)](_0x192799(0x251),_0x4c61f9=>{const _0x15590c=_0x192799;_0x4c61f9[_0x15590c(0x294)]===_0x15590c(0x220)&&(_0x4c61f9[_0x15590c(0x292)](),_0x143334());});_0x38d362&&_0x38d362[_0x192799(0x186)]('click',()=>{const _0x3334ab=_0x192799;if(_0x1542b8)_0x1542b8[_0x3334ab(0x193)]='';_0x143334(),_0x42496e();});if(_0x3b37ec)_0x3b37ec['addEventListener'](_0x192799(0x229),_0x3e9a49);if(_0x2e75fb)_0x2e75fb[_0x192799(0x186)](_0x192799(0x229),_0x42c422);if(_0x163991)_0x163991[_0x192799(0x186)]('click',_0x5bf47f);_0x1cd8dc&&_0x1cd8dc['addEventListener'](_0x192799(0x229),async()=>{const _0x543b44=_0x192799;_0x1e1816[_0x543b44(0x212)]===0x0&&await _0xb5edcf();if(_0x1e1816['length']===0x0){alert(_0x543b44(0x206));return;}const _0x580bec=['Employee','Rank',_0x543b44(0x19a),_0x543b44(0x28c),'SubTotal\x20($)','Fee\x20Rate\x20(%)',_0x543b44(0x2b7),_0x543b44(0x27e),_0x543b44(0x182)],_0x19fb8a=[_0x580bec[_0x543b44(0x288)](',')];_0x1e1816[_0x543b44(0x281)](_0x1c2b47=>{const _0x3ed089=_0x543b44;if(!_0x1c2b47||typeof _0x1c2b47!=='object')return;const _0xa6519='\x22'+(_0x1c2b47['employeeName']||_0x3ed089(0x2cd))['replace'](/"/g,'\x22\x22')+'\x22',_0x8b9408='\x22'+(_0x1c2b47[_0x3ed089(0x240)]||_0x3ed089(0x2cd))[_0x3ed089(0x1ae)](/"/g,'\x22\x22')+'\x22',_0x44bb56='\x22'+(_0x1c2b47[_0x3ed089(0x2b3)]||(_0x1c2b47['createdAt']?.[_0x3ed089(0x1a6)]?_0x1c2b47['createdAt'][_0x3ed089(0x1a6)]()[_0x3ed089(0x234)]():_0x3ed089(0x2cd)))[_0x3ed089(0x1ae)](/"/g,'\x22\x22')+'\x22';let _0xff243d=_0x3ed089(0x2cd);if(_0x1c2b47[_0x3ed089(0x29a)]&&Array['isArray'](_0x1c2b47[_0x3ed089(0x29a)]))_0xff243d=_0x1c2b47['items'][_0x3ed089(0x163)](_0x1d3348=>(_0x1d3348[_0x3ed089(0x188)]||_0x3ed089(0x199))+_0x3ed089(0x190)+(_0x1d3348[_0x3ed089(0x1d3)]||0x1)+')')['join'](';\x20');else _0x1c2b47[_0x3ed089(0x1dd)]&&Array[_0x3ed089(0x2a4)](_0x1c2b47[_0x3ed089(0x1dd)])&&(_0xff243d=_0x1c2b47['itemsTraded'][_0x3ed089(0x163)](_0x4947f9=>(_0x4947f9[_0x3ed089(0x188)]||'Item')+'\x20(x'+(_0x4947f9['quantity']||0x1)+_0x3ed089(0x256)+(_0x4947f9[_0x3ed089(0x19e)]||_0x3ed089(0x2cd))+']')[_0x3ed089(0x288)](';\x20'));_0xff243d='\x22'+_0xff243d[_0x3ed089(0x1ae)](/"/g,'\x22\x22')+'\x22';let _0x270fca=0x0;_0x1c2b47[_0x3ed089(0x1f4)]===_0x3ed089(0x1ea)?_0x270fca=(parseFloat(_0x1c2b47[_0x3ed089(0x169)])||0x0)-(parseFloat(_0x1c2b47[_0x3ed089(0x2c9)])||0x0):_0x270fca=parseFloat(_0x1c2b47[_0x3ed089(0x17d)]!==undefined?_0x1c2b47[_0x3ed089(0x17d)]:_0x1c2b47[_0x3ed089(0x17e)])||0x0;const _0x434765=_0x270fca[_0x3ed089(0x1fd)](0x2),_0x4bba4a=(_0x1c2b47[_0x3ed089(0x239)]||(_0x1c2b47[_0x3ed089(0x1f4)]==='Buy/Sell\x20Trade'?'N/A':'0%'))[_0x3ed089(0x1ae)]('%','');let _0x2de6b3=0x0;_0x1c2b47['transactionType']==='Buy/Sell\x20Trade'?_0x2de6b3=parseFloat(_0x1c2b47[_0x3ed089(0x282)])||0x0:_0x2de6b3=parseFloat(_0x1c2b47[_0x3ed089(0x1c4)])||0x0;const _0x356dcc=_0x2de6b3[_0x3ed089(0x1fd)](0x2);let _0x570739=_0x3ed089(0x1ca);_0x1c2b47['transactionType']===_0x3ed089(0x1ea)?_0x570739=_0x3ed089(0x2cd):_0x570739=(parseFloat(_0x1c2b47[_0x3ed089(0x1e3)])||0x0)[_0x3ed089(0x1fd)](0x2);const _0x305ecb='\x22'+(_0x1c2b47[_0x3ed089(0x1f4)]||'Unknown')[_0x3ed089(0x1ae)](/"/g,'\x22\x22')+'\x22';_0x19fb8a[_0x3ed089(0x263)]([_0xa6519,_0x8b9408,_0x44bb56,_0xff243d,_0x434765,_0x4bba4a,_0x356dcc,_0x570739,_0x305ecb]['join'](','));});if(_0x19fb8a[_0x543b44(0x212)]<=0x1){alert(_0x543b44(0x245));return;}const _0x3df59a=_0x19fb8a[_0x543b44(0x288)]('\x0a'),_0x883c89=new Blob(['\ufeff'+_0x3df59a],{'type':_0x543b44(0x2be)}),_0x1d60b7=URL['createObjectURL'](_0x883c89),_0x33222c=document[_0x543b44(0x1ad)]('a');_0x33222c[_0x543b44(0x1da)][_0x543b44(0x1c1)]=_0x543b44(0x2bb),_0x33222c[_0x543b44(0x185)]=_0x1d60b7,_0x33222c[_0x543b44(0x222)]=_0x543b44(0x280),document[_0x543b44(0x1b3)][_0x543b44(0x1ac)](_0x33222c),_0x33222c['click'](),URL[_0x543b44(0x1a9)](_0x1d60b7),document[_0x543b44(0x1b3)][_0x543b44(0x247)](_0x33222c);}),_0xd88f6c&&_0xd88f6c[_0x192799(0x186)](_0x192799(0x229),()=>{const _0x168187=_0x192799;if(_0x187d18[_0x168187(0x212)]===0x0){alert('No\x20tax\x20payment\x20logs\x20to\x20export.');return;}const _0x59eca0=[_0x168187(0x252),_0x168187(0x1ab),_0x168187(0x2c2),_0x168187(0x2bf),'Date\x20Cleared'],_0x299667=[_0x59eca0[_0x168187(0x288)](',')];_0x187d18[_0x168187(0x281)](_0x541417=>{const _0x389eb1=_0x168187,_0x1cf097=['\x22'+(_0x541417['employeeName']||_0x389eb1(0x2cd))[_0x389eb1(0x1ae)](/"/g,'\x22\x22')+'\x22','\x22'+(_0x541417['processingEmployeeName']||_0x389eb1(0x2cd))[_0x389eb1(0x1ae)](/"/g,'\x22\x22')+'\x22',(parseFloat(_0x541417[_0x389eb1(0x197)])||0x0)['toFixed'](0x2),_0x541417[_0x389eb1(0x1d2)]||0x0,'\x22'+(_0x541417[_0x389eb1(0x298)]||_0x389eb1(0x2cd))['replace'](/"/g,'\x22\x22')+'\x22'];_0x299667[_0x389eb1(0x263)](_0x1cf097['join'](','));});if(_0x299667[_0x168187(0x212)]<=0x1){alert('No\x20valid\x20tax\x20log\x20data\x20to\x20export.');return;}const _0x52df19=_0x299667['join']('\x0a'),_0x18e353=new Blob(['\ufeff'+_0x52df19],{'type':_0x168187(0x2be)}),_0x426433=URL['createObjectURL'](_0x18e353),_0x265438=document[_0x168187(0x1ad)]('a');_0x265438[_0x168187(0x185)]=_0x426433,_0x265438[_0x168187(0x222)]=_0x168187(0x295),_0x265438[_0x168187(0x1da)]['display']=_0x168187(0x2bb),document[_0x168187(0x1b3)][_0x168187(0x1ac)](_0x265438),_0x265438['click'](),URL[_0x168187(0x1a9)](_0x426433),document[_0x168187(0x1b3)][_0x168187(0x247)](_0x265438);});}async function _0x398bd3(){await Promise['all']([_0x1772bd(),_0xb5edcf(),_0x2a1ac7(),_0x46dc5f(),_0x491c59(),_0x3855f9()]),_0x4bb3db(),_0xabb19f(),_0x5681f0(),_0x132e5e(_0x1e1816),_0x42496e();if(_0x5adab7)_0x5adab7['innerHTML']='<p><i>Search\x20for\x20HAC\x20members.</i></p>';_0x5a183d();}_0x292004&&_0x292004[_0x275dc6(0x186)](_0x275dc6(0x244),async _0x11ce39=>{const _0x4d98e2=_0x275dc6;_0x11ce39[_0x4d98e2(0x292)]();const _0xbf07a0=_0x319812[_0x4d98e2(0x193)];if(_0xbf07a0===_0x3e964d)typeof grantManagerSession===_0x4d98e2(0x27c)?grantManagerSession():console[_0x4d98e2(0x2c7)](_0x4d98e2(0x1c0)),_0x592d5a(!![]),await _0x398bd3();else{_0x1732dd&&(_0x1732dd['textContent']='Invalid\x20Manager\x20Password.',_0x1732dd[_0x4d98e2(0x1da)][_0x4d98e2(0x1c1)]=_0x4d98e2(0x1c5));if(_0x319812)_0x319812['value']='';}}),typeof checkManagerSession===_0x275dc6(0x27c)&&checkManagerSession()?(_0x592d5a(!![]),await _0x398bd3()):_0x592d5a(![]),_0x140479();}let _0x296049=![];document[_0x3fe87f(0x186)](_0x3fe87f(0x2c8),_0xee26e6=>{const _0x23e261=_0x3fe87f;!_0x2ef1b3&&!_0x296049&&(_0x296049=!![],_0xa3c2e1(_0xee26e6[_0x23e261(0x23b)]));}),document[_0x3fe87f(0x186)]('firebaseError',_0x2e2507=>{const _0x5a625b=_0x3fe87f;!_0x2ef1b3&&!_0x296049&&(_0x296049=!![],_0x3001ed(_0x5a625b(0x22f)+(_0x2e2507[_0x5a625b(0x23b)]?.['error']?.['message']||'')));}),setTimeout(()=>{const _0x3a31fa=_0x3fe87f;!_0x2ef1b3&&!_0x296049&&(window[_0x3a31fa(0x232)]&&window['db']&&window[_0x3a31fa(0x180)]?_0xa3c2e1({'db':window['db'],'functions':window[_0x3a31fa(0x180)]}):_0x3001ed(_0x3a31fa(0x28d)));},0xdac);const _0x2c40ff=setInterval(()=>{const _0x1a61ff=_0x3fe87f;window['db']&&window[_0x1a61ff(0x180)]&&(clearInterval(_0x2c40ff),_0x3482b0(window['db'],window[_0x1a61ff(0x180)]));},0x64);function _0x3482b0(_0x17ebfc,_0x3872c7){const _0xca3f23=_0x3fe87f;console[_0xca3f23(0x218)]('Reimbursement\x20Calculator:\x20Initializing...');const _0x58ccb4={'Boar\x20Meat':{'price':0xaf,'image':'meat.webp'},'Boar\x20Hide':{'price':0xe1,'image':'hide.webp'},'Deer\x20Meat':{'price':0x4b,'image':'meat.webp'},'Deer\x20Hide':{'price':0x7d,'image':_0xca3f23(0x210)},'Rabbit\x20Meat':{'price':0x177,'image':'meat.webp'},'Rabbit\x20Hide':{'price':0x145,'image':_0xca3f23(0x210)},'Rat\x20Meat':{'price':0x1db,'image':'meat.webp'},'Rat\x20Hide':{'price':0x20d,'image':_0xca3f23(0x210)},'Animal\x20Bones':{'price':0xe1,'image':_0xca3f23(0x1c8)},'Crab':{'price':0x57,'image':_0xca3f23(0x20e)},'Minnow':{'price':0xaf,'image':_0xca3f23(0x2b6)},'Haddock':{'price':0xaf,'image':_0xca3f23(0x1d7)},'Pollock':{'price':0xaf,'image':_0xca3f23(0x2a0)},'Crappie':{'price':0xaf,'image':_0xca3f23(0x22d)},'Trout':{'price':0xaf,'image':_0xca3f23(0x1fe)},'Rainbow\x20Trout':{'price':0xaf,'image':_0xca3f23(0x16f)},'Garfish':{'price':0xb9,'image':'fs-garfish.webp'},'Striped\x20Bass':{'price':0xc8,'image':'fs-stripedbass.webp'},'Salmon':{'price':0xc8,'image':_0xca3f23(0x1ef)},'Northern\x20Pike':{'price':0xe1,'image':_0xca3f23(0x1f1)},'Tuna':{'price':0xfa,'image':_0xca3f23(0x22e)},'Salmon\x20Meat':{'price':0xa,'image':_0xca3f23(0x203)},'Slimy\x20Fish\x20Meat':{'price':0x2,'image':_0xca3f23(0x26b)},'White\x20Fish\x20Meat':{'price':0xa,'image':'fishmeat_white.webp'}},_0x363fb3=document['getElementById'](_0xca3f23(0x179)),_0x4e350f=document[_0xca3f23(0x2b2)](_0xca3f23(0x173)),_0x26b9e9=document[_0xca3f23(0x2b2)](_0xca3f23(0x1b2)),_0x2d7407=document['getElementById']('employee-profile-name'),_0x25d202=document[_0xca3f23(0x2b2)](_0xca3f23(0x27d)),_0x4daf9c=document[_0xca3f23(0x2b2)](_0xca3f23(0x260)),_0x2884c1=document[_0xca3f23(0x2b2)]('log-reimbursement-button'),_0xeaddf1=document[_0xca3f23(0x2b2)](_0xca3f23(0x22b)),_0xa38443=document[_0xca3f23(0x2b2)](_0xca3f23(0x2a9)),_0x2b3c24=document[_0xca3f23(0x2b2)](_0xca3f23(0x268)),_0x8e9a4e=document[_0xca3f23(0x2b2)](_0xca3f23(0x1cf)),_0x25bddc=document['getElementById'](_0xca3f23(0x1c3)),_0x5cf9fe=document['getElementById'](_0xca3f23(0x1cc)),_0x576f4c=document[_0xca3f23(0x2b2)](_0xca3f23(0x1bf)),_0x52b8c1=document[_0xca3f23(0x2b2)](_0xca3f23(0x22c));if(!_0x363fb3)return;function _0x4ea2c4(){const _0x370f8b=_0xca3f23;let _0x19302a=0x0;document[_0x370f8b(0x18c)](_0x370f8b(0x213))['forEach'](_0x557829=>{const _0x4dbe82=_0x370f8b,_0x2edcf5=_0x557829['closest'](_0x4dbe82(0x2aa)),_0x542d4d=parseFloat(_0x2edcf5?.[_0x4dbe82(0x290)][_0x4dbe82(0x25f)]||0x0),_0x2002ba=parseInt(_0x557829[_0x4dbe82(0x193)]||0x0);_0x2002ba>0x0&&_0x542d4d>0x0&&(_0x19302a+=_0x2002ba*_0x542d4d);});const _0x1e58c3=parseFloat(_0x576f4c[_0x370f8b(0x193)])||0x0,_0x91fdef=_0x19302a+_0x1e58c3;_0xeaddf1[_0x370f8b(0x26a)]=_0x91fdef[_0x370f8b(0x234)]('en-US',{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2}),_0x2884c1[_0x370f8b(0x1da)][_0x370f8b(0x1c1)]=_0x91fdef>0x0?_0x370f8b(0x24a):_0x370f8b(0x2bb);}function _0x3b65a4(){const _0x58f059=_0xca3f23;_0x363fb3[_0x58f059(0x1d0)]='';const _0x12cc01=Object[_0x58f059(0x21f)](_0x58ccb4);for(const [_0x5d191d,_0xfc8386]of _0x12cc01){const _0x33d5af=document['createElement'](_0x58f059(0x1d4));_0x33d5af['className']='item',_0x33d5af[_0x58f059(0x290)][_0x58f059(0x26d)]=_0x5d191d,_0x33d5af['dataset'][_0x58f059(0x25f)]=_0xfc8386['price'];const _0x18bce5=document[_0x58f059(0x1ad)](_0x58f059(0x2c4));_0x18bce5[_0x58f059(0x2c0)]=_0xfc8386[_0x58f059(0x24e)],_0x18bce5[_0x58f059(0x237)]=_0x5d191d,_0x18bce5[_0x58f059(0x23c)]=()=>{const _0x1a37e9=_0x58f059;_0x18bce5[_0x1a37e9(0x2c0)]=_0x1a37e9(0x2cf);};const _0x1e77dc=document[_0x58f059(0x1ad)]('p');_0x1e77dc[_0x58f059(0x26a)]=_0x5d191d;const _0x3717bc=document[_0x58f059(0x1ad)](_0x58f059(0x21b));_0x3717bc['textContent']='$'+_0xfc8386[_0x58f059(0x25f)];const _0x28b312=document['createElement'](_0x58f059(0x175));_0x28b312['type']='number',_0x28b312[_0x58f059(0x1c7)]='0',_0x28b312[_0x58f059(0x193)]='0',_0x28b312[_0x58f059(0x15f)]=_0x58f059(0x1d3),_0x28b312[_0x58f059(0x186)]('input',_0x4ea2c4),_0x33d5af[_0x58f059(0x1ac)](_0x18bce5),_0x33d5af[_0x58f059(0x1ac)](_0x1e77dc),_0x33d5af['appendChild'](_0x3717bc),_0x33d5af[_0x58f059(0x1ac)](_0x28b312),_0x33d5af[_0x58f059(0x186)](_0x58f059(0x229),_0xe75f50=>{const _0x3b2cdd=_0x58f059;_0xe75f50[_0x3b2cdd(0x29e)]!==_0x28b312&&(_0x28b312['value']=parseInt(_0x28b312['value']||0x0)+0x1,_0x28b312['dispatchEvent'](new Event(_0x3b2cdd(0x175),{'bubbles':!![]})));}),_0x363fb3['appendChild'](_0x33d5af);}}async function _0x233998(){const _0x1f7c6c=_0xca3f23;try{const _0x43bfe5=_0x3872c7[_0x1f7c6c(0x225)](_0x3872c7[_0x1f7c6c(0x285)](_0x17ebfc,'employees'),_0x3872c7['orderBy'](_0x1f7c6c(0x1e4))),_0x1d0991=await _0x3872c7[_0x1f7c6c(0x1dc)](_0x43bfe5);_0x4e350f[_0x1f7c6c(0x1d0)]='<option\x20value=\x22\x22>--\x20Select\x20Employee\x20--</option>',_0x1d0991['forEach'](_0x53d8ef=>{const _0x40ddbb=_0x1f7c6c,_0xab5fb=_0x53d8ef['data'](),_0x4eb001=document[_0x40ddbb(0x1ad)](_0x40ddbb(0x1cb));_0x4eb001[_0x40ddbb(0x193)]=_0x53d8ef['id'],_0x4eb001[_0x40ddbb(0x26a)]=_0xab5fb[_0x40ddbb(0x1e4)],_0x4eb001[_0x40ddbb(0x290)]['bank']=_0xab5fb[_0x40ddbb(0x2a1)]||'N/A',_0x4e350f[_0x40ddbb(0x1ac)](_0x4eb001);});}catch(_0x4934b7){console[_0x1f7c6c(0x2c7)]('Error\x20loading\x20employees:',_0x4934b7);}}async function _0x3425c4(){const _0x5f546a=_0xca3f23;_0x2b3c24[_0x5f546a(0x1d0)]=_0x5f546a(0x1a3);try{const _0x1ec0b3=_0x3872c7['query'](_0x3872c7[_0x5f546a(0x285)](_0x17ebfc,'reimbursements'),_0x3872c7[_0x5f546a(0x269)](_0x5f546a(0x1ba),_0x5f546a(0x1b1))),_0xe7b52e=await _0x3872c7[_0x5f546a(0x1dc)](_0x1ec0b3);if(_0xe7b52e[_0x5f546a(0x1e1)]){_0x2b3c24[_0x5f546a(0x1d0)]=_0x5f546a(0x29c);return;}const _0x38d039=document['createElement'](_0x5f546a(0x25d));_0x38d039[_0x5f546a(0x1d0)]=_0x5f546a(0x2a3);const _0x4c9e1a=_0x38d039['querySelector'](_0x5f546a(0x202));_0xe7b52e[_0x5f546a(0x281)](_0x3c3669=>{const _0x40eecd=_0x5f546a,_0x4c8c97=_0x3c3669['data'](),_0x51cce7=(_0x4c8c97[_0x40eecd(0x29a)]||[])[_0x40eecd(0x163)](_0x322784=>_0x322784[_0x40eecd(0x1de)]+'(x'+_0x322784[_0x40eecd(0x271)]+')')[_0x40eecd(0x288)](';\x20'),_0x35bb69=_0x4c8c97[_0x40eecd(0x1ba)]?.[_0x40eecd(0x1a6)]?.()[_0x40eecd(0x234)]()||'N/A',_0x2b5984=_0x4c9e1a[_0x40eecd(0x23e)]();_0x2b5984[_0x40eecd(0x1d0)]=_0x40eecd(0x235)+(_0x4c8c97[_0x40eecd(0x1fa)]||_0x40eecd(0x2cd))+'</td><td>'+(_0x4c8c97[_0x40eecd(0x25c)]||'N/A')+_0x40eecd(0x24d)+(_0x4c8c97[_0x40eecd(0x19b)]||0x0)[_0x40eecd(0x234)]('en-US',{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2})+'</td><td\x20style=\x22white-space:normal;\x22>'+_0x51cce7+_0x40eecd(0x24d)+_0x35bb69+_0x40eecd(0x259);}),_0x2b3c24[_0x5f546a(0x1d0)]='',_0x2b3c24['appendChild'](_0x38d039);}catch(_0x4c6895){console[_0x5f546a(0x2c7)]('Error\x20rendering\x20log:',_0x4c6895),_0x2b3c24[_0x5f546a(0x1d0)]='<p><i>Error\x20loading\x20logs.\x20Please\x20check\x20console\x20(F12).</i></p>';}}function _0xc67176(){const _0x552301=_0xca3f23;document[_0x552301(0x18c)](_0x552301(0x213))[_0x552301(0x281)](_0x1e64d8=>{_0x1e64d8['value']='0';});if(_0x576f4c)_0x576f4c[_0x552301(0x193)]='';if(_0x52b8c1)_0x52b8c1[_0x552301(0x193)]='';if(_0xa38443)_0xa38443[_0x552301(0x26a)]='';_0x4ea2c4(),console[_0x552301(0x218)](_0x552301(0x21d));}if(_0x25bddc&&_0x5cf9fe){const _0x550486=_0x25bddc['parentElement'];_0x550486[_0xca3f23(0x186)](_0xca3f23(0x229),()=>{const _0x24e4c3=_0xca3f23;_0x5cf9fe[_0x24e4c3(0x1a7)][_0x24e4c3(0x198)]('open');const _0x143ab1=_0x5cf9fe[_0x24e4c3(0x1a7)][_0x24e4c3(0x270)](_0x24e4c3(0x278));_0x25bddc[_0x24e4c3(0x26a)]=_0x143ab1?'Hide':_0x24e4c3(0x1f9);});}_0x4e350f[_0xca3f23(0x186)](_0xca3f23(0x2b8),()=>{const _0x5f3f28=_0xca3f23,_0x111648=_0x4e350f[_0x5f3f28(0x16c)][0x0];_0x111648?.[_0x5f3f28(0x193)]?(_0x26b9e9[_0x5f3f28(0x1da)]['display']=_0x5f3f28(0x1c5),_0x2d7407[_0x5f3f28(0x26a)]=_0x111648[_0x5f3f28(0x26a)],_0x25d202[_0x5f3f28(0x26a)]=_0x111648[_0x5f3f28(0x290)][_0x5f3f28(0x275)]||_0x5f3f28(0x2cd)):_0x26b9e9[_0x5f3f28(0x1da)]['display']=_0x5f3f28(0x2bb);if(_0xa38443)_0xa38443[_0x5f3f28(0x26a)]='';}),_0x4daf9c&&_0x4daf9c['addEventListener'](_0xca3f23(0x229),_0xc67176),_0x576f4c&&_0x576f4c[_0xca3f23(0x186)](_0xca3f23(0x175),_0x4ea2c4),_0x2884c1[_0xca3f23(0x186)](_0xca3f23(0x229),async()=>{const _0x3afd7d=_0xca3f23,_0x3aea2f=_0x4e350f[_0x3afd7d(0x193)];if(!_0x3aea2f){_0xa38443[_0x3afd7d(0x26a)]=_0x3afd7d(0x279);return;}const _0x4492ee=_0x4e350f[_0x3afd7d(0x16c)][0x0],_0x3db0e8=_0x4492ee['textContent'],_0x4cc595=_0x4492ee[_0x3afd7d(0x290)][_0x3afd7d(0x275)],_0x4014a8=parseFloat(_0xeaddf1[_0x3afd7d(0x26a)]['replace'](/,/g,''));if(isNaN(_0x4014a8)||_0x4014a8<=0x0){_0xa38443[_0x3afd7d(0x26a)]=_0x3afd7d(0x1cd);return;}const _0x1d4e1f=[];document[_0x3afd7d(0x18c)](_0x3afd7d(0x213))[_0x3afd7d(0x281)](_0xbd0ad6=>{const _0x298c27=_0x3afd7d,_0xcc5a8c=_0xbd0ad6[_0x298c27(0x211)](_0x298c27(0x2aa))?.['dataset'][_0x298c27(0x26d)],_0x553625=parseInt(_0xbd0ad6[_0x298c27(0x193)]||0x0);_0xcc5a8c&&_0x553625>0x0&&_0x1d4e1f[_0x298c27(0x263)]({'item':_0xcc5a8c,'qty':_0x553625});});const _0x46335a=parseFloat(_0x576f4c[_0x3afd7d(0x193)])||0x0,_0x5e7965=_0x52b8c1[_0x3afd7d(0x193)]['trim']();if(_0x46335a>0x0&&!_0x5e7965){_0xa38443[_0x3afd7d(0x26a)]=_0x3afd7d(0x25e);return;}_0x46335a>0x0&&_0x1d4e1f[_0x3afd7d(0x263)]({'item':_0x3afd7d(0x19c)+_0x5e7965,'qty':0x1});_0x2884c1[_0x3afd7d(0x272)]=!![],_0xa38443[_0x3afd7d(0x26a)]=_0x3afd7d(0x1e5);try{await _0x3872c7[_0x3afd7d(0x168)](_0x3872c7[_0x3afd7d(0x285)](_0x17ebfc,'reimbursements'),{'employeeId':_0x3aea2f,'employeeName':_0x3db0e8,'bankAccount':_0x4cc595,'items':_0x1d4e1f,'totalAmount':_0x4014a8,'createdAt':_0x3872c7[_0x3afd7d(0x227)]()}),_0xa38443[_0x3afd7d(0x26a)]='Reimbursement\x20logged\x20successfully.',_0xc67176(),await _0x3425c4();}catch(_0x1e5960){_0xa38443[_0x3afd7d(0x26a)]=_0x3afd7d(0x24f),console[_0x3afd7d(0x2c7)]('Logging\x20Error:',_0x1e5960);}finally{_0x2884c1[_0x3afd7d(0x272)]=![];}}),_0x8e9a4e[_0xca3f23(0x186)](_0xca3f23(0x229),async()=>{const _0x23a404=_0xca3f23;try{const _0x1e9c8f=_0x3872c7[_0x23a404(0x225)](_0x3872c7['collection'](_0x17ebfc,_0x23a404(0x266)),_0x3872c7[_0x23a404(0x269)]('createdAt',_0x23a404(0x1b1))),_0xfa7f06=await _0x3872c7['getDocs'](_0x1e9c8f);if(_0xfa7f06[_0x23a404(0x1e1)]){alert('No\x20logs\x20to\x20export.');return;}const _0x3d116b=[['Employee',_0x23a404(0x216),_0x23a404(0x28f),'Items\x20/\x20Reason',_0x23a404(0x19a)]];_0xfa7f06[_0x23a404(0x281)](_0x509156=>{const _0x2a562b=_0x23a404,_0x167307=_0x509156[_0x2a562b(0x1a0)](),_0x34df2d=(_0x167307[_0x2a562b(0x29a)]||[])[_0x2a562b(0x163)](_0x69899d=>_0x69899d[_0x2a562b(0x1de)]+'(x'+_0x69899d[_0x2a562b(0x271)]+')')[_0x2a562b(0x288)](';\x20');_0x3d116b[_0x2a562b(0x263)](['\x22'+_0x167307[_0x2a562b(0x1fa)]+'\x22','\x22'+_0x167307[_0x2a562b(0x25c)]+'\x22',_0x167307[_0x2a562b(0x19b)],'\x22'+_0x34df2d+'\x22','\x22'+_0x167307[_0x2a562b(0x1ba)]?.['toDate']?.()[_0x2a562b(0x234)]()+'\x22']);});const _0x18dd55=_0x3d116b[_0x23a404(0x163)](_0x7509eb=>_0x7509eb[_0x23a404(0x288)](','))['join']('\x0a'),_0x1fb3b8=new Blob(['\ufeff'+_0x18dd55],{'type':_0x23a404(0x2be)}),_0x463917=URL[_0x23a404(0x1b5)](_0x1fb3b8),_0x15b6bb=document[_0x23a404(0x1ad)]('a');_0x15b6bb[_0x23a404(0x185)]=_0x463917,_0x15b6bb['download']=_0x23a404(0x20f),_0x15b6bb[_0x23a404(0x229)](),URL[_0x23a404(0x1a9)](_0x463917);}catch(_0x3aaddc){alert('An\x20error\x20occurred\x20during\x20export.');}}),_0x3b65a4(),_0x233998(),_0x3425c4(),_0x4ea2c4();}}));
+// PASTE THIS ENTIRE BLOCK to replace all content in manager.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    // --- START: Loading screen logic ---
+    const loadingOverlay = document.getElementById('loading-overlay');
+    function hideLoadingScreen() {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
+        }
+    }
+    // --- END: Loading screen logic ---
+
+    console.log("manager.js: DOMContentLoaded fired. Waiting for firebaseReady event...");
+    let appLogicHasRun_Manager = false;
+    let db_manager, firestore_manager;
+
+    const managerLoginWrapper_el = document.getElementById('manager-login-wrapper');
+    const managerLoginForm_el = document.getElementById('manager-page-login-form');
+    const managerPasswordInput_el = document.getElementById('manager-page-password');
+    const managerLoginError_el = document.getElementById('manager-page-login-error');
+    const managerMainContent_el = document.getElementById('manager-content');
+
+    let transactionsDiv, exportButton, employeeFormContainer, employeeFormTitle, editEmployeeIdInput,
+        employeeFullNameInput, employeeNumberInputSsn, employeeRankSelect, employeeBankAccountInput,
+        saveEmployeeButton, cancelEditButton, employeeListDisplay, hacMemberEditFormContainer,
+        hacMemberEditFormTitle, editHacMemberIdInput_ManagerPage, hacFirstNameInput_ManagerPage,
+        hacLastNameInput_ManagerPage, hacPhoneNumberInput_ManagerPage, hacDriverLicenseInput_ManagerPage,
+        hacEmailInput_ManagerPage, saveHacMemberButton_ManagerPage, cancelEditHacMemberButton_ManagerPage,
+        hacMemberListDisplay, hacSearchTermInput, hacSearchButton, hacClearSearchButton,
+        currentEmployeePasswordDisplay, newEmployeePasswordInput, saveEmployeePasswordButton,
+        employeePasswordStatus, hacPromoMonthInput, hacPromoTextInput, saveHacPromoButton,
+        hacPromoStatus, resetHacEligibilityButton, hacResetStatus, taxPaymentLogsDisplay_el, exportTaxLogsButton_el,
+        posItemFormTitle_el, editPosItemIdInput_el, posItemNameInput_el, posItemPriceInput_el, posItemImageUrlInput_el,
+        posItemCategorySelect_el, savePosItemButton_el, cancelEditPosItemButton_el, posItemListDisplay_el, posItemStatusMessage_el;
+
+    function setupErrorUI_Manager(errorMessage) {
+        if (appLogicHasRun_Manager && !errorMessage.includes("Manually initializing")) return;
+        appLogicHasRun_Manager = true;
+        console.error("manager.js: Firebase critical error state:", errorMessage);
+        alert("Critical error for Manager Portal: " + errorMessage);
+        if (managerLoginForm_el) {
+            const managerLoginButtonEl = managerLoginForm_el.querySelector('button[type="submit"]');
+            if (managerLoginButtonEl) {
+                managerLoginButtonEl.disabled = true;
+                managerLoginButtonEl.textContent = "Login Disabled (DB Error)";
+            }
+        }
+        if (managerMainContent_el) managerMainContent_el.style.display = 'none';
+        hideLoadingScreen(); // Hide loading screen even on error
+    }
+
+    function updateManagerView(isManagerLoggedIn) {
+        console.log("manager.js: updateManagerView called with isManagerLoggedIn:", isManagerLoggedIn);
+        if (isManagerLoggedIn) {
+            if (managerLoginWrapper_el) managerLoginWrapper_el.style.display = 'none';
+            if (managerMainContent_el) managerMainContent_el.style.display = 'block';
+            if (managerLoginError_el) managerLoginError_el.style.display = 'none';
+            if (typeof addLogoutButton === "function") addLogoutButton(); else console.error("Manager: addLogoutButton (from utility.js) is not defined!");
+        } else {
+            if (managerLoginWrapper_el) managerLoginWrapper_el.style.display = 'block';
+            if (managerMainContent_el) managerMainContent_el.style.display = 'none';
+            if (typeof checkEmployeeSession === "function" && checkEmployeeSession() && !(typeof checkManagerSession === "function" && checkManagerSession())) {
+                if (managerLoginError_el) {
+                     managerLoginError_el.textContent = "Manager credentials required.";
+                     managerLoginError_el.style.display = 'block';
+                }
+            }
+        }
+    }
+
+    async function executeManagerAppLogic(firebaseDetail) {
+        if (appLogicHasRun_Manager) { return; }
+
+        if (!firebaseDetail || !firebaseDetail.db || !firebaseDetail.functions) {
+            if (window.isFirebaseReady && window.db && window.firestoreFunctions) {
+                firebaseDetail = { db: window.db, functions: window.firestoreFunctions };
+            } else { setupErrorUI_Manager("Firebase details not available for manager app logic."); return; }
+        }
+        appLogicHasRun_Manager = true;
+        console.log("manager.js: Running executeManagerAppLogic.");
+
+        db_manager = firebaseDetail.db;
+        firestore_manager = firebaseDetail.functions;
+
+        if (!firestore_manager.collection || !firestore_manager.doc || !firestore_manager.getDoc || !firestore_manager.Timestamp) {
+            setupErrorUI_Manager("Essential Firestore functions (or Timestamp) missing."); return;
+        }
+        console.log("manager.js: Firestore DB and functions successfully obtained for manager.");
+
+        transactionsDiv = document.getElementById('transactions');
+        exportButton = document.getElementById('export');
+        employeeFormContainer = document.getElementById('employee-form-container');
+        employeeFormTitle = document.getElementById('employee-form-title');
+        editEmployeeIdInput = document.getElementById('edit-employee-id');
+        employeeFullNameInput = document.getElementById('employee-full-name');
+        employeeNumberInputSsn = document.getElementById('employee-number-ssn');
+        employeeRankSelect = document.getElementById('employee-rank-select');
+        employeeBankAccountInput = document.getElementById('employee-bank-account');
+        saveEmployeeButton = document.getElementById('save-employee-button');
+        cancelEditButton = document.getElementById('cancel-edit-button');
+        employeeListDisplay = document.getElementById('employee-list-display');
+        hacMemberEditFormContainer = document.getElementById('hac-member-form-container');
+        hacMemberEditFormTitle = document.getElementById('hac-member-form-title');
+        editHacMemberIdInput_ManagerPage = document.getElementById('edit-hac-member-id');
+        hacFirstNameInput_ManagerPage = document.getElementById('hac-first-name');
+        hacLastNameInput_ManagerPage = document.getElementById('hac-last-name');
+        hacPhoneNumberInput_ManagerPage = document.getElementById('hac-phone-number');
+        hacDriverLicenseInput_ManagerPage = document.getElementById('hac-driver-license');
+        hacEmailInput_ManagerPage = document.getElementById('hac-email');
+        saveHacMemberButton_ManagerPage = document.getElementById('save-hac-member-button');
+        cancelEditHacMemberButton_ManagerPage = document.getElementById('cancel-edit-hac-member-button');
+        hacMemberListDisplay = document.getElementById('hac-member-list-display');
+        hacSearchTermInput = document.getElementById('hac-search-term');
+        hacSearchButton = document.getElementById('hac-search-button');
+        hacClearSearchButton = document.getElementById('hac-clear-search-button');
+        currentEmployeePasswordDisplay = document.getElementById('current-employee-password-display');
+        newEmployeePasswordInput = document.getElementById('new-employee-password');
+        saveEmployeePasswordButton = document.getElementById('save-employee-password-button');
+        employeePasswordStatus = document.getElementById('employee-password-status');
+        hacPromoMonthInput = document.getElementById('hac-promo-month');
+        hacPromoTextInput = document.getElementById('hac-promo-text');
+        saveHacPromoButton = document.getElementById('save-hac-promo-button');
+        hacPromoStatus = document.getElementById('hac-promo-status');
+        resetHacEligibilityButton = document.getElementById('reset-hac-eligibility-button');
+        hacResetStatus = document.getElementById('hac-reset-status');
+        taxPaymentLogsDisplay_el = document.getElementById('tax-payment-logs-display');
+        exportTaxLogsButton_el = document.getElementById('export-tax-logs');
+        
+        posItemFormTitle_el = document.getElementById('pos-item-form-title');
+        editPosItemIdInput_el = document.getElementById('edit-pos-item-id');
+        posItemNameInput_el = document.getElementById('pos-item-name');
+        posItemPriceInput_el = document.getElementById('pos-item-price');
+        posItemImageUrlInput_el = document.getElementById('pos-item-image-url');
+        posItemCategorySelect_el = document.getElementById('pos-item-category-select');
+        savePosItemButton_el = document.getElementById('save-pos-item-button');
+        cancelEditPosItemButton_el = document.getElementById('cancel-edit-pos-item-button');
+        posItemListDisplay_el = document.getElementById('pos-item-list-display');
+        posItemStatusMessage_el = document.getElementById('pos-item-status-message');
+
+        const MANAGER_LOGIN_PASSWORD_HARDCODED = "MikesAdmin";
+        const EMPLOYEE_PASSWORD_DOC_ID_MGR = "accessSettings";
+        const EMPLOYEE_PASSWORD_FIELD_MGR = "employeeLoginPassword";
+        let employees_mgr = [];
+        let editingEmployeeId_mgr = null;
+        let posItems_mgr = [];
+        let editingPosItemId_mgr = null;
+        let hacMembers_mgr = [];
+        let editingHacMemberId_mgr_page = null;
+        const HAC_PROMO_DOC_ID_MGR = "hacConfiguration";
+        let transactionsFromFirestore_mgr = [];
+        let taxPaymentLogsData_mgr = [];
+
+        // --- START POS ITEM MANAGEMENT FUNCTIONS ---
+        function setPosItemStatus(message, isError = false) {
+            if (!posItemStatusMessage_el) return;
+            posItemStatusMessage_el.textContent = message;
+            posItemStatusMessage_el.style.color = isError ? '#e74c3c' : 'limegreen';
+            setTimeout(() => { posItemStatusMessage_el.textContent = ''; }, 4000);
+        }
+
+        async function loadPosItems_ManagerPage() {
+            try {
+                const q = firestore_manager.query(firestore_manager.collection(db_manager, "posItems"), firestore_manager.orderBy("name"));
+                const snap = await firestore_manager.getDocs(q);
+                posItems_mgr = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                renderPosItems_ManagerPage();
+            } catch (e) {
+                console.error("manager.js: Error loading POS items", e);
+                if (posItemListDisplay_el) posItemListDisplay_el.innerHTML = "<p><i>Error loading POS items. Check Firestore rules.</i></p>";
+            }
+        }
+
+        function renderPosItems_ManagerPage() {
+            if (!posItemListDisplay_el) return;
+            posItemListDisplay_el.innerHTML = '';
+            if (posItems_mgr.length === 0) {
+                posItemListDisplay_el.innerHTML = "<p><i>No custom POS items added yet.</i></p>";
+                return;
+            }
+            posItems_mgr.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'employee-list-item'; // Reusing style
+                itemDiv.innerHTML = `
+                    <div class="employee-details">
+                        <img src="${item.imageUrl || 'placeholder.png'}" alt="${item.name}" style="width: 40px; height: 40px; border-radius: 4px; margin-right: 10px; vertical-align: middle;">
+                        <strong>${item.name}</strong> - $${item.price} (${item.category})
+                    </div>
+                    <div class="action-buttons-cell">
+                        <button class="edit-pos-item-btn action-button" data-id="${item.id}">Edit</button>
+                        <button class="remove-pos-item-btn action-button" data-id="${item.id}">Remove</button>
+                    </div>`;
+                posItemListDisplay_el.appendChild(itemDiv);
+            });
+
+            posItemListDisplay_el.querySelectorAll('.edit-pos-item-btn').forEach(b => b.addEventListener('click', e => prepareEditPosItem_ManagerPage(e.target.dataset.id)));
+            posItemListDisplay_el.querySelectorAll('.remove-pos-item-btn').forEach(b => b.addEventListener('click', async e => { if (confirm('Are you sure you want to remove this item?')) await removePosItem_ManagerPage(e.target.dataset.id); }));
+        }
+
+        function resetPosItemForm_ManagerPage() {
+            if (posItemFormTitle_el) posItemFormTitle_el.textContent = "Add New POS Item";
+            if (editPosItemIdInput_el) editPosItemIdInput_el.value = '';
+            if (posItemNameInput_el) posItemNameInput_el.value = '';
+            if (posItemPriceInput_el) posItemPriceInput_el.value = '';
+            if (posItemImageUrlInput_el) posItemImageUrlInput_el.value = '';
+            if (posItemCategorySelect_el) posItemCategorySelect_el.value = 'General';
+            editingPosItemId_mgr = null;
+            if (savePosItemButton_el) savePosItemButton_el.textContent = 'Add Item';
+            if (cancelEditPosItemButton_el) cancelEditPosItemButton_el.style.display = 'none';
+        }
+        
+        function prepareEditPosItem_ManagerPage(id) {
+            const item = posItems_mgr.find(i => i.id === id);
+            if (!item) return;
+            editingPosItemId_mgr = id;
+            if (posItemFormTitle_el) posItemFormTitle_el.textContent = `Edit: ${item.name}`;
+            if (editPosItemIdInput_el) editPosItemIdInput_el.value = id;
+            if (posItemNameInput_el) posItemNameInput_el.value = item.name;
+            if (posItemPriceInput_el) posItemPriceInput_el.value = item.price;
+            if (posItemImageUrlInput_el) posItemImageUrlInput_el.value = item.imageUrl;
+            if (posItemCategorySelect_el) posItemCategorySelect_el.value = item.category;
+            if (savePosItemButton_el) savePosItemButton_el.textContent = 'Save Changes';
+            if (cancelEditPosItemButton_el) cancelEditPosItemButton_el.style.display = 'inline-block';
+            document.getElementById('pos-item-form-container')?.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        async function saveOrUpdatePosItem_ManagerPage() {
+            const name = posItemNameInput_el.value.trim();
+            const price = parseFloat(posItemPriceInput_el.value);
+            const imageUrl = posItemImageUrlInput_el.value.trim();
+            const category = posItemCategorySelect_el.value;
+
+            if (!name || isNaN(price) || price <= 0) {
+                setPosItemStatus("Name and a valid price are required.", true);
+                return;
+            }
+
+            const itemData = { name, price, imageUrl, category };
+            try {
+                if (editingPosItemId_mgr) {
+                    await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "posItems", editingPosItemId_mgr), itemData);
+                    setPosItemStatus("Item updated successfully!");
+                } else {
+                    await firestore_manager.addDoc(firestore_manager.collection(db_manager, "posItems"), itemData);
+                    setPosItemStatus("Item added successfully!");
+                }
+                resetPosItemForm_ManagerPage();
+                await loadPosItems_ManagerPage();
+            } catch (e) {
+                console.error("Error saving POS item:", e);
+                setPosItemStatus(`Error: ${e.message}`, true);
+            }
+        }
+
+        async function removePosItem_ManagerPage(id) {
+            try {
+                await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "posItems", id));
+                setPosItemStatus("Item removed.");
+                if (editingPosItemId_mgr === id) {
+                    resetPosItemForm_ManagerPage();
+                }
+                await loadPosItems_ManagerPage();
+            } catch (e) {
+                console.error("Error removing POS item:", e);
+                setPosItemStatus(`Error removing item: ${e.message}`, true);
+            }
+        }
+        // --- END POS ITEM MANAGEMENT FUNCTIONS ---
+
+        async function loadSharedEmployeePassword_ManagerPage() {
+            if (!firestore_manager.doc || !firestore_manager.getDoc) { if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = "DB funcs missing"; return; }
+            try {
+                const passwordDocRef = firestore_manager.doc(db_manager, "siteSettings", EMPLOYEE_PASSWORD_DOC_ID_MGR);
+                const docSnap = await firestore_manager.getDoc(passwordDocRef);
+                if (docSnap.exists() && docSnap.data()[EMPLOYEE_PASSWORD_FIELD_MGR]) {
+                    if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = docSnap.data()[EMPLOYEE_PASSWORD_FIELD_MGR];
+                } else { if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = "(Not Set)"; }
+            } catch (error) { console.error("manager.js: Error loading shared emp password:", error); if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = "Error"; }
+        }
+        async function saveSharedEmployeePassword_ManagerPage() {
+            if (!firestore_manager.doc || !firestore_manager.setDoc) { alert("DB error."); return; }
+            const newPassword = newEmployeePasswordInput.value; if (!newPassword || newPassword.length < 6) { alert("Min 6 chars."); return; }
+            try {
+                await firestore_manager.setDoc(firestore_manager.doc(db_manager, "siteSettings", EMPLOYEE_PASSWORD_DOC_ID_MGR), { [EMPLOYEE_PASSWORD_FIELD_MGR]: newPassword }, { merge: true });
+                if(employeePasswordStatus) { employeePasswordStatus.textContent = "Emp pass updated!"; employeePasswordStatus.style.color = "green"; }
+                if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = newPassword; if(newEmployeePasswordInput) newEmployeePasswordInput.value = "";
+                setTimeout(() => { if(employeePasswordStatus) employeePasswordStatus.textContent = ''; }, 3000);
+            } catch (error) { console.error(error); if(employeePasswordStatus) { employeePasswordStatus.textContent = "Error: " + error.message; employeePasswordStatus.style.color = "red";}}
+        }
+        async function loadEmployees_ManagerPage() {
+            try {
+                const q = firestore_manager.query(firestore_manager.collection(db_manager, "employees"), firestore_manager.orderBy("fullName"));
+                const snap = await firestore_manager.getDocs(q); employees_mgr = []; snap.forEach(d => employees_mgr.push({ id: d.id, ...d.data() }));
+                renderEmployeeList_ManagerPage();
+            } catch (e) { console.error(e); employees_mgr = []; }
+        }
+        
+        async function updateEmployeeTaxReward(employeeId, rewardData) {
+            try {
+                const employeeDocRef = firestore_manager.doc(db_manager, "employees", employeeId);
+                await firestore_manager.updateDoc(employeeDocRef, {
+                    taxReward: rewardData
+                });
+                console.log(`Successfully updated tax reward for ${employeeId}`);
+            } catch (error) {
+                console.error("Error updating tax reward:", error);
+                alert("Could not update tax reward. Please check console and try again.");
+            }
+        }
+
+        function renderEmployeeList_ManagerPage() {
+            if (!employeeListDisplay) return;
+            employeeListDisplay.innerHTML = '';
+            employees_mgr.sort((a, b) => a.fullName.localeCompare(b.fullName));
+
+            if (employees_mgr.length === 0) {
+                employeeListDisplay.innerHTML = "<p><i>No employees found.</i></p>";
+                return;
+            }
+
+            employees_mgr.forEach(emp => {
+                const taxReward = emp.taxReward || { isActive: false, endDate: null };
+                const isChecked = taxReward.isActive ? 'checked' : '';
+                
+                let endDateString = '';
+                if (taxReward.endDate && taxReward.endDate.toDate) {
+                    const d = taxReward.endDate.toDate();
+                    const month = String(d.getMonth() + 1).padStart(2, '0');
+                    const day = String(d.getDate()).padStart(2, '0');
+                    endDateString = `${d.getFullYear()}-${month}-${day}`;
+                }
+
+                const li = document.createElement('div');
+                li.className = 'employee-list-item';
+                li.innerHTML = `
+                    <div class="employee-details">
+                        <strong>${emp.fullName}</strong> (Num: ${emp.employeeNumber || 'N/A'}) - Rank: ${emp.rank}
+                        <br>Bank Acc: ${emp.bankAccountNumber || 'N/A'}
+                    </div>
+                    <div class="action-buttons-cell">
+                        <div class="tax-reward-controls">
+                            <label class="tax-exempt-label">
+                                <input type="checkbox" class="tax-reward-checkbox" data-id="${emp.id}" ${isChecked}>
+                                0% Tax Reward
+                            </label>
+                            <div class="tax-reward-date-wrapper" style="display: ${isChecked ? 'block' : 'none'};">
+                                <label for="date-input-${emp.id}">Select end date:</label>
+                                <input type="date" class="tax-reward-end-date" id="date-input-${emp.id}" data-id="${emp.id}" value="${endDateString}">
+                            </div>
+                        </div>
+                        <button class="edit-employee-btn action-button" data-id="${emp.id}">Edit</button>
+                        <button class="remove-employee-btn action-button" data-id="${emp.id}">Remove</button>
+                    </div>`;
+                employeeListDisplay.appendChild(li);
+            });
+
+            employeeListDisplay.querySelectorAll('.edit-employee-btn').forEach(b => b.addEventListener('click', e => prepareEditEmployee_ManagerPage(e.target.dataset.id)));
+            employeeListDisplay.querySelectorAll('.remove-employee-btn').forEach(b => b.addEventListener('click', async e => { if (confirm('Are you sure you want to remove this employee?')) await removeEmployee_ManagerPage(e.target.dataset.id); }));
+            
+            employeeListDisplay.querySelectorAll('.tax-reward-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const employeeId = e.target.dataset.id;
+                    const isActive = e.target.checked;
+                    const controlsDiv = e.target.closest('.tax-reward-controls');
+                    const dateWrapper = controlsDiv.querySelector('.tax-reward-date-wrapper');
+                    const dateInput = controlsDiv.querySelector('.tax-reward-end-date');
+
+                    if (dateWrapper) {
+                        dateWrapper.style.display = isActive ? 'block' : 'none';
+                    }
+                    
+                    const endDate = isActive && dateInput.value ? new Date(dateInput.value + 'T00:00:00') : null;
+                    
+                    updateEmployeeTaxReward(employeeId, { isActive, endDate });
+                });
+            });
+
+            employeeListDisplay.querySelectorAll('.tax-reward-end-date').forEach(dateInput => {
+                dateInput.addEventListener('change', (e) => {
+                    const employeeId = e.target.dataset.id;
+                    const checkbox = e.target.closest('.tax-reward-controls').querySelector('.tax-reward-checkbox');
+                    const isActive = checkbox.checked;
+                    const endDate = e.target.value ? new Date(e.target.value + 'T00:00:00') : null;
+
+                    updateEmployeeTaxReward(employeeId, { isActive, endDate });
+                });
+            });
+        }
+        
+        function resetEmployeeForm_ManagerPage() {
+            if(employeeFormTitle) employeeFormTitle.textContent = "Add New Employee";
+            if(editEmployeeIdInput) editEmployeeIdInput.value = '';
+            if(employeeFullNameInput) employeeFullNameInput.value = '';
+            if(employeeNumberInputSsn) employeeNumberInputSsn.value = '';
+            if(employeeRankSelect) employeeRankSelect.value = 'Trainee';
+            if(employeeBankAccountInput) employeeBankAccountInput.value = '';
+            editingEmployeeId_mgr = null;
+            if(cancelEditButton) cancelEditButton.style.display = 'none';
+            if(saveEmployeeButton) { saveEmployeeButton.textContent = 'Add Employee'; saveEmployeeButton.disabled = false; }
+        }
+        function prepareEditEmployee_ManagerPage(id) {
+            if (!id) { return; }
+            const emp = employees_mgr.find(e => e.id === id);
+            if (emp) {
+                editingEmployeeId_mgr = id;
+                if (employeeFormTitle) employeeFormTitle.textContent = "Edit Employee: " + emp.fullName;
+                if (editEmployeeIdInput) editEmployeeIdInput.value = emp.id;
+                if (employeeFullNameInput) employeeFullNameInput.value = emp.fullName || "";
+                if (employeeNumberInputSsn) employeeNumberInputSsn.value = emp.employeeNumber || "";
+                if (employeeRankSelect) employeeRankSelect.value = emp.rank || "Trainee";
+                if (employeeBankAccountInput) { employeeBankAccountInput.value = emp.bankAccountNumber || ""; }
+                if (saveEmployeeButton) { saveEmployeeButton.textContent = 'Save Changes'; saveEmployeeButton.disabled = false; }
+                if (cancelEditButton) cancelEditButton.style.display = 'inline-block';
+                if (employeeFormContainer && typeof employeeFormContainer.scrollIntoView === "function") employeeFormContainer.scrollIntoView({ behavior: 'smooth' });
+                if (employeeFullNameInput) employeeFullNameInput.focus();
+            } else { resetEmployeeForm_ManagerPage(); }
+        }
+        async function saveOrUpdateEmployee_ManagerPage() {
+            const name = employeeFullNameInput.value.trim();
+            const number = employeeNumberInputSsn.value.trim();
+            const rank = employeeRankSelect.value;
+            const bankAccount = employeeBankAccountInput.value.trim();
+            const id = editingEmployeeId_mgr;
+
+            if(!name || !number) {alert("Name and Number are required."); return;}
+            try {
+                const empColRef = firestore_manager.collection(db_manager, "employees");
+                const employeeData = { fullName: name, employeeNumber: number, rank: rank, bankAccountNumber: bankAccount || null };
+                
+                if(id) {
+                    const existingEmp = employees_mgr.find(e => e.id === id);
+                    if (existingEmp && existingEmp.taxReward) {
+                        employeeData.taxReward = existingEmp.taxReward;
+                    }
+                } else {
+                    employeeData.taxReward = { isActive: false, endDate: null };
+                }
+
+                if(id) {
+                    if (employees_mgr.some(e => e.employeeNumber === number && e.id !== id)) { alert("An employee with this number already exists."); return; }
+                    await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "employees", id), employeeData);
+                } else {
+                    const q = firestore_manager.query(empColRef, firestore_manager.where("employeeNumber", "==", number));
+                    const snap = await firestore_manager.getDocs(q);
+                    if (!snap.empty) { alert("An employee with this number already exists."); return; }
+                    employeeData.createdAt = firestore_manager.serverTimestamp();
+                    await firestore_manager.addDoc(empColRef, employeeData);
+                }
+                await loadEmployees_ManagerPage(); 
+                resetEmployeeForm_ManagerPage();
+                alert(id ? "Employee updated successfully!" : "Employee added successfully!");
+            } catch(e){ console.error(e); alert("Error saving employee: " + e.message);}
+        }
+        async function removeEmployee_ManagerPage(id) {
+            try { 
+                await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "employees", id)); 
+                await loadEmployees_ManagerPage(); 
+                if(editingEmployeeId_mgr === id) resetEmployeeForm_ManagerPage(); 
+            }
+            catch(e) { console.error(e); alert("Error deleting employee.");}
+        }
+        async function loadHacPromo_ManagerPage() {
+            try { const promoDoc = await firestore_manager.getDoc(firestore_manager.doc(db_manager, "siteSettings", HAC_PROMO_DOC_ID_MGR)); if(promoDoc.exists()){ const d = promoDoc.data(); if(hacPromoMonthInput)hacPromoMonthInput.value=d.currentPromoMonth||''; if(hacPromoTextInput)hacPromoTextInput.value=d.currentPromoText||'';}} catch(e){console.error(e);}
+        }
+        async function saveHacPromo_ManagerPage() {
+            const month = hacPromoMonthInput.value.trim(), text = hacPromoTextInput.value.trim(); if(!month||!text){alert("Promo fields req.");return;}
+            try{ await firestore_manager.setDoc(firestore_manager.doc(db_manager, "siteSettings", HAC_PROMO_DOC_ID_MGR), {currentPromoMonth:month, currentPromoText:text},{merge:true}); if(hacPromoStatus){hacPromoStatus.textContent="Promo Saved."; setTimeout(()=>hacPromoStatus.textContent='',3000);}}
+            catch(e){console.error(e); if(hacPromoStatus)hacPromoStatus.textContent="Error.";}
+        }
+        function resetHacMemberForm_ManagerPage() {
+            if(hacMemberEditFormTitle) hacMemberEditFormTitle.textContent = "Edit HAC Member"; if(editHacMemberIdInput_ManagerPage) editHacMemberIdInput_ManagerPage.value = '';
+            if(hacFirstNameInput_ManagerPage) hacFirstNameInput_ManagerPage.value = ''; if(hacLastNameInput_ManagerPage) hacLastNameInput_ManagerPage.value = '';
+            if(hacPhoneNumberInput_ManagerPage) hacPhoneNumberInput_ManagerPage.value = ''; if(hacDriverLicenseInput_ManagerPage) hacDriverLicenseInput_ManagerPage.value = '';
+            if(hacEmailInput_ManagerPage) hacEmailInput_ManagerPage.value = ''; editingHacMemberId_mgr_page = null;
+            if(hacMemberEditFormContainer) hacMemberEditFormContainer.style.display='none'; if(saveHacMemberButton_ManagerPage) saveHacMemberButton_ManagerPage.disabled = true;
+            if(cancelEditHacMemberButton_ManagerPage) cancelEditHacMemberButton_ManagerPage.style.display='none';
+        }
+        function prepareEditHacMember_ManagerPage(memberId) {
+            const mem = hacMembers_mgr.find(m => m.id === memberId); if(!mem) {console.error("HAC mem not in cache:",memberId);return;} editingHacMemberId_mgr_page = memberId;
+            if(hacMemberEditFormTitle) hacMemberEditFormTitle.textContent = `Edit: ${mem.firstName} ${mem.lastName}`; if(editHacMemberIdInput_ManagerPage) editHacMemberIdInput_ManagerPage.value = mem.id;
+            if(hacFirstNameInput_ManagerPage) hacFirstNameInput_ManagerPage.value = mem.firstName || ''; if(hacLastNameInput_ManagerPage) hacLastNameInput_ManagerPage.value = mem.lastName || '';
+            if(hacPhoneNumberInput_ManagerPage) hacPhoneNumberInput_ManagerPage.value = mem.phoneNumber || ''; if(hacDriverLicenseInput_ManagerPage) hacDriverLicenseInput_ManagerPage.value = mem.driverLicense || '';
+            if(hacEmailInput_ManagerPage) hacEmailInput_ManagerPage.value = mem.email || ''; if(hacMemberEditFormContainer) hacMemberEditFormContainer.style.display = 'block';
+            if(saveHacMemberButton_ManagerPage) saveHacMemberButton_ManagerPage.disabled = false; if(cancelEditHacMemberButton_ManagerPage) cancelEditHacMemberButton_ManagerPage.style.display = 'inline-block';
+        }
+        async function saveOrUpdateHacMember_ManagerPage() {
+            if(!editingHacMemberId_mgr_page) return; const data = { firstName: hacFirstNameInput_ManagerPage.value.trim(), lastName: hacLastNameInput_ManagerPage.value.trim(), phoneNumber: hacPhoneNumberInput_ManagerPage.value.trim()||null, driverLicense: hacDriverLicenseInput_ManagerPage.value.trim()||null, email: hacEmailInput_ManagerPage.value.trim().toLowerCase()||null }; if(!data.firstName || !data.lastName){alert("Name req.");return;} try { await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "hacMembers", editingHacMemberId_mgr_page), data); alert("HAC updated."); await searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage(); } catch(e) {console.error(e); alert("HAC update err.");}
+        }
+        async function removeHacMember_ManagerPage(memberId) {
+             try { await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", memberId)); alert("HAC removed."); await searchHacMembers_ManagerPage(); if(editingHacMemberId_mgr_page===memberId)resetHacMemberForm_ManagerPage(); }
+             catch(e){console.error(e); alert("HAC delete err.");}
+        }
+        async function searchHacMembers_ManagerPage() {
+            if (!hacSearchTermInput || !hacMemberListDisplay) return; const term = hacSearchTermInput.value.trim().toLowerCase(); if(!term) { hacMembers_mgr = []; renderHacMemberList_ManagerPage(hacMembers_mgr); if(hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Enter search term.</i></p>"; return; } hacMemberListDisplay.innerHTML = "<p><i>Searching...</i></p>";
+            try {
+                const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.orderBy("lastName"));
+                const snap = await firestore_manager.getDocs(q); let all=[]; snap.forEach(d=>all.push({id:d.id, ...d.data()}));
+                hacMembers_mgr = all;
+                const filtered = hacMembers_mgr.filter(m=> `${m.firstName||''} ${m.lastName||''}`.toLowerCase().includes(term) || m.phoneNumber?.includes(term) || m.driverLicense?.toLowerCase().includes(term) || m.email?.toLowerCase().includes(term));
+                renderHacMemberList_ManagerPage(filtered);
+            } catch(e){console.error(e); hacMemberListDisplay.innerHTML = "<p>Search Error.</p>";}
+        }
+        function renderHacMemberList_ManagerPage(membersToRender) {
+            if(!hacMemberListDisplay) return; hacMemberListDisplay.innerHTML = ''; if(membersToRender.length === 0){ hacMemberListDisplay.innerHTML = `<p><i>No results for "${hacSearchTermInput ? hacSearchTermInput.value : ''}".</i></p>`; return; }
+            membersToRender.forEach(mem => { const li = document.createElement('div'); li.className = 'employee-list-item'; const elig = mem.isEligible ? 'ELIGIBLE':'NOT ELIGIBLE'; const eligClass = mem.isEligible ? 'hac-eligible':'hac-not-eligible'; const purchaseDate = mem.membershipPurchaseDate?.toDate ? mem.membershipPurchaseDate.toDate().toLocaleDateString() : 'N/A'; const resetDate = mem.lastEligibilityReset?.toDate ? mem.lastEligibilityReset.toDate().toLocaleDateString() : ''; li.innerHTML = `<div class="employee-details"><strong>${mem.firstName} ${mem.lastName}</strong> - <strong class="${eligClass}">${elig}</strong><br>Phone: ${mem.phoneNumber||'N/A'} | DL: ${mem.driverLicense||'N/A'}<br>Email: ${mem.email||'N/A'} | Purchased: ${purchaseDate} ${resetDate ? `(Reset: ${resetDate})` : ''}</div> <div class="action-buttons-cell"><button class="edit-hac-member-btn action-button" data-id="${mem.id}">Edit</button><button class="remove-hac-member-btn action-button" data-id="${mem.id}">Remove</button></div>`; hacMemberListDisplay.appendChild(li); });
+            hacMemberListDisplay.querySelectorAll('.edit-hac-member-btn').forEach(b=>b.addEventListener('click', e=>prepareEditHacMember_ManagerPage(e.target.dataset.id)));
+            hacMemberListDisplay.querySelectorAll('.remove-hac-member-btn').forEach(b=>b.addEventListener('click',async e=>{if(confirm("Remove?"))await removeHacMember_ManagerPage(e.target.dataset.id);}));
+        }
+        async function loadTransactions_ManagerPage() {
+            if (!firestore_manager.collection || !firestore_manager.query || !firestore_manager.orderBy || !firestore_manager.getDocs) { transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = "<p><i>Error: DB functions missing.</i></p>"; return; } try{ const q = firestore_manager.query(firestore_manager.collection(db_manager, "transactions"), firestore_manager.orderBy("createdAt", "desc")); const snap = await firestore_manager.getDocs(q); transactionsFromFirestore_mgr = []; snap.forEach(d => { const data = d.data(); let dispDate = "N/A"; if (data.createdAt && typeof data.createdAt.toDate === 'function') { dispDate = data.createdAt.toDate().toLocaleString(); } else if (data.date) { dispDate = data.date; } transactionsFromFirestore_mgr.push({id:d.id, ...data, displayDate:dispDate}); });} catch(e) { console.error("Manager: Error loading txns:", e); transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = `<p><i>Error loading txns: ${e.message}</i></p>`;}
+        }
+        function renderTransactions_ManagerPage(logToRender) {
+            const targetDiv = document.getElementById('transactions'); if (!targetDiv) { return; } targetDiv.innerHTML = ''; if (!logToRender || logToRender.length === 0) { targetDiv.innerHTML = "<p><i>No transaction records found.</i></p>"; return; } const table = document.createElement('table'); table.innerHTML = `<thead><tr><th>Employee</th><th>Rank</th><th>Date</th><th>Details</th><th>SubTotal/Net ($)</th><th>Fee Rate</th><th>Fee/MikesNet ($)</th><th>Emp. Net ($)</th><th>Type</th></tr></thead><tbody></tbody>`; const tbody = table.querySelector('tbody');
+            logToRender.forEach(t => { if (!t || typeof t !== 'object') { return; } const row = tbody.insertRow(); let itemsStr = 'N/A'; if (t.items && Array.isArray(t.items) && t.items.length > 0) { itemsStr = t.items.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1})`).join('; '); } else if (t.itemsTraded && Array.isArray(t.itemsTraded) && t.itemsTraded.length > 0) { itemsStr = t.itemsTraded.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1}) [${it.type || 'N/A'}]`).join('; '); } itemsStr = `"${itemsStr.replace(/"/g, '""')}"`; let subTotalVal = 0; if (t.transactionType === "Buy/Sell Trade") { subTotalVal = (parseFloat(t.totalValueSoldToCustomer) || 0) - (parseFloat(t.totalValueBoughtFromCustomer) || 0); } else { subTotalVal = parseFloat(t.subTotal !== undefined ? t.subTotal : t.fullSaleTotal) || 0; } let feePaidVal = 0; if (t.transactionType === "Buy/Sell Trade") { feePaidVal = parseFloat(t.netAmountForMikes) || 0; } else { feePaidVal = parseFloat(t.taxAmountPaidToMikes) || 0; } let netEmpVal = '0.00'; if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A'; } else { netEmpVal = (parseFloat(t.netTotalForEmployee) || 0).toFixed(2); } const taxRateDisplay = t.taxRateApplied || (t.transactionType === "Buy/Sell Trade" ? 'N/A' : '0%'); const displayDate = t.displayDate || (t.createdAt && t.createdAt.toDate ? t.createdAt.toDate().toLocaleString() : 'N/A'); row.innerHTML = `<td>${t.employeeName||'N/A'}</td><td>${t.employeeRank||'N/A'}</td><td>${displayDate}</td><td>${itemsStr==='"N/A"'?'N/A':itemsStr.substring(1,itemsStr.length-1)}</td><td>${subTotalVal.toFixed(2)}</td><td>${taxRateDisplay}</td><td>${feePaidVal.toFixed(2)}</td><td>${netEmpVal}</td><td>${t.transactionType||'Unknown'}</td>`; });
+            targetDiv.appendChild(table);
+        }
+        async function resetAllHacEligibility_ManagerPage() {
+             if(!confirm("Reset ALL?")) return; if(resetHacEligibilityButton)resetHacEligibilityButton.disabled=true; if(hacResetStatus)hacResetStatus.textContent="Processing...";
+            try {
+                const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers")); if(snap.empty){if(hacResetStatus)hacResetStatus.textContent="No members."; if(resetHacEligibilityButton) resetHacEligibilityButton.disabled=false; return;}
+                const updates = snap.docs.map(d_1 => firestore_manager.updateDoc(d_1.ref, {isEligible: true, lastEligibilityReset: firestore_manager.serverTimestamp()}));
+                await Promise.all(updates); if(hacResetStatus)hacResetStatus.textContent=`Reset ${updates.length}.`;
+                if(hacSearchTermInput?.value.trim()) await searchHacMembers_ManagerPage(); else if(hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Eligibility reset. Search to see updated HAC member details.</i></p>";
+            } catch(e){console.error(e); if(hacResetStatus)hacResetStatus.textContent="Error.";}
+            finally { if(resetHacEligibilityButton)resetHacEligibilityButton.disabled=false; setTimeout(()=> {if(hacResetStatus)hacResetStatus.textContent=''}, 7000); }
+        }
+        async function loadTaxPaymentLogs_ManagerPage() {
+            if (!taxPaymentLogsDisplay_el) return; taxPaymentLogsDisplay_el.innerHTML = "<p><i>Loading logs...</i></p>";
+            try {
+                const logsColRef = firestore_manager.collection(db_manager, "taxPaymentLogs");
+                const q = firestore_manager.query(logsColRef, firestore_manager.orderBy("clearedAt", "desc"));
+                const snapshot = await firestore_manager.getDocs(q); taxPaymentLogsData_mgr = [];
+                snapshot.forEach(doc => { const data = doc.data(); taxPaymentLogsData_mgr.push({ id: doc.id, employeeName: data.employeeName, processingEmployeeName: data.processingEmployeeName, totalAmountCleared: data.totalAmountCleared, clearedAt: data.clearedAt?.toDate ? data.clearedAt.toDate().toLocaleString() : 'N/A', transactionIdsCount: data.transactionIds ? data.transactionIds.length : (data.transactionIdsCleared ? data.transactionIdsCleared.length : 0) }); });
+                renderTaxPaymentLogs_ManagerPage();
+            } catch (error) { console.error("Manager: Error loading tax payment logs:", error); if (taxPaymentLogsDisplay_el) taxPaymentLogsDisplay_el.innerHTML = `<p><i>Error loading logs.</i></p>`; }
+        }
+        function renderTaxPaymentLogs_ManagerPage() {
+            if (!taxPaymentLogsDisplay_el) return; taxPaymentLogsDisplay_el.innerHTML = '';
+            if (taxPaymentLogsData_mgr.length === 0) { taxPaymentLogsDisplay_el.innerHTML = "<p><i>No tax payment logs found.</i></p>"; return; }
+            const table = document.createElement('table'); table.innerHTML = `<thead><tr><th>Employee (Taxes For)</th><th>Processed By</th><th>Amount Cleared ($)</th><th># Trans.</th><th>Date Cleared</th></tr></thead><tbody></tbody>`;
+            const tbody = table.querySelector('tbody');
+            taxPaymentLogsData_mgr.forEach(log => { const row = tbody.insertRow(); row.insertCell().textContent = log.employeeName || 'N/A'; row.insertCell().textContent = log.processingEmployeeName || 'N/A'; row.insertCell().textContent = (log.totalAmountCleared !== undefined ? parseFloat(log.totalAmountCleared).toFixed(2) : '0.00'); row.insertCell().textContent = log.transactionIdsCount || 0; row.insertCell().textContent = log.clearedAt; });
+            taxPaymentLogsDisplay_el.appendChild(table);
+        }
+
+        function attachManagerEventListeners_ManagerPage() {
+            if (saveEmployeeButton) saveEmployeeButton.addEventListener('click', saveOrUpdateEmployee_ManagerPage);
+            if (cancelEditButton) cancelEditButton.addEventListener('click', resetEmployeeForm_ManagerPage);
+            if (savePosItemButton_el) savePosItemButton_el.addEventListener('click', saveOrUpdatePosItem_ManagerPage);
+            if (cancelEditPosItemButton_el) cancelEditPosItemButton_el.addEventListener('click', resetPosItemForm_ManagerPage);
+            if (saveHacMemberButton_ManagerPage) saveHacMemberButton_ManagerPage.addEventListener('click', saveOrUpdateHacMember_ManagerPage);
+            if(cancelEditHacMemberButton_ManagerPage) cancelEditHacMemberButton_ManagerPage.addEventListener('click', resetHacMemberForm_ManagerPage);
+            if (hacSearchButton) hacSearchButton.addEventListener('click', searchHacMembers_ManagerPage);
+            if (hacSearchTermInput) hacSearchTermInput.addEventListener('keypress', e => { if (e.key === "Enter") { e.preventDefault(); searchHacMembers_ManagerPage(); }});
+            if (hacClearSearchButton) { hacClearSearchButton.addEventListener('click', () => { if(hacSearchTermInput) hacSearchTermInput.value = ''; searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage();});}
+            if (saveHacPromoButton) saveHacPromoButton.addEventListener('click', saveHacPromo_ManagerPage);
+            if (saveEmployeePasswordButton) saveEmployeePasswordButton.addEventListener('click', saveSharedEmployeePassword_ManagerPage);
+            if (resetHacEligibilityButton) resetHacEligibilityButton.addEventListener('click', resetAllHacEligibility_ManagerPage);
+            if (exportButton) {
+                exportButton.addEventListener('click', async () => {
+                    if (transactionsFromFirestore_mgr.length === 0) { await loadTransactions_ManagerPage(); }
+                    if (transactionsFromFirestore_mgr.length === 0) { alert("No transactions to export."); return; }
+                    
+                    const csvHeader = ["Employee", "Rank", "Date", "Items", "SubTotal ($)", "Fee Rate (%)", "Fee Paid ($)", "Net Earned ($)", "Type"];
+                    const csvRows = [csvHeader.join(",")];
+                    
+                    transactionsFromFirestore_mgr.forEach(t => {
+                        if (!t || typeof t !== 'object') return;
+                        const emp = `"${(t.employeeName || 'N/A').replace(/"/g, '""')}"`;
+                        const rankVal = `"${(t.employeeRank || 'N/A').replace(/"/g, '""')}"`;
+                        const dt = `"${(t.displayDate || (t.createdAt?.toDate ? t.createdAt.toDate().toLocaleString() : 'N/A')).replace(/"/g, '""')}"`;
+                        let itemsStr = 'N/A';
+                        if (t.items && Array.isArray(t.items)) { itemsStr = t.items.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1})`).join('; ');
+                        } else if (t.itemsTraded && Array.isArray(t.itemsTraded)) { itemsStr = t.itemsTraded.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1}) [${it.type || 'N/A'}]`).join('; '); }
+                        itemsStr = `"${itemsStr.replace(/"/g, '""')}"`;
+                        let sTotalVal = 0;
+                        if (t.transactionType === "Buy/Sell Trade") { sTotalVal = (parseFloat(t.totalValueSoldToCustomer) || 0) - (parseFloat(t.totalValueBoughtFromCustomer) || 0);
+                        } else { sTotalVal = parseFloat(t.subTotal !== undefined ? t.subTotal : t.fullSaleTotal) || 0; }
+                        const sTotal = sTotalVal.toFixed(2);
+                        const rateNum = (t.taxRateApplied || (t.transactionType === "Buy/Sell Trade" ? 'N/A' : '0%')).replace('%', '');
+                        let feePaidVal = 0;
+                        if (t.transactionType === "Buy/Sell Trade") { feePaidVal = parseFloat(t.netAmountForMikes) || 0;
+                        } else { feePaidVal = parseFloat(t.taxAmountPaidToMikes) || 0; }
+                        const feePaid = feePaidVal.toFixed(2);
+                        let netEmpVal = '0.00';
+                        if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A';
+                        } else { netEmpVal = (parseFloat(t.netTotalForEmployee) || 0).toFixed(2); }
+                        const transType = `"${(t.transactionType || "Unknown").replace(/"/g, '""')}"`;
+                        csvRows.push([emp, rankVal, dt, itemsStr, sTotal, rateNum, feePaid, netEmpVal, transType].join(","));
+                    });
+                    if (csvRows.length <= 1) { alert("No valid data to export."); return; }
+                    const csvContent = csvRows.join("\n");
+                    const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none'; a.href = url; a.download = 'Mikes_Transactions.csv';
+                    document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); document.body.removeChild(a);
+                });
+            }
+            if (exportTaxLogsButton_el) {
+                exportTaxLogsButton_el.addEventListener('click', () => {
+                    if (taxPaymentLogsData_mgr.length === 0) { alert("No tax payment logs to export."); return; }
+                    const csvHeader = ["Employee (Taxes For)", "Processed By", "Amount Cleared ($)", "# Transactions", "Date Cleared"];
+                    const csvRows = [csvHeader.join(",")];
+                    taxPaymentLogsData_mgr.forEach(log => {
+                        const row = [ `"${(log.employeeName || 'N/A').replace(/"/g, '""')}"`, `"${(log.processingEmployeeName || 'N/A').replace(/"/g, '""')}"`, (parseFloat(log.totalAmountCleared) || 0).toFixed(2), log.transactionIdsCount || 0, `"${(log.clearedAt || 'N/A').replace(/"/g, '""')}"` ];
+                        csvRows.push(row.join(","));
+                    });
+                    if (csvRows.length <= 1) { alert("No valid tax log data to export."); return;}
+                    const csvContent = csvRows.join("\n");
+                    const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+                    const url = URL.createObjectURL(blob); const a = document.createElement('a');
+                    a.href = url; a.download = 'Mikes_TaxPayment_Logs.csv'; a.style.display = 'none';
+                    document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); document.body.removeChild(a);
+                });
+            }
+        }
+
+        async function initializeManagerPortal() {
+            await Promise.all([
+                loadEmployees_ManagerPage(),
+                loadTransactions_ManagerPage(),
+                loadHacPromo_ManagerPage(),
+                loadSharedEmployeePassword_ManagerPage(),
+                loadTaxPaymentLogs_ManagerPage(),
+                loadPosItems_ManagerPage()
+            ]);
+            resetEmployeeForm_ManagerPage();
+            resetPosItemForm_ManagerPage();
+            renderTransactions_ManagerPage(transactionsFromFirestore_mgr);
+            resetHacMemberForm_ManagerPage();
+            if (hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Search for HAC members.</i></p>";
+            attachManagerEventListeners_ManagerPage();
+        }
+
+        if (managerLoginForm_el) {
+            managerLoginForm_el.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const enteredPass = managerPasswordInput_el.value;
+                if (enteredPass === MANAGER_LOGIN_PASSWORD_HARDCODED) {
+                    if (typeof grantManagerSession === "function") { grantManagerSession(); }
+                    else { console.error("Manager ERROR: grantManagerSession is not defined!"); }
+                    updateManagerView(true);
+                    await initializeManagerPortal();
+                } else {
+                    if (managerLoginError_el) { managerLoginError_el.textContent = "Invalid Manager Password."; managerLoginError_el.style.display = 'block'; }
+                    if(managerPasswordInput_el) managerPasswordInput_el.value = "";
+                }
+            });
+        }
+        
+        if (typeof checkManagerSession === "function" && checkManagerSession()) {
+            updateManagerView(true);
+            await initializeManagerPortal();
+        } else {
+            updateManagerView(false);
+        }
+        
+        hideLoadingScreen();
+
+        // --- SELF-CONTAINED TIER 2 MANAGER FUNCTION ---
+async function initializeTier2Manager() {
+    const t2SearchBtn = document.getElementById('t2-search-button');
+    const t2SearchInput = document.getElementById('t2-search-term');
+    const t2Display = document.getElementById('t2-member-list-display');
+    const t2PurgeBtn = document.getElementById('t2-purge-button');
+    const t2BackupBtn = document.getElementById('t2-backup-button');
+    const t2Status = document.getElementById('t2-status-msg');
+
+    // 1. Search Logic (Tier 2 Only)
+    t2SearchBtn.onclick = async () => {
+        const term = t2SearchInput.value.toLowerCase().trim();
+        if (!term) return;
+        t2Display.innerHTML = "Searching...";
+        
+        try {
+            // Specifically looking for tier == 2
+            const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.where("tier", "==", 2));
+            const snap = await firestore_manager.getDocs(q);
+            t2Display.innerHTML = '';
+            
+            let foundCount = 0;
+            snap.forEach(doc => {
+                const m = doc.data();
+                if (`${m.firstName} ${m.lastName}`.toLowerCase().includes(term)) {
+                    foundCount++;
+                    const div = document.createElement('div');
+                    div.className = 'employee-list-item';
+                    div.innerHTML = `
+                        <span><strong>${m.firstName} ${m.lastName}</strong> - T2</span>
+                        <button class="action-button clear-cart-btn" onclick="deleteIndividualT2('${doc.id}')">Delete</button>
+                    `;
+                    t2Display.appendChild(div);
+                }
+            });
+            if(foundCount === 0) t2Display.innerHTML = "<p>No Tier 2 members found with that name.</p>";
+        } catch (e) { console.error(e); }
+    };
+
+    // 2. Individual Delete Helper
+    window.deleteIndividualT2 = async (id) => {
+        if (confirm("Permanently delete this specific Tier 2 member?")) {
+            await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", id));
+            t2SearchBtn.click(); // Refresh list
+        }
+    };
+
+    // 3. Purge All Tier 2 Logic
+    t2PurgeBtn.onclick = async () => {
+        if (!confirm("Are you sure? This will delete EVERY Tier 2 member in the database. Tier 1 (Lifetime) will not be touched.")) return;
+        t2Status.textContent = "Purging database...";
+        
+        try {
+            const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.where("tier", "==", 2));
+            const snap = await firestore_manager.getDocs(q);
+            const promises = snap.docs.map(d => firestore_manager.deleteDoc(d.ref));
+            await Promise.all(promises);
+            
+            t2Status.style.color = "limegreen";
+            t2Status.textContent = `Success! Removed ${promises.length} Tier 2 entries.`;
+            t2Display.innerHTML = '';
+        } catch (e) {
+            t2Status.style.color = "red";
+            t2Status.textContent = "Error: " + e.message;
+        }
+    };
+
+    // 4. Backup Logic (Full collection backup for safety)
+    t2BackupBtn.onclick = async () => {
+        t2Status.textContent = "Generating CSV...";
+        try {
+            const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers"));
+            let rows = [["First Name", "Last Name", "Tier", "Phone", "DL", "Eligible"]];
+            snap.forEach(d => {
+                const m = d.data();
+                rows.push([m.firstName, m.lastName, m.tier || 1, m.phoneNumber || "N/A", m.driverLicense || "N/A", m.isEligible]);
+            });
+            const csv = rows.map(r => r.join(",")).join("\n");
+            const blob = new Blob(["\uFEFF" + csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "HAC_Full_Backup.csv";
+            link.click();
+            t2Status.textContent = "Backup Complete.";
+        } catch (e) { alert("Backup failed."); }
+    };
+}
+
+// 5. CALL THE FUNCTION
+initializeTier2Manager();
+
+// --- SELF-CONTAINED PRIZE WHEEL FUNCTION ---
+async function initializeHacPrizeWheel() {
+    const canvas = document.getElementById('hac-wheel-canvas');
+    const loadBtn = document.getElementById('hac-wheel-load-btn');
+    const spinBtn = document.getElementById('hac-wheel-spin-btn');
+    const winnerText = document.getElementById('hac-wheel-winner-display');
+
+    if (!canvas) return;
+
+    let wheelEntries = [];
+    let startAngle = 0;
+    let arc = 0;
+    let spinTimeout = null;
+    let spinAngleStart = 10;
+    let spinTime = 0;
+    let spinTimeTotal = 0;
+    let ctx = canvas.getContext("2d");
+
+    // 1. Load Data with Tier Logic
+    loadBtn.onclick = async () => {
+        winnerText.textContent = "Importing members...";
+        try {
+            const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers"));
+            wheelEntries = [];
+
+            snap.forEach(doc => {
+                const m = doc.data();
+                const name = `${m.firstName} ${m.lastName}`;
+                
+                // Tier 2 gets 2 entries, Tier 1 gets 1 entry
+                const tickets = parseInt(m.tier) === 2 ? 2 : 1;
+                
+                for (let i = 0; i < tickets; i++) {
+                    wheelEntries.push(name);
+                }
+            });
+
+            if (wheelEntries.length === 0) {
+                winnerText.textContent = "No members found.";
+                return;
+            }
+
+            // Shuffle so T2 entries aren't always side-by-side
+            wheelEntries.sort(() => Math.random() - 0.5);
+
+            arc = Math.PI / (wheelEntries.length / 2);
+            drawWheel();
+            spinBtn.disabled = false;
+            winnerText.textContent = `Ready! (${wheelEntries.length} tickets)`;
+
+        } catch (e) { console.error(e); winnerText.textContent = "Load Error."; }
+    };
+
+    // 2. Draw Wheel Graphics
+    function drawWheel() {
+        ctx.clearRect(0, 0, 500, 500);
+        const outsideRadius = 240;
+        const textRadius = 160;
+        const insideRadius = 50;
+
+        for (let i = 0; i < wheelEntries.length; i++) {
+            const angle = startAngle + i * arc;
+            ctx.fillStyle = `hsl(${Math.floor((360 / wheelEntries.length) * i)}, 70%, 50%)`;
+
+            ctx.beginPath();
+            ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
+            ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
+            ctx.fill();
+            ctx.strokeStyle = "rgba(0,0,0,0.1)";
+            ctx.stroke();
+
+            ctx.save();
+            ctx.fillStyle = "white";
+            ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 250 + Math.sin(angle + arc / 2) * textRadius);
+            ctx.rotate(angle + arc / 2 + Math.PI / 2);
+            const text = wheelEntries[i];
+            ctx.font = 'bold 10px Arial';
+            ctx.fillText(text.substring(0, 15), -ctx.measureText(text.substring(0, 15)).width / 2, 0);
+            ctx.restore();
+        }
+
+        // Draw Arrow
+        ctx.fillStyle = "#f6e05e";
+        ctx.beginPath();
+        ctx.moveTo(250 - 4, 250 - (outsideRadius + 10));
+        ctx.lineTo(250 + 4, 250 - (outsideRadius + 10));
+        ctx.lineTo(250 + 4, 250 - (outsideRadius - 10));
+        ctx.lineTo(250 + 9, 250 - (outsideRadius - 10));
+        ctx.lineTo(250 + 0, 250 - (outsideRadius - 25));
+        ctx.lineTo(250 - 9, 250 - (outsideRadius - 10));
+        ctx.lineTo(250 - 4, 250 - (outsideRadius - 10));
+        ctx.fill();
+    }
+
+    // 3. Spin Logic
+    spinBtn.onclick = () => {
+        spinAngleStart = Math.random() * 10 + 10;
+        spinTime = 0;
+        spinTimeTotal = Math.random() * 3 + 4 * 1000;
+        spinBtn.disabled = true;
+        winnerText.textContent = "Spinning...";
+        rotateWheel();
+    };
+
+    function rotateWheel() {
+        spinTime += 30;
+        if (spinTime >= spinTimeTotal) {
+            const degrees = startAngle * 180 / Math.PI + 90;
+            const arcd = arc * 180 / Math.PI;
+            const index = Math.floor((wheelEntries.length - (degrees % 360) / arcd) % wheelEntries.length);
+            winnerText.textContent = "WINNER: " + wheelEntries[index];
+            spinBtn.disabled = false;
+            return;
+        }
+        const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+        startAngle += (spinAngle * Math.PI / 180);
+        drawWheel();
+        setTimeout(rotateWheel, 30);
+    }
+
+    function easeOut(t, b, c, d) {
+        const ts = (t /= d) * t;
+        const tc = ts * t;
+        return b + c * (tc + -3 * ts + 3 * t);
+    }
+}
+
+// 4. CALL THE FUNCTION
+initializeHacPrizeWheel();
+
+    }
+
+    let firebaseReadyProcessed_Manager = false;
+    document.addEventListener('firebaseReady', (e) => {
+        if (!appLogicHasRun_Manager && !firebaseReadyProcessed_Manager) {
+            firebaseReadyProcessed_Manager = true;
+            executeManagerAppLogic(e.detail);
+        }
+    });
+    document.addEventListener('firebaseError', (e) => {
+        if (!appLogicHasRun_Manager && !firebaseReadyProcessed_Manager) {
+            firebaseReadyProcessed_Manager = true;
+            setupErrorUI_Manager("Firebase SDK init failed. " + (e.detail?.error?.message || ""));
+        }
+    });
+    setTimeout(() => {
+        if (!appLogicHasRun_Manager && !firebaseReadyProcessed_Manager) {
+            if (window.isFirebaseReady && window.db && window.firestoreFunctions) {
+                executeManagerAppLogic({ db: window.db, functions: window.firestoreFunctions });
+            } else { setupErrorUI_Manager("App init timeout or Firebase not ready (manager)."); }
+        }
+    }, 3500);
+
+    // === Reimbursement Calculator Logic ===
+    const checkFirebaseInterval_reimbursement = setInterval(() => {
+        if (window.db && window.firestoreFunctions) {
+            clearInterval(checkFirebaseInterval_reimbursement);
+            initializeReimbursementCalculator(window.db, window.firestoreFunctions);
+        }
+    }, 100);
+
+    function initializeReimbursementCalculator(db, firestore) {
+        console.log("Reimbursement Calculator: Initializing...");
+
+        const REIMBURSEMENT_ITEMS = {
+            'Boar Meat': { price: 175, image: 'meat.webp' }, 'Boar Hide': { price: 225, image: 'hide.webp' },
+            'Deer Meat': { price: 75, image: 'meat.webp' }, 'Deer Hide': { price: 125, image: 'hide.webp' },
+            'Rabbit Meat': { price: 375, image: 'meat.webp' }, 'Rabbit Hide': { price: 325, image: 'hide.webp' },
+            'Rat Meat': { price: 475, image: 'meat.webp' }, 'Rat Hide': { price: 525, image: 'hide.webp' },
+            'Animal Bones': { price: 225, image: 'animal_bones.webp' }, 'Crab': { price: 87, image: 'fs-crab.webp' },
+            'Minnow': { price: 175, image: 'fs-minnow.webp' }, 'Haddock': { price: 175, image: 'fs-haddock.webp' },
+            'Pollock': { price: 175, image: 'fs-pollock.webp' }, 'Crappie': { price: 175, image: 'fs-crappie.webp' },
+            'Trout': { price: 175, image: 'fs-trout.webp' }, 'Rainbow Trout': { price: 175, image: 'fs-rainbowtrout.webp' },
+            'Garfish': { price: 185, image: 'fs-garfish.webp' }, 'Striped Bass': { price: 200, image: 'fs-stripedbass.webp' },
+            'Salmon': { price: 200, image: 'fs_salmon.webp' }, 'Northern Pike': { price: 225, image: 'fs-northernpike.webp' },
+            'Tuna': { price: 250, image: 'fs-tuna.webp' }, 'Salmon Meat': { price: 10, image: 'fishmeat_salmon.webp' },
+            'Slimy Fish Meat': { price: 2, image: 'fishmeat_slimy.webp' }, 'White Fish Meat': { price: 10, image: 'fishmeat_white.webp' }
+        };
+
+        const reimbursementItemsContainer = document.getElementById('reimbursement-items-container');
+        const employeeSelect = document.getElementById('reimbursement-employee-select');
+        const profileBox = document.getElementById('employee-profile');
+        const profileName = document.getElementById('employee-profile-name');
+        const profileBank = document.getElementById('employee-profile-bank');
+        const clearBtn = document.getElementById('clear-reimbursement-button');
+        const logBtn = document.getElementById('log-reimbursement-button');
+        const totalDisplay = document.getElementById('reimbursement-total');
+        const logStatus = document.getElementById('reimbursement-status-message');
+        const logDisplay = document.getElementById('reimbursement-log-display');
+        const exportLogBtn = document.getElementById('export-reimbursement-log-button');
+        const toggleBtn = document.getElementById('toggle-reimbursement-btn');
+        const contentWrapper = document.getElementById('reimbursement-content-wrapper');
+        const pettyCashAmountInput = document.getElementById('petty-cash-amount');
+        const pettyCashNoteInput = document.getElementById('petty-cash-note');
+
+        if (!reimbursementItemsContainer) return;
+
+        function calculateAndDisplayTotal() {
+            let itemTotal = 0;
+            document.querySelectorAll('#reimbursement-items-container .quantity').forEach(input => {
+                const itemDiv = input.closest('.item');
+                const price = parseFloat(itemDiv?.dataset.price || 0);
+                const qty = parseInt(input.value || 0);
+                if (qty > 0 && price > 0) {
+                    itemTotal += qty * price;
+                }
+            });
+
+            const pettyCashTotal = parseFloat(pettyCashAmountInput.value) || 0;
+            const grandTotal = itemTotal + pettyCashTotal;
+
+            totalDisplay.textContent = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (logBtn) logBtn.style.display = (grandTotal > 0) ? 'inline-block' : 'none';
+        }
+        
+        function renderReimbursementItems() {
+            reimbursementItemsContainer.innerHTML = '';
+            const itemsToRender = Object.entries(REIMBURSEMENT_ITEMS);
+            for (const [name, data] of itemsToRender) {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                itemDiv.dataset.name = name;
+                itemDiv.dataset.price = data.price;
+                const img = document.createElement('img');
+                img.src = data.image; 
+                img.alt = name;
+                img.onerror = () => { img.src = 'placeholder.png'; };
+                const p = document.createElement('p');
+                p.textContent = name;
+                const label = document.createElement('label');
+                label.textContent = `$${data.price}`;
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.min = '0';
+                input.value = '0';
+                input.className = 'quantity';
+                input.addEventListener('input', calculateAndDisplayTotal);
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(p);
+                itemDiv.appendChild(label);
+                itemDiv.appendChild(input);
+                itemDiv.addEventListener('click', e => {
+                    if (e.target !== input) {
+                        input.value = parseInt(input.value || 0) + 1;
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                });
+                reimbursementItemsContainer.appendChild(itemDiv);
+            }
+        }
+
+        async function loadEmployeesForReimbursement() {
+            try {
+                const q = firestore.query(firestore.collection(db, 'employees'), firestore.orderBy('fullName'));
+                const snap = await firestore.getDocs(q);
+                employeeSelect.innerHTML = '<option value="">-- Select Employee --</option>';
+                snap.forEach(doc => {
+                    const data = doc.data();
+                    const opt = document.createElement('option');
+                    opt.value = doc.id;
+                    opt.textContent = data.fullName;
+                    opt.dataset.bank = data.bankAccountNumber || 'N/A';
+                    employeeSelect.appendChild(opt);
+                });
+            } catch (err) { console.error('Error loading employees:', err); }
+        }
+
+        async function renderReimbursementLog() {
+            if (!logDisplay) return;
+            logDisplay.innerHTML = '<p><i>Loading logs...</i></p>';
+            try {
+                const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.orderBy('createdAt', 'desc'));
+                const snap = await firestore.getDocs(q);
+                if (snap.empty) {
+                    logDisplay.innerHTML = '<p><i>No reimbursement logs found.</i></p>';
+                    return;
+                }
+                const table = document.createElement('table');
+                table.innerHTML = `<thead><tr><th>Employee</th><th>Bank Acct</th><th>Total ($)</th><th>Items / Reason</th><th>Date</th></tr></thead><tbody></tbody>`;
+                const tbody = table.querySelector('tbody');
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    const itemsString = (d.items || []).map(i => `${i.item}(x${i.qty})`).join('; ');
+                    const dateString = d.createdAt?.toDate?.().toLocaleString() || 'N/A';
+                    const row = tbody.insertRow();
+                    row.innerHTML = `<td>${d.employeeName||'N/A'}</td><td>${d.bankAccount||'N/A'}</td><td>${(d.totalAmount||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td><td style="white-space:normal;">${itemsString}</td><td>${dateString}</td>`;
+                });
+                logDisplay.innerHTML = '';
+                logDisplay.appendChild(table);
+            } catch (err) {
+                console.error('Error rendering log:', err);
+                logDisplay.innerHTML = '<p><i>Error loading logs. Please check console (F12).</i></p>';
+            }
+        }
+        
+        function clearReimbursementCart() {
+            document.querySelectorAll('#reimbursement-items-container .quantity').forEach(input => {
+                input.value = '0';
+            });
+            if (pettyCashAmountInput) pettyCashAmountInput.value = '';
+            if (pettyCashNoteInput) pettyCashNoteInput.value = '';
+            if (logStatus) logStatus.textContent = '';
+            calculateAndDisplayTotal();
+            console.log("Reimbursement selections cleared.");
+        }
+
+        if (toggleBtn && contentWrapper) {
+            const headerElement = toggleBtn.parentElement;
+            headerElement.addEventListener('click', (e) => {
+                if(e.target === headerElement || e.target === headerElement.querySelector('h2')) {
+                    contentWrapper.classList.toggle('open');
+                    const isOpen = contentWrapper.classList.contains('open');
+                    toggleBtn.textContent = isOpen ? 'Hide' : 'Show';
+                }
+            });
+             toggleBtn.addEventListener('click', () => {
+                contentWrapper.classList.toggle('open');
+                const isOpen = contentWrapper.classList.contains('open');
+                toggleBtn.textContent = isOpen ? 'Hide' : 'Show';
+            });
+        }
+
+        if (employeeSelect) {
+            employeeSelect.addEventListener('change', () => {
+                const selected = employeeSelect.selectedOptions[0];
+                if (selected?.value) {
+                    profileBox.style.display = 'block';
+                    profileName.textContent = selected.textContent;
+                    profileBank.textContent = selected.dataset.bank || 'N/A';
+                } else {
+                    profileBox.style.display = 'none';
+                }
+                if (logStatus) logStatus.textContent = '';
+            });
+        }
+        
+        if (clearBtn) {
+            clearBtn.addEventListener('click', clearReimbursementCart);
+        }
+        
+        if (pettyCashAmountInput) {
+            pettyCashAmountInput.addEventListener('input', calculateAndDisplayTotal);
+        }
+
+        if (logBtn) {
+            logBtn.addEventListener('click', async () => {
+                const empId = employeeSelect.value;
+                if (!empId) {
+                    logStatus.textContent = 'Please select an employee.'; return;
+                }
+                const selectedOption = employeeSelect.selectedOptions[0];
+                const employeeName = selectedOption.textContent;
+                const bank = selectedOption.dataset.bank;
+                const total = parseFloat(totalDisplay.textContent.replace(/,/g, ''));
+
+                if (isNaN(total) || total <= 0) {
+                    logStatus.textContent = 'No amount to log.'; return;
+                }
+                
+                const items = [];
+                document.querySelectorAll('#reimbursement-items-container .quantity').forEach(input => {
+                    const item = input.closest('.item')?.dataset.name;
+                    const qty = parseInt(input.value || 0);
+                    if (item && qty > 0) {
+                        items.push({ item, qty });
+                    }
+                });
+
+                const pettyCashAmount = parseFloat(pettyCashAmountInput.value) || 0;
+                const pettyCashNote = pettyCashNoteInput.value.trim();
+
+                if (pettyCashAmount > 0 && !pettyCashNote) {
+                    logStatus.textContent = 'A reason/note is required for petty cash.';
+                    return;
+                }
+                
+                if (pettyCashAmount > 0) {
+                    items.push({ item: `Petty Cash: ${pettyCashNote}`, qty: 1 });
+                }
+                
+                logBtn.disabled = true; logStatus.textContent = 'Logging...';
+                try {
+                    await firestore.addDoc(firestore.collection(db, 'reimbursements'), {
+                        employeeId: empId, employeeName: employeeName, bankAccount: bank, 
+                        items, totalAmount: total, createdAt: firestore.serverTimestamp()
+                    });
+                    logStatus.textContent = 'Reimbursement logged successfully.';
+                    clearReimbursementCart();
+                    await renderReimbursementLog();
+                } catch (err) {
+                    logStatus.textContent = 'Error: Could not log reimbursement.';
+                    console.error("Logging Error:", err);
+                } finally {
+                    logBtn.disabled = false;
+                }
+            });
+        }
+        
+        if (exportLogBtn) {
+            exportLogBtn.addEventListener('click', async () => {
+                try {
+                    const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.orderBy('createdAt', 'desc'));
+                    const snap = await firestore.getDocs(q);
+                    if (snap.empty) { alert('No logs to export.'); return; }
+                    const rows = [["Employee", "Bank Account", "Total ($)", "Items / Reason", "Date"]];
+                    snap.forEach(doc => {
+                        const d = doc.data();
+                        const items = (d.items || []).map(i => `${i.item}(x${i.qty})`).join('; ');
+                        rows.push([ `"${d.employeeName}"`, `"${d.bankAccount}"`, d.totalAmount, `"${items}"`, `"${d.createdAt?.toDate?.().toLocaleString()}"` ]);
+                    });
+                    const csv = rows.map(r => r.join(',')).join('\n');
+                    const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url; a.download = 'mikes_reimbursement_log.csv';
+                    a.click(); URL.revokeObjectURL(url);
+                } catch (err) { alert("An error occurred during export."); }
+            });
+        }
+
+        renderReimbursementItems();
+        loadEmployeesForReimbursement();
+        renderReimbursementLog();
+        calculateAndDisplayTotal();
+    }
+});

@@ -134,6 +134,7 @@
 
                 <div id="category-buttons-container">
                     <button class="category-button action-button" data-category-filter="All">All Items</button>
+                    <button class="category-button action-button" data-category-filter="Memberships">Memberships</button>
                     <button class="category-button action-button" data-category-filter="Hunting">Hunting</button>
                     <button class="category-button action-button" data-category-filter="Fishing">Fishing</button>
                     <button class="category-button action-button" data-category-filter="General">General Gear</button>
@@ -143,11 +144,17 @@
 
                 <div class="items-container" id="pos-items-container">
                     <!-- START OF ORIGINAL POS ITEMS (RESTORED) -->
-                    <div class="item" data-price="50000" data-category="Specialty" id="hac-membership-item">
-                        <img src="HAC_Logo_1.png" alt="HAC Membership">
-                        <p>HAC Membership $50,000</p>
+                    <div class="item" data-price="50000" data-category="Memberships" id="hac-membership-item" data-hac-tier="1" data-hac-duration="Lifetime">
+                        <img src="HAC_Logo_1.png" alt="HAC Tier 1 Membership">
+                        <p>HAC Tier 1 $50,000</p>
                         <button class="action-button add-to-cart-hac">Sign Up Member</button>
-                        <input type="number" id="quantity_hac_membership" value="0" class="quantity" style="display:none;">
+                        <input type="number" id="quantity_hac_tier1" class="quantity" style="display:none;" min="0" value="0" class="quantity">
+                    </div>
+                    <div class="item" data-price="25000" data-category="Memberships" data-hac-tier="2" data-hac-duration="1 Month" id="hac-membership-item">
+                        <img src="HAC_Logo_1.png" alt="HAC Tier 2 - 1 Month">
+                        <p>HAC T2 (1 Mo) $25,000</p>
+                        <button class="action-button add-to-cart-hac">Sign Up Member</button>
+                        <input type="number" id="quantity_hac_t2_1m" class="quantity" style="display:none;" min="0" value="0" class="quantity">
                     </div>
                     <div class="item" data-price="100" data-category="Hunting"><img src="hunting_bait.png" alt="SWINE BAIT"><p> Swine Bait $100</p><label for="quantity_swine_bait">Quantity:</label><input type="number" id="quantity_swine_bait" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="100" data-category="Hunting"><img src="hunting_bait.png" alt="CERVID BAIT"><p>Cervid Bait $100</p><label for="quantity_cervid_bait">Quantity:</label><input type="number" id="quantity_cervid_bait" min="0" value="0" class="quantity"></div>
@@ -166,7 +173,7 @@
                     <div class="item" data-price="400" data-category="General"><img src="radio.webp" alt="RADIO"><p>Radio $400</p><label for="quantity_radio">Quantity:</label><input type="number" id="quantity_radio" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="500" data-category="General"><img src="scuba.webp" alt="SCUBA TANKS"><p>Scuba Tank $500</p><label for="quantity_scuba_tanks">Quantity:</label><input type="number" id="quantity_scuba_tanks" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="250" data-category="General"><img src="fixkit.webp" alt="REPAIR KITS (VH OR TIRE)"><p>Repair Kit $250</p><label for="quantity_repair_kits">Quantity:</label><input type="number" id="quantity_repair_kits" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="7500" data-category="General"><img src="duffle_bag.webp" alt="DUFFLE BAG"><p>Duffle Bag $7500</p><label for="quantity_duffle_bag">Quantity:</label><input type="number" id="quantity_duffle_bag" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="5000" data-category="General"><img src="duffle_bag.webp" alt="DUFFLE BAG"><p>Duffle Bag $5000</p><label for="quantity_duffle_bag">Quantity:</label><input type="number" id="quantity_duffle_bag" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="2500" data-category="General" data-pack="true" id="item_scuba_pack"><img src="scuba.webp" alt="SCUBA PACK"><p>Scuba Pack $2500</p><label for="quantity_scuba_pack">Quantity:</label><input type="number" id="quantity_scuba_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="10000" data-category="General" data-pack="true" id="item_camping_pack"><img src="camping_pack.png" alt="CAMPING PACK"><p>Camping Pack $10000</p><label for="quantity_camping_pack">Quantity:</label><input type="number" id="quantity_camping_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="30" data-category="Consumables"><img src="Cigarette-icon.webp" alt="CIGARETTES"><p>Cigarettes $30</p><label for="quantity_cigarettes">Quantity:</label><input type="number" id="quantity_cigarettes" min="0" value="0" class="quantity"></div>
@@ -187,10 +194,10 @@
                     <div class="item" data-price="5000" data-category="Specialty"><img src="planks.png" alt="Mount"><p>Mount with Tusk/Antler $5000</p><label for="quantity_mount_tusk_antler">Quantity:</label><input type="number" id="quantity_mount_tusk_antler" min="0" value="0" class="quantity"></div>                  
                     <div class="item" data-price="500" data-category="Specialty"><img src="shark_repelent.webp" alt="SHARK REPELLENT"><p>Shark Repellent $500</p><label for="quantity_shark_repellent">Quantity:</label><input type="number" id="quantity_shark_repellent" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="2000" data-category="Specialty"><img src="beach_ring.webp" alt="Beach Ring"><p>Beach Ring $2000</p><label for="quantity_beach_ring">Quantity:</label><input type="number" id="quantity_beach_ring" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="1000" data-category="Specialty"><img src="sift_pan.webp" alt="GOLD PAN"><p>Gold Pan $1000</p><label for="quantity_gold_pan">Quantity:</label><input type="number" id="quantity_gold_pan" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="500" data-category="Specialty"><img src="sift_pan.webp" alt="GOLD PAN"><p>Gold Pan $500</p><label for="quantity_gold_pan">Quantity:</label><input type="number" id="quantity_gold_pan" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="50" data-category="Specialty"><img src="wep_flashlight.webp" alt="Flashlight"><p>Flashlight $50</p><label for="quantity_flashlight">Quantity:</label><input type="number" id="quantity_flashlight" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="7000" data-category="Specialty" data-pack="true" id="summer_camping_pack"><img src="summer_camping_pack.png" alt="summer_camping_pack"><p>Summer Camping Pack $7000</p><label for="summer_camping_pack">Quantity:</label><input type="number" id="quantity_summer_camping_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="15000" data-category="Specialty" data-pack="true" id="jerky_pack"><img src="jerkypack.png" alt="Jerky Pack"><p>Jerky Pack $15000</p><label for="quantity_jerky_pack">Quantity:</label><input type="number" id="quantity_jerky_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="18000" data-category="Specialty" data-pack="true" id="jerky_pack"><img src="jerkypack.png" alt="Jerky Pack"><p>Jerky Pack $15000</p><label for="quantity_jerky_pack">Quantity:</label><input type="number" id="quantity_jerky_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="5000" data-category="Hunting" data-pack="true" id="item_hunting_pack"><img src="huntingpack.png" alt="HUNTING PACK"><p>Hunting Pack $5000</p><label for="quantity_hunting_pack">Quantity:</label><input type="number" id="quantity_hunting_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="7000" data-category="Hunting" data-pack="true" id="item_scoped_hunting_pack"><img src="scoped_hunting_pack.png" alt="SCOPED HUNTING PACK"><p>Scoped Pack $7000</p><label for="quantity_scoped_hunting_pack">Quantity:</label><input type="number" id="quantity_scoped_hunting_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="1000" data-category="Fishing"><img src="fs-brokeassreel.webp"alt="BROKE ASS REEL"><p>Broke Ass Reel $1000</p><label for="quantity_broke_ass_reel">Quantity:</label><input type="number" id="quantity_broke_ass_reel" min="0" value="0" class="quantity"></div>
@@ -254,7 +261,7 @@
                     <div id="hac-staff-search-results" class="hac-member-results-display">
                         <p><i>Enter a name or phone to look up HAC member status.</i></p>
                     </div>
-                    <div id="hac-current-promo-display-staff" class="current-promo-staff">
+                    <div id="hac-current-promo-display-staff" class="current-promo-staff" style="display:none;">
                         <h3>Current HAC Promo:</h3>
                         <p><strong id="hac-promo-month-staff"></strong>: <span id="hac-promo-text-staff"></span></p>
                     </div>
@@ -351,6 +358,13 @@
                             <label for="hac-modal-email">Email:</label>
                             <input type="email" id="hac-modal-email" placeholder="Email Address">
                         </div>
+                    
+                        <div class="form-group" id="hac-tier2-confirmation-container" style="display: none; flex-direction: row; align-items: center; gap: 10px; margin-top: 10px;">
+                            <input type="checkbox" id="hac-modal-tier2-confirm" style="width: 20px; height: 20px; cursor: pointer;">
+                            <label for="hac-modal-tier2-confirm" style="margin-bottom: 0; cursor: pointer; color: #f6e05e; font-weight: bold;">
+                                I confirm this is a Tier 2 Membership
+                            </label>
+                        </div>
                     </div>
                     <button type="button" id="submit-hac-signup-button" class="action-button checkout-button">Submit & Add to Cart</button>
                 </form>
@@ -395,9 +409,4 @@
 
 
 </footer>
-
 </html>
-
-
-
-
