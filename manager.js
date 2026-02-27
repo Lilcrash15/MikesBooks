@@ -1,5 +1,3 @@
-// PASTE THIS ENTIRE BLOCK to replace all content in manager.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- START: Loading screen logic ---
     const loadingOverlay = document.getElementById('loading-overlay');
@@ -1174,4 +1172,5 @@ initializeHacPrizeWheel();
         renderReimbursementLog();
         calculateAndDisplayTotal();
     }
+
 });
