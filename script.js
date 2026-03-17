@@ -887,6 +887,7 @@ const packDefinitions = {
   tuna_pack: { "Zeus Rod": 1, "Thunder Reel": 1, "LIGHTNING LINE": 10, "HOOK #10": 10, "LEECH BAIT": 50, },
   mahi_pack: { "Elemental Rod": 1, "LINE SNIFFER REEL": 1, "BITE SIZE LINE": 10, "HOOK #1": 10, },
   summer_camping_pack: {"MSG Chair": 2, "MSG Cooler": 1, "Beer": 12, "Beach Ring": 2, "Shark Repellent": 2},
+  the_master_baiter_pack: {"Zilla Reel": 1, "Magnum XL Rod": 1, "King Braid Line": 10, "Tackle Box": 1, "Fish Finder": 1, "#3 Hooks": 10, "#10 Hooks": 10,},
 };
 const displayedPackItems = {};
 const selectedPackQuantities = {};
