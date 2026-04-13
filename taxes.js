@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            totalTaxesOwedDisplay.textContent = `$${totalTaxes.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            totalTaxesOwedDisplay.textContent = `$${totalTaxes.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
             if (transactionCountEl) transactionCountEl.textContent = transactionsToClear.length;
             paidCheckbox.disabled = totalTaxes <= 0;
             if (totalTaxes <= 0) {

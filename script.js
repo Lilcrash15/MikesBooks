@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadingOverlay.classList.add('hidden');
             setTimeout(() => {
                 if (loadingOverlay && loadingOverlay.parentNode) {
-                    loadingOverlay.parentNode.removeChild(loading-overlay);
+                    loadingOverlay.parentNode.removeChild(loadingOverlay);
                 }
             }, 500);
         }
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             if (posTotalDisplay) {
-                posTotalDisplay.textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                posTotalDisplay.textContent = total.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
             }
         }
 
@@ -420,9 +420,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert( `POS Transaction Completed for: ${employeeName} (${employeeRank || 'N/A'})\n` + 
                        (isRewardActive ? `*** 0% TAX REWARD APPLIED ***\n` : '') +
                        `---------------------------------------\n` + 
-                       `Total Sale Amount: $${currentTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n` + 
+                       `Total Sale Amount: $${currentTotal.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}\n` + 
                        `Fee to Mikes (${(taxRate * 100).toFixed(0)}%): $${taxAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n` + 
-                       `Net Amount for Employee: $${netTotalAfterTax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` );
+                       `Net Amount for Employee: $${netTotalAfterTax.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` );
                 clearMainPOSCart();
             } catch (error) { 
                 alert(`Failed to save POS transaction. ${error.message}`);
@@ -721,12 +721,12 @@ function renderHacSearchResultsForStaff(members) {
         function updateBuySellViewTotals() {
             let toCust = 0; Object.values(buySellCart.buy).forEach(i => {if(i) toCust += i.quantity * i.price});
             let toMikes = 0; Object.values(buySellCart.sell).forEach(i => {if(i)toMikes += i.quantity * i.price});
-            if(totalOwedToCustomerDisplay) totalOwedToCustomerDisplay.textContent = toCust.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            if(totalOwedToMikesDisplay) totalOwedToMikesDisplay.textContent = toMikes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            if(summaryOwedCustomerDisplay) summaryOwedCustomerDisplay.textContent = `$${toCust.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-            if(summaryOwedMikesDisplay) summaryOwedMikesDisplay.textContent = `$${toMikes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            if(totalOwedToCustomerDisplay) totalOwedToCustomerDisplay.textContent = toCust.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+            if(totalOwedToMikesDisplay) totalOwedToMikesDisplay.textContent = toMikes.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+            if(summaryOwedCustomerDisplay) summaryOwedCustomerDisplay.textContent = `$${toCust.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+            if(summaryOwedMikesDisplay) summaryOwedMikesDisplay.textContent = `$${toMikes.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
             const net = toMikes - toCust;
-            if(netTransactionAmountDisplay) netTransactionAmountDisplay.textContent = `$${Math.abs(net).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            if(netTransactionAmountDisplay) netTransactionAmountDisplay.textContent = `$${Math.abs(net).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
             if(netTransactionPartyDisplay) netTransactionPartyDisplay.textContent = net > 0 ? "Customer Owes Mikes" : net < 0 ? "Mikes Owes Customer" : "Even Trade";
         }
 
