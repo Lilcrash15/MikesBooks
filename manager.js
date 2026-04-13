@@ -136,8 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         posItemStatusMessage_el = document.getElementById('pos-item-status-message');
 
         const MANAGER_LOGIN_PASSWORD_HARDCODED = "MikesAdmin";
-        const EMPLOYEE_PASSWORD_DOC_ID_MGR = "accessSettings";
-        const EMPLOYEE_PASSWORD_FIELD_MGR = "employeeLoginPassword";
         let employees_mgr = [];
         let editingEmployeeId_mgr = null;
         let posItems_mgr = [];
@@ -264,26 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // --- END POS ITEM MANAGEMENT FUNCTIONS ---
 
-        async function loadSharedEmployeePassword_ManagerPage() {
-            if (!firestore_manager.doc || !firestore_manager.getDoc) { if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = "DB funcs missing"; return; }
-            try {
-                const passwordDocRef = firestore_manager.doc(db_manager, "siteSettings", EMPLOYEE_PASSWORD_DOC_ID_MGR);
-                const docSnap = await firestore_manager.getDoc(passwordDocRef);
-                if (docSnap.exists() && docSnap.data()[EMPLOYEE_PASSWORD_FIELD_MGR]) {
-                    if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = docSnap.data()[EMPLOYEE_PASSWORD_FIELD_MGR];
-                } else { if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = "(Not Set)"; }
-            } catch (error) { console.error("manager.js: Error loading shared emp password:", error); if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = "Error"; }
-        }
-        async function saveSharedEmployeePassword_ManagerPage() {
-            if (!firestore_manager.doc || !firestore_manager.setDoc) { alert("DB error."); return; }
-            const newPassword = newEmployeePasswordInput.value; if (!newPassword || newPassword.length < 6) { alert("Min 6 chars."); return; }
-            try {
-                await firestore_manager.setDoc(firestore_manager.doc(db_manager, "siteSettings", EMPLOYEE_PASSWORD_DOC_ID_MGR), { [EMPLOYEE_PASSWORD_FIELD_MGR]: newPassword }, { merge: true });
-                if(employeePasswordStatus) { employeePasswordStatus.textContent = "Emp pass updated!"; employeePasswordStatus.style.color = "green"; }
-                if(currentEmployeePasswordDisplay) currentEmployeePasswordDisplay.value = newPassword; if(newEmployeePasswordInput) newEmployeePasswordInput.value = "";
-                setTimeout(() => { if(employeePasswordStatus) employeePasswordStatus.textContent = ''; }, 3000);
-            } catch (error) { console.error(error); if(employeePasswordStatus) { employeePasswordStatus.textContent = "Error: " + error.message; employeePasswordStatus.style.color = "red";}}
-        }
+        // Shared password functions removed - passwords are now set per-employee via the employee form
         async function loadEmployees_ManagerPage() {
             try {
                 const q = firestore_manager.query(firestore_manager.collection(db_manager, "employees"), firestore_manager.orderBy("fullName"));
@@ -332,7 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.innerHTML = `
                     <div class="employee-details">
                         <strong>${emp.fullName}</strong> (Num: ${emp.employeeNumber || 'N/A'}) - Rank: ${emp.rank}
+                        ${emp.isManager ? '<span style="background:#c05621; color:#fff; font-size:0.75rem; padding:2px 7px; border-radius:4px; margin-left:6px;">MANAGER ACCESS</span>' : ''}
                         <br>Bank Acc: ${emp.bankAccountNumber || 'N/A'}
+                        <br><span style="color:#a0aec0; font-size:0.85rem;">Login Password: ${emp.loginPassword ? '<span style="color:limegreen;">Set</span>' : '<span style="color:#e74c3c;">Not Set</span>'}</span>
                     </div>
                     <div class="action-buttons-cell">
                         <div class="tax-reward-controls">
@@ -391,6 +372,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if(employeeNumberInputSsn) employeeNumberInputSsn.value = '';
             if(employeeRankSelect) employeeRankSelect.value = 'Trainee';
             if(employeeBankAccountInput) employeeBankAccountInput.value = '';
+            const loginPassInput = document.getElementById('employee-login-password');
+            if(loginPassInput) loginPassInput.value = '';
+            const isManagerCheckbox = document.getElementById('employee-is-manager');
+            if(isManagerCheckbox) isManagerCheckbox.checked = false;
             editingEmployeeId_mgr = null;
             if(cancelEditButton) cancelEditButton.style.display = 'none';
             if(saveEmployeeButton) { saveEmployeeButton.textContent = 'Add Employee'; saveEmployeeButton.disabled = false; }
@@ -406,6 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (employeeNumberInputSsn) employeeNumberInputSsn.value = emp.employeeNumber || "";
                 if (employeeRankSelect) employeeRankSelect.value = emp.rank || "Trainee";
                 if (employeeBankAccountInput) { employeeBankAccountInput.value = emp.bankAccountNumber || ""; }
+                const loginPassInput = document.getElementById('employee-login-password');
+                if (loginPassInput) loginPassInput.value = ''; // Never pre-fill; leave blank to keep existing
+                const isManagerCheckbox = document.getElementById('employee-is-manager');
+                if (isManagerCheckbox) isManagerCheckbox.checked = emp.isManager === true;
                 if (saveEmployeeButton) { saveEmployeeButton.textContent = 'Save Changes'; saveEmployeeButton.disabled = false; }
                 if (cancelEditButton) cancelEditButton.style.display = 'inline-block';
                 if (employeeFormContainer && typeof employeeFormContainer.scrollIntoView === "function") employeeFormContainer.scrollIntoView({ behavior: 'smooth' });
@@ -417,12 +406,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const number = employeeNumberInputSsn.value.trim();
             const rank = employeeRankSelect.value;
             const bankAccount = employeeBankAccountInput.value.trim();
+            const loginPassword = document.getElementById('employee-login-password')?.value.trim() || '';
             const id = editingEmployeeId_mgr;
 
             if(!name || !number) {alert("Name and Number are required."); return;}
+            if(!id && !loginPassword) {alert("A login password is required for new employees."); return;}
             try {
                 const empColRef = firestore_manager.collection(db_manager, "employees");
-                const employeeData = { fullName: name, employeeNumber: number, rank: rank, bankAccountNumber: bankAccount || null };
+                const isManager = document.getElementById('employee-is-manager')?.checked || false;
+                const employeeData = { fullName: name, employeeNumber: number, rank: rank, bankAccountNumber: bankAccount || null, isManager: isManager };
+                // Only set/update password if one was entered
+                if (loginPassword) { employeeData.loginPassword = loginPassword; }
                 
                 if(id) {
                     const existingEmp = employees_mgr.find(e => e.id === id);
@@ -551,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hacSearchTermInput) hacSearchTermInput.addEventListener('keypress', e => { if (e.key === "Enter") { e.preventDefault(); searchHacMembers_ManagerPage(); }});
             if (hacClearSearchButton) { hacClearSearchButton.addEventListener('click', () => { if(hacSearchTermInput) hacSearchTermInput.value = ''; searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage();});}
             if (saveHacPromoButton) saveHacPromoButton.addEventListener('click', saveHacPromo_ManagerPage);
-            if (saveEmployeePasswordButton) saveEmployeePasswordButton.addEventListener('click', saveSharedEmployeePassword_ManagerPage);
+            // saveEmployeePasswordButton removed - individual passwords handled per-employee
             if (resetHacEligibilityButton) resetHacEligibilityButton.addEventListener('click', resetAllHacEligibility_ManagerPage);
             if (exportButton) {
                 exportButton.addEventListener('click', async () => {
@@ -618,7 +612,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadEmployees_ManagerPage(),
                 loadTransactions_ManagerPage(),
                 loadHacPromo_ManagerPage(),
-                loadSharedEmployeePassword_ManagerPage(),
                 loadTaxPaymentLogs_ManagerPage(),
                 loadPosItems_ManagerPage()
             ]);
@@ -630,29 +623,86 @@ document.addEventListener('DOMContentLoaded', () => {
             attachManagerEventListeners_ManagerPage();
         }
 
-        if (managerLoginForm_el) {
-            managerLoginForm_el.addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const enteredPass = managerPasswordInput_el.value;
-                if (enteredPass === MANAGER_LOGIN_PASSWORD_HARDCODED) {
-                    if (typeof grantManagerSession === "function") { grantManagerSession(); }
-                    else { console.error("Manager ERROR: grantManagerSession is not defined!"); }
-                    updateManagerView(true);
-                    await initializeManagerPortal();
+        // --- Manager login: populate dropdown, show password on selection ---
+        let managerLoginEmployeeList = [];
+
+        async function loadManagerLoginEmployeeList() {
+            try {
+                const q = firestore_manager.query(firestore_manager.collection(db_manager, "employees"), firestore_manager.orderBy("fullName"));
+                const snap = await firestore_manager.getDocs(q);
+                managerLoginEmployeeList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            } catch (e) {
+                console.error("Could not load employee list for manager login:", e);
+                managerLoginEmployeeList = [];
+            }
+            const sel = document.getElementById('manager-login-select');
+            if (!sel) return;
+            sel.innerHTML = '<option value="">-- Select Your Name --</option>';
+
+            // Only show employees marked as managers
+            const managerEmployees = managerLoginEmployeeList.filter(e => e.isManager === true);
+            // Fallback: if no one has isManager set yet (fresh setup), show all so admin isn't locked out
+            const listToShow = managerEmployees.length > 0 ? managerEmployees : managerLoginEmployeeList;
+
+            listToShow.forEach(emp => {
+                const opt = document.createElement('option');
+                opt.value = emp.id;
+                opt.textContent = emp.fullName;
+                sel.appendChild(opt);
+            });
+        }
+
+        const managerLoginSelect_el = document.getElementById('manager-login-select');
+        const managerPasswordGroup_el = document.getElementById('manager-password-group');
+        const managerLoginSubmitBtn_el = document.getElementById('manager-login-submit-btn');
+
+        if (managerLoginSelect_el) {
+            managerLoginSelect_el.addEventListener('change', () => {
+                const selected = managerLoginSelect_el.value;
+                if (selected) {
+                    if (managerPasswordGroup_el) managerPasswordGroup_el.style.display = 'block';
+                    if (managerLoginSubmitBtn_el) managerLoginSubmitBtn_el.style.display = 'inline-block';
+                    if (managerPasswordInput_el) { managerPasswordInput_el.value = ''; managerPasswordInput_el.focus(); }
+                    if (managerLoginError_el) managerLoginError_el.style.display = 'none';
                 } else {
-                    if (managerLoginError_el) { managerLoginError_el.textContent = "Invalid Manager Password."; managerLoginError_el.style.display = 'block'; }
-                    if(managerPasswordInput_el) managerPasswordInput_el.value = "";
+                    if (managerPasswordGroup_el) managerPasswordGroup_el.style.display = 'none';
+                    if (managerLoginSubmitBtn_el) managerLoginSubmitBtn_el.style.display = 'none';
                 }
             });
         }
-        
+
+        if (managerLoginForm_el) {
+            managerLoginForm_el.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const selectedId = managerLoginSelect_el ? managerLoginSelect_el.value : '';
+                const enteredPass = managerPasswordInput_el ? managerPasswordInput_el.value : '';
+                if (!selectedId) return;
+                const emp = managerLoginEmployeeList.find(e => e.id === selectedId);
+                const isBootstrapLogin = (enteredPass === MANAGER_LOGIN_PASSWORD_HARDCODED);
+                const isEmployeeManagerLogin = emp && emp.isManager === true && emp.loginPassword && emp.loginPassword === enteredPass;
+
+                if (isBootstrapLogin || isEmployeeManagerLogin) {
+                    if (typeof grantManagerSession === "function") { grantManagerSession(); }
+                    else { console.error("Manager ERROR: grantManagerSession is not defined!"); }
+                    // If bootstrap password used, still store their name from the dropdown
+                    if (emp) localStorage.setItem('loggedInEmployeeName', emp.fullName);
+                    updateManagerView(true);
+                    await initializeManagerPortal();
+                } else {
+                    if (managerLoginError_el) { managerLoginError_el.textContent = "Incorrect password or not authorised as manager."; managerLoginError_el.style.display = 'block'; }
+                    if (managerPasswordInput_el) managerPasswordInput_el.value = "";
+                }
+            });
+        }
+
         if (typeof checkManagerSession === "function" && checkManagerSession()) {
             updateManagerView(true);
             await initializeManagerPortal();
         } else {
             updateManagerView(false);
+            await loadManagerLoginEmployeeList();
         }
-        
+
         hideLoadingScreen();
 
         // --- SELF-CONTAINED TIER 2 MANAGER FUNCTION ---

@@ -839,3 +839,165 @@ input.quantity::-webkit-outer-spin-button {
     transition: color 0.3s;
 
 }
+
+/* ============================================================
+   === UNIFIED LOGIN CARD - all three login screens ===
+   ============================================================ */
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    margin: 40px auto;
+    background-color: rgba(28, 28, 35, 0.97);
+    border: 1px solid #2d3748;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+    padding: 36px 40px 32px;
+    text-align: center;
+}
+
+.login-card-header {
+    margin-bottom: 28px;
+}
+
+.login-card-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    border-bottom: none;
+    text-align: center;
+}
+
+.login-card-subtitle {
+    font-size: 0.9rem;
+    color: #718096;
+    margin: 0;
+    text-align: center;
+}
+
+/* The form inside a login card */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Each label+input pair */
+.login-field {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 6px;
+}
+
+.login-field label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.login-field select,
+.login-field input[type="password"] {
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #3a4252;
+    background-color: #1a1e2a;
+    color: #e2e8f0;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-align: center;
+    text-align-last: center;
+}
+
+.login-field input[type="password"] {
+    text-align: left;
+    text-align-last: left;
+    letter-spacing: 0.1em;
+}
+
+.login-field select:focus,
+.login-field input[type="password"]:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.25);
+}
+
+/* Login button */
+.login-btn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 6px;
+    background-color: #3182ce;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.login-btn:hover { background-color: #2b6cb0; transform: translateY(-1px); }
+.login-btn:active { transform: translateY(0); }
+
+/* Error message */
+.login-error {
+    margin-top: 14px;
+    color: #fc8181;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ============================================================
+   === ACTIVE EMPLOYEE NAME BADGE (index page post-login) ===
+   ============================================================ */
+
+#active-employee-display {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 12px 24px;
+    background-color: rgba(28, 28, 35, 0.9);
+    border: 1px solid #276749;
+    border-radius: 10px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#active-employee-display p:first-child {
+    font-size: 0.78rem;
+    color: #68d391;
+    margin: 0 0 3px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+#active-employee-name {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #48bb78;
+    margin: 0;
+}
+/* === HAC Promo bullet list === */
+#hac-promo-text-staff li,
+#hac-promo-text li {
+    padding: 3px 0;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+}
+
+#hac-promo-text-staff li::before,
+#hac-promo-text li::before {
+    content: "• ";
+    color: #48bb78;
+    font-weight: bold;
+}

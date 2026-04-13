@@ -98,22 +98,33 @@
             </div>
         </header>
 
-        <div id="employee-login-container" class="content-block" style="max-width: 450px; margin: 20px auto;">
-            <h1>Employee Access</h1>
-            <form id="main-employee-login-form">
-                <div class="form-group">
-                    <label for="main-employee-password">Enter Access Password:</label>
-                    <input type="password" id="main-employee-password" required>
+        <div id="employee-login-container" class="login-card">
+            <div class="login-card-header">
+                <h2 class="login-card-title">Staff Portal</h2>
+                <p class="login-card-subtitle">Sign in to continue</p>
+            </div>
+            <form id="main-employee-login-form" class="login-form">
+                <div class="login-field">
+                    <label for="login-employee-select">Select Your Name</label>
+                    <select id="login-employee-select">
+                        <option value="">— Loading employees... —</option>
+                    </select>
                 </div>
-                <button type="submit">Login</button>
+                <div class="login-field" id="login-password-group" style="display: none;">
+                    <label for="main-employee-password">Password</label>
+                    <input type="password" id="main-employee-password" autocomplete="current-password" placeholder="Enter your password">
+                </div>
+                <button type="submit" id="login-submit-btn" class="login-btn" style="display: none;">Login</button>
             </form>
-            <p id="main-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Password.</p>
+            <p id="main-login-error" class="login-error" style="display: none;">Incorrect password. Please try again.</p>
         </div>
 
         <div id="application-main-content" style="display: none; width: 100%;">
-            <div class="employee-selection form-group" style="text-align:center; margin-bottom:20px;">
-                <label for="processing-employee-select" style="display:block; margin-bottom:8px;">Processing Employee:</label>
-                <select id="processing-employee-select" style="min-width: 300px; text-align:center; padding:10px;"></select>
+            <!-- Processing employee select is hidden - auto-set from login, not user-selectable -->
+            <select id="processing-employee-select" style="display:none;"></select>
+            <div id="active-employee-display" style="text-align:center; margin-bottom:20px; display:none;">
+                <p style="font-size:1.1rem; color:#a0aec0; margin:0 0 4px 0;">Logged in as:</p>
+                <p id="active-employee-name" style="font-size:1.4rem; font-weight:bold; color:limegreen; margin:0;"></p>
             </div>
 
             <div id="view-switcher" style="text-align: center; margin-bottom: 25px; display:flex; justify-content:center; gap:15px;">
@@ -197,7 +208,7 @@
                     <div class="item" data-price="1000" data-category="Specialty"><img src="sift_pan.webp" alt="GOLD PAN"><p>Gold Pan $1000</p><label for="quantity_gold_pan">Quantity:</label><input type="number" id="quantity_gold_pan" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="50" data-category="Specialty"><img src="wep_flashlight.webp" alt="Flashlight"><p>Flashlight $50</p><label for="quantity_flashlight">Quantity:</label><input type="number" id="quantity_flashlight" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="7000" data-category="Specialty" data-pack="true" id="summer_camping_pack"><img src="summer_camping_pack.png" alt="summer_camping_pack"><p>Summer Camping Pack $7000</p><label for="summer_camping_pack">Quantity:</label><input type="number" id="quantity_summer_camping_pack" min="0" value="0" class="quantity"></div>
-                    <div class="item" data-price="15000" data-category="Specialty" data-pack="true" id="jerky_pack"><img src="jerkypack.png" alt="Jerky Pack"><p>Jerky Pack $15000</p><label for="quantity_jerky_pack">Quantity:</label><input type="number" id="quantity_jerky_pack" min="0" value="0" class="quantity"></div>
+                    <div class="item" data-price="18000" data-category="Specialty" data-pack="true" id="jerky_pack"><img src="jerkypack.png" alt="Jerky Pack"><p>Jerky Pack $15000</p><label for="quantity_jerky_pack">Quantity:</label><input type="number" id="quantity_jerky_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="5000" data-category="Hunting" data-pack="true" id="item_hunting_pack"><img src="huntingpack.png" alt="HUNTING PACK"><p>Hunting Pack $5000</p><label for="quantity_hunting_pack">Quantity:</label><input type="number" id="quantity_hunting_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="7000" data-category="Hunting" data-pack="true" id="item_scoped_hunting_pack"><img src="scoped_hunting_pack.png" alt="SCOPED HUNTING PACK"><p>Scoped Pack $7000</p><label for="quantity_scoped_hunting_pack">Quantity:</label><input type="number" id="quantity_scoped_hunting_pack" min="0" value="0" class="quantity"></div>
                     <div class="item" data-price="1000" data-category="Fishing"><img src="fs-brokeassreel.webp"alt="BROKE ASS REEL"><p>Broke Ass Reel $1000</p><label for="quantity_broke_ass_reel">Quantity:</label><input type="number" id="quantity_broke_ass_reel" min="0" value="0" class="quantity"></div>
@@ -315,7 +326,7 @@
                 <hr class="section-hr">
                 <div class="buysell-summary">
                     <h2>Transaction Summary</h2>
-                    <p>Buying Fish Total: <strong id="summary-owed-customer">$0.00</strong></p>
+                    <p>Buying Goods Total: <strong id="summary-owed-customer">$0.00</strong></p>
                     <p>Selling Fish Total: <strong id="summary-owed-mikes">$0.00</strong></p>
                     <p class="net-transaction-display">Net Transaction: <strong id="net-transaction-amount">$0.00</strong>
                         <span id="net-transaction-party"></span>

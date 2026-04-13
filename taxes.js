@@ -1,1 +1,327 @@
-const _0x8d24c=_0x14f9;function _0x14f9(_0x261949,_0x4951ff){const _0x5be1cc=_0x5be1();return _0x14f9=function(_0x14f9c9,_0x4f774e){_0x14f9c9=_0x14f9c9-0x140;let _0x4e9340=_0x5be1cc[_0x14f9c9];return _0x4e9340;},_0x14f9(_0x261949,_0x4951ff);}(function(_0x221207,_0x4c253b){const _0x50625b=_0x14f9,_0x4cbe27=_0x221207();while(!![]){try{const _0x4f2493=-parseInt(_0x50625b(0x17c))/0x1+-parseInt(_0x50625b(0x14c))/0x2+parseInt(_0x50625b(0x141))/0x3*(parseInt(_0x50625b(0x195))/0x4)+parseInt(_0x50625b(0x151))/0x5+parseInt(_0x50625b(0x167))/0x6*(parseInt(_0x50625b(0x181))/0x7)+-parseInt(_0x50625b(0x153))/0x8*(parseInt(_0x50625b(0x17e))/0x9)+-parseInt(_0x50625b(0x154))/0xa;if(_0x4f2493===_0x4c253b)break;else _0x4cbe27['push'](_0x4cbe27['shift']());}catch(_0x38274f){_0x4cbe27['push'](_0x4cbe27['shift']());}}}(_0x5be1,0x625b5),document['addEventListener'](_0x8d24c(0x152),()=>{const _0x3b3350=_0x8d24c,_0x3d6f64=document[_0x3b3350(0x168)](_0x3b3350(0x18b));function _0x1ae9e2(){const _0x33cf41=_0x3b3350;_0x3d6f64&&(_0x3d6f64[_0x33cf41(0x19b)][_0x33cf41(0x175)](_0x33cf41(0x16f)),setTimeout(()=>{const _0x44ca08=_0x33cf41;_0x3d6f64&&_0x3d6f64['parentNode']&&_0x3d6f64[_0x44ca08(0x15e)][_0x44ca08(0x18f)](_0x3d6f64);},0x1f4));}const _0x35c535=document[_0x3b3350(0x168)](_0x3b3350(0x18e));if(!_0x35c535){_0x1ae9e2();return;}console[_0x3b3350(0x18c)](_0x3b3350(0x176));let _0x5529b7,_0x31078d,_0x5415e6=![];const _0xad5e37=document['getElementById']('taxes-login-form-container'),_0x965283=document[_0x3b3350(0x168)]('taxes-page-login-form'),_0x3bb2c3=document['getElementById'](_0x3b3350(0x19e)),_0x287fc8=document[_0x3b3350(0x168)]('taxes-page-login-error'),_0x36e198=document[_0x3b3350(0x168)](_0x3b3350(0x183)),_0xa55f4c=document[_0x3b3350(0x168)]('tax-details-container'),_0x1f4e19=document[_0x3b3350(0x168)](_0x3b3350(0x166)),_0x1a17ec=document[_0x3b3350(0x168)](_0x3b3350(0x174)),_0x1a0d9f=document['getElementById'](_0x3b3350(0x140)),_0x100136=document['getElementById']('mark-taxes-paid-button'),_0x34bb3d=document[_0x3b3350(0x168)](_0x3b3350(0x143)),_0x5b27cd=document[_0x3b3350(0x168)](_0x3b3350(0x14a));let _0x2263a4=[];function _0x23a529(_0x5a7f01){const _0x27b2f2=_0x3b3350;if(_0x5415e6)return;_0x5415e6=!![],alert(_0x27b2f2(0x1a0)+_0x5a7f01);if(_0x965283){const _0x50d49e=_0x965283[_0x27b2f2(0x18a)](_0x27b2f2(0x188));_0x50d49e&&(_0x50d49e[_0x27b2f2(0x171)]=!![],_0x50d49e[_0x27b2f2(0x197)]='Login\x20Disabled\x20(DB\x20Error)');}if(_0x35c535)_0x35c535['style'][_0x27b2f2(0x192)]='none';_0x1ae9e2();}function _0x280a3e(_0x9af587){const _0x2956a1=_0x3b3350;if(_0x9af587){_0xad5e37[_0x2956a1(0x150)][_0x2956a1(0x192)]='none',_0x35c535[_0x2956a1(0x150)][_0x2956a1(0x192)]=_0x2956a1(0x196);if(typeof addLogoutButton===_0x2956a1(0x142))addLogoutButton();}else _0xad5e37[_0x2956a1(0x150)]['display']=_0x2956a1(0x196),_0x35c535[_0x2956a1(0x150)][_0x2956a1(0x192)]=_0x2956a1(0x15b);}async function _0x21ba3e(){const _0x145656=_0x3b3350;try{const _0x49985b=_0x31078d['query'](_0x31078d[_0x145656(0x161)](_0x5529b7,_0x145656(0x17f)),_0x31078d['orderBy'](_0x145656(0x16c))),_0x17d54d=await _0x31078d['getDocs'](_0x49985b);_0x36e198['innerHTML']=_0x145656(0x162),_0x17d54d[_0x145656(0x146)](_0x110a71=>{const _0x11f557=_0x145656,_0x47449a=_0x110a71[_0x11f557(0x16e)](),_0x28ffb8=document[_0x11f557(0x185)](_0x11f557(0x15c));_0x28ffb8[_0x11f557(0x190)]=_0x47449a[_0x11f557(0x16c)],_0x28ffb8[_0x11f557(0x197)]=_0x47449a[_0x11f557(0x16c)],_0x36e198[_0x11f557(0x172)](_0x28ffb8);});}catch(_0x3a6e95){console[_0x145656(0x1a5)]('Error\x20loading\x20employees\x20for\x20taxes:',_0x3a6e95),_0x36e198['innerHTML']=_0x145656(0x14b);}}async function _0x2e6323(_0x80442d){const _0x57602b=_0x3b3350;if(!_0x80442d){_0xa55f4c[_0x57602b(0x150)]['display']=_0x57602b(0x15b);return;}_0x1f4e19[_0x57602b(0x197)]=_0x80442d,_0x1a17ec[_0x57602b(0x197)]=_0x57602b(0x15f),_0x5b27cd[_0x57602b(0x197)]=_0x57602b(0x14d),_0xa55f4c[_0x57602b(0x150)][_0x57602b(0x192)]=_0x57602b(0x196),_0x34bb3d[_0x57602b(0x197)]='',_0x1a0d9f[_0x57602b(0x193)]=![],_0x100136['disabled']=!![];try{const _0x24d8a1=_0x31078d[_0x57602b(0x179)](_0x31078d[_0x57602b(0x161)](_0x5529b7,_0x57602b(0x1a1)),_0x31078d[_0x57602b(0x144)]('employeeName','==',_0x80442d),_0x31078d[_0x57602b(0x144)](_0x57602b(0x16d),'==',![])),_0x15c758=await _0x31078d[_0x57602b(0x170)](_0x24d8a1);let _0x27251b=0x0,_0x1cec65=0x0;_0x2263a4=[];if(_0x15c758[_0x57602b(0x19f)]){_0x1a17ec[_0x57602b(0x197)]='$0.00',_0x5b27cd[_0x57602b(0x197)]='0',_0x34bb3d[_0x57602b(0x197)]=_0x57602b(0x156),_0x34bb3d[_0x57602b(0x150)][_0x57602b(0x186)]=_0x57602b(0x155),_0x1a0d9f[_0x57602b(0x171)]=!![],_0x100136[_0x57602b(0x171)]=!![];return;}_0x15c758['forEach'](_0x348e48=>{const _0x57b2d2=_0x57602b,_0x6d4648=_0x348e48[_0x57b2d2(0x16e)]();_0x6d4648[_0x57b2d2(0x18d)]&&typeof _0x6d4648[_0x57b2d2(0x18d)]===_0x57b2d2(0x17a)&&(_0x27251b+=_0x6d4648[_0x57b2d2(0x18d)],_0x2263a4[_0x57b2d2(0x17b)](_0x348e48['id']),_0x1cec65++);}),_0x1a17ec['textContent']='$'+_0x27251b[_0x57602b(0x148)](_0x57602b(0x189),{'minimumFractionDigits':0x2,'maximumFractionDigits':0x2}),_0x5b27cd[_0x57602b(0x197)]=_0x1cec65,_0x1a0d9f[_0x57602b(0x171)]=_0x27251b<=0x0;}catch(_0x194492){console[_0x57602b(0x1a5)](_0x57602b(0x160),_0x194492),_0x1a17ec['textContent']=_0x57602b(0x17d),_0x5b27cd[_0x57602b(0x197)]=_0x57602b(0x17d),_0x34bb3d[_0x57602b(0x197)]='Error\x20fetching\x20taxes.\x20A\x20database\x20index\x20might\x20be\x20required.\x20Check\x20the\x20console\x20(F12)\x20for\x20a\x20link\x20to\x20create\x20it.',_0x34bb3d[_0x57602b(0x150)][_0x57602b(0x186)]=_0x57602b(0x173);}}async function _0x1d5dbe(){const _0x2ac981=_0x3b3350;if(_0x2263a4[_0x2ac981(0x19d)]===0x0){alert(_0x2ac981(0x157));return;}const _0x1282d7=_0x36e198[_0x2ac981(0x190)];if(!_0x1282d7){alert('Please\x20ensure\x20an\x20employee\x20is\x20selected.');return;}_0x100136['disabled']=!![],_0x34bb3d[_0x2ac981(0x197)]='Processing...',_0x34bb3d['style'][_0x2ac981(0x186)]=_0x2ac981(0x191);try{const _0x2b8c4f=_0x2263a4[_0x2ac981(0x184)](_0x3ff5a1=>{const _0xfbe254=_0x2ac981,_0x4835c6=_0x31078d[_0xfbe254(0x163)](_0x5529b7,_0xfbe254(0x1a1),_0x3ff5a1);return _0x31078d[_0xfbe254(0x147)](_0x4835c6,{'taxesCleared':!![]});});await Promise['all'](_0x2b8c4f);const _0x81fed2=parseFloat(_0x1a17ec['textContent']['replace'](/[$,]/g,''));await _0x31078d[_0x2ac981(0x159)](_0x31078d[_0x2ac981(0x161)](_0x5529b7,'taxPaymentLogs'),{'employeeName':_0x1282d7,'processingEmployeeName':_0x1282d7,'totalAmountCleared':_0x81fed2,'transactionIdsCleared':_0x2263a4,'clearedAt':_0x31078d[_0x2ac981(0x145)]()}),_0x34bb3d[_0x2ac981(0x197)]=_0x2ac981(0x180),_0x34bb3d[_0x2ac981(0x150)][_0x2ac981(0x186)]=_0x2ac981(0x155),_0x1a17ec[_0x2ac981(0x197)]=_0x2ac981(0x1a4),_0x5b27cd[_0x2ac981(0x197)]='0',_0x1a0d9f[_0x2ac981(0x193)]=![],_0x1a0d9f[_0x2ac981(0x171)]=!![],_0x100136['disabled']=!![];}catch(_0x52be54){console['error'](_0x2ac981(0x14f),_0x52be54),_0x34bb3d[_0x2ac981(0x197)]=_0x2ac981(0x194),_0x34bb3d['style'][_0x2ac981(0x186)]=_0x2ac981(0x173),_0x100136['disabled']=![];}}_0x36e198['addEventListener']('change',_0xb4d314=>_0x2e6323(_0xb4d314[_0x3b3350(0x15d)][_0x3b3350(0x190)])),_0x1a0d9f['addEventListener'](_0x3b3350(0x165),()=>{const _0x2f3322=_0x3b3350;_0x100136[_0x2f3322(0x171)]=!_0x1a0d9f[_0x2f3322(0x193)]||_0x2263a4['length']===0x0;}),_0x100136['addEventListener'](_0x3b3350(0x187),_0x1d5dbe);async function _0x402658(_0x5e8fcb){const _0x512a73=_0x3b3350;if(_0x5415e6)return;_0x5415e6=!![];if(!_0x5e8fcb||!_0x5e8fcb['db']||!_0x5e8fcb[_0x512a73(0x14e)]){_0x23a529(_0x512a73(0x16b));return;}_0x5529b7=_0x5e8fcb['db'],_0x31078d=_0x5e8fcb[_0x512a73(0x14e)];if(typeof checkEmployeeSession===_0x512a73(0x142)&&checkEmployeeSession())_0x280a3e(!![]),await _0x21ba3e();else{_0x280a3e(![]);let _0xf917a2=null;try{const _0x342824=_0x31078d[_0x512a73(0x163)](_0x5529b7,_0x512a73(0x169),'accessSettings'),_0x46b684=await _0x31078d['getDoc'](_0x342824);_0x46b684[_0x512a73(0x1a3)]()&&_0x46b684[_0x512a73(0x16e)]()[_0x512a73(0x19c)]&&(_0xf917a2=_0x46b684['data']()['employeeLoginPassword']);}catch(_0x3097ea){console['error'](_0x512a73(0x19a),_0x3097ea);}_0x965283[_0x512a73(0x149)]('submit',_0xbc3482=>{const _0x201627=_0x512a73;_0xbc3482[_0x201627(0x158)]();if(_0x3bb2c3['value']===_0xf917a2){if(typeof grantEmployeeSession===_0x201627(0x142))grantEmployeeSession();_0x280a3e(!![]),_0x21ba3e();}else _0x287fc8[_0x201627(0x150)][_0x201627(0x192)]=_0x201627(0x196),_0x3bb2c3['value']='';});}_0x1ae9e2();}let _0x28ce9a=![];document[_0x3b3350(0x149)](_0x3b3350(0x164),_0x55d395=>{!_0x28ce9a&&(_0x28ce9a=!![],_0x402658(_0x55d395['detail']));}),document['addEventListener'](_0x3b3350(0x182),_0x316ab3=>{const _0x30d980=_0x3b3350;!_0x28ce9a&&(_0x28ce9a=!![],_0x23a529(_0x316ab3[_0x30d980(0x178)]?.['error']?.[_0x30d980(0x16a)]||_0x30d980(0x198)));}),setTimeout(()=>{const _0x20d0a6=_0x3b3350;!_0x28ce9a&&(window['isFirebaseReady']&&window['db']&&window[_0x20d0a6(0x15a)]?(console[_0x20d0a6(0x18c)](_0x20d0a6(0x1a2)),_0x402658({'db':window['db'],'functions':window[_0x20d0a6(0x15a)]})):(console[_0x20d0a6(0x1a5)](_0x20d0a6(0x199)),_0x23a529(_0x20d0a6(0x177))));},0xdac);}));function _0x5be1(){const _0x4a9979=['taxAmountPaidToMikes','taxes-main-content','removeChild','value','#f0f0f0','display','checked','An\x20error\x20occurred.\x20Please\x20try\x20again.','2214724lmXfzN','block','textContent','Firebase\x20Error','Taxes.js:\x20Timeout\x20reached\x20and\x20Firebase\x20is\x20NOT\x20ready.','Could\x20not\x20load\x20password','classList','employeeLoginPassword','length','taxes-page-password','empty','Critical\x20error\x20on\x20Taxes\x20page:\x20','transactions','Taxes.js:\x20Timeout\x20reached,\x20but\x20Firebase\x20is\x20ready.\x20Initializing\x20manually.','exists','$0.00','error','taxes-paid-checkbox','3oDqjnp','function','taxes-status-message','where','serverTimestamp','forEach','updateDoc','toLocaleString','addEventListener','transaction-count','<option\x20value=\x22\x22>Error\x20loading\x20employees</option>','822588Zvjwzf','...','functions','Error\x20marking\x20taxes\x20as\x20paid:','style','2900100tsDNoc','DOMContentLoaded','8gwlodu','892770NaFusy','green','No\x20outstanding\x20taxes\x20found\x20for\x20this\x20employee.','No\x20outstanding\x20transactions\x20to\x20mark\x20as\x20paid.','preventDefault','addDoc','firestoreFunctions','none','option','target','parentNode','Loading...','Error\x20fetching\x20taxes:','collection','<option\x20value=\x22\x22>--\x20Select\x20Employee\x20--</option>','doc','firebaseReady','change','selected-employee-name','6EVdlmZ','getElementById','siteSettings','message','Firebase\x20details\x20missing.','fullName','taxesCleared','data','hidden','getDocs','disabled','appendChild','#e74c3c','total-taxes-owed','add','taxes.js:\x20Taxes\x20page\x20detected.\x20Initializing\x20logic.','Initialization\x20timeout.\x20Firebase\x20failed\x20to\x20load.','detail','query','number','push','221052BVoDQI','Error','6388902nwVFrC','employees','Taxes\x20successfully\x20marked\x20as\x20paid!','4904683VFFOhj','firebaseError','employee-tax-select','map','createElement','color','click','button[type=\x22submit\x22]','en-US','querySelector','loading-overlay','log'];_0x5be1=function(){return _0x4a9979;};return _0x5be1();}
+// This is the final, complete content for taxes.js (with timeout safety check)
+
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Loading screen logic ---
+    const loadingOverlay = document.getElementById('loading-overlay');
+    function hideLoadingScreen() {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
+            setTimeout(() => {
+                if (loadingOverlay && loadingOverlay.parentNode) {
+                    loadingOverlay.parentNode.removeChild(loadingOverlay);
+                }
+            }, 500); // Matches CSS transition time
+        }
+    }
+
+    const taxesMainContent = document.getElementById('taxes-main-content');
+    if (!taxesMainContent) {
+        hideLoadingScreen(); 
+        return; 
+    }
+
+    console.log("taxes.js: Taxes page detected. Initializing logic.");
+    let db, firestore;
+    let appLogicHasRun_Taxes = false; // Flag to prevent running logic twice
+
+    // --- DOM Elements ---
+    const loginContainer = document.getElementById('taxes-login-form-container');
+    const loginForm = document.getElementById('taxes-page-login-form');
+    const passwordInput = document.getElementById('taxes-page-password');
+    const loginError = document.getElementById('taxes-page-login-error');
+    const employeeSelect = document.getElementById('employee-tax-select');
+    const taxDetailsContainer = document.getElementById('tax-details-container');
+    const selectedEmployeeNameDisplay = document.getElementById('selected-employee-name');
+    const totalTaxesOwedDisplay = document.getElementById('total-taxes-owed');
+    const paidCheckbox = document.getElementById('taxes-paid-checkbox');
+    const markPaidButton = document.getElementById('mark-taxes-paid-button');
+    const statusMessage = document.getElementById('taxes-status-message');
+
+    let transactionsToClear = [];
+
+    function setupErrorUI_Taxes(errorMessage) {
+        if (appLogicHasRun_Taxes) return;
+        appLogicHasRun_Taxes = true;
+        alert("Critical error on Taxes page: " + errorMessage);
+        if (loginForm) {
+            const loginButton = loginForm.querySelector('button[type="submit"]');
+            if (loginButton) {
+                loginButton.disabled = true;
+                loginButton.textContent = "Login Disabled (DB Error)";
+            }
+        }
+        if (taxesMainContent) taxesMainContent.style.display = 'none';
+        hideLoadingScreen();
+    }
+
+    function updateTaxesView(isLoggedIn) {
+        if (isLoggedIn) {
+            loginContainer.style.display = 'none';
+            taxesMainContent.style.display = 'block';
+            if (typeof addLogoutButton === "function") addLogoutButton();
+        } else {
+            loginContainer.style.display = 'block';
+            taxesMainContent.style.display = 'none';
+        }
+    }
+    
+    async function loadEmployeesForTaxes() {
+        try {
+            const q = firestore.query(firestore.collection(db, "employees"), firestore.orderBy("fullName"));
+            const snapshot = await firestore.getDocs(q);
+            employeeSelect.innerHTML = '<option value="">-- Select Employee --</option>';
+            snapshot.forEach(doc => {
+                const emp = doc.data();
+                const option = document.createElement('option');
+                option.value = emp.fullName;
+                option.textContent = emp.fullName;
+                employeeSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error("Error loading employees for taxes:", error);
+            employeeSelect.innerHTML = '<option value="">Error loading employees</option>';
+        }
+    }
+
+    async function fetchAndCalculateTaxes(employeeName) {
+        if (!employeeName) {
+            taxDetailsContainer.style.display = 'none';
+            return;
+        }
+        selectedEmployeeNameDisplay.textContent = employeeName;
+        totalTaxesOwedDisplay.textContent = "Loading...";
+        taxDetailsContainer.style.display = 'block';
+        statusMessage.textContent = '';
+        paidCheckbox.checked = false;
+        markPaidButton.disabled = true;
+
+        const transactionCountEl = document.getElementById('transaction-count');
+
+        try {
+            const q = firestore.query(
+                firestore.collection(db, "transactions"),
+                firestore.where("employeeName", "==", employeeName),
+                firestore.where("taxesCleared", "==", false)
+            );
+            const snapshot = await firestore.getDocs(q);
+            let totalTaxes = 0;
+            transactionsToClear = [];
+
+            if (snapshot.empty) {
+                totalTaxesOwedDisplay.textContent = "$0.00";
+                if (transactionCountEl) transactionCountEl.textContent = '0';
+                statusMessage.textContent = 'No outstanding taxes found for this employee.';
+                statusMessage.style.color = 'green';
+                paidCheckbox.disabled = true;
+                markPaidButton.disabled = true;
+                return;
+            }
+
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                if (data.taxAmountPaidToMikes && typeof data.taxAmountPaidToMikes === 'number') {
+                    totalTaxes += data.taxAmountPaidToMikes;
+                    transactionsToClear.push(doc.id);
+                }
+            });
+
+            totalTaxesOwedDisplay.textContent = `$${totalTaxes.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            if (transactionCountEl) transactionCountEl.textContent = transactionsToClear.length;
+            paidCheckbox.disabled = totalTaxes <= 0;
+            if (totalTaxes <= 0) {
+                statusMessage.textContent = 'No taxable transactions found (Buy/Sell trades are not taxed).';
+                statusMessage.style.color = '#a0aec0';
+            }
+        } catch (error) {
+            console.error("Error fetching taxes:", error);
+            totalTaxesOwedDisplay.textContent = "Error";
+            if (transactionCountEl) transactionCountEl.textContent = '?';
+            statusMessage.textContent = 'Error fetching taxes. A database index might be required. Check the console (F12) for a link to create it.';
+            statusMessage.style.color = '#e74c3c';
+        }
+    }
+
+// REPLACE the entire markTaxesAsPaid function in taxes.js with this one
+
+    async function markTaxesAsPaid() {
+        if (transactionsToClear.length === 0) {
+            alert("No outstanding transactions to mark as paid.");
+            return;
+        }
+        const processingEmployee = employeeSelect.value;
+        if (!processingEmployee) {
+            alert("Please ensure an employee is selected.");
+            return;
+        }
+        markPaidButton.disabled = true;
+        statusMessage.textContent = 'Processing...';
+        statusMessage.style.color = '#f0f0f0';
+        try {
+            // Update all outstanding transactions
+            const updatePromises = transactionsToClear.map(id => {
+                const docRef = firestore.doc(db, "transactions", id);
+                return firestore.updateDoc(docRef, { taxesCleared: true });
+            });
+            await Promise.all(updatePromises);
+            
+            // Create a log entry
+            const totalAmount = parseFloat(totalTaxesOwedDisplay.textContent.replace(/[$,]/g, ''));
+            await firestore.addDoc(firestore.collection(db, "taxPaymentLogs"), {
+                employeeName: processingEmployee,
+                processingEmployeeName: processingEmployee,
+                totalAmountCleared: totalAmount,
+                transactionIdsCleared: transactionsToClear,
+                clearedAt: firestore.serverTimestamp()
+            });
+
+            statusMessage.textContent = 'Taxes successfully marked as paid!';
+            statusMessage.style.color = 'green';
+
+            // Update the display to zero for instant feedback
+            totalTaxesOwedDisplay.textContent = "$0.00"; 
+            totalTaxesOwedDisplay.style.color = "green";
+            
+            // Disable the controls since the balance is now zero
+            paidCheckbox.checked = false;
+            paidCheckbox.disabled = true;
+            markPaidButton.disabled = true;
+
+            // The setTimeout block that caused the reset has been removed.
+            // The view will now stay on the current employee.
+
+        } catch (error) {
+            console.error("Error marking taxes as paid:", error);
+            statusMessage.textContent = 'An error occurred. Please try again.';
+            statusMessage.style.color = '#e74c3c';
+            markPaidButton.disabled = false; // Re-enable button on error
+        }
+    }
+
+    employeeSelect.addEventListener('change', (e) => fetchAndCalculateTaxes(e.target.value));
+    paidCheckbox.addEventListener('change', () => {
+        markPaidButton.disabled = !paidCheckbox.checked || transactionsToClear.length === 0;
+    });
+    markPaidButton.addEventListener('click', markTaxesAsPaid);
+
+    // --- Main App Logic ---
+    async function executeTaxesAppLogic(firebaseDetail) {
+        if (appLogicHasRun_Taxes) return;
+        appLogicHasRun_Taxes = true;
+
+        if (!firebaseDetail || !firebaseDetail.db || !firebaseDetail.functions) {
+            setupErrorUI_Taxes("Firebase details missing.");
+            return;
+        }
+
+        db = firebaseDetail.db;
+        firestore = firebaseDetail.functions;
+
+        if (typeof checkEmployeeSession === 'function' && checkEmployeeSession()) {
+            updateTaxesView(true);
+            await loadEmployeesForTaxes();
+            // Auto-select the logged-in employee if they are in the list
+            const loggedInName = localStorage.getItem('loggedInEmployeeName');
+            if (loggedInName && employeeSelect) {
+                for (let i = 0; i < employeeSelect.options.length; i++) {
+                    if (employeeSelect.options[i].value === loggedInName) {
+                        employeeSelect.selectedIndex = i;
+                        await fetchAndCalculateTaxes(loggedInName);
+                        break;
+                    }
+                }
+            }
+        } else {
+            updateTaxesView(false);
+            // Build login dropdown from employee list
+            let taxLoginEmployeeList = [];
+            try {
+                const q = firestore.query(firestore.collection(db, "employees"), firestore.orderBy("fullName"));
+                const snap = await firestore.getDocs(q);
+                taxLoginEmployeeList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            } catch (e) { console.error("Could not load employees for taxes login", e); }
+
+            // Populate the login select
+            const taxLoginSelect = document.getElementById('taxes-login-select');
+            const taxPasswordGroup = document.getElementById('taxes-password-group');
+            const taxLoginSubmitBtn = document.getElementById('taxes-login-submit-btn');
+
+            if (taxLoginSelect) {
+                taxLoginSelect.innerHTML = '<option value="">-- Select Your Name --</option>';
+                taxLoginEmployeeList.forEach(emp => {
+                    const opt = document.createElement('option');
+                    opt.value = emp.id;
+                    opt.textContent = emp.fullName;
+                    taxLoginSelect.appendChild(opt);
+                });
+
+                taxLoginSelect.addEventListener('change', () => {
+                    if (taxLoginSelect.value) {
+                        if (taxPasswordGroup) taxPasswordGroup.style.display = 'block';
+                        if (taxLoginSubmitBtn) taxLoginSubmitBtn.style.display = 'inline-block';
+                        if (passwordInput) { passwordInput.value = ''; passwordInput.focus(); }
+                        if (loginError) loginError.style.display = 'none';
+                    } else {
+                        if (taxPasswordGroup) taxPasswordGroup.style.display = 'none';
+                        if (taxLoginSubmitBtn) taxLoginSubmitBtn.style.display = 'none';
+                    }
+                });
+            }
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const selectedId = taxLoginSelect ? taxLoginSelect.value : '';
+                const enteredPassword = passwordInput ? passwordInput.value : '';
+                if (!selectedId) return;
+                const emp = taxLoginEmployeeList.find(em => em.id === selectedId);
+                if (emp && emp.loginPassword && emp.loginPassword === enteredPassword) {
+                    if (typeof grantEmployeeSession === "function") grantEmployeeSession();
+                    localStorage.setItem('loggedInEmployeeName', emp.fullName);
+                    updateTaxesView(true);
+                    await loadEmployeesForTaxes();
+                    // Auto-select the logged-in employee
+                    for (let i = 0; i < employeeSelect.options.length; i++) {
+                        if (employeeSelect.options[i].value === emp.fullName) {
+                            employeeSelect.selectedIndex = i;
+                            await fetchAndCalculateTaxes(emp.fullName);
+                            break;
+                        }
+                    }
+                } else {
+                    if (loginError) { loginError.textContent = "Incorrect password. Please try again."; loginError.style.display = 'block'; }
+                    if (passwordInput) passwordInput.value = '';
+                }
+            });
+        }
+        hideLoadingScreen();
+    }
+    
+    // --- Firebase Initialization Listeners & Timeout ---
+    let firebaseReadyProcessed_Taxes = false;
+
+    document.addEventListener('firebaseReady', (e) => {
+        if (!firebaseReadyProcessed_Taxes) {
+            firebaseReadyProcessed_Taxes = true;
+            executeTaxesAppLogic(e.detail);
+        }
+    });
+    
+    document.addEventListener('firebaseError', (e) => {
+        if (!firebaseReadyProcessed_Taxes) {
+            firebaseReadyProcessed_Taxes = true;
+            setupErrorUI_Taxes(e.detail?.error?.message || "Firebase Error");
+        }
+    });
+
+    // Timeout fallback in case events are missed
+    setTimeout(() => {
+        if (!firebaseReadyProcessed_Taxes) {
+            if (window.isFirebaseReady && window.db && window.firestoreFunctions) {
+                console.log("Taxes.js: Timeout reached, but Firebase is ready. Initializing manually.");
+                executeTaxesAppLogic({ db: window.db, functions: window.firestoreFunctions });
+            } else {
+                console.error("Taxes.js: Timeout reached and Firebase is NOT ready.");
+                setupErrorUI_Taxes("Initialization timeout. Firebase failed to load.");
+            }
+        }
+    }, 3500); // 3.5 second safety net
+});

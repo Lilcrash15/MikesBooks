@@ -82,26 +82,31 @@
             </div>
         </header>
 
-        <div id="taxes-login-form-container" class="content-block" style="max-width: 450px; margin: 30px auto;">
-            <h1>Taxes Page Access</h1>
-            <form id="taxes-page-login-form">
-                <div class="form-group">
-                    <label for="taxes-page-password">Enter Access Password:</label>
-                    <input type="password" id="taxes-page-password" required>
+        <div id="taxes-login-form-container" class="login-card">
+            <div class="login-card-header">
+                <h2 class="login-card-title">Employee Taxes</h2>
+                <p class="login-card-subtitle">Sign in to view your taxes</p>
+            </div>
+            <form id="taxes-page-login-form" class="login-form">
+                <div class="login-field">
+                    <label for="taxes-login-select">Select Your Name</label>
+                    <select id="taxes-login-select">
+                        <option value="">— Loading employees... —</option>
+                    </select>
                 </div>
-                <button type="submit">Login</button>
+                <div class="login-field" id="taxes-password-group" style="display: none;">
+                    <label for="taxes-page-password">Password</label>
+                    <input type="password" id="taxes-page-password" autocomplete="current-password" placeholder="Enter your password">
+                </div>
+                <button type="submit" id="taxes-login-submit-btn" class="login-btn" style="display: none;">Login</button>
             </form>
-            <p id="taxes-page-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Password.</p>
+            <p id="taxes-page-login-error" class="login-error" style="display: none;">Incorrect password. Please try again.</p>
         </div>
 
         <div id="taxes-main-content" class="taxes-container content-block" style="display: none;">
             <h1>Employee Taxes Due</h1>
-            <div class="employee-selection-taxes form-group" style="align-items: center;">
-                <label for="employee-tax-select" style="text-align: center;">Select Employee:</label>
-                <select id="employee-tax-select">
-                    <option value="">-- Select Employee --</option>
-                </select>
-            </div>
+            <!-- employee-tax-select is hidden - auto-set from login -->
+            <select id="employee-tax-select" style="display:none;"></select>
             <hr>
             <div id="tax-details-container" style="display: none;">
                  <h2 id="selected-employee-name">Employee Name</h2>

@@ -89,9 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const posItemSearchClearBtn = document.getElementById('pos-item-search-clear-btn');
         
         let allPosItemElements = [];
-        let currentSharedEmployeePassword = null;
-        const EMPLOYEE_PASSWORD_DOC_ID = "accessSettings";
-        const EMPLOYEE_PASSWORD_FIELD = "employeeLoginPassword";
         let managedEmployees = [];
         // --- HAC TIER 2 ADDITIONS ---
         let activeHacTier = 1;
@@ -122,17 +119,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const buySellCart = { buy: {}, sell: {} };
         let currentHacPromo = { month: 'N/A', text: 'Loading...'};
         
-        async function loadSharedEmployeePassword() {
-            if (!firestore.doc || !firestore.getDoc) {
-                currentSharedEmployeePassword = "MikesEmployee"; return;
-            }
+        // Employee list loaded on page load for the login dropdown
+        let loginEmployeeList = [];
+
+        async function loadLoginEmployeeList() {
             try {
-                const passwordDocRef = firestore.doc(db, "siteSettings", EMPLOYEE_PASSWORD_DOC_ID);
-                const docSnap = await firestore.getDoc(passwordDocRef);
-                if (docSnap.exists() && docSnap.data()[EMPLOYEE_PASSWORD_FIELD]) {
-                    currentSharedEmployeePassword = docSnap.data()[EMPLOYEE_PASSWORD_FIELD];
-                } else { currentSharedEmployeePassword = "MikesEmployee"; }
-            } catch (e) { currentSharedEmployeePassword = "MikesEmployee"; }
+                const q = firestore.query(firestore.collection(db, "employees"), firestore.orderBy("fullName"));
+                const snap = await firestore.getDocs(q);
+                loginEmployeeList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            } catch (e) {
+                console.error("Could not load employee list for login:", e);
+                loginEmployeeList = [];
+            }
+            const sel = document.getElementById('login-employee-select');
+            if (!sel) return;
+            sel.innerHTML = '<option value="">-- Select Your Name --</option>';
+            loginEmployeeList.forEach(emp => {
+                const opt = document.createElement('option');
+                opt.value = emp.id;
+                opt.textContent = emp.fullName;
+                sel.appendChild(opt);
+            });
         }
 
         function updateLoginView(isLoggedIn) {
@@ -155,9 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const q = firestore.query(firestore.collection(db, "employees"), firestore.orderBy("fullName"));
                 const snap = await firestore.getDocs(q);
                 managedEmployees = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            } catch (e) { 
+            } catch (e) {
                 console.error("Error loading employees:", e);
-                // Fallback to a default user if loading fails
                 managedEmployees = [{ fullName: "Preston Stone", rank: "Manager", employeeNumber:"40262", taxReward: { isActive: false, endDate: null }}];
             }
 
@@ -165,10 +171,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 processingEmployeeSelect.innerHTML = '<option value="">-- Select Employee --</option>';
                 managedEmployees.forEach(emp => {
                     const opt = new Option(emp.fullName, emp.fullName);
-                    // Store the entire employee object as a JSON string in a data attribute
                     opt.dataset.employeeData = JSON.stringify(emp);
                     processingEmployeeSelect.appendChild(opt);
                 });
+
+                // Auto-select and lock to the logged-in employee
+                const loggedInName = localStorage.getItem('loggedInEmployeeName');
+                const activeEmployeeDisplay = document.getElementById('active-employee-display');
+                const activeEmployeeNameEl = document.getElementById('active-employee-name');
+
+                if (loggedInName) {
+                    for (let i = 0; i < processingEmployeeSelect.options.length; i++) {
+                        if (processingEmployeeSelect.options[i].value === loggedInName) {
+                            processingEmployeeSelect.selectedIndex = i;
+                            processingEmployeeSelect.dispatchEvent(new Event('change'));
+                            break;
+                        }
+                    }
+                    if (activeEmployeeNameEl) activeEmployeeNameEl.textContent = loggedInName;
+                    if (activeEmployeeDisplay) activeEmployeeDisplay.style.display = 'block';
+                }
             }
         }
         
@@ -253,8 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function calculateMainPOSTotal() {
             let total = 0;
             allPosItemElements.forEach(item => {
-                if (item.style.display === 'none') return;
-
+                // Always include ALL items in total regardless of search/filter visibility
                 const price = parseFloat(item.getAttribute('data-price'));
                 let quantity = 0;
                 const quantityInput = item.querySelector('.quantity');
@@ -509,6 +530,34 @@ async function submitHacMemberSignup() {
                 if(submitHacSignupButtonEl){ submitHacSignupButtonEl.disabled = false; submitHacSignupButtonEl.textContent = "Submit & Add to Cart";}
             }
         }
+        // Converts "1 Armor 1 Jerry Can 100 Bandages" into a bullet list HTML string.
+        // Splits on patterns like a number followed by a word/phrase before the next number.
+        function formatPromoTextAsBullets(text) {
+            if (!text || text.trim() === '' || text === 'No promo text.' || text === 'No promo configured.') {
+                return `<em style="color:#a0aec0;">${text || 'No promo set.'}</em>`;
+            }
+            // Split on boundaries where a digit starts a new item.
+            // Handles: "1 Armor 1 Jerry Can 100 Bandages 1 Duffel Bag"
+            // Strategy: split on whitespace-digit where that digit begins a quantity
+            const parts = text.trim().split(/(?=\b\d+\s+[A-Z])/);
+            const items = parts
+                .map(s => s.trim())
+                .filter(s => s.length > 0);
+
+            if (items.length <= 1) {
+                // Couldn't parse into multiple items — just show as-is
+                return `<span>${text}</span>`;
+            }
+
+            const listItems = items.map(item => {
+                // Normalise "1 Armor" -> "1x Armor"
+                const formatted = item.replace(/^(\d+)\s+/, (_, n) => `${n}x `);
+                return `<li style="padding: 3px 0;">${formatted}</li>`;
+            }).join('');
+
+            return `<ul style="list-style:none; padding:0; margin:0; text-align:left;">${listItems}</ul>`;
+        }
+
         async function loadHacPromoForStaff() {
             try {
                 const promoDocRef = firestore.doc(db, "siteSettings", "hacConfiguration");
@@ -517,7 +566,7 @@ async function submitHacMemberSignup() {
                     currentHacPromo = { month: docSnap.data().currentPromoMonth || 'N/A', text: docSnap.data().currentPromoText || 'No promo text.' };
                 } else { currentHacPromo = { month: 'N/A', text: 'No promo configured.' };}
                 if(hacPromoMonthStaffDisplayEl) hacPromoMonthStaffDisplayEl.textContent = currentHacPromo.month;
-                if(hacPromoTextStaffDisplayEl) hacPromoTextStaffDisplayEl.textContent = currentHacPromo.text;
+                if(hacPromoTextStaffDisplayEl) hacPromoTextStaffDisplayEl.innerHTML = formatPromoTextAsBullets(currentHacPromo.text);
             } catch (e) { currentHacPromo = { month: 'Error', text: 'Load failed.' };}
         }
         async function searchHacMembersForStaff() {
@@ -603,7 +652,7 @@ function renderHacSearchResultsForStaff(members) {
             
             if(hacPromoMonthStaffDisplayEl && hacPromoTextStaffDisplayEl && hacCurrentPromoDisplayStaffEl){
                 hacPromoMonthStaffDisplayEl.textContent = currentHacPromo.month;
-                hacPromoTextStaffDisplayEl.textContent = currentHacPromo.text;
+                hacPromoTextStaffDisplayEl.innerHTML = formatPromoTextAsBullets(currentHacPromo.text);
                 hacCurrentPromoDisplayStaffEl.style.display = (currentHacPromo.month && currentHacPromo.month !== 'N/A') ? 'block' : 'none';
             }
         }
@@ -688,9 +737,14 @@ function renderHacSearchResultsForStaff(members) {
             if(buySellStatusMessage) buySellStatusMessage.textContent = '';
         }
         async function finalizeBuySellTrade() {
-            if (!processingEmployeeSelect || !processingEmployeeSelect.value) { alert("Select employee."); return; }
+            if (!processingEmployeeSelect || !processingEmployeeSelect.value) { alert("No employee is logged in. Please log out and log back in."); return; }
             const empOpt = processingEmployeeSelect.options[processingEmployeeSelect.selectedIndex];
-            const empName = empOpt.value; const empRank = empOpt.dataset.rank;
+            const empName = empOpt.value;
+            let empRank = empOpt.dataset.rank;
+            // Prefer employeeData JSON if available (set by loadAndPopulateEmployees)
+            if (empOpt.dataset.employeeData) {
+                try { empRank = JSON.parse(empOpt.dataset.employeeData).rank || empRank; } catch(e) {}
+            }
             let boughtVal = 0; Object.values(buySellCart.buy).forEach(i=>{if(i)boughtVal+=i.price*i.quantity});
             let soldVal = 0; Object.values(buySellCart.sell).forEach(i=>{if(i)soldVal+=i.price*i.quantity});
             if(boughtVal === 0 && soldVal === 0) {alert("No items."); return;}
@@ -705,18 +759,40 @@ function renderHacSearchResultsForStaff(members) {
         }
 
         function attachAllEventListeners() {
+            // Login dropdown: show password field when a name is selected
+            const loginEmployeeSelect = document.getElementById('login-employee-select');
+            const loginPasswordGroup = document.getElementById('login-password-group');
+            const loginSubmitBtn = document.getElementById('login-submit-btn');
+            if (loginEmployeeSelect) {
+                loginEmployeeSelect.addEventListener('change', () => {
+                    const selected = loginEmployeeSelect.value;
+                    if (selected) {
+                        if (loginPasswordGroup) loginPasswordGroup.style.display = 'block';
+                        if (loginSubmitBtn) loginSubmitBtn.style.display = 'inline-block';
+                        if (employeePasswordInput) { employeePasswordInput.value = ''; employeePasswordInput.focus(); }
+                        if (mainLoginError) mainLoginError.style.display = 'none';
+                    } else {
+                        if (loginPasswordGroup) loginPasswordGroup.style.display = 'none';
+                        if (loginSubmitBtn) loginSubmitBtn.style.display = 'none';
+                    }
+                });
+            }
+
             if (employeeLoginForm) {
-                 employeeLoginForm.addEventListener('submit', async (e) => {
+                employeeLoginForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const enteredPassword = employeePasswordInput.value;
-                    if (!currentSharedEmployeePassword) { await loadSharedEmployeePassword(); }
-                    if (enteredPassword === currentSharedEmployeePassword) {
+                    const selectedId = loginEmployeeSelect ? loginEmployeeSelect.value : '';
+                    const enteredPassword = employeePasswordInput ? employeePasswordInput.value : '';
+                    if (!selectedId) { return; }
+                    const emp = loginEmployeeList.find(em => em.id === selectedId);
+                    if (emp && emp.loginPassword && emp.loginPassword === enteredPassword) {
                         if (typeof grantEmployeeSession === "function") grantEmployeeSession();
+                        localStorage.setItem('loggedInEmployeeName', emp.fullName);
                         updateLoginView(true);
                         await initializePageContentAfterLogin();
                     } else {
-                         if(mainLoginError) { mainLoginError.textContent = "Invalid Password."; mainLoginError.style.display = 'block';}
-                         if(employeePasswordInput) employeePasswordInput.value = "";
+                        if (mainLoginError) { mainLoginError.textContent = "Incorrect password. Please try again."; mainLoginError.style.display = 'block'; }
+                        if (employeePasswordInput) employeePasswordInput.value = "";
                     }
                 });
             }
@@ -812,9 +888,9 @@ posItemsContainer.addEventListener('input', (e) => {
                 updateLoginView(true);
                 await initializePageContentAfterLogin();
             } else {
-                 if(typeof checkEmployeeSession !== "function") console.error("Index page: checkEmployeeSession from utility.js is not available!");
+                if (typeof checkEmployeeSession !== "function") console.error("Index page: checkEmployeeSession from utility.js is not available!");
                 updateLoginView(false);
-                await loadSharedEmployeePassword();
+                await loadLoginEmployeeList();
             }
             hideLoadingScreen();
         }

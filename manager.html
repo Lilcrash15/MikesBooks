@@ -84,16 +84,25 @@
             </div>
         </header>
 
-        <div id="manager-login-wrapper" class="content-block" style="max-width: 450px; margin: 30px auto;">
-             <h1>Manager Portal Access</h1>
-            <form id="manager-page-login-form">
-                <div class="form-group">
-                    <label for="manager-page-password">Enter Manager Password:</label>
-                    <input type="password" id="manager-page-password" required>
+        <div id="manager-login-wrapper" class="login-card">
+            <div class="login-card-header">
+                <h2 class="login-card-title">Manager Portal</h2>
+                <p class="login-card-subtitle">Manager access only</p>
+            </div>
+            <form id="manager-page-login-form" class="login-form">
+                <div class="login-field">
+                    <label for="manager-login-select">Select Your Name</label>
+                    <select id="manager-login-select">
+                        <option value="">— Loading... —</option>
+                    </select>
                 </div>
-                <button type="submit">Login</button>
+                <div class="login-field" id="manager-password-group" style="display: none;">
+                    <label for="manager-page-password">Password</label>
+                    <input type="password" id="manager-page-password" autocomplete="current-password" placeholder="Enter your password">
+                </div>
+                <button type="submit" id="manager-login-submit-btn" class="login-btn" style="display: none;">Login</button>
             </form>
-            <p id="manager-page-login-error" style="color: #e74c3c; display: none; margin-top:10px; font-weight:bold;">Invalid Manager Password.</p>
+            <p id="manager-page-login-error" class="login-error" style="display: none;">Incorrect password or not authorised as manager.</p>
         </div>
 
         <div id="manager-content" style="display: none; width: 100%;">
@@ -127,6 +136,17 @@
                                 </select>
                             </div>
                             <!-- ***** NEW BANK ACCOUNT FIELD ***** -->
+                            <div class="form-group">
+                                <label for="employee-login-password">Login Password:</label>
+                                <input type="text" id="employee-login-password" placeholder="Set employee's login password">
+                                <small style="color:#a0aec0; display:block; margin-top:4px;">Leave blank when editing to keep existing password.</small>
+                            </div>
+                            <div class="form-group" style="flex-direction: row; align-items: center; gap: 12px;">
+                                <input type="checkbox" id="employee-is-manager" style="width: 20px; height: 20px; cursor: pointer; flex-shrink: 0;">
+                                <label for="employee-is-manager" style="margin-bottom: 0; cursor: pointer; color: #f6e05e; font-weight: bold;">
+                                    Manager Access (can log into Manager Portal)
+                                </label>
+                            </div>
                             <div class="employee-form-buttons">
                                 <button type="button" id="save-employee-button" class="action-button">Add Employee</button>
                                 <button type="button" id="cancel-edit-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
@@ -182,24 +202,7 @@
                 </div>
                 <hr>
                 <!-- END: POS ITEM MANAGEMENT SECTION -->
-                <div class="shared-password-section content-block">
-                    <!-- ... Shared Password Section ... -->
-                     <h2>Manage Shared Employee Login Password</h2>
-                    <form id="shared-password-form">
-                        <div class="password-form">
-                            <div class="form-group">
-                                <label for="current-employee-password-display">Current Shared Password:</label>
-                                <input type="text" id="current-employee-password-display" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="new-employee-password">Set New Shared Password:</label>
-                                <input type="text" id="new-employee-password" placeholder="Enter new employee password">
-                            </div>
-                            <button type="button" id="save-employee-password-button" class="action-button">Update Employee Password</button>
-                            <p id="employee-password-status" style="margin-top:10px;"></p>
-                        </div>
-                    </form>
-                </div>
+                <!-- Shared password section removed - employees now have individual passwords set via the employee form above -->
                 <hr>
                 <div class="hac-management-section content-block">
                     <!-- ... HAC Management Section ... -->
