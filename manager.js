@@ -607,6 +607,94 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // ===== TAX SUMMARY PANEL =====
+        let taxSummaryInterval = null;
+
+        async function loadTaxSummary() {
+            const listEl = document.getElementById('tax-summary-list');
+            const lastUpdatedEl = document.getElementById('tax-summary-last-updated');
+            if (!listEl) return;
+
+            listEl.innerHTML = '<p style="color:#718096; font-style:italic;">Loading...</p>';
+
+            try {
+                // Step 1: Get all employees (small collection, cheap)
+                const empSnap = await firestore_manager.getDocs(
+                    firestore_manager.query(firestore_manager.collection(db_manager, 'employees'), firestore_manager.orderBy('fullName'))
+                );
+                const employees = empSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+                if (employees.length === 0) {
+                    listEl.innerHTML = '<p style="color:#718096;">No employees found.</p>';
+                    return;
+                }
+
+                // Step 2: For each employee, query their uncleared transactions
+                // We batch these with Promise.all but each is one query = N reads where N = transaction count
+                const results = await Promise.all(employees.map(async emp => {
+                    const q = firestore_manager.query(
+                        firestore_manager.collection(db_manager, 'transactions'),
+                        firestore_manager.where('employeeName', '==', emp.fullName),
+                        firestore_manager.where('taxesCleared', '==', false)
+                    );
+                    const snap = await firestore_manager.getDocs(q);
+                    let total = 0;
+                    snap.forEach(doc => {
+                        const d = doc.data();
+                        if (d.taxAmountPaidToMikes && typeof d.taxAmountPaidToMikes === 'number') {
+                            total += d.taxAmountPaidToMikes;
+                        }
+                    });
+                    return { name: emp.fullName, rank: emp.rank || '', total, count: snap.size };
+                }));
+
+                // Step 3: Separate employees with and without outstanding taxes
+                const owing = results.filter(r => r.total > 0).sort((a, b) => b.total - a.total);
+                const clear = results.filter(r => r.total <= 0);
+
+                if (owing.length === 0) {
+                    listEl.innerHTML = '<p style="color:#48bb78; font-weight:bold;">✓ All employees are clear — no outstanding taxes.</p>';
+                } else {
+                    const rows = owing.map(r => `
+                        <div class="tax-summary-row tax-summary-owing">
+                            <div class="tax-summary-name">
+                                <span class="tax-summary-dot"></span>
+                                <strong>${r.name}</strong>
+                                <span class="tax-summary-rank">${r.rank}</span>
+                            </div>
+                            <div class="tax-summary-amount">
+                                $${r.total.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                                <span class="tax-summary-count">${r.count} transaction${r.count !== 1 ? 's' : ''}</span>
+                            </div>
+                        </div>`).join('');
+
+                    const clearRows = clear.length > 0
+                        ? `<div class="tax-summary-clear-line">
+                               <span>✓ Clear: </span>${clear.map(r => `<span class="tax-summary-clear-name">${r.name}</span>`).join('')}
+                           </div>`
+                        : '';
+
+                    listEl.innerHTML = rows + clearRows;
+                }
+
+                // Update timestamp
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                if (lastUpdatedEl) lastUpdatedEl.textContent = `Last updated: ${timeStr}`;
+
+            } catch (err) {
+                console.error('Tax summary error:', err);
+                listEl.innerHTML = '<p style="color:#e74c3c;">Error loading tax data. Check console.</p>';
+            }
+        }
+
+        function startTaxSummaryAutoRefresh() {
+            // Load immediately, then every 10 minutes
+            loadTaxSummary();
+            if (taxSummaryInterval) clearInterval(taxSummaryInterval);
+            taxSummaryInterval = setInterval(loadTaxSummary, 10 * 60 * 1000);
+        }
+
         async function initializeManagerPortal() {
             await Promise.all([
                 loadEmployees_ManagerPage(),
@@ -615,6 +703,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadTaxPaymentLogs_ManagerPage(),
                 loadPosItems_ManagerPage()
             ]);
+
+            // Tax summary panel
+            const taxRefreshBtn = document.getElementById('tax-summary-refresh-btn');
+            if (taxRefreshBtn) taxRefreshBtn.addEventListener('click', loadTaxSummary);
+            startTaxSummaryAutoRefresh();
             resetEmployeeForm_ManagerPage();
             resetPosItemForm_ManagerPage();
             renderTransactions_ManagerPage(transactionsFromFirestore_mgr);

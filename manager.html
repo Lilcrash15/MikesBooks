@@ -365,6 +365,22 @@
 
                 <h2>Manager logs</h2>
 
+                                <!-- ===== TAX SUMMARY PANEL ===== -->
+                <div class="content-block" id="tax-summary-section">
+                    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                        <h2 style="margin:0;">Outstanding Employee Taxes</h2>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <span id="tax-summary-last-updated" style="font-size:0.8rem; color:#718096;">Not yet loaded</span>
+                            <button id="tax-summary-refresh-btn" class="action-button" style="padding:6px 14px; font-size:0.85rem;">⟳ Refresh</button>
+                        </div>
+                    </div>
+                    <div id="tax-summary-list">
+                        <p style="color:#718096; font-style:italic;">Click Refresh or wait for auto-load...</p>
+                    </div>
+                    <p style="font-size:0.75rem; color:#4a5568; margin-top:12px; margin-bottom:0;">Auto-refreshes every 10 minutes while this page is open.</p>
+                </div>
+                <hr>
+
                 <div class="reimbursement-log-section content-block">
                     <h2>Reimbursement Log</h2>
                     <button id="export-reimbursement-log-button" class="checkout-button" style="margin-bottom: 15px;">Export Log to CSV</button>
