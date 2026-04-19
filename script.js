@@ -955,7 +955,7 @@ const packDefinitions = {
   fishing_pack: { "COOLERS": 1, "Beer": 10, "MSG TAILGATE CHAIR": 2, },
   scuba_pack: { "Scuba Tank": 2, "Shark Repellent": 2, "Bandages": 10, },
   camping_pack: { "COOLERS": 2, "MSG TAILGATE CHAIR": 2, "Beer": 20, "Binoculars": 2, },
-  tiny_biters_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #1": 10, "MAGGOTS BAIT": 50, },
+  tiny_biters_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #1": 10, "Bread": 50, },
   trout_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #2": 10, "WAXWORMS BAIT": 50, },
   big_boy_pack: { "Elemental Rod": 1, "LINE SNIFFER REEL": 1, "BITE SIZE LINE": 10, "HOOK #2": 10, "HOOK #6": 10, "NIGHTWORMS BAIT": 50, },
   dock_special_pack: { "Brutas Rod": 1, "FISHRUS REEL": 1, "NOODLE LINE": 10, "HOOK #3": 10, "MAGGOTS BAIT": 50, },
