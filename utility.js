@@ -1,1 +1,153 @@
-const _0x284a49=_0x3416;(function(_0x2de512,_0x2a5dcd){const _0x1784e=_0x3416,_0x1d0402=_0x2de512();while(!![]){try{const _0x37791b=parseInt(_0x1784e(0x89))/0x1+parseInt(_0x1784e(0x82))/0x2*(parseInt(_0x1784e(0x84))/0x3)+-parseInt(_0x1784e(0x8d))/0x4*(parseInt(_0x1784e(0x8b))/0x5)+-parseInt(_0x1784e(0xa6))/0x6*(parseInt(_0x1784e(0x91))/0x7)+-parseInt(_0x1784e(0x99))/0x8*(parseInt(_0x1784e(0x72))/0x9)+-parseInt(_0x1784e(0xad))/0xa+parseInt(_0x1784e(0xb0))/0xb;if(_0x37791b===_0x2a5dcd)break;else _0x1d0402['push'](_0x1d0402['shift']());}catch(_0x161e12){_0x1d0402['push'](_0x1d0402['shift']());}}}(_0x25eb,0x2d077));const EMPLOYEE_SESSION_KEY=_0x284a49(0xa3),MANAGER_SESSION_KEY=_0x284a49(0x95);function checkEmployeeSession(){const _0x5bb08a=_0x284a49;return sessionStorage['getItem'](EMPLOYEE_SESSION_KEY)===_0x5bb08a(0x9e);}function grantEmployeeSession(){const _0x1ecba4=_0x284a49;console[_0x1ecba4(0x8a)](_0x1ecba4(0x96)),sessionStorage[_0x1ecba4(0x94)](EMPLOYEE_SESSION_KEY,_0x1ecba4(0x9e));}function checkManagerSession(){const _0x216f52=_0x284a49,_0x39168e=sessionStorage[_0x216f52(0xa2)](MANAGER_SESSION_KEY)==='true',_0x508a76=checkEmployeeSession();return _0x39168e&&_0x508a76;}function grantManagerSession(){const _0x26d209=_0x284a49;console[_0x26d209(0x8a)](_0x26d209(0x80)),sessionStorage['setItem'](EMPLOYEE_SESSION_KEY,_0x26d209(0x9e)),sessionStorage[_0x26d209(0x94)](MANAGER_SESSION_KEY,'true');}function clearAllSessions(){const _0x50e77e=_0x284a49;console[_0x50e77e(0x8a)](_0x50e77e(0x86)),sessionStorage[_0x50e77e(0x87)](EMPLOYEE_SESSION_KEY),sessionStorage[_0x50e77e(0x87)](MANAGER_SESSION_KEY);const _0x555228=document[_0x50e77e(0x71)]('logout-link');_0x555228&&_0x555228[_0x50e77e(0xa5)]&&_0x555228[_0x50e77e(0xa5)]['removeChild'](_0x555228);const _0x218f20=window[_0x50e77e(0x74)][_0x50e77e(0x7e)][_0x50e77e(0x77)]('/')[_0x50e77e(0x9f)]()||_0x50e77e(0x73),_0x21aa0b=[_0x50e77e(0x73),'buy_sell_goods.html',_0x50e77e(0xae),'manager.html']['includes'](_0x218f20);_0x21aa0b?window[_0x50e77e(0x74)]['reload']():window['location'][_0x50e77e(0xa4)]=_0x50e77e(0x73);}function addLogoutButton(){const _0x2811d5=_0x284a49,_0x5573d7=document['querySelector'](_0x2811d5(0xac));if(_0x5573d7&&!document[_0x2811d5(0x71)](_0x2811d5(0x75))){const _0x36b12a=document[_0x2811d5(0x7a)]('a');_0x36b12a[_0x2811d5(0xa4)]='#',_0x36b12a['id']=_0x2811d5(0x75),_0x36b12a[_0x2811d5(0x78)]=_0x2811d5(0x92),_0x36b12a[_0x2811d5(0xa1)][_0x2811d5(0x88)]=_0x2811d5(0x7f),_0x36b12a[_0x2811d5(0x98)]('click',_0x44c775=>{_0x44c775['preventDefault'](),clearAllSessions();});const _0x36142a=_0x5573d7[_0x2811d5(0xa8)](_0x2811d5(0xaf));_0x36142a&&_0x36142a[_0x2811d5(0x9b)]?_0x5573d7[_0x2811d5(0x9a)](_0x36b12a,_0x36142a['nextSibling']):_0x5573d7[_0x2811d5(0x85)](_0x36b12a),console['log'](_0x2811d5(0x79));}else!_0x5573d7&&console[_0x2811d5(0x81)](_0x2811d5(0x9d));}document[_0x284a49(0x98)]('DOMContentLoaded',()=>{const _0x274a03=_0x284a49,_0xfd1fc3=document['getElementById'](_0x274a03(0x9c));function _0x468be3(){const _0x158267=_0x274a03,_0x37f232=window[_0x158267(0x76)]||document[_0x158267(0x8f)]['scrollTop'],_0x3dbde0=window['innerHeight']||document[_0x158267(0x8f)][_0x158267(0xa0)],_0x32666b=document['documentElement'][_0x158267(0x8e)],_0x41c66e=_0x32666b>_0x3dbde0+0x14,_0x4eeaa7=_0x37f232+_0x3dbde0>=_0x32666b-0x64;_0x41c66e&&!_0x4eeaa7?_0xfd1fc3['style'][_0x158267(0x93)]=_0x158267(0x70):_0xfd1fc3[_0x158267(0xa1)][_0x158267(0x93)]='none';}_0x468be3(),window[_0x274a03(0x98)](_0x274a03(0x7d),_0x468be3),window['addEventListener']('resize',_0x468be3),_0xfd1fc3[_0x274a03(0x98)]('click',()=>{const _0x4552d8=_0x274a03;window[_0x4552d8(0x8c)]({'top':document['documentElement'][_0x4552d8(0x8e)],'behavior':'smooth'});});}),document[_0x284a49(0x98)](_0x284a49(0x83),()=>{const _0x1e94a0=_0x284a49,_0x32de88=document[_0x1e94a0(0xa8)](_0x1e94a0(0x7b)),_0x3003c8=document[_0x1e94a0(0xa8)]('.dropdown-content');if(!_0x32de88||!_0x3003c8)return;let _0x476d0b;_0x32de88[_0x1e94a0(0x98)](_0x1e94a0(0xaa),()=>{const _0x224cbd=_0x1e94a0;clearTimeout(_0x476d0b),_0x3003c8[_0x224cbd(0xa1)][_0x224cbd(0x93)]=_0x224cbd(0x70);}),_0x32de88[_0x1e94a0(0x98)](_0x1e94a0(0x90),()=>{_0x476d0b=setTimeout(()=>{const _0x6ffb97=_0x3416;_0x3003c8[_0x6ffb97(0xa1)][_0x6ffb97(0x93)]=_0x6ffb97(0x7c);},0xfa0);}),_0x3003c8['addEventListener'](_0x1e94a0(0xaa),()=>{clearTimeout(_0x476d0b);}),_0x3003c8[_0x1e94a0(0x98)](_0x1e94a0(0x90),()=>{_0x476d0b=setTimeout(()=>{const _0x923048=_0x3416;_0x3003c8[_0x923048(0xa1)][_0x923048(0x93)]=_0x923048(0x7c);},0x190);});});function _0x3416(_0x38f197,_0x35e286){const _0x25eb35=_0x25eb();return _0x3416=function(_0x34162b,_0x4c44cf){_0x34162b=_0x34162b-0x70;let _0x44524b=_0x25eb35[_0x34162b];return _0x44524b;},_0x3416(_0x38f197,_0x35e286);}const employeeSelector=document[_0x284a49(0x71)]('employee-selector');function _0x25eb(){const _0x4b206f=['addEventListener','23024QDZvrc','insertBefore','nextSibling','scroll-to-bottom-btn','Utility:\x20Could\x20not\x20find\x20.navbar\x20.dropdown-content\x20to\x20add\x20logout\x20button.','true','pop','clientHeight','style','getItem','isEmployeeAccessGranted_MikesMSG','href','parentNode','620700DWUREZ','value','querySelector','Employee\x20selected:','mouseenter','target','.navbar\x20.dropdown-content','3659990ELAKzM','taxes.html','a:last-of-type','7799539jzGdRg','block','getElementById','792bFLoXU','index.html','location','logout-link','scrollY','split','textContent','Utility:\x20Logout\x20button\x20added.','createElement','.dropdown','none','scroll','pathname','#ff8c8c','Utility:\x20Granting\x20Manager\x20Session\x20(and\x20Employee\x20Session)','warn','12fQdavu','DOMContentLoaded','40929nnTjjH','appendChild','Utility:\x20Clearing\x20All\x20Sessions','removeItem','color','125264bfOWcB','log','45095PdlmSk','scrollTo','4LZjyCD','scrollHeight','documentElement','mouseleave','7rRwCYv','Logout','display','setItem','isManagerAccessGranted_MikesMSG','Utility:\x20Granting\x20Employee\x20Session','change'];_0x25eb=function(){return _0x4b206f;};return _0x25eb();}employeeSelector&&employeeSelector['addEventListener'](_0x284a49(0x97),_0x2f6f79=>{const _0x14e37c=_0x284a49,_0x426a17=_0x2f6f79[_0x14e37c(0xab)][_0x14e37c(0xa7)];console['log'](_0x14e37c(0xa9),_0x426a17),_0x426a17?localStorage['setItem']('loggedInEmployeeName',_0x426a17):localStorage[_0x14e37c(0x87)]('loggedInEmployeeName');});
+const EMPLOYEE_SESSION_KEY = 'isEmployeeAccessGranted_MikesMSG';
+const MANAGER_SESSION_KEY = 'isManagerAccessGranted_MikesMSG';
+
+function checkEmployeeSession() {
+    // console.log("Utility: Checking Employee Session - Value:", sessionStorage.getItem(EMPLOYEE_SESSION_KEY));
+    return sessionStorage.getItem(EMPLOYEE_SESSION_KEY) === 'true';
+}
+
+function grantEmployeeSession() {
+    console.log("Utility: Granting Employee Session");
+    sessionStorage.setItem(EMPLOYEE_SESSION_KEY, 'true');
+}
+
+function checkManagerSession() {
+    const managerHasAccess = sessionStorage.getItem(MANAGER_SESSION_KEY) === 'true';
+    const employeeHasAccess = checkEmployeeSession();
+    // console.log(`Utility: Checking Manager Session - Manager Flag: ${managerHasAccess}, Employee Flag: ${employeeHasAccess}`);
+    return managerHasAccess && employeeHasAccess;
+}
+
+function grantManagerSession() {
+    console.log("Utility: Granting Manager Session (and Employee Session)");
+    sessionStorage.setItem(EMPLOYEE_SESSION_KEY, 'true');
+    sessionStorage.setItem(MANAGER_SESSION_KEY, 'true');
+}
+
+function clearAllSessions() {
+    console.log("Utility: Clearing All Sessions");
+    sessionStorage.removeItem(EMPLOYEE_SESSION_KEY);
+    sessionStorage.removeItem(MANAGER_SESSION_KEY);
+    localStorage.removeItem('loggedInEmployeeName');
+
+    const logoutLink = document.getElementById('logout-link');
+    if (logoutLink && logoutLink.parentNode) {
+        logoutLink.parentNode.removeChild(logoutLink);
+    }
+
+    const currentPageFilename = window.location.pathname.split("/").pop() || "index.html"; // Default to index.html if path is just "/"
+    const isAlreadyOnALoginPage = ["index.html", "buy_sell_goods.html", "taxes.html", "manager.html"].includes(currentPageFilename);
+
+    if (isAlreadyOnALoginPage) {
+        window.location.reload(); // Reload current page to show its login form
+    } else {
+        window.location.href = 'index.html'; // Redirect to main login page
+    }
+}
+
+function addLogoutButton() {
+    const dropdownContent = document.querySelector('.navbar .dropdown-content');
+    if (dropdownContent && !document.getElementById('logout-link')) {
+        const logoutLink = document.createElement('a');
+        logoutLink.href = "#";
+        logoutLink.id = 'logout-link';
+        logoutLink.textContent = 'Logout';
+        logoutLink.style.color = '#ff8c8c';
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            clearAllSessions();
+        });
+        // Check if there are other links to append after, or just append
+        const lastLink = dropdownContent.querySelector('a:last-of-type');
+        if (lastLink && lastLink.nextSibling) {
+             dropdownContent.insertBefore(logoutLink, lastLink.nextSibling);
+        } else {
+            dropdownContent.appendChild(logoutLink);
+        }
+        console.log("Utility: Logout button added.");
+    } else if (!dropdownContent) {
+        console.warn("Utility: Could not find .navbar .dropdown-content to add logout button.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollBtn = document.getElementById('scroll-to-bottom-btn');
+  if (!scrollBtn) return; // Not present on all pages
+
+  function checkVisibility() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const fullHeight = document.documentElement.scrollHeight;
+
+    const contentLongerThanViewport = fullHeight > viewportHeight + 20;
+    const nearBottom = scrollTop + viewportHeight >= fullHeight - 100;
+
+    if (contentLongerThanViewport && !nearBottom) {
+      scrollBtn.style.display = 'block';
+    } else {
+      scrollBtn.style.display = 'none';
+    }
+  }
+
+  // Show/hide immediately on load
+  checkVisibility();
+
+  // Update on scroll & resize
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('resize', checkVisibility);
+
+  // Smooth scroll to bottom when clicked
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdown = document.querySelector('.dropdown');
+  const dropdownContent = document.querySelector('.dropdown-content');
+  if (!dropdown || !dropdownContent) return;
+
+  let hideTimeout;
+
+  dropdown.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimeout);
+    dropdownContent.style.display = 'block';
+  });
+
+  dropdown.addEventListener('mouseleave', () => {
+    hideTimeout = setTimeout(() => {
+      dropdownContent.style.display = 'none';
+    }, 4000); // adjust delay as needed
+  });
+
+  dropdownContent.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimeout);
+  });
+
+  dropdownContent.addEventListener('mouseleave', () => {
+    hideTimeout = setTimeout(() => {
+      dropdownContent.style.display = 'none';
+    }, 400);
+  });
+});
+
+const employeeSelector = document.getElementById('employee-selector');
+
+if (employeeSelector) {
+  employeeSelector.addEventListener('change', (e) => {
+    const selectedName = e.target.value;
+    console.log("Employee selected:", selectedName);
+
+    if (selectedName) {
+      // ✅ Save to localStorage for other pages:
+      localStorage.setItem('loggedInEmployeeName', selectedName);
+    } else {
+      // If they re-select empty, clear it
+      localStorage.removeItem('loggedInEmployeeName');
+    }
+  });
+}
+
