@@ -2,17 +2,17 @@ const EMPLOYEE_SESSION_KEY = 'isEmployeeAccessGranted_MikesMSG';
 const MANAGER_SESSION_KEY = 'isManagerAccessGranted_MikesMSG';
 
 function checkEmployeeSession() {
-    // console.log("Utility: Checking Employee Session - Value:", sessionStorage.getItem(EMPLOYEE_SESSION_KEY));
-    return sessionStorage.getItem(EMPLOYEE_SESSION_KEY) === 'true';
+    // console.log("Utility: Checking Employee Session - Value:", localStorage.getItem(EMPLOYEE_SESSION_KEY));
+    return localStorage.getItem(EMPLOYEE_SESSION_KEY) === 'true';
 }
 
 function grantEmployeeSession() {
     console.log("Utility: Granting Employee Session");
-    sessionStorage.setItem(EMPLOYEE_SESSION_KEY, 'true');
+    localStorage.setItem(EMPLOYEE_SESSION_KEY, 'true');
 }
 
 function checkManagerSession() {
-    const managerHasAccess = sessionStorage.getItem(MANAGER_SESSION_KEY) === 'true';
+    const managerHasAccess = localStorage.getItem(MANAGER_SESSION_KEY) === 'true';
     const employeeHasAccess = checkEmployeeSession();
     // console.log(`Utility: Checking Manager Session - Manager Flag: ${managerHasAccess}, Employee Flag: ${employeeHasAccess}`);
     return managerHasAccess && employeeHasAccess;
@@ -20,14 +20,14 @@ function checkManagerSession() {
 
 function grantManagerSession() {
     console.log("Utility: Granting Manager Session (and Employee Session)");
-    sessionStorage.setItem(EMPLOYEE_SESSION_KEY, 'true');
-    sessionStorage.setItem(MANAGER_SESSION_KEY, 'true');
+    localStorage.setItem(EMPLOYEE_SESSION_KEY, 'true');
+    localStorage.setItem(MANAGER_SESSION_KEY, 'true');
 }
 
 function clearAllSessions() {
     console.log("Utility: Clearing All Sessions");
-    sessionStorage.removeItem(EMPLOYEE_SESSION_KEY);
-    sessionStorage.removeItem(MANAGER_SESSION_KEY);
+    localStorage.removeItem(EMPLOYEE_SESSION_KEY);
+    localStorage.removeItem(MANAGER_SESSION_KEY);
     localStorage.removeItem('loggedInEmployeeName');
 
     const logoutLink = document.getElementById('logout-link');
