@@ -157,6 +157,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // ===== SHIFT NOTE BANNER =====
+        async function loadShiftNoteBanner() {
+            const banner = document.getElementById('shift-note-banner');
+            const noteText = document.getElementById('shift-note-text');
+            const noteMeta = document.getElementById('shift-note-meta');
+            const dismissBtn = document.getElementById('shift-note-dismiss');
+            if (!banner) return;
+
+            try {
+                const snap = await firestore.getDoc(firestore.doc(db, 'siteSettings', 'shiftNote'));
+                if (snap.exists() && snap.data().text && snap.data().text.trim() !== '') {
+                    const d = snap.data();
+                    const ts = d.postedAt ? new Date(d.postedAt.seconds * 1000).toLocaleString('en-US', {
+                        month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                    }) : '';
+                    if (noteText) noteText.textContent = d.text;
+                    if (noteMeta) noteMeta.textContent = `${d.postedBy || 'Manager'}${ts ? ' · ' + ts : ''}`;
+                    banner.style.display = 'block';
+
+                    if (dismissBtn) {
+                        dismissBtn.addEventListener('click', () => {
+                            banner.style.display = 'none';
+                        });
+                    }
+                }
+            } catch(e) {
+                console.error('Error loading shift note:', e);
+            }
+        }
+
         async function loadAndPopulateEmployees() {
             try {
                 const q = firestore.query(firestore.collection(db, "employees"), firestore.orderBy("fullName"));
@@ -532,41 +562,49 @@ async function submitHacMemberSignup() {
         }
         // Converts "1 Armor 1 Jerry Can 100 Bandages" into a bullet list HTML string.
         // Splits on patterns like a number followed by a word/phrase before the next number.
-        function formatPromoTextAsBullets(text) {
-            if (!text || text.trim() === '' || text === 'No promo text.' || text === 'No promo configured.') {
-                return `<em style="color:#a0aec0;">${text || 'No promo set.'}</em>`;
+        const FIXED_HAC_ITEMS_STAFF = [
+            { qty: 1, item: 'Armor' },
+            { qty: 1, item: 'Jerry Can' }
+        ];
+
+        // Renders promo items as a bullet list.
+        // Accepts either an array [{qty, item}] or a legacy plain text string.
+        function formatPromoAsBullets(itemsArray, fallbackText) {
+            let rows = [];
+
+            if (itemsArray && Array.isArray(itemsArray) && itemsArray.length > 0) {
+                // New format: fixed items first, then monthly items from array
+                rows = [...FIXED_HAC_ITEMS_STAFF, ...itemsArray];
+            } else if (fallbackText && fallbackText.trim() !== '' && fallbackText !== 'No promo text.') {
+                // Legacy plain text fallback — parse "1 Armor 1 Jerry Can 100 Bandages"
+                const parts = fallbackText.trim().split(/(?=\b\d+\s+[A-Z])/);
+                rows = parts.map(s => s.trim()).filter(s => s.length > 0).map(s => {
+                    const m = s.match(/^(\d+)\s+(.+)$/);
+                    return m ? { qty: parseInt(m[1]), item: m[2] } : { qty: 1, item: s };
+                });
+            } else {
+                return `<em style="color:#a0aec0;">No promo set.</em>`;
             }
-            // Split on boundaries where a digit starts a new item.
-            // Handles: "1 Armor 1 Jerry Can 100 Bandages 1 Duffel Bag"
-            // Strategy: split on whitespace-digit where that digit begins a quantity
-            const parts = text.trim().split(/(?=\b\d+\s+[A-Z])/);
-            const items = parts
-                .map(s => s.trim())
-                .filter(s => s.length > 0);
 
-            if (items.length <= 1) {
-                // Couldn't parse into multiple items — just show as-is
-                return `<span>${text}</span>`;
-            }
-
-            const listItems = items.map(item => {
-                // Normalise "1 Armor" -> "1x Armor"
-                const formatted = item.replace(/^(\d+)\s+/, (_, n) => `${n}x `);
-                return `<li style="padding: 3px 0;">${formatted}</li>`;
-            }).join('');
-
+            const listItems = rows.map(r =>
+                `<li style="padding:3px 0;"><span style="color:#48bb78; font-weight:bold;">•</span> ${r.qty}x ${r.item}</li>`
+            ).join('');
             return `<ul style="list-style:none; padding:0; margin:0; text-align:left;">${listItems}</ul>`;
         }
+
+        // Keep old name as alias so nothing else breaks
+        function formatPromoTextAsBullets(text) { return formatPromoAsBullets(null, text); }
 
         async function loadHacPromoForStaff() {
             try {
                 const promoDocRef = firestore.doc(db, "siteSettings", "hacConfiguration");
                 const docSnap = await firestore.getDoc(promoDocRef);
                 if (docSnap.exists()) {
-                    currentHacPromo = { month: docSnap.data().currentPromoMonth || 'N/A', text: docSnap.data().currentPromoText || 'No promo text.' };
-                } else { currentHacPromo = { month: 'N/A', text: 'No promo configured.' };}
+                    const pd = docSnap.data();
+                    currentHacPromo = { month: pd.currentPromoMonth || 'N/A', text: pd.currentPromoText || 'No promo text.', items: pd.promoItems || null };
+                } else { currentHacPromo = { month: 'N/A', text: 'No promo configured.', items: null };}
                 if(hacPromoMonthStaffDisplayEl) hacPromoMonthStaffDisplayEl.textContent = currentHacPromo.month;
-                if(hacPromoTextStaffDisplayEl) hacPromoTextStaffDisplayEl.innerHTML = formatPromoTextAsBullets(currentHacPromo.text);
+                if(hacPromoTextStaffDisplayEl) hacPromoTextStaffDisplayEl.innerHTML = formatPromoAsBullets(currentHacPromo.items, currentHacPromo.text);
             } catch (e) { currentHacPromo = { month: 'Error', text: 'Load failed.' };}
         }
         async function searchHacMembersForStaff() {
@@ -652,7 +690,7 @@ function renderHacSearchResultsForStaff(members) {
             
             if(hacPromoMonthStaffDisplayEl && hacPromoTextStaffDisplayEl && hacCurrentPromoDisplayStaffEl){
                 hacPromoMonthStaffDisplayEl.textContent = currentHacPromo.month;
-                hacPromoTextStaffDisplayEl.innerHTML = formatPromoTextAsBullets(currentHacPromo.text);
+                hacPromoTextStaffDisplayEl.innerHTML = formatPromoAsBullets(currentHacPromo.items, currentHacPromo.text);
                 hacCurrentPromoDisplayStaffEl.style.display = (currentHacPromo.month && currentHacPromo.month !== 'N/A') ? 'block' : 'none';
             }
         }
@@ -866,7 +904,8 @@ posItemsContainer.addEventListener('input', (e) => {
             await Promise.all([
                 loadAndPopulateEmployees(),
                 loadAndRenderDynamicPosItems(),
-                loadHacPromoForStaff()
+                loadHacPromoForStaff(),
+                loadShiftNoteBanner()
             ]);
             
             cacheAllPosItems();
@@ -955,7 +994,7 @@ const packDefinitions = {
   fishing_pack: { "COOLERS": 1, "Beer": 10, "MSG TAILGATE CHAIR": 2, },
   scuba_pack: { "Scuba Tank": 2, "Shark Repellent": 2, "Bandages": 10, },
   camping_pack: { "COOLERS": 2, "MSG TAILGATE CHAIR": 2, "Beer": 20, "Binoculars": 2, },
-  tiny_biters_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #1": 10, "Bread": 50, },
+  tiny_biters_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #1": 10, "MAGGOTS BAIT": 50, },
   trout_pack: { "Value Cast Rod": 1, "Broke Ass Reel": 1, "Cheap Mono Line": 10, "HOOK #2": 10, "WAXWORMS BAIT": 50, },
   big_boy_pack: { "Elemental Rod": 1, "LINE SNIFFER REEL": 1, "BITE SIZE LINE": 10, "HOOK #2": 10, "HOOK #6": 10, "NIGHTWORMS BAIT": 50, },
   dock_special_pack: { "Brutas Rod": 1, "FISHRUS REEL": 1, "NOODLE LINE": 10, "HOOK #3": 10, "MAGGOTS BAIT": 50, },

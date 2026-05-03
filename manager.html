@@ -107,7 +107,8 @@
 
         <div id="manager-content" style="display: none; width: 100%;">
             <div class="manager-container">
-                <div class="employee-management-section content-block">
+
+                                <div class="employee-management-section content-block">
                     <h2>Manage Employees</h2>
                     <form id="employee-form-actual">
                         <div id="employee-form-container" class="add-employee-form">
@@ -159,7 +160,8 @@
                     </div>
                 </div>
                 <hr>
-                <!-- START: POS ITEM MANAGEMENT SECTION -->
+                <hr>
+                                <!-- START: POS ITEM MANAGEMENT SECTION -->
                 <div class="pos-item-management-section content-block">
                     <h2>Manage POS Items</h2>
                     <form id="pos-item-form-actual">
@@ -202,9 +204,9 @@
                 </div>
                 <hr>
                 <!-- END: POS ITEM MANAGEMENT SECTION -->
-                <!-- Shared password section removed - employees now have individual passwords set via the employee form above -->
+                <!-- END: POS ITEM MANAGEMENT SECTION -->
                 <hr>
-                <div class="hac-management-section content-block">
+                                <div class="hac-management-section content-block">
                     <!-- ... HAC Management Section ... -->
                      <h2>Manage HAC Members</h2>
                     <form id="hac-edit-form-actual">
@@ -256,8 +258,9 @@
                     </div>
                 </div>
                 <hr>
+                <hr>
 
-                <!-- START: TIER 2 SPECIAL MANAGEMENT SECTION -->
+                                <!-- START: TIER 2 SPECIAL MANAGEMENT SECTION -->
 
                 <div class="tier2-management-section content-block">
                     <h2>Tier 2 Monthly Management</h2>
@@ -267,7 +270,7 @@
                         <!-- Search Bar -->
                         <div class="hac-search-container">
                             <div class="form-group" style="flex-grow: 1; margin-bottom:0;">
-                                <input type="text" id="t2-search-term" placeholder="Search T2 Name or Phone...">
+                                <input type="text" id="t2-search-term" placeholder="Search T2 Name or Phone... (use * to show all)">
                             </div>
                             <button id="t2-search-button" class="action-button" type="button" style="margin-top:25px;">Search T2</button>
                         </div>
@@ -288,27 +291,70 @@
                     </div>
                 </div>
                 <!-- END: TIER 2 SPECIAL MANAGEMENT SECTION -->
-                
-                <div class="hac-promo-section content-block">
-                    <!-- ... Existing HAC Promo Section ... -->
+                <!-- END: TIER 2 SPECIAL MANAGEMENT SECTION -->
+                <hr>
+
+                                <div class="hac-promo-section content-block">
                     <h3>Current HAC Promo</h3>
-                    <form id="hac-promo-form">
-                        <div class="hac-promo-edit">
-                            <div class="form-group">
-                                <label for="hac-promo-month">Promo Month (e.g., August 2024):</label>
-                                <input type="text" id="hac-promo-month" placeholder="Current Month & Year">
-                            </div>
-                            <div class="form-group">
-                                <label for="hac-promo-text">Promo Text:</label>
-                                <textarea id="hac-promo-text" rows="3" placeholder="Enter current promo details..."></textarea>
-                            </div>
-                            <button type="button" id="save-hac-promo-button" class="action-button">Save Promo</button>
-                            <p id="hac-promo-status" style="margin-top:10px;"></p>
+
+                    <div class="form-group" style="max-width:300px;">
+                        <label for="hac-promo-month">Promo Month:</label>
+                        <select id="hac-promo-month">
+                            <option value="">-- Select Month --</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+
+                    <!-- Fixed items - always included, qty locked -->
+                    <div style="margin:16px 0 8px 0;">
+                        <p style="font-size:0.8rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 10px 0; font-weight:700;">Always Included (Fixed)</p>
+                        <div class="hac-fixed-item">
+                            <span class="hac-fixed-qty">1x</span>
+                            <span class="hac-fixed-name">Armor</span>
+                            <span class="hac-fixed-badge">Fixed</span>
                         </div>
-                    </form>
+                        <div class="hac-fixed-item">
+                            <span class="hac-fixed-qty">1x</span>
+                            <span class="hac-fixed-name">Jerry Can</span>
+                            <span class="hac-fixed-badge">Fixed</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic items builder -->
+                    <div style="margin:18px 0 8px 0;">
+                        <p style="font-size:0.8rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 10px 0; font-weight:700;">Monthly Items</p>
+                        <div id="hac-promo-items-list">
+                            <!-- rows injected here by JS -->
+                        </div>
+                        <button type="button" id="hac-add-item-btn" class="action-button" style="margin-top:10px; padding:7px 16px;">+ Add Item</button>
+                    </div>
+
+                    <!-- Preview -->
+                    <div id="hac-promo-preview" style="margin:18px 0 12px 0; display:none;">
+                        <p style="font-size:0.8rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 8px 0; font-weight:700;">Preview (as employees will see it)</p>
+                        <div id="hac-promo-preview-content" style="background:rgba(0,0,0,0.3); border-radius:8px; padding:12px 16px;"></div>
+                    </div>
+
+                    <div style="display:flex; align-items:center; gap:12px; margin-top:4px;">
+                        <button type="button" id="save-hac-promo-button" class="action-button">Save Promo</button>
+                        <p id="hac-promo-status" style="margin:0;"></p>
+                    </div>
                 </div>
                 <hr>
-                <!-- START: NEW REIMBURSEMENT SECTION -->
+                <!-- START: NEW REIMBURSEMENT
+                <hr>
+                                <!-- START: NEW REIMBURSEMENT SECTION -->
 
                 <div class="reimbursement-section content-block">
                     <!-- This header is always visible and clickable -->
@@ -365,6 +411,9 @@
 
                 <h2>Manager logs</h2>
 
+                <div class="content-block">
+                <h2>Manager logs</h2>
+
                                 <!-- ===== TAX SUMMARY PANEL ===== -->
                 <div class="content-block" id="tax-summary-section">
                     <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
@@ -379,6 +428,25 @@
                     </div>
                     <p style="font-size:0.75rem; color:#4a5568; margin-top:12px; margin-bottom:0;">Auto-refreshes every 10 minutes while this page is open.</p>
                 </div>
+                <hr>
+                <hr>
+
+                                <!-- ===== SHIFT NOTES PANEL ===== -->
+                <div class="content-block" id="shift-notes-section">
+                    <h2 style="margin-top:0;">Shift Notes</h2>
+                    <div id="current-shift-note-display" style="margin-bottom:16px;">
+                        <p style="color:#718096; font-style:italic;">Loading current note...</p>
+                    </div>
+                    <hr style="border-color:#2d3748; margin-bottom:16px;">
+                    <h3 style="margin-top:0; font-size:1rem; color:#a0aec0;">Post New Note</h3>
+                    <textarea id="shift-note-input" rows="3" placeholder="Type a shift note for employees... (e.g. Out of jerry cans today, new MK2 pricing in effect)" style="width:100%; padding:12px; border-radius:8px; border:1px solid #3a4252; background:#1a1e2a; color:#e2e8f0; font-size:0.95rem; resize:vertical; box-sizing:border-box;"></textarea>
+                    <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
+                        <button id="post-shift-note-btn" class="action-button">Post Note</button>
+                        <button id="clear-shift-note-btn" class="action-button clear-cart-btn">Clear Note</button>
+                        <span id="shift-note-status" style="font-size:0.85rem;"></span>
+                    </div>
+                </div>
+                <hr>
                 <hr>
 
                 <div class="reimbursement-log-section content-block">
@@ -402,6 +470,9 @@
                         <p><i>Loading tax payment logs...</i></p>
                     </div>
                 </div>
+            </div>
+        </div> <!-- End #manager-content -->
+
             </div>
         </div> <!-- End #manager-content -->
 

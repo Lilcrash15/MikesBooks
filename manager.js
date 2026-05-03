@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hacEmailInput_ManagerPage, saveHacMemberButton_ManagerPage, cancelEditHacMemberButton_ManagerPage,
         hacMemberListDisplay, hacSearchTermInput, hacSearchButton, hacClearSearchButton,
         currentEmployeePasswordDisplay, newEmployeePasswordInput, saveEmployeePasswordButton,
-        employeePasswordStatus, hacPromoMonthInput, hacPromoTextInput, saveHacPromoButton,
+        employeePasswordStatus, hacPromoMonthInput, saveHacPromoButton,
         hacPromoStatus, resetHacEligibilityButton, hacResetStatus, taxPaymentLogsDisplay_el, exportTaxLogsButton_el,
         posItemFormTitle_el, editPosItemIdInput_el, posItemNameInput_el, posItemPriceInput_el, posItemImageUrlInput_el,
         posItemCategorySelect_el, savePosItemButton_el, cancelEditPosItemButton_el, posItemListDisplay_el, posItemStatusMessage_el;
@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         saveEmployeePasswordButton = document.getElementById('save-employee-password-button');
         employeePasswordStatus = document.getElementById('employee-password-status');
         hacPromoMonthInput = document.getElementById('hac-promo-month');
-        hacPromoTextInput = document.getElementById('hac-promo-text');
         saveHacPromoButton = document.getElementById('save-hac-promo-button');
         hacPromoStatus = document.getElementById('hac-promo-status');
         resetHacEligibilityButton = document.getElementById('reset-hac-eligibility-button');
@@ -450,13 +449,163 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             catch(e) { console.error(e); alert("Error deleting employee.");}
         }
-        async function loadHacPromo_ManagerPage() {
-            try { const promoDoc = await firestore_manager.getDoc(firestore_manager.doc(db_manager, "siteSettings", HAC_PROMO_DOC_ID_MGR)); if(promoDoc.exists()){ const d = promoDoc.data(); if(hacPromoMonthInput)hacPromoMonthInput.value=d.currentPromoMonth||''; if(hacPromoTextInput)hacPromoTextInput.value=d.currentPromoText||'';}} catch(e){console.error(e);}
+        // ========== HAC PROMO ITEM BUILDER ==========
+        const FIXED_HAC_ITEMS = [
+            { qty: 1, item: 'Armor' },
+            { qty: 1, item: 'Jerry Can' }
+        ];
+
+        function getHacItemNames() {
+            // Hardcoded full item list for HAC promo builder
+            return [
+                // Hunting
+                "Cervid Bait", "Leporid Bait", "Rodent Bait",
+                "Flare Cartridge", "Flare Gun", "Hunting Map",
+                "Hunting Rifle", "Scoped Rifle", "30.06 Ammo",
+                "Knife", "Orange Vest", "Binoculars",
+                // General / Supplies
+                "Bandages", "Radio", "Scuba Tank", "Repair Kit",
+                "Duffle Bag", "Cigarettes", "Beer", "Buckshot Boost",
+                "Deer Jerky", "Boar Jerky", "Armor", "Jerry Can",
+                "Flashlight", "1st Repair", "2nd Repair",
+                "Shark Repellent", "Beach Ring", "Gold Pan",
+                // Fishing - Reels
+                "Broke Ass Reel", "Line Sniffer Reel", "Rock Bottom Reel",
+                "Fish R Us Reel", "Thunder Reel", "Zilla Reel",
+                // Fishing - Rods
+                "Value Cast Rod", "Elemental Rod", "Nero Rod",
+                "Brutas Rod", "Zeus Rod", "Magnum XL Rod",
+                // Fishing - Bait
+                "Bread", "Leech", "Maggots", "Mealworms",
+                "Nightworms", "Redworms", "Waxworms",
+                // Fishing - Hooks
+                "Hook #1", "Hook #2", "Hook #3", "Hook #6", "Hook #10", "Tow Hook",
+                // Fishing - Line
+                "Cheap Mono Line", "Bite Size Line", "Mobey Mono Line",
+                "Noodle Line", "Lightning Line", "King Braid Line",
+                // Fishing - Gear
+                "Fish Finder", "Tackle Box",
+                // Merchandise
+                "MSG Cup", "Deer/Boar Mount", "MSG Chair",
+                "MSG Keychain", "MSG Cooler", "MK2 Skins",
+                "Mount with Tusk/Antler", "MSG Cooler",
+                // Additional items from POS
+                "Fish Jerky", "GPS", "Peyote Chunk", "Tire Repair Kit", "Weapon Disable Tool"
+            ].sort();
         }
+
+        function buildItemSelect(selectedName) {
+            const sel = document.createElement('select');
+            sel.className = 'hac-item-select';
+            const names = getHacItemNames();
+            names.forEach(name => {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = name;
+                if (name === selectedName) opt.selected = true;
+                sel.appendChild(opt);
+            });
+            sel.addEventListener('change', updateHacPreview);
+            return sel;
+        }
+
+        function addHacPromoRow(itemName, qty) {
+            const list = document.getElementById('hac-promo-items-list');
+            if (!list) return;
+            const row = document.createElement('div');
+            row.className = 'hac-item-row';
+
+            const qtyInput = document.createElement('input');
+            qtyInput.type = 'number';
+            qtyInput.min = 1;
+            qtyInput.max = 999;
+            qtyInput.value = qty || 1;
+            qtyInput.className = 'hac-item-qty';
+            qtyInput.addEventListener('input', updateHacPreview);
+
+            const label = document.createElement('span');
+            label.textContent = 'x';
+            label.className = 'hac-item-x';
+
+            const sel = buildItemSelect(itemName || '');
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.textContent = '✕';
+            removeBtn.className = 'hac-item-remove';
+            removeBtn.addEventListener('click', () => { row.remove(); updateHacPreview(); });
+
+            row.appendChild(qtyInput);
+            row.appendChild(label);
+            row.appendChild(sel);
+            row.appendChild(removeBtn);
+            list.appendChild(row);
+            updateHacPreview();
+        }
+
+        function collectHacPromoItems() {
+            const rows = document.querySelectorAll('#hac-promo-items-list .hac-item-row');
+            return Array.from(rows).map(row => ({
+                qty: parseInt(row.querySelector('.hac-item-qty').value) || 1,
+                item: row.querySelector('.hac-item-select').value
+            }));
+        }
+
+        function updateHacPreview() {
+            const preview = document.getElementById('hac-promo-preview');
+            const previewContent = document.getElementById('hac-promo-preview-content');
+            if (!preview || !previewContent) return;
+            const items = collectHacPromoItems();
+            const all = [...FIXED_HAC_ITEMS, ...items];
+            if (all.length === 0) { preview.style.display = 'none'; return; }
+            preview.style.display = 'block';
+            previewContent.innerHTML = '<ul style="list-style:none; padding:0; margin:0;">' +
+                all.map(i => `<li style="padding:3px 0; color:#e2e8f0;"><span style="color:#48bb78; font-weight:bold;">•</span> ${i.qty}x ${i.item}</li>`).join('') +
+                '</ul>';
+        }
+
+        async function loadHacPromo_ManagerPage() {
+            try {
+                const promoDoc = await firestore_manager.getDoc(
+                    firestore_manager.doc(db_manager, "siteSettings", HAC_PROMO_DOC_ID_MGR)
+                );
+                if (promoDoc.exists()) {
+                    const d = promoDoc.data();
+                    if (hacPromoMonthInput) hacPromoMonthInput.value = d.currentPromoMonth || '';
+                    // Load saved items into builder rows
+                    const list = document.getElementById('hac-promo-items-list');
+                    if (list) list.innerHTML = '';
+                    if (d.promoItems && Array.isArray(d.promoItems)) {
+                        d.promoItems.forEach(row => addHacPromoRow(row.item, row.qty));
+                    }
+                    updateHacPreview();
+                }
+            } catch(e) { console.error(e); }
+        }
+
         async function saveHacPromo_ManagerPage() {
-            const month = hacPromoMonthInput.value.trim(), text = hacPromoTextInput.value.trim(); if(!month||!text){alert("Promo fields req.");return;}
-            try{ await firestore_manager.setDoc(firestore_manager.doc(db_manager, "siteSettings", HAC_PROMO_DOC_ID_MGR), {currentPromoMonth:month, currentPromoText:text},{merge:true}); if(hacPromoStatus){hacPromoStatus.textContent="Promo Saved."; setTimeout(()=>hacPromoStatus.textContent='',3000);}}
-            catch(e){console.error(e); if(hacPromoStatus)hacPromoStatus.textContent="Error.";}
+            const month = hacPromoMonthInput ? hacPromoMonthInput.value.trim() : '';
+            if (!month) { alert("Please enter a promo month."); return; }
+            const items = collectHacPromoItems();
+            if (items.length === 0) { alert("Please add at least one monthly item."); return; }
+            // Build plain text string (fixed items first) for backwards compat with staff side
+            const allItems = [...FIXED_HAC_ITEMS, ...items];
+            const promoText = allItems.map(i => `${i.qty} ${i.item}`).join(' ');
+            try {
+                await firestore_manager.setDoc(
+                    firestore_manager.doc(db_manager, "siteSettings", HAC_PROMO_DOC_ID_MGR),
+                    { currentPromoMonth: month, currentPromoText: promoText, promoItems: items },
+                    { merge: true }
+                );
+                if (hacPromoStatus) {
+                    hacPromoStatus.textContent = "Promo Saved!";
+                    hacPromoStatus.style.color = "#48bb78";
+                    setTimeout(() => { if(hacPromoStatus) hacPromoStatus.textContent = ''; }, 3000);
+                }
+            } catch(e) {
+                console.error(e);
+                if (hacPromoStatus) { hacPromoStatus.textContent = "Error saving."; hacPromoStatus.style.color = "#e74c3c"; }
+            }
         }
         function resetHacMemberForm_ManagerPage() {
             if(hacMemberEditFormTitle) hacMemberEditFormTitle.textContent = "Edit HAC Member"; if(editHacMemberIdInput_ManagerPage) editHacMemberIdInput_ManagerPage.value = '';
@@ -545,6 +694,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hacSearchTermInput) hacSearchTermInput.addEventListener('keypress', e => { if (e.key === "Enter") { e.preventDefault(); searchHacMembers_ManagerPage(); }});
             if (hacClearSearchButton) { hacClearSearchButton.addEventListener('click', () => { if(hacSearchTermInput) hacSearchTermInput.value = ''; searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage();});}
             if (saveHacPromoButton) saveHacPromoButton.addEventListener('click', saveHacPromo_ManagerPage);
+            const hacAddItemBtn = document.getElementById('hac-add-item-btn');
+            if (hacAddItemBtn) hacAddItemBtn.addEventListener('click', () => addHacPromoRow('', 1));
             // saveEmployeePasswordButton removed - individual passwords handled per-employee
             if (resetHacEligibilityButton) resetHacEligibilityButton.addEventListener('click', resetAllHacEligibility_ManagerPage);
             if (exportButton) {
@@ -604,6 +755,71 @@ document.addEventListener('DOMContentLoaded', () => {
                     a.href = url; a.download = 'Mikes_TaxPayment_Logs.csv'; a.style.display = 'none';
                     document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); document.body.removeChild(a);
                 });
+            }
+        }
+
+        // ===== SHIFT NOTES PANEL =====
+        const SHIFT_NOTE_DOC = 'shiftNote';
+
+        async function loadCurrentShiftNote() {
+            const display = document.getElementById('current-shift-note-display');
+            if (!display) return;
+            try {
+                const snap = await firestore_manager.getDoc(
+                    firestore_manager.doc(db_manager, 'siteSettings', SHIFT_NOTE_DOC)
+                );
+                if (snap.exists() && snap.data().text && snap.data().text.trim() !== '') {
+                    const d = snap.data();
+                    const ts = d.postedAt ? new Date(d.postedAt.seconds * 1000).toLocaleString('en-US', {
+                        month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                    }) : '';
+                    display.innerHTML = `
+                        <div class="shift-note-manager-preview">
+                            <p style="margin:0 0 6px 0; color:#e2e8f0;">${d.text}</p>
+                            <span style="font-size:0.78rem; color:#718096;">Posted by <strong>${d.postedBy || 'Unknown'}</strong>${ts ? ' · ' + ts : ''}</span>
+                        </div>`;
+                } else {
+                    display.innerHTML = '<p style="color:#718096; font-style:italic;">No active shift note.</p>';
+                }
+            } catch(e) {
+                console.error('Error loading shift note:', e);
+                display.innerHTML = '<p style="color:#e74c3c;">Error loading note.</p>';
+            }
+        }
+
+        async function postShiftNote() {
+            const input = document.getElementById('shift-note-input');
+            const status = document.getElementById('shift-note-status');
+            const text = input ? input.value.trim() : '';
+            if (!text) { if(status) { status.textContent = 'Please enter a note.'; status.style.color = '#e74c3c'; } return; }
+
+            const postedBy = localStorage.getItem('loggedInEmployeeName') || 'Manager';
+            try {
+                await firestore_manager.setDoc(
+                    firestore_manager.doc(db_manager, 'siteSettings', SHIFT_NOTE_DOC),
+                    { text, postedBy, postedAt: firestore_manager.serverTimestamp() }
+                );
+                if (input) input.value = '';
+                if (status) { status.textContent = '✓ Note posted!'; status.style.color = '#48bb78'; setTimeout(() => { if(status) status.textContent = ''; }, 3000); }
+                await loadCurrentShiftNote();
+            } catch(e) {
+                console.error('Error posting shift note:', e);
+                if (status) { status.textContent = 'Error posting note.'; status.style.color = '#e74c3c'; }
+            }
+        }
+
+        async function clearShiftNote() {
+            const status = document.getElementById('shift-note-status');
+            if (!confirm('Clear the current shift note? Employees will no longer see it.')) return;
+            try {
+                await firestore_manager.setDoc(
+                    firestore_manager.doc(db_manager, 'siteSettings', SHIFT_NOTE_DOC),
+                    { text: '', postedBy: '', postedAt: firestore_manager.serverTimestamp() }
+                );
+                if (status) { status.textContent = '✓ Note cleared.'; status.style.color = '#a0aec0'; setTimeout(() => { if(status) status.textContent = ''; }, 3000); }
+                await loadCurrentShiftNote();
+            } catch(e) {
+                console.error('Error clearing shift note:', e);
             }
         }
 
@@ -708,6 +924,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const taxRefreshBtn = document.getElementById('tax-summary-refresh-btn');
             if (taxRefreshBtn) taxRefreshBtn.addEventListener('click', loadTaxSummary);
             startTaxSummaryAutoRefresh();
+
+            // Shift notes panel
+            const postNoteBtn = document.getElementById('post-shift-note-btn');
+            const clearNoteBtn = document.getElementById('clear-shift-note-btn');
+            if (postNoteBtn) postNoteBtn.addEventListener('click', postShiftNote);
+            if (clearNoteBtn) clearNoteBtn.addEventListener('click', clearShiftNote);
+            await loadCurrentShiftNote();
             resetEmployeeForm_ManagerPage();
             resetPosItemForm_ManagerPage();
             renderTransactions_ManagerPage(transactionsFromFirestore_mgr);
@@ -807,35 +1030,67 @@ async function initializeTier2Manager() {
     const t2BackupBtn = document.getElementById('t2-backup-button');
     const t2Status = document.getElementById('t2-status-msg');
 
-    // 1. Search Logic (Tier 2 Only)
+    // 1. Search Logic (Tier 2 Only) — use * to show all T2 members
     t2SearchBtn.onclick = async () => {
-        const term = t2SearchInput.value.toLowerCase().trim();
-        if (!term) return;
-        t2Display.innerHTML = "Searching...";
-        
+        const raw = t2SearchInput.value.trim();
+        const term = raw.toLowerCase();
+        const isWildcard = raw === '*';
+
+        if (!raw) {
+            t2Display.innerHTML = '<p style="color:#a0aec0;"><em>Enter a name to search, or type * to show all Tier 2 members.</em></p>';
+            return;
+        }
+
+        t2Display.innerHTML = isWildcard ? "Loading all Tier 2 members..." : "Searching...";
+
         try {
-            // Specifically looking for tier == 2
-            const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.where("tier", "==", 2));
+            const q = firestore_manager.query(
+                firestore_manager.collection(db_manager, "hacMembers"),
+                firestore_manager.where("tier", "==", 2),
+                firestore_manager.orderBy("lastName")
+            );
             const snap = await firestore_manager.getDocs(q);
             t2Display.innerHTML = '';
-            
+
             let foundCount = 0;
             snap.forEach(doc => {
                 const m = doc.data();
-                if (`${m.firstName} ${m.lastName}`.toLowerCase().includes(term)) {
-                    foundCount++;
-                    const div = document.createElement('div');
-                    div.className = 'employee-list-item';
-                    div.innerHTML = `
-                        <span><strong>${m.firstName} ${m.lastName}</strong> - T2</span>
-                        <button class="action-button clear-cart-btn" onclick="deleteIndividualT2('${doc.id}')">Delete</button>
-                    `;
-                    t2Display.appendChild(div);
-                }
+                const fullName = `${m.firstName} ${m.lastName}`;
+                // Wildcard shows all; otherwise filter by name/phone match
+                const matches = isWildcard || fullName.toLowerCase().includes(term) || (m.phoneNumber || '').toLowerCase().includes(term);
+                if (!matches) return;
+
+                foundCount++;
+                const div = document.createElement('div');
+                div.className = 'employee-list-item';
+                div.innerHTML = `
+                    <span><strong>${fullName}</strong> - T2</span>
+                    <button class="action-button clear-cart-btn" onclick="deleteIndividualT2('${doc.id}')">Delete</button>
+                `;
+                t2Display.appendChild(div);
             });
-            if(foundCount === 0) t2Display.innerHTML = "<p>No Tier 2 members found with that name.</p>";
-        } catch (e) { console.error(e); }
+
+            if (foundCount === 0) {
+                t2Display.innerHTML = isWildcard
+                    ? '<p>No Tier 2 members exist yet.</p>'
+                    : '<p>No Tier 2 members found matching that search.</p>';
+            } else if (isWildcard) {
+                // Prepend a count banner when showing all
+                const banner = document.createElement('p');
+                banner.style.cssText = 'color:#68d391; font-weight:bold; margin-bottom:10px;';
+                banner.textContent = `Showing all ${foundCount} Tier 2 member${foundCount !== 1 ? 's' : ''}`;
+                t2Display.insertBefore(banner, t2Display.firstChild);
+            }
+        } catch (e) {
+            console.error(e);
+            t2Display.innerHTML = '<p style="color:#e74c3c;">Error loading members. Check console.</p>';
+        }
     };
+
+    // Allow pressing Enter in the search field to trigger search
+    t2SearchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') t2SearchBtn.click();
+    });
 
     // 2. Individual Delete Helper
     window.deleteIndividualT2 = async (id) => {
