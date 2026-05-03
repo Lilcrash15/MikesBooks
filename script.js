@@ -587,7 +587,7 @@ async function submitHacMemberSignup() {
             }
 
             const listItems = rows.map(r =>
-                `<li style="padding:3px 0;"><span style="color:#48bb78; font-weight:bold;">•</span> ${r.qty}x ${r.item}</li>`
+                `<li style="padding:3px 0;">${r.qty}x ${r.item}</li>`
             ).join('');
             return `<ul style="list-style:none; padding:0; margin:0; text-align:left;">${listItems}</ul>`;
         }
