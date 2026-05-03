@@ -127,6 +127,19 @@
                 <p id="active-employee-name" style="font-size:1.4rem; font-weight:bold; color:limegreen; margin:0;"></p>
             </div>
 
+            <!-- Shift Note Banner - loaded from Firestore, dismissible per page load -->
+            <div id="shift-note-banner" style="display:none;">
+                <div class="shift-note-content">
+                    <span class="shift-note-icon">📋</span>
+                    <div class="shift-note-body">
+                        <span class="shift-note-label">Shift Note</span>
+                        <p id="shift-note-text"></p>
+                        <span id="shift-note-meta"></span>
+                    </div>
+                    <button id="shift-note-dismiss" title="Dismiss">&times;</button>
+                </div>
+            </div>
+
             <div id="view-switcher" style="text-align: center; margin-bottom: 25px; display:flex; justify-content:center; gap:15px;">
                 <button id="show-pos-view-btn" class="action-button active">Inventory</button>
                 <button id="show-buysell-view-btn" class="action-button">Buy/Sell Goods</button>
@@ -326,7 +339,7 @@
                 <hr class="section-hr">
                 <div class="buysell-summary">
                     <h2>Transaction Summary</h2>
-                    <p>Buying Goods Total: <strong id="summary-owed-customer">$0.00</strong></p>
+                    <p>Buying Fish Total: <strong id="summary-owed-customer">$0.00</strong></p>
                     <p>Selling Fish Total: <strong id="summary-owed-mikes">$0.00</strong></p>
                     <p class="net-transaction-display">Net Transaction: <strong id="net-transaction-amount">$0.00</strong>
                         <span id="net-transaction-party"></span>
