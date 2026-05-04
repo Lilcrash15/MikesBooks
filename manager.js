@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Merchandise
                 "MSG Cup", "Deer/Boar Mount", "MSG Chair",
                 "MSG Keychain", "MSG Cooler", "MK2 Skins",
-                "Mount with Tusk/Antler", "MSG Cooler",
+                "Mount with Tusk/Antler",
                 // Additional items from POS
                 "Fish Jerky", "GPS", "Peyote Chunk", "Tire Repair Kit", "Weapon Disable Tool"
             ].sort();
@@ -696,6 +696,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (saveHacPromoButton) saveHacPromoButton.addEventListener('click', saveHacPromo_ManagerPage);
             const hacAddItemBtn = document.getElementById('hac-add-item-btn');
             if (hacAddItemBtn) hacAddItemBtn.addEventListener('click', () => addHacPromoRow('', 1));
+            const hacClearItemsBtn = document.getElementById('hac-clear-items-btn');
+            if (hacClearItemsBtn) hacClearItemsBtn.addEventListener('click', () => {
+                const list = document.getElementById('hac-promo-items-list');
+                if (list) { list.innerHTML = ''; updateHacPreview(); }
+            });
             // saveEmployeePasswordButton removed - individual passwords handled per-employee
             if (resetHacEligibilityButton) resetHacEligibilityButton.addEventListener('click', resetAllHacEligibility_ManagerPage);
             if (exportButton) {
@@ -760,6 +765,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ===== SHIFT NOTES PANEL =====
         const SHIFT_NOTE_DOC = 'shiftNote';
+
+        // ===== SHIFT NOTE FORMATTING TOOLBAR =====
+        function initShiftNoteToolbar() {
+            const textarea = document.getElementById('shift-note-input');
+            const previewWrap = document.getElementById('shift-note-preview-wrap');
+            const preview = document.getElementById('shift-note-live-preview');
+            if (!textarea) return;
+
+            // Live preview as user types
+            textarea.addEventListener('input', () => {
+                if (textarea.value.trim()) {
+                    previewWrap.style.display = 'block';
+                    preview.innerHTML = textarea.value;
+                } else {
+                    previewWrap.style.display = 'none';
+                }
+            });
+
+            // Helper: wrap selected text in a tag, or insert at cursor if nothing selected
+            function wrapSelection(openTag, closeTag) {
+                const start = textarea.selectionStart;
+                const end = textarea.selectionEnd;
+                const selected = textarea.value.substring(start, end);
+                const replacement = openTag + (selected || 'text') + closeTag;
+                textarea.setRangeText(replacement, start, end, 'end');
+                textarea.focus();
+                textarea.dispatchEvent(new Event('input'));
+            }
+
+            // Bold, Italic, Underline buttons
+            document.querySelectorAll('.note-fmt-btn[data-tag]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tag = btn.dataset.tag;
+                    wrapSelection(`<${tag}>`, `</${tag}>`);
+                });
+            });
+
+            // Font size
+            const sizeInput = document.getElementById('note-font-size');
+            document.getElementById('note-apply-size')?.addEventListener('click', () => {
+                let size = parseInt(sizeInput.value);
+                if (isNaN(size)) size = 16;
+                size = Math.min(36, Math.max(12, size));
+                sizeInput.value = size;
+                wrapSelection(`<span style="font-size:${size}px;">`, `</span>`);
+            });
+
+            // Color picker
+            const colorPicker = document.getElementById('note-color-picker');
+            document.getElementById('note-apply-color')?.addEventListener('click', () => {
+                const color = colorPicker.value;
+                wrapSelection(`<span style="color:${color};">`, `</span>`);
+            });
+        }
 
         async function loadCurrentShiftNote() {
             const display = document.getElementById('current-shift-note-display');
@@ -930,6 +989,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const clearNoteBtn = document.getElementById('clear-shift-note-btn');
             if (postNoteBtn) postNoteBtn.addEventListener('click', postShiftNote);
             if (clearNoteBtn) clearNoteBtn.addEventListener('click', clearShiftNote);
+            initShiftNoteToolbar();
             await loadCurrentShiftNote();
             resetEmployeeForm_ManagerPage();
             resetPosItemForm_ManagerPage();

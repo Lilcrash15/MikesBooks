@@ -280,7 +280,6 @@ input[type=number] {
 
 /* HAC Member Lookup Section (index.html) */
 .hac-lookup-section { /* Will have .content-block in HTML */
-    max-width: 800px; 
     margin-top: 30px; 
 }
 .hac-lookup-section h2 { text-align: center; }
@@ -333,6 +332,14 @@ input[type=number] {
     max-width: 900px; 
     margin-left: auto; 
     margin-right: auto;
+}
+
+/* Force ALL content-blocks inside manager-container to same width */
+.manager-container .content-block {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 .employee-management-section h2, .employee-management-section h3,
 .shared-password-section h2,
@@ -1197,17 +1204,22 @@ input.quantity::-webkit-outer-spin-button {
 
 .hac-item-remove {
     background: none;
-    border: 1px solid #553c3c;
-    color: #fc8181;
-    border-radius: 6px;
-    width: 32px;
-    height: 32px;
+    border: none;
+    color: #4a5568;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     flex-shrink: 0;
-    transition: background 0.15s;
+    transition: color 0.15s;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.hac-item-remove:hover { background: rgba(252,129,129,0.15); }
+.hac-item-remove:hover { color: #fc8181; }
 
 /* Fixed items display */
 .hac-fixed-item {
@@ -1243,3 +1255,87 @@ input.quantity::-webkit-outer-spin-button {
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
+/* ============================================================
+   === SHIFT NOTE FORMATTING TOOLBAR ===
+   ============================================================ */
+
+.note-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    background: #1a1e2a;
+    border: 1px solid #3a4252;
+    border-bottom: 1px solid #2d3748;
+    border-radius: 8px 8px 0 0;
+    padding: 8px 10px;
+}
+
+.note-fmt-btn {
+    background: #2d3748;
+    border: 1px solid #3a4252;
+    color: #e2e8f0;
+    border-radius: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    min-width: 30px;
+    height: 30px;
+    transition: background 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.note-fmt-btn:hover {
+    background: #4a5568;
+    border-color: #63b3ed;
+    color: #fff;
+}
+
+.note-toolbar-divider {
+    width: 1px;
+    height: 24px;
+    background: #3a4252;
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+.note-toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.note-toolbar-label {
+    font-size: 0.75rem;
+    color: #a0aec0;
+    white-space: nowrap;
+}
+
+.note-size-input {
+    width: 52px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    border: 1px solid #3a4252;
+    background: #0f1117;
+    color: #e2e8f0;
+    font-size: 0.85rem;
+    text-align: center;
+    height: 30px;
+}
+.note-size-input:focus {
+    outline: none;
+    border-color: #4299e1;
+}
+
+.note-color-input {
+    width: 34px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #3a4252;
+    background: #0f1117;
+    cursor: pointer;
+}
+.note-color-input::-webkit-color-swatch-wrapper { padding: 2px; }
+.note-color-input::-webkit-color-swatch { border-radius: 3px; border: none; }

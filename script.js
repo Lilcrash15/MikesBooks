@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ts = d.postedAt ? new Date(d.postedAt.seconds * 1000).toLocaleString('en-US', {
                         month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
                     }) : '';
-                    if (noteText) noteText.textContent = d.text;
+                    if (noteText) noteText.innerHTML = d.text;
                     if (noteMeta) noteMeta.textContent = `${d.postedBy || 'Manager'}${ts ? ' · ' + ts : ''}`;
                     banner.style.display = 'block';
 

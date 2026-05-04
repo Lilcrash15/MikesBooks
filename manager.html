@@ -337,7 +337,10 @@
                         <div id="hac-promo-items-list">
                             <!-- rows injected here by JS -->
                         </div>
-                        <button type="button" id="hac-add-item-btn" class="action-button" style="margin-top:10px; padding:7px 16px;">+ Add Item</button>
+                        <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
+                            <button type="button" id="hac-add-item-btn" class="action-button" style="padding:7px 16px;">+ Add Item</button>
+                            <button type="button" id="hac-clear-items-btn" class="action-button clear-cart-btn" style="padding:7px 16px;">Clear All Monthly Items</button>
+                        </div>
                     </div>
 
                     <!-- Preview -->
@@ -439,7 +442,29 @@
                     </div>
                     <hr style="border-color:#2d3748; margin-bottom:16px;">
                     <h3 style="margin-top:0; font-size:1rem; color:#a0aec0;">Post New Note</h3>
-                    <textarea id="shift-note-input" rows="3" placeholder="Type a shift note for employees... (e.g. Out of jerry cans today, new MK2 pricing in effect)" style="width:100%; padding:12px; border-radius:8px; border:1px solid #3a4252; background:#1a1e2a; color:#e2e8f0; font-size:0.95rem; resize:vertical; box-sizing:border-box;"></textarea>
+                    <!-- Formatting Toolbar -->
+                    <div class="note-toolbar">
+                        <button type="button" class="note-fmt-btn" data-tag="strong" title="Bold"><b>B</b></button>
+                        <button type="button" class="note-fmt-btn" data-tag="em" title="Italic"><i>I</i></button>
+                        <button type="button" class="note-fmt-btn" data-tag="u" title="Underline"><u>U</u></button>
+                        <div class="note-toolbar-divider"></div>
+                        <div class="note-toolbar-group" title="Font Size (12–36)">
+                            <label class="note-toolbar-label">Size</label>
+                            <input type="number" id="note-font-size" min="12" max="36" value="16" class="note-size-input">
+                            <button type="button" class="note-fmt-btn" id="note-apply-size">Apply</button>
+                        </div>
+                        <div class="note-toolbar-divider"></div>
+                        <div class="note-toolbar-group" title="Font Color">
+                            <label class="note-toolbar-label">Color</label>
+                            <input type="color" id="note-color-picker" value="#ffffff" class="note-color-input">
+                            <button type="button" class="note-fmt-btn" id="note-apply-color">Apply</button>
+                        </div>
+                    </div>
+                    <textarea id="shift-note-input" rows="4" placeholder="Type a shift note for employees... Use the toolbar above to format text. Highlight text first, then click a format button." style="width:100%; padding:12px; border-radius:0 0 8px 8px; border:1px solid #3a4252; border-top:none; background:#1a1e2a; color:#e2e8f0; font-size:0.95rem; resize:vertical; box-sizing:border-box; font-family: monospace;"></textarea>
+                    <div id="shift-note-preview-wrap" style="margin-top:10px; display:none;">
+                        <p style="font-size:0.78rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 6px 0; font-weight:700;">Preview</p>
+                        <div id="shift-note-live-preview" style="background:rgba(0,0,0,0.3); border-radius:8px; padding:12px 16px; min-height:40px; color:#e2e8f0; line-height:1.6;"></div>
+                    </div>
                     <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
                         <button id="post-shift-note-btn" class="action-button">Post Note</button>
                         <button id="clear-shift-note-btn" class="action-button clear-cart-btn">Clear Note</button>
@@ -493,9 +518,7 @@
             </div>
         </div>
         <!-- END: HAC PRIZE WHEEL SECTION -->
-        </div> <!-- End #manager-content -->
 
-            </div>
         </div> <!-- End #manager-content -->
 
     </div>
