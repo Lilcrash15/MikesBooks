@@ -1203,9 +1203,9 @@ input.quantity::-webkit-outer-spin-button {
 }
 
 .hac-item-remove {
-    background: none;
+    background: red;
     border: none;
-    color: #4a5568;
+    color: white;
     border-radius: 4px;
     width: 24px;
     height: 24px;
