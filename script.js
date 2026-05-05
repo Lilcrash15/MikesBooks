@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Slimy Fish Meat": { price: 2, image: "fishmeat_slimy.webp" }, "White Fish Meat": { price: 10, image: "fishmeat_white.webp" },
                 "Deer Hide": { price: 125, image: "hide.webp" }, "Boar Hide": { price: 225, image: "hide.webp" },
                 "Rabbit Hide": { price: 325, image: "hide.webp" }, "Rat Hide": { price: 525, image: "hide.webp" },
-                "Gold Nugget": { price: 32, image: "goldNugget.png" }, "Peyote": { price: 500, image: "peyote.png" },
+                "Gold Nugget": { price: 32, image: "goldNugget.png" },
             },
             sell: {
                 "White Fish Meat": { price: 17, image: "fishmeat_white.webp" }, "Salmon Meat": { price: 20, image: "fishmeat_salmon.webp" },
