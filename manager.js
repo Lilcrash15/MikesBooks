@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hardcoded full item list for HAC promo builder
             return [
                 // Hunting
-                "Cervid Bait", "Leporid Bait", "Rodent Bait",
+                "Cervid Bait", "Leporid Bait", "Rodent Bait", "Swine Bait",
                 "Flare Cartridge", "Flare Gun", "Hunting Map",
                 "Hunting Rifle", "Scoped Rifle", "30.06 Ammo",
                 "Knife", "Orange Vest", "Binoculars",
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Duffle Bag", "Cigarettes", "Beer", "Buckshot Boost",
                 "Deer Jerky", "Boar Jerky", "Armor", "Jerry Can",
                 "Flashlight", "1st Repair", "2nd Repair",
-                "Shark Repellent", "Beach Ring", "Gold Pan",
+                "Shark Repellent", "Beach Ring", "Gold Pan", "MSG Duffel Bag"
                 // Fishing - Reels
                 "Broke Ass Reel", "Line Sniffer Reel", "Rock Bottom Reel",
                 "Fish R Us Reel", "Thunder Reel", "Zilla Reel",
