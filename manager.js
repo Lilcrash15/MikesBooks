@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Duffle Bag", "Cigarettes", "Beer", "Buckshot Boost",
                 "Deer Jerky", "Boar Jerky", "Armor", "Jerry Can",
                 "Flashlight", "1st Repair", "2nd Repair",
-                "Shark Repellent", "Beach Ring", "Gold Pan", "MSG Duffel Bag"
+                "Shark Repellent", "Beach Ring", "Gold Pan", "MSG Duffel Bag",
                 // Fishing - Reels
                 "Broke Ass Reel", "Line Sniffer Reel", "Rock Bottom Reel",
                 "Fish R Us Reel", "Thunder Reel", "Zilla Reel",
