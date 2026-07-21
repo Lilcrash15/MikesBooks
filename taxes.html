@@ -6,12 +6,11 @@
     <title>Employee Taxes - Mikes Portal</title>
     <link rel="stylesheet" type="text/css" href="mikes.css">
 
-    <!-- START: Firebase SDK and Configuration -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
       import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       const firebaseConfig = {
-        apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10", // YOUR ACTUAL API KEY
+        apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10",
         authDomain: "msg-website-bca5f.firebaseapp.com",
         projectId: "msg-website-bca5f",
         storageBucket: "msg-website-bca5f.appspot.com",
@@ -20,68 +19,46 @@
         measurementId: "G-VXLB48L4LF"
       };
       try {
-        console.log(document.title + " HTML: Attempting Firebase init...");
-        if (!firebaseConfig || !firebaseConfig.projectId) {
-            console.error(document.title + " HTML CRITICAL: firebaseConfig or projectId missing!", firebaseConfig);
-            throw new Error("Firebase config error: projectId is missing!");
-        }
         const app = initializeApp(firebaseConfig);
         window.db = getFirestore(app);
-        console.log(document.title + " HTML: Firebase initialized, window.db set.");
-        window.firestoreFunctions = {
-            collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy,
-            serverTimestamp, getDoc, setDoc
-        };
-        console.log(document.title + " HTML: Firestore functions exposed.");
+        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc };
         window.isFirebaseReady = true;
-        console.log(document.title + " HTML: window.isFirebaseReady set to true.");
-        const firebaseReadyEvent = new CustomEvent('firebaseReady', {
-            detail: { db: window.db, functions: window.firestoreFunctions }
-        });
-        document.dispatchEvent(firebaseReadyEvent);
-        console.log(document.title + " HTML: Dispatched 'firebaseReady' event.");
+        document.dispatchEvent(new CustomEvent('firebaseReady', { detail: { db: window.db, functions: window.firestoreFunctions } }));
       } catch (error) {
-        console.error(document.title + " HTML FATAL: Error initializing Firebase SDK:", error);
         window.isFirebaseReady = false;
-        const firebaseErrorEvent = new CustomEvent('firebaseError', { detail: { error: error } });
-        document.dispatchEvent(firebaseErrorEvent);
+        document.dispatchEvent(new CustomEvent('firebaseError', { detail: { error } }));
       }
     </script>
-    <!-- END: Firebase SDK and Configuration-->
     <script defer src="utility.js"></script>
     <script defer src="taxes.js"></script>
 </head>
 <body class="htmlbackground">
-    <body class="htmlbackground">
-    <!-- START: LOADING SCREEN -->
+
     <div id="loading-overlay">
         <div class="loading-content">
             <div class="spinner"></div>
             <p>Loading Taxes Portal...</p>
         </div>
     </div>
-    <div class="navbar">
-        <div class="dropdown">
-            <button class="logo-container">
-                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo">
-            </button>
-            <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="taxes.html">Employee Taxes</a>
-                <a href="manager.html">Manager Portal</a>
-                <a href="ads.html">Sky Ads</a>
-                <!-- Logout button will be added by utility.js -->
+
+    <nav class="topnav navbar">
+        <div class="topnav-inner">
+            <a href="index.html" class="topnav-logo">
+                <img src="MikesDeerLogo.png" alt="Mikes Logo">
+                <span>MIKE'S SPORTING GOODS</span>
+            </a>
+            <div class="topnav-links" id="topnav-links">
+                <a href="index.html" class="topnav-link">🏠 Home</a>
+                <a href="taxes.html" class="topnav-link active">💰 Taxes</a>
+                <a href="manager.html" class="topnav-link">🔑 Manager</a>
+                <a href="ads.html" class="topnav-link">📢 Sky Ads</a>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="page-content-wrapper">
-        <header>
-            <div>
-                <img class="mikessign" src="MikesLogo.png" alt="Mikes Logo Sign">
-            </div>
-        </header>
 
+        <!-- LOGIN CARD -->
         <div id="taxes-login-form-container" class="login-card">
             <div class="login-card-header">
                 <h2 class="login-card-title">Employee Taxes</h2>
@@ -89,60 +66,76 @@
             </div>
             <form id="taxes-page-login-form" class="login-form">
                 <div class="login-field">
-                    <label for="taxes-login-select">Select Your Name</label>
+                    <label for="taxes-login-select">Your Name</label>
                     <select id="taxes-login-select">
                         <option value="">— Loading employees... —</option>
                     </select>
                 </div>
-                <div class="login-field" id="taxes-password-group" style="display: none;">
+                <div class="login-field" id="taxes-password-group" style="display:none;">
                     <label for="taxes-page-password">Password</label>
                     <input type="password" id="taxes-page-password" autocomplete="current-password" placeholder="Enter your password">
                 </div>
-                <button type="submit" id="taxes-login-submit-btn" class="login-btn" style="display: none;">Login</button>
+                <button type="submit" id="taxes-login-submit-btn" class="login-btn" style="display:none;">Sign In</button>
             </form>
-            <p id="taxes-page-login-error" class="login-error" style="display: none;">Incorrect password. Please try again.</p>
+            <p id="taxes-page-login-error" class="login-error" style="display:none;">Incorrect password. Please try again.</p>
         </div>
 
-        <div id="taxes-main-content" class="taxes-container content-block" style="display: none;">
-            <h1>Employee Taxes Due</h1>
-            <!-- employee-tax-select is hidden - auto-set from login -->
+        <!-- TAXES MAIN CONTENT -->
+        <div id="taxes-main-content" class="taxes-container content-block" style="display:none; max-width:520px;">
             <select id="employee-tax-select" style="display:none;"></select>
-            <hr>
-            <div id="tax-details-container" style="display: none;">
-                 <h2 id="selected-employee-name">Employee Name</h2>
-                <p class="taxes-owed-display">
-                    Total Taxes Owed to Mikes:
-                    <strong id="total-taxes-owed">$0.00</strong>
-                </p>
-                <p class="account-info" style="margin-bottom: 15px; font-size: 1.1rem;">
-                    Transaction Count:
-                    <strong id="transaction-count">0</strong>
-                </p>
-                <p class="account-info">
-                    MSG Account #: <strong>9219157</strong>
-                </p>
-                <div class="mark-paid-section">
-                    <label for="taxes-paid-checkbox">
+
+            <div id="tax-details-container" style="display:none; text-align:center;">
+
+                <h2 id="selected-employee-name" style="text-align:center; border-bottom:none; padding-bottom:0; font-size:1.3rem; color:var(--text-secondary); font-weight:500; margin-bottom:4px;"></h2>
+
+                <!-- Big number display -->
+                <div style="margin:24px 0;">
+                    <p style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-bottom:8px;">Total Taxes Owed to Mike's</p>
+                    <p class="taxes-owed-display">
+                        <strong id="total-taxes-owed">$0.00</strong>
+                    </p>
+                </div>
+
+                <hr style="border-color:var(--border); margin:20px 0;">
+
+                <!-- Stats row -->
+                <div style="display:flex; justify-content:center; gap:40px; margin-bottom:20px; flex-wrap:wrap;">
+                    <div>
+                        <p style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:4px;">Transactions</p>
+                        <p style="font-size:1.5rem; font-weight:700; color:var(--text-primary); margin:0;" id="transaction-count">0</p>
+                    </div>
+                    <div>
+                        <p style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:4px;">MSG Account</p>
+                        <p style="font-size:1.5rem; font-weight:700; color:var(--text-primary); margin:0; font-family:monospace;">9219157</p>
+                    </div>
+                </div>
+
+                <hr style="border-color:var(--border); margin:20px 0;">
+
+                <!-- Mark paid section -->
+                <div class="mark-paid-section" style="margin-top:16px;">
+                    <label for="taxes-paid-checkbox" style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.9rem;">
                         <input type="checkbox" id="taxes-paid-checkbox"> Confirm Taxes Paid
                     </label>
-                    <button id="mark-taxes-paid-button" class="action-button checkout-button" disabled>Mark as Paid</button>
+                    <button id="mark-taxes-paid-button" class="action-button checkout-button" disabled style="width:auto; display:inline-flex;">Mark as Paid</button>
                 </div>
-                <p id="taxes-status-message" style="margin-top: 10px;"></p>
+
+                <p id="taxes-status-message" style="margin-top:12px; font-weight:600; font-size:0.88rem;"></p>
             </div>
         </div>
+
     </div>
-</body>
+
 <footer>
+
   <div style="text-align: center; margin-top: 40px;">
-  <small style="
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 2px black, -1px -1px 2px black;
-  ">
+  <small style="font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px black, -1px -1px 2px black;">
     Website designed by Preston Stone / Lilcrash15.<br>
     Website to be used by Mikes Sporting Goods employees on BLRP only.
   </small>
 </div>
+
 </footer>
+
+</body>
 </html>

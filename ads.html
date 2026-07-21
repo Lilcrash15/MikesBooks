@@ -7,19 +7,20 @@
     <link rel="stylesheet" type="text/css" href="mikes.css" />
 </head>
 <body class="htmlbackground">
-    <div class="navbar">
-        <div class="dropdown">
-            <button class="logo-container">
-                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo" />
-            </button>
-            <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="taxes.html">Employee Taxes</a>
-                <a href="manager.html">Manager Portal</a>
-                <a href="ads.html">Sky Ads</a>
+    <nav class="topnav navbar">
+        <div class="topnav-inner">
+            <a href="index.html" class="topnav-logo">
+                <img src="MikesDeerLogo.png" alt="Mikes Logo">
+                <span>MIKE'S SPORTING GOODS</span>
+            </a>
+            <div class="topnav-links" id="topnav-links">
+                <a href="index.html" class="topnav-link">🏠 Home</a>
+                <a href="taxes.html" class="topnav-link">💰 Taxes</a>
+                <a href="manager.html" class="topnav-link">🔑 Manager</a>
+                <a href="ads.html" class="topnav-link active">📢 Sky Ads</a>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="page-content-wrapper">
         <div class="content-block" style="max-width: 800px; margin: 30px auto;">
@@ -32,6 +33,11 @@
                     <option value="OPEN">Open</option>
                     <option value="CLOSING">Closing</option>
                 </select>
+            </div>
+
+            <!-- Copy Status — above the list so it's always visible -->
+            <div style="text-align: center;">
+                <p id="copy-status" style="height: 1.2em;"></p>
             </div>
 
             <!-- This wrapper now contains both ad lists -->
@@ -112,16 +118,13 @@
                 </div>
             </div>
 
-            <!-- Copy Status -->
-            <div style="text-align: center;">
-                <p id="copy-status" style="height: 1.2em;"></p>
-            </div>
         </div>
     </div>
 
     <script src="utility.js"></script>
     <script src="ads.js"></script>
 </body>
+
 <footer>
   <div style="text-align: center; margin-top: 40px;">
   <small style="font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px black, -1px -1px 2px black;">
@@ -129,6 +132,7 @@
     Website to be used by Mikes Sporting Goods employees on BLRP only.
   </small>
 </div>
+
 </footer>
 
 </html>

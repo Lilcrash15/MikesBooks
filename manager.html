@@ -6,12 +6,11 @@
     <title>Manager Portal</title>
     <link rel="stylesheet" href="mikes.css">
 
-    <!-- START: Firebase SDK and Configuration -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
       import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       const firebaseConfig = {
-        apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10", // YOUR ACTUAL API KEY
+        apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10",
         authDomain: "msg-website-bca5f.firebaseapp.com",
         projectId: "msg-website-bca5f",
         storageBucket: "msg-website-bca5f.appspot.com",
@@ -20,70 +19,46 @@
         measurementId: "G-VXLB48L4LF"
       };
       try {
-        console.log(document.title + " HTML: Attempting Firebase init...");
-        if (!firebaseConfig || !firebaseConfig.projectId) {
-            console.error(document.title + " HTML CRITICAL: firebaseConfig or projectId missing!", firebaseConfig);
-            throw new Error("Firebase config error: projectId is missing!");
-        }
         const app = initializeApp(firebaseConfig);
         window.db = getFirestore(app);
-        console.log(document.title + " HTML: Firebase initialized, window.db set.");
-        window.firestoreFunctions = {
-            collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy,
-            serverTimestamp, getDoc, setDoc, Timestamp
-        };
-        console.log(document.title + " HTML: Firestore functions exposed.");
+        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp };
         window.isFirebaseReady = true;
-        console.log(document.title + " HTML: window.isFirebaseReady set to true.");
-        const firebaseReadyEvent = new CustomEvent('firebaseReady', {
-            detail: { db: window.db, functions: window.firestoreFunctions }
-        });
-        document.dispatchEvent(firebaseReadyEvent);
-        console.log(document.title + " HTML: Dispatched 'firebaseReady' event.");
+        document.dispatchEvent(new CustomEvent('firebaseReady', { detail: { db: window.db, functions: window.firestoreFunctions } }));
       } catch (error) {
-        console.error(document.title + " HTML FATAL: Error initializing Firebase SDK:", error);
         window.isFirebaseReady = false;
-        const firebaseErrorEvent = new CustomEvent('firebaseError', { detail: { error: error } });
-        document.dispatchEvent(firebaseErrorEvent);
+        document.dispatchEvent(new CustomEvent('firebaseError', { detail: { error } }));
       }
     </script>
-    <!-- END: Firebase SDK and Configuration -->
-
     <script src="utility.js"></script>
     <script defer src="manager.js"></script>
-
 </head>
 <body class="htmlbackground">
-    <!-- START: LOADING SCREEN -->
+
     <div id="loading-overlay">
         <div class="loading-content">
             <div class="spinner"></div>
             <p>Loading Manager Portal...</p>
         </div>
     </div>
-    <!-- ... rest of your page ... -->
-<body class="htmlbackground">
-    <div class="navbar">
-        <div class="dropdown">
-            <button class="logo-container">
-                <img src="MikesDeerLogo.png" alt="Mikes Deer Logo">
-            </button>
-            <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="taxes.html">Employee Taxes</a>
-                <a href="manager.html">Manager Portal</a>
-                <a href="ads.html">Sky Ads</a>
+
+    <nav class="topnav navbar">
+        <div class="topnav-inner">
+            <a href="index.html" class="topnav-logo">
+                <img src="MikesDeerLogo.png" alt="Mikes Logo">
+                <span>MIKE'S SPORTING GOODS</span>
+            </a>
+            <div class="topnav-links" id="topnav-links">
+                <a href="index.html" class="topnav-link">🏠 Home</a>
+                <a href="taxes.html" class="topnav-link">💰 Taxes</a>
+                <a href="manager.html" class="topnav-link active">🔑 Manager</a>
+                <a href="ads.html" class="topnav-link">📢 Sky Ads</a>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="page-content-wrapper">
-        <header>
-            <div>
-                <img class="mikessign" src="MikesLogo.png" alt="Mikes Logo Sign">
-            </div>
-        </header>
 
+        <!-- LOGIN -->
         <div id="manager-login-wrapper" class="login-card">
             <div class="login-card-header">
                 <h2 class="login-card-title">Manager Portal</h2>
@@ -96,407 +71,424 @@
                         <option value="">— Loading... —</option>
                     </select>
                 </div>
-                <div class="login-field" id="manager-password-group" style="display: none;">
+                <div class="login-field" id="manager-password-group" style="display:none;">
                     <label for="manager-page-password">Password</label>
                     <input type="password" id="manager-page-password" autocomplete="current-password" placeholder="Enter your password">
                 </div>
-                <button type="submit" id="manager-login-submit-btn" class="login-btn" style="display: none;">Login</button>
+                <button type="submit" id="manager-login-submit-btn" class="login-btn" style="display:none;">Sign In</button>
             </form>
-            <p id="manager-page-login-error" class="login-error" style="display: none;">Incorrect password or not authorised as manager.</p>
+            <p id="manager-page-login-error" class="login-error" style="display:none;">Incorrect password or not authorised as manager.</p>
         </div>
 
-        <div id="manager-content" style="display: none; width: 100%;">
+        <!-- MANAGER CONTENT -->
+        <div id="manager-content" style="display:none; width:100%;">
             <div class="manager-container">
 
-                                <div class="employee-management-section content-block">
-                    <h2>Manage Employees</h2>
-                    <form id="employee-form-actual">
-                        <div id="employee-form-container" class="add-employee-form">
-                            <h3 id="employee-form-title">Add New Employee</h3>
-                            <input type="hidden" id="edit-employee-id">
-                            <div class="form-group">
-                                <label for="employee-full-name">Full Name:</label>
-                                <input type="text" id="employee-full-name" placeholder="Full Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="employee-number-ssn">Employee Number (SSN F6):</label>
-                                <input type="text" id="employee-number-ssn" placeholder="Employee Number (SSN)" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="employee-bank-account">In-Game Bank Account #:</label>
-                                <input type="text" id="employee-bank-account" placeholder="Bank Account Number">
-                            </div>
-                            <!-- ***** END NEW BANK ACCOUNT FIELD ***** -->
-                            <div class="form-group">
-                                <label for="employee-rank-select">Rank:</label>
-                                <select id="employee-rank-select">
-                                    <option value="Trainee">Trainee</option>
-                                    <option value="Staff">Staff</option>
-                                    <option value="Senior Staff">Senior Staff</option>
-                                    <option value="Manager">Manager</option>
-                                </select>
-                            </div>
-                            <!-- ***** NEW BANK ACCOUNT FIELD ***** -->
-                            <div class="form-group">
-                                <label for="employee-login-password">Login Password:</label>
-                                <input type="text" id="employee-login-password" placeholder="Set employee's login password">
-                                <small style="color:#a0aec0; display:block; margin-top:4px;">Leave blank when editing to keep existing password.</small>
-                            </div>
-                            <div class="form-group" style="flex-direction: row; align-items: center; gap: 12px;">
-                                <input type="checkbox" id="employee-is-manager" style="width: 20px; height: 20px; cursor: pointer; flex-shrink: 0;">
-                                <label for="employee-is-manager" style="margin-bottom: 0; cursor: pointer; color: #f6e05e; font-weight: bold;">
-                                    Manager Access (can log into Manager Portal)
-                                </label>
-                            </div>
-                            <div class="employee-form-buttons">
-                                <button type="button" id="save-employee-button" class="action-button">Add Employee</button>
-                                <button type="button" id="cancel-edit-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
-                            </div>
-                        </div>
-                    </form>
-                    <h3>Current Employees</h3>
-                    <div id="employee-list-display" class="employee-list">
-                        <p><i>Loading employees...</i></p>
-                    </div>
+                <!-- TAB BAR -->
+                <div class="manager-tabs" id="manager-tab-bar">
+                    <button class="manager-tab-btn active" data-tab="tab-employees">👥 Employees</button>
+                    <button class="manager-tab-btn" data-tab="tab-pos-items">🛒 POS Items</button>
+                    <button class="manager-tab-btn" data-tab="tab-hac">🏆 HAC Members</button>
+                    <button class="manager-tab-btn" data-tab="tab-promo">🎁 Promo & Wheel</button>
+                    <button class="manager-tab-btn" data-tab="tab-logs">📋 Logs & Taxes</button>
+                    <button class="manager-tab-btn" data-tab="tab-shift">📝 Shift Notes</button>
                 </div>
-                <hr>
-                <hr>
-                                <!-- START: POS ITEM MANAGEMENT SECTION -->
-                <div class="pos-item-management-section content-block">
-                    <h2>Manage POS Items</h2>
-                    <form id="pos-item-form-actual">
-                        <div id="pos-item-form-container" class="add-employee-form">
-                            <h3 id="pos-item-form-title">Add New POS Item</h3>
-                            <input type="hidden" id="edit-pos-item-id">
-                            <div class="form-group">
-                                <label for="pos-item-name">Item Name:</label>
-                                <input type="text" id="pos-item-name" placeholder="e.g., Camping Tent" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="pos-item-price">Price ($):</label>
-                                <input type="number" id="pos-item-price" placeholder="e.g., 2500" required step="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="pos-item-image-url">Image URL:</label>
-                                <input type="text" id="pos-item-image-url" placeholder="e.g., images/tent.png">
-                            </div>
-                            <div class="form-group">
-                                <label for="pos-item-category-select">Category:</label>
-                                <select id="pos-item-category-select">
-                                    <option value="General">General Gear</option>
-                                    <option value="Hunting">Hunting</option>
-                                    <option value="Fishing">Fishing</option>
-                                    <option value="Consumables">Consumables</option>
-                                    <option value="Specialty">Specialty</option>
-                                </select>
-                            </div>
-                            <div class="employee-form-buttons">
-                                <button type="button" id="save-pos-item-button" class="action-button">Add Item</button>
-                                <button type="button" id="cancel-edit-pos-item-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
-                            </div>
-                             <p id="pos-item-status-message" style="margin-top:10px;"></p>
-                        </div>
-                    </form>
-                    <h3>Current Custom POS Items</h3>
-                    <div id="pos-item-list-display" class="employee-list">
-                        <p><i>Loading POS items...</i></p>
-                    </div>
-                </div>
-                <hr>
-                <!-- END: POS ITEM MANAGEMENT SECTION -->
-                <!-- END: POS ITEM MANAGEMENT SECTION -->
-                <hr>
-                                <div class="hac-management-section content-block">
-                    <!-- ... HAC Management Section ... -->
-                     <h2>Manage HAC Members</h2>
-                    <form id="hac-edit-form-actual">
-                        <div id="hac-member-form-container" class="add-employee-form" style="display:none;">
-                            <h3 id="hac-member-form-title">Edit HAC Member Details</h3>
-                            <input type="hidden" id="edit-hac-member-id">
-                            <div class="form-group">
-                                <label for="hac-first-name">First Name:</label>
-                                <input type="text" id="hac-first-name" placeholder="First Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="hac-last-name">Last Name:</label>
-                                <input type="text" id="hac-last-name" placeholder="Last Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="hac-phone-number">Phone Number:</label>
-                                <input type="text" id="hac-phone-number" placeholder="Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <label for="hac-driver-license">Driver License #:</label>
-                                <input type="text" id="hac-driver-license" placeholder="DL Number">
-                            </div>
-                            <div class="form-group">
-                                <label for="hac-email">Email:</label>
-                                <input type="email" id="hac-email" placeholder="Email Address">
-                            </div>
-                            <div class="employee-form-buttons">
-                                <button type="button" id="save-hac-member-button" class="action-button">Save HAC Changes</button>
-                                <button type="button" id="cancel-edit-hac-member-button" class="action-button clear-cart-btn">Cancel Edit</button>
-                            </div>
-                        </div>
-                    </form>
-                    <h3>Current HAC Members</h3>
-                    <div class="hac-search-container">
-                        <div class="form-group" style="flex-grow: 1;">
-                            <label for="hac-search-term">Search HAC by Name, Phone, DL, or Email:</label>
-                            <input type="text" id="hac-search-term" placeholder="Enter search term...">
-                        </div>
-                        <button id="hac-search-button" class="action-button" type="button">Search</button>
-                        <button id="hac-clear-search-button" class="action-button clear-cart-btn" type="button">Clear Search</button>
-                    </div>
-                    <div id="hac-member-list-display" class="employee-list">
-                        <p><i>Search for HAC members to display their details.</i></p>
-                    </div>
-                    <div class="hac-eligibility-reset-container" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #555;">
-                        <label for="reset-hac-eligibility-button" style="display:block; margin-bottom:10px;">Monthly HAC Status Management:</label>
-                         <button id="reset-hac-eligibility-button" class="action-button" style="background-color: #31708f;">Reset All Members to ELIGIBLE for New Month</button>
-                         <p id="hac-reset-status" style="font-size: 0.9em; margin-top: 10px;"></p>
-                    </div>
-                </div>
-                <hr>
-                <hr>
 
-                <hr>
-
-                                <div class="hac-promo-section content-block">
-                    <h3>Current HAC Promo</h3>
-
-                    <div class="form-group" style="max-width:300px;">
-                        <label for="hac-promo-month">Promo Month:</label>
-                        <select id="hac-promo-month">
-                            <option value="">-- Select Month --</option>
-                            <option value="January">January</option>
-                            <option value="February">February</option>
-                            <option value="March">March</option>
-                            <option value="April">April</option>
-                            <option value="May">May</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="August">August</option>
-                            <option value="September">September</option>
-                            <option value="October">October</option>
-                            <option value="November">November</option>
-                            <option value="December">December</option>
-                        </select>
-                    </div>
-
-                    <!-- Fixed items - always included, qty locked -->
-                    <div style="margin:16px 0 8px 0;">
-                        <p style="font-size:0.8rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 10px 0; font-weight:700;">Always Included (Fixed)</p>
-                        <div class="hac-fixed-item">
-                            <span class="hac-fixed-qty">1x</span>
-                            <span class="hac-fixed-name">Armor</span>
-                            <span class="hac-fixed-badge">Fixed</span>
-                        </div>
-                        <div class="hac-fixed-item">
-                            <span class="hac-fixed-qty">1x</span>
-                            <span class="hac-fixed-name">Jerry Can</span>
-                            <span class="hac-fixed-badge">Fixed</span>
-                        </div>
-                    </div>
-
-                    <!-- Dynamic items builder -->
-                    <div style="margin:18px 0 8px 0;">
-                        <p style="font-size:0.8rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 10px 0; font-weight:700;">Monthly Items</p>
-                        <div id="hac-promo-items-list">
-                            <!-- rows injected here by JS -->
-                        </div>
-                        <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
-                            <button type="button" id="hac-add-item-btn" class="action-button" style="padding:7px 16px;">+ Add Item</button>
-                            <button type="button" id="hac-clear-items-btn" class="action-button clear-cart-btn" style="padding:7px 16px;">Clear All Monthly Items</button>
-                        </div>
-                    </div>
-
-                    <!-- Preview -->
-                    <div id="hac-promo-preview" style="margin:18px 0 12px 0; display:none;">
-                        <p style="font-size:0.8rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 8px 0; font-weight:700;">Preview (as employees will see it)</p>
-                        <div id="hac-promo-preview-content" style="background:rgba(0,0,0,0.3); border-radius:8px; padding:12px 16px;"></div>
-                    </div>
-
-                    <div style="display:flex; align-items:center; gap:12px; margin-top:4px;">
-                        <button type="button" id="save-hac-promo-button" class="action-button">Save Promo</button>
-                        <p id="hac-promo-status" style="margin:0;"></p>
-                    </div>
-                </div>
-                <hr>
-                <!-- START: NEW REIMBURSEMENT
-                <hr>
-                                <!-- START: NEW REIMBURSEMENT SECTION -->
-
-                <div class="reimbursement-section content-block">
-                    <!-- This header is always visible and clickable -->
-                    <div class="collapsible-header">
-                        <h2>Reimbursement Calculator</h2>
-                        <button id="toggle-reimbursement-btn" class="action-button" style="padding: 5px 10px; font-size: 0.8rem; margin-left: 15px;">Show</button>
-                    </div>
-
-                    <!-- This wrapper contains everything that will be hidden/shown -->
-                    <div id="reimbursement-content-wrapper">
-                        <div class="employee-selection-reimbursement" style="margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                            <div class="form-group">
-                                <label for="reimbursement-employee-select">Select Employee for Reimbursement:</label>
-                                <select id="reimbursement-employee-select">
-                                    <option value="">-- Loading Employees --</option>
-                                </select>
+                <!-- ==================== TAB: EMPLOYEES ==================== -->
+                <div class="manager-tab-panel active" id="tab-employees">
+                    <div class="content-block">
+                        <h2 style="margin-top:0;">Manage Employees</h2>
+                        <form id="employee-form-actual">
+                            <div id="employee-form-container" class="add-employee-form" style="background:rgba(255,255,255,0.02); padding:20px; border-radius:10px; border:1px solid var(--border); margin-bottom:20px;">
+                                <h3 id="employee-form-title" style="margin-top:0; margin-bottom:16px;">Add New Employee</h3>
+                                <input type="hidden" id="edit-employee-id">
+                                <div class="form-group">
+                                    <label for="employee-full-name">Full Name</label>
+                                    <input type="text" id="employee-full-name" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="employee-number-ssn">Employee Number (SSN F6)</label>
+                                    <input type="text" id="employee-number-ssn" placeholder="Employee Number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="employee-bank-account">In-Game Bank Account #</label>
+                                    <input type="text" id="employee-bank-account" placeholder="Bank Account Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="employee-rank-select">Rank</label>
+                                    <select id="employee-rank-select">
+                                        <option value="Trainee">Trainee</option>
+                                        <option value="Staff">Staff</option>
+                                        <option value="Senior Staff">Senior Staff</option>
+                                        <option value="Manager">Manager</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="employee-login-password">Login Password</label>
+                                    <input type="text" id="employee-login-password" placeholder="Set employee's login password">
+                                    <small style="color:var(--text-muted); display:block; margin-top:4px; font-size:0.75rem;">Leave blank when editing to keep existing password.</small>
+                                </div>
+                                <div class="form-group" style="flex-direction:row; align-items:center; gap:10px; margin-top:4px;">
+                                    <input type="checkbox" id="employee-is-manager" style="width:18px; height:18px; cursor:pointer; flex-shrink:0; accent-color:var(--accent);">
+                                    <label for="employee-is-manager" style="margin-bottom:0; cursor:pointer; color:#fcd34d; font-weight:600; font-size:0.9rem;">
+                                        Grant Manager Access
+                                    </label>
+                                </div>
+                                <div class="employee-form-buttons" style="display:flex; gap:10px; margin-top:18px;">
+                                    <button type="button" id="save-employee-button" class="action-button" style="background:var(--accent); border-color:var(--accent-hover); color:white; padding:11px 24px;">Save Employee</button>
+                                    <button type="button" id="cancel-edit-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
+                                </div>
                             </div>
-                            <div id="employee-profile" class="content-block" style="display: none; background-color: rgba(0,0,0,0.2); padding: 15px; margin-top: 15px; text-align: left;">
-                                <p style="margin: 0; font-size: 1.1em;"><strong>Selected:</strong> <span id="employee-profile-name"></span></p>
-                                <p style="margin: 5px 0 0 0; font-size: 1em;"><strong>Bank Account #:</strong> <span id="employee-profile-bank" style="font-family: monospace; background-color: #1e1e1e; padding: 2px 5px; border-radius: 3px;"></span></p>
-                            </div>
+                        </form>
+                        <h3 style="margin-bottom:12px;">Current Employees</h3>
+                        <div id="employee-list-display" class="employee-list" style="max-height:420px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;">
+                            <p class="loading-message">Loading employees...</p>
                         </div>
-                        
-                        <div class="items-container pos-grid" id="reimbursement-items-container">
-                            <p><i>Loading reimbursement items...</i></p>
-                        </div>
-
-                        <hr style="margin: 35px auto; width: 90%;">
-
-                    <div id="petty-cash-section">
-                        <h3 style="margin-bottom: 20px;">Petty Cash Log</h3>
-                        <div class="form-group" style="max-width: 400px; margin: 0 auto 15px auto;">
-                            <label for="petty-cash-amount">Amount ($):</label>
-                            <input type="number" id="petty-cash-amount" placeholder="$0.00" step="0.01">
-                        </div>
-                        <div class="form-group" style="max-width: 400px; margin: 0 auto 20px auto;">
-                            <label for="petty-cash-note">Reason / Note:</label>
-                            <textarea id="petty-cash-note" rows="2" placeholder="e.g., Office supplies, fuel for delivery, etc."></textarea>
-                        </div>
-                    </div>
-
-                        <div id="reimbursement-summary-section" class="content-block" style="background-color: rgba(0,0,0,0.2); text-align: center; margin-top: 25px; border-top: 1px dashed #4a5568; padding-top: 20px;">
-                            <h3 style="font-size: 1.8rem; margin-top:0; margin-bottom: 20px;">Total Reimbursement: $<span id="reimbursement-total">0.00</span></h3>
-                            <div class="reimbursement-buttons-container">
-                                <button id="log-reimbursement-button" class="action-button checkout-button" style="display: none;">Log Reimbursement</button>
-                                <button id="clear-reimbursement-button" class="action-button clear-cart-btn">Clear All</button>
-                            </div>
-                        </div>
-                        <p id="reimbursement-status-message" style="margin-top: 15px; font-weight: bold; text-align:center;"></p>
                     </div>
                 </div>
 
-                <div class="content-block">
-
-                <h2>Manager logs</h2>
-
-                <div class="content-block">
-                <h2>Manager logs</h2>
-
-                                <!-- ===== TAX SUMMARY PANEL ===== -->
-                <div class="content-block" id="tax-summary-section">
-                    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
-                        <h2 style="margin:0;">Outstanding Employee Taxes</h2>
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            <span id="tax-summary-last-updated" style="font-size:0.8rem; color:#718096;">Not yet loaded</span>
-                            <button id="tax-summary-refresh-btn" class="action-button" style="padding:6px 14px; font-size:0.85rem;">⟳ Refresh</button>
+                <!-- ==================== TAB: POS ITEMS ==================== -->
+                <div class="manager-tab-panel" id="tab-pos-items">
+                    <div class="content-block">
+                        <h2 style="margin-top:0;">Manage POS Items</h2>
+                        <form id="pos-item-form-actual">
+                            <div id="pos-item-form-container" class="add-employee-form" style="background:rgba(255,255,255,0.02); padding:20px; border-radius:10px; border:1px solid var(--border); margin-bottom:20px;">
+                                <h3 id="pos-item-form-title" style="margin-top:0; margin-bottom:16px;">Add New POS Item</h3>
+                                <input type="hidden" id="edit-pos-item-id">
+                                <div class="form-group">
+                                    <label for="pos-item-name">Item Name</label>
+                                    <input type="text" id="pos-item-name" placeholder="e.g., Camping Tent" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pos-item-price">Price ($)</label>
+                                    <input type="number" id="pos-item-price" placeholder="e.g., 2500" required step="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pos-item-image-url">Image URL</label>
+                                    <input type="text" id="pos-item-image-url" placeholder="e.g., images/tent.png">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pos-item-category-select">Category</label>
+                                    <select id="pos-item-category-select">
+                                        <option value="General">General Gear</option>
+                                        <option value="Hunting">Hunting</option>
+                                        <option value="Fishing">Fishing</option>
+                                        <option value="Consumables">Consumables</option>
+                                        <option value="Specialty">Specialty</option>
+                                    </select>
+                                </div>
+                                <div class="employee-form-buttons" style="display:flex; gap:10px; margin-top:18px;">
+                                    <button type="button" id="save-pos-item-button" class="action-button" style="background:var(--accent); border-color:var(--accent-hover); color:white; padding:11px 24px;">Save Item</button>
+                                    <button type="button" id="cancel-edit-pos-item-button" class="action-button clear-cart-btn" style="display:none;">Cancel Edit</button>
+                                </div>
+                                <p id="pos-item-status-message" style="margin-top:10px;"></p>
+                            </div>
+                        </form>
+                        <h3 style="margin-bottom:12px;">Current Custom POS Items</h3>
+                        <div id="pos-item-list-display" class="employee-list" style="max-height:420px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;">
+                            <p class="loading-message">Loading POS items...</p>
                         </div>
                     </div>
-                    <div id="tax-summary-list">
-                        <p style="color:#718096; font-style:italic;">Click Refresh or wait for auto-load...</p>
-                    </div>
-                    <p style="font-size:0.75rem; color:#4a5568; margin-top:12px; margin-bottom:0;">Auto-refreshes every 10 minutes while this page is open.</p>
                 </div>
-                <hr>
-                <hr>
 
-                                <!-- ===== SHIFT NOTES PANEL ===== -->
-                <div class="content-block" id="shift-notes-section">
-                    <h2 style="margin-top:0;">Shift Notes</h2>
-                    <div id="current-shift-note-display" style="margin-bottom:16px;">
-                        <p style="color:#718096; font-style:italic;">Loading current note...</p>
-                    </div>
-                    <hr style="border-color:#2d3748; margin-bottom:16px;">
-                    <h3 style="margin-top:0; font-size:1rem; color:#a0aec0;">Post New Note</h3>
-                    <!-- Formatting Toolbar -->
-                    <div class="note-toolbar">
-                        <button type="button" class="note-fmt-btn" data-tag="strong" title="Bold"><b>B</b></button>
-                        <button type="button" class="note-fmt-btn" data-tag="em" title="Italic"><i>I</i></button>
-                        <button type="button" class="note-fmt-btn" data-tag="u" title="Underline"><u>U</u></button>
-                        <div class="note-toolbar-divider"></div>
-                        <div class="note-toolbar-group" title="Font Size (12–36)">
-                            <label class="note-toolbar-label">Size</label>
-                            <input type="number" id="note-font-size" min="12" max="36" value="16" class="note-size-input">
-                            <button type="button" class="note-fmt-btn" id="note-apply-size">Apply</button>
+                <!-- ==================== TAB: HAC MEMBERS ==================== -->
+                <div class="manager-tab-panel" id="tab-hac">
+                    <div class="content-block">
+                        <h2 style="margin-top:0;">Manage HAC Members</h2>
+                        <form id="hac-edit-form-actual">
+                            <div id="hac-member-form-container" class="add-employee-form" style="display:none; background:rgba(255,255,255,0.02); padding:20px; border-radius:10px; border:1px solid var(--border); margin-bottom:20px;">
+                                <h3 id="hac-member-form-title" style="margin-top:0;">Edit HAC Member Details</h3>
+                                <input type="hidden" id="edit-hac-member-id">
+                                <div class="form-group">
+                                    <label for="hac-first-name">First Name</label>
+                                    <input type="text" id="hac-first-name" placeholder="First Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hac-last-name">Last Name</label>
+                                    <input type="text" id="hac-last-name" placeholder="Last Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hac-phone-number">Phone Number</label>
+                                    <input type="text" id="hac-phone-number" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hac-driver-license">Driver License #</label>
+                                    <input type="text" id="hac-driver-license" placeholder="DL Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hac-email">Email</label>
+                                    <input type="email" id="hac-email" placeholder="Email Address">
+                                </div>
+                                <div class="employee-form-buttons" style="display:flex; gap:10px; margin-top:18px;">
+                                    <button type="button" id="save-hac-member-button" class="action-button" style="background:var(--accent); border-color:var(--accent-hover); color:white; padding:11px 24px;">Save Changes</button>
+                                    <button type="button" id="cancel-edit-hac-member-button" class="action-button clear-cart-btn">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <h3>Search Members</h3>
+                        <div class="hac-search-container">
+                            <div class="form-group" style="flex-grow:1; margin-bottom:0;">
+                                <input type="text" id="hac-search-term" placeholder="Name, phone, DL, or email...">
+                            </div>
+                            <button id="hac-search-button" class="action-button" type="button" style="background:var(--accent); color:white; border-color:var(--accent);">Search</button>
+                            <button id="hac-clear-search-button" class="action-button clear-cart-btn" type="button">Clear</button>
                         </div>
-                        <div class="note-toolbar-divider"></div>
-                        <div class="note-toolbar-group" title="Font Color">
-                            <label class="note-toolbar-label">Color</label>
-                            <input type="color" id="note-color-picker" value="#ffffff" class="note-color-input">
-                            <button type="button" class="note-fmt-btn" id="note-apply-color">Apply</button>
+                        <div id="hac-member-list-display" class="employee-list" style="margin-top:12px;">
+                            <p class="loading-message">Search for HAC members to display their details.</p>
+                        </div>
+
+                        <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+                            <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:10px;">Monthly HAC Status Management:</p>
+                            <button id="reset-hac-eligibility-button" class="action-button" style="background:rgba(49,112,143,0.3); border-color:rgba(49,112,143,0.5); color:#7ecfef;">Reset All Members to ELIGIBLE for New Month</button>
+                            <p id="hac-reset-status" style="font-size:0.85rem; margin-top:10px;"></p>
+                        </div>
+
+                        <!-- T2 Section (kept) -->
+                        <div class="tier2-management-section" style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+                            <h3>Tier 2 Management</h3>
+                            <div class="hac-search-container" style="margin-bottom:12px;">
+                                <div class="form-group" style="flex-grow:1; margin-bottom:0;">
+                                    <input type="text" id="t2-search-term" placeholder="Search T2 name or phone... (* for all)">
+                                </div>
+                                <button id="t2-search-button" class="action-button" type="button">Search T2</button>
+                            </div>
+                            <div id="t2-member-list-display" class="employee-list" style="min-height:50px; margin-bottom:12px;">
+                                <p class="loading-message">Results will appear here...</p>
+                            </div>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                                <button id="t2-backup-button" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3);">Download HAC Backup (CSV)</button>
+                                <button id="t2-purge-button" class="action-button clear-cart-btn">Purge ALL Tier 2 Members</button>
+                            </div>
+                            <p id="t2-status-msg" style="text-align:center; font-weight:bold; margin-top:10px;"></p>
                         </div>
                     </div>
-                    <textarea id="shift-note-input" rows="4" placeholder="Type a shift note for employees... Use the toolbar above to format text. Highlight text first, then click a format button." style="width:100%; padding:12px; border-radius:0 0 8px 8px; border:1px solid #3a4252; border-top:none; background:#1a1e2a; color:#e2e8f0; font-size:0.95rem; resize:vertical; box-sizing:border-box; font-family: monospace;"></textarea>
-                    <div id="shift-note-preview-wrap" style="margin-top:10px; display:none;">
-                        <p style="font-size:0.78rem; color:#a0aec0; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 6px 0; font-weight:700;">Preview</p>
-                        <div id="shift-note-live-preview" style="background:rgba(0,0,0,0.3); border-radius:8px; padding:12px 16px; min-height:40px; color:#e2e8f0; line-height:1.6;"></div>
-                    </div>
-                    <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
-                        <button id="post-shift-note-btn" class="action-button">Post Note</button>
-                        <button id="clear-shift-note-btn" class="action-button clear-cart-btn">Clear Note</button>
-                        <span id="shift-note-status" style="font-size:0.85rem;"></span>
-                    </div>
-                </div>
-                <hr>
-                <hr>
-
-                <div class="reimbursement-log-section content-block">
-                    <h2>Reimbursement Log</h2>
-                    <button id="export-reimbursement-log-button" class="checkout-button" style="margin-bottom: 15px;">Export Log to CSV</button>
-                    <div id="reimbursement-log-display" class="transactions-table-container" style="max-height: 400px;">
-                        <p><i>Loading reimbursement logs...</i></p>
-                    </div>
                 </div>
 
-                <div class="content-block">
-                    <h2>Transaction Records</h2>
-                    <button id="export" class="checkout-button" style="margin-bottom:15px;">Export to CSV</button>
-                    <div id="transactions" class="transactions-table-container">
-                        <p><i>Loading transactions...</i></p>
+                <!-- ==================== TAB: PROMO & WHEEL ==================== -->
+                <div class="manager-tab-panel" id="tab-promo">
+
+                    <!-- HAC Promo -->
+                    <div class="content-block hac-promo-section">
+                        <h2 style="margin-top:0;">Current HAC Promo</h2>
+                        <div class="form-group" style="max-width:280px;">
+                            <label for="hac-promo-month">Promo Month</label>
+                            <select id="hac-promo-month">
+                                <option value="">-- Select Month --</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                        </div>
+                        <div style="margin:16px 0 8px;">
+                            <p style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin:0 0 10px; font-weight:700;">Always Included (Fixed)</p>
+                            <div class="hac-fixed-item"><span class="hac-fixed-qty">1x</span><span class="hac-fixed-name">Armor</span><span class="hac-fixed-badge">Fixed</span></div>
+                            <div class="hac-fixed-item"><span class="hac-fixed-qty">1x</span><span class="hac-fixed-name">Jerry Can</span><span class="hac-fixed-badge">Fixed</span></div>
+                        </div>
+                        <div style="margin:18px 0 8px;">
+                            <p style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin:0 0 10px; font-weight:700;">Monthly Items</p>
+                            <div id="hac-promo-items-list"></div>
+                            <div style="display:flex; gap:8px; margin-top:10px;">
+                                <button type="button" id="hac-add-item-btn" class="action-button" style="padding:7px 14px; font-size:0.82rem;">+ Add Item</button>
+                                <button type="button" id="hac-clear-items-btn" class="action-button clear-cart-btn" style="padding:7px 14px; font-size:0.82rem;">Clear All</button>
+                            </div>
+                        </div>
+                        <div id="hac-promo-preview" style="margin:16px 0 12px; display:none;">
+                            <p style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin:0 0 8px; font-weight:700;">Preview</p>
+                            <div id="hac-promo-preview-content" style="background:rgba(0,0,0,0.3); border-radius:8px; padding:12px 16px;"></div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:12px; margin-top:8px;">
+                            <button type="button" id="save-hac-promo-button" class="action-button" style="background:var(--success); border-color:var(--success-hover); color:white;">Save Promo</button>
+                            <p id="hac-promo-status" style="margin:0; font-size:0.88rem;"></p>
+                        </div>
                     </div>
 
-                    <h2>Tax Payment Log</h2>
-                    <button id="export-tax-logs" class="checkout-button" style="margin-bottom: 15px;">Export Tax Logs</button>
-                    <div id="tax-payment-logs-display" class="transactions-table-container" style="max-height: 400px;">
-                        <p><i>Loading tax payment logs...</i></p>
+                    <!-- Prize Wheel -->
+                    <div class="content-block hac-prize-wheel-section">
+                        <h2 style="margin-top:0; text-align:center;">HAC Prize Wheel</h2>
+                        <p style="text-align:center; color:var(--text-muted); margin-bottom:20px; font-size:0.88rem;">1 Entry per Member</p>
+                        <div id="wheel-canvas-container">
+                            <canvas id="hac-wheel-canvas" width="500" height="500"
+                                style="max-width:100%; height:auto; border-radius:50%; border:4px solid rgba(255,255,255,0.08); box-shadow:0 0 30px rgba(59,130,246,0.15);"></canvas>
+                            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                                <button id="hac-wheel-load-btn" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3);">Load Members</button>
+                                <button id="hac-wheel-spin-btn" class="action-button checkout-button" disabled style="width:auto; display:inline-flex;">SPIN WHEEL</button>
+                            </div>
+                            <h3 id="hac-wheel-winner-display" style="text-align:center; color:#fcd34d; font-size:1.8rem; height:1.2em; text-shadow:0 0 20px rgba(252,211,77,0.5);"></h3>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-                    <!-- START: HAC PRIZE WHEEL SECTION -->
-        <div class="hac-prize-wheel-section content-block">
-            <h2>HAC Prize Wheel</h2>
-            <p style="text-align: center; color: #cbd5e0; margin-bottom: 20px;">
-                1 Entry per Member
-            </p>
+                <!-- ==================== TAB: LOGS & TAXES ==================== -->
+                <div class="manager-tab-panel" id="tab-logs">
 
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                <!-- The Visual Wheel -->
-                <canvas id="hac-wheel-canvas" width="500" height="500" style="max-width: 100%; height: auto; border-radius: 50%; border: 5px solid #4a5568; box-shadow: 0 0 20px rgba(0,0,0,0.5);"></canvas>
-                
-                <div class="wheel-controls">
-                    <button id="hac-wheel-load-btn" class="action-button" style="background-color: #3182ce;">Load Members</button>
-                    <button id="hac-wheel-spin-btn" class="action-button checkout-button" disabled>SPIN WHEEL</button>
+                    <!-- Outstanding Taxes -->
+                    <div class="content-block" id="tax-summary-section">
+                        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                            <h2 style="margin:0; border-bottom:none; padding-bottom:0;">Outstanding Employee Taxes</h2>
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <span id="tax-summary-last-updated" style="font-size:0.75rem; color:var(--text-muted);">Not yet loaded</span>
+                                <button id="tax-summary-refresh-btn" class="action-button" style="padding:6px 14px; font-size:0.8rem;">⟳ Refresh</button>
+                            </div>
+                        </div>
+                        <div id="tax-summary-list">
+                            <p class="loading-message">Click Refresh to load...</p>
+                        </div>
+                        <p style="font-size:0.72rem; color:var(--text-muted); margin-top:12px; margin-bottom:0;">Auto-refreshes every 10 minutes while this page is open.</p>
+                    </div>
+
+                    <!-- Reimbursement Calculator -->
+                    <div class="reimbursement-section content-block">
+                        <div class="collapsible-header" style="display:flex; align-items:center; gap:12px;">
+                            <h2 style="margin:0; border-bottom:none; padding-bottom:0;">Reimbursement Calculator</h2>
+                            <button id="toggle-reimbursement-btn" class="action-button" style="padding:5px 12px; font-size:0.78rem;">Show</button>
+                        </div>
+                        <div id="reimbursement-content-wrapper">
+                            <div class="employee-selection-reimbursement" style="margin:16px 0; max-width:480px; margin-left:auto; margin-right:auto;">
+                                <div class="form-group">
+                                    <label for="reimbursement-employee-select">Select Employee</label>
+                                    <select id="reimbursement-employee-select">
+                                        <option value="">-- Loading Employees --</option>
+                                    </select>
+                                </div>
+                                <div id="employee-profile" class="content-block" style="display:none; background:rgba(0,0,0,0.2); padding:14px; margin-top:14px; text-align:left;">
+                                    <p style="margin:0; font-size:1rem;"><strong>Selected:</strong> <span id="employee-profile-name"></span></p>
+                                    <p style="margin:6px 0 0; font-size:0.95rem;"><strong>Bank Account #:</strong> <span id="employee-profile-bank" style="font-family:monospace; background:rgba(0,0,0,0.3); padding:2px 6px; border-radius:4px;"></span></p>
+                                </div>
+                            </div>
+                            <div class="items-container pos-grid" id="reimbursement-items-container">
+                                <p class="loading-message">Loading reimbursement items...</p>
+                            </div>
+                            <hr style="margin:28px auto; width:90%;">
+                            <div id="petty-cash-section">
+                                <h3 style="margin-bottom:16px;">Petty Cash Log</h3>
+                                <div class="form-group" style="max-width:400px; margin:0 auto 14px;">
+                                    <label for="petty-cash-amount">Amount ($)</label>
+                                    <input type="number" id="petty-cash-amount" placeholder="$0.00" step="0.01">
+                                </div>
+                                <div class="form-group" style="max-width:400px; margin:0 auto 16px;">
+                                    <label for="petty-cash-note">Reason / Note</label>
+                                    <textarea id="petty-cash-note" rows="2" placeholder="e.g., Office supplies, fuel, etc."></textarea>
+                                </div>
+                            </div>
+                            <div id="reimbursement-summary-section" class="content-block" style="background:rgba(0,0,0,0.2); text-align:center; margin-top:20px; padding:20px;">
+                                <h3 style="font-size:1.6rem; margin:0 0 16px;">Total Reimbursement: $<span id="reimbursement-total">0.00</span></h3>
+                                <div class="reimbursement-buttons-container" style="display:flex; gap:10px; justify-content:center;">
+                                    <button id="log-reimbursement-button" class="action-button checkout-button" style="display:none; width:auto;">Log Reimbursement</button>
+                                    <button id="clear-reimbursement-button" class="action-button clear-cart-btn">Clear All</button>
+                                </div>
+                            </div>
+                            <p id="reimbursement-status-message" style="margin-top:14px; font-weight:bold; text-align:center;"></p>
+                        </div>
+                    </div>
+
+                    <!-- Transaction Records -->
+                    <div class="content-block">
+                        <h2 style="margin-top:0;">Transaction Records</h2>
+                        <button id="export" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); margin-bottom:14px;">Export to CSV</button>
+                        <div id="transactions" class="transactions-table-container" style="max-height:400px; overflow-y:auto;">
+                            <p class="loading-message">Loading transactions...</p>
+                        </div>
+                    </div>
+
+                    <!-- Tax Payment Log -->
+                    <div class="content-block">
+                        <h2 style="margin-top:0;">Tax Payment Log</h2>
+                        <button id="export-tax-logs" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); margin-bottom:14px;">Export Tax Logs</button>
+                        <div id="tax-payment-logs-display" class="transactions-table-container" style="max-height:400px; overflow-y:auto;">
+                            <p class="loading-message">Loading tax payment logs...</p>
+                        </div>
+                    </div>
+
+                    <!-- Reimbursement Log -->
+                    <div class="reimbursement-log-section content-block">
+                        <h2 style="margin-top:0;">Reimbursement Log</h2>
+                        <button id="export-reimbursement-log-button" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); margin-bottom:14px;">Export Log to CSV</button>
+                        <div id="reimbursement-log-display" class="transactions-table-container" style="max-height:400px; overflow-y:auto;">
+                            <p class="loading-message">Loading reimbursement logs...</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Winner Display -->
-                <h3 id="hac-wheel-winner-display" style="text-align: center; color: #f6e05e; font-size: 2rem; height: 1.2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></h3>
-            </div>
-        </div>
-        <!-- END: HAC PRIZE WHEEL SECTION -->
+                <!-- ==================== TAB: SHIFT NOTES ==================== -->
+                <div class="manager-tab-panel" id="tab-shift">
+                    <div class="content-block" id="shift-notes-section">
+                        <h2 style="margin-top:0;">Shift Notes</h2>
+                        <div id="current-shift-note-display" style="margin-bottom:16px;">
+                            <p class="loading-message">Loading current note...</p>
+                        </div>
+                        <hr style="margin-bottom:16px;">
+                        <h3 style="margin-top:0; font-size:0.95rem; color:var(--text-secondary);">Post New Note</h3>
+                        <div class="note-toolbar">
+                            <button type="button" class="note-fmt-btn" data-tag="strong" title="Bold"><b>B</b></button>
+                            <button type="button" class="note-fmt-btn" data-tag="em" title="Italic"><i>I</i></button>
+                            <button type="button" class="note-fmt-btn" data-tag="u" title="Underline"><u>U</u></button>
+                            <div class="note-toolbar-divider"></div>
+                            <div class="note-toolbar-group" title="Font Size">
+                                <label class="note-toolbar-label">Size</label>
+                                <input type="number" id="note-font-size" min="12" max="36" value="16" class="note-size-input">
+                                <button type="button" class="note-fmt-btn" id="note-apply-size">Apply</button>
+                            </div>
+                            <div class="note-toolbar-divider"></div>
+                            <div class="note-toolbar-group" title="Font Color">
+                                <label class="note-toolbar-label">Color</label>
+                                <input type="color" id="note-color-picker" value="#ffffff" class="note-color-input">
+                                <button type="button" class="note-fmt-btn" id="note-apply-color">Apply</button>
+                            </div>
+                        </div>
+                        <textarea id="shift-note-input" rows="4" placeholder="Type a shift note for employees..."
+                            style="width:100%; padding:12px; border-radius:0 0 8px 8px; border:1px solid var(--border); border-top:none; background:var(--bg-input); color:var(--text-primary); font-size:0.92rem; resize:vertical; box-sizing:border-box; font-family:monospace;"></textarea>
+                        <div id="shift-note-preview-wrap" style="margin-top:10px; display:none;">
+                            <p style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.07em; margin:0 0 6px; font-weight:700;">Preview</p>
+                            <div id="shift-note-live-preview" style="background:rgba(0,0,0,0.3); border-radius:8px; padding:12px 16px; min-height:40px; color:var(--text-primary); line-height:1.6;"></div>
+                        </div>
+                        <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap;">
+                            <button id="post-shift-note-btn" class="action-button" style="background:var(--accent); color:white; border-color:var(--accent);">Post Note</button>
+                            <button id="clear-shift-note-btn" class="action-button clear-cart-btn">Clear Note</button>
+                            <span id="shift-note-status" style="font-size:0.85rem;"></span>
+                        </div>
+                    </div>
+                </div>
 
-        </div> <!-- End #manager-content -->
+            </div><!-- end .manager-container -->
+        </div><!-- end #manager-content -->
 
-    </div>
-    <footer>
-      <div style="text-align: center; margin-top: 40px;">
-      <small style="font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px black, -1px -1px 2px black;">
-        Website designed by Preston Stone / Lilcrash15.<br>
-        Website to be used by Mikes Sporting Goods employees on BLRP only.
-      </small>
-    </div>
-    </footer>
+    </div><!-- end .page-content-wrapper -->
+
+<footer>
+  <div style="text-align: center; margin-top: 40px;">
+  <small style="font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px black, -1px -1px 2px black;">
+    Website designed by Preston Stone / Lilcrash15.<br>
+    Website to be used by Mikes Sporting Goods employees on BLRP only.
+  </small>
+</div>
+</footer>
+
+    <!-- Tab switching script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabBtns = document.querySelectorAll('.manager-tab-btn');
+            const tabPanels = document.querySelectorAll('.manager-tab-panel');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabPanels.forEach(p => p.classList.remove('active'));
+                    btn.classList.add('active');
+                    const target = document.getElementById(btn.dataset.tab);
+                    if (target) target.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

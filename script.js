@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let allPosItemElements = [];
         let managedEmployees = [];
-        // --- HAC ADDITIONS ---
+        // --- HAC TIER 2 ADDITIONS ---
+        let activeHacTier = 1;
         let activeHacDuration = "Lifetime";
         let activeHacItemRef = null;
         const taxRatesByRank = { "Trainee": 0.20, "Staff": 0.15, "Senior Staff": 0.10, "Manager": 0.00 };
@@ -459,10 +460,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // --- END: UPDATED CHECKOUT FUNCTION ---
 
-        // Revised to handle HAC signup
+        // Revised to handle multiple Tier 1 & Tier 2 buttons
         function openHacSignupModal(itemEl) {
             activeHacItemRef = itemEl;
+            activeHacTier = parseInt(itemEl.dataset.hacTier) || 1;
             activeHacDuration = itemEl.dataset.hacDuration || "Lifetime";
+
+            // Toggle T2 Checkbox Visibility
+            const t2Container = document.getElementById('hac-tier2-confirmation-container');
+            const t2Checkbox = document.getElementById('hac-modal-tier2-confirm');
+            if (t2Container) t2Container.style.display = (activeHacTier === 2) ? 'flex' : 'none';
+            if (t2Checkbox) t2Checkbox.checked = false;
 
             if (hacSignupModalEl) {
                 if(hacModalFirstNameInput) hacModalFirstNameInput.value = '';
@@ -480,9 +488,16 @@ document.addEventListener('DOMContentLoaded', () => {
 async function submitHacMemberSignup() {
             const firstName = hacModalFirstNameInput.value.trim();
             const lastName = hacModalLastNameInput.value.trim();
+            const t2Checked = document.getElementById('hac-modal-tier2-confirm').checked;
 
             if (!firstName || !lastName) {
                 if(hacModalStatusEl) { hacModalStatusEl.textContent = "First and Last name required."; hacModalStatusEl.style.color = "red"; } 
+                return;
+            }
+
+            // Enforce T2 Checkbox
+            if (activeHacTier === 2 && !t2Checked) {
+                if(hacModalStatusEl) { hacModalStatusEl.textContent = "Please check the T2 confirmation box."; hacModalStatusEl.style.color = "red"; }
                 return;
             }
 
@@ -492,15 +507,20 @@ async function submitHacMemberSignup() {
             let expirationDate = null;
             let monthsToAdd = 0;
 
+            // 1. Determine how many months to add based on selection
             if (activeHacDuration === "1 Month") monthsToAdd = 1;
             else if (activeHacDuration === "3 Months") monthsToAdd = 3;
             else if (activeHacDuration === "6 Months") monthsToAdd = 6;
             else if (activeHacDuration === "1 Year") monthsToAdd = 12;
 
+            // 2. If it's a timed membership, calculate the 1st of that future month
             if (monthsToAdd > 0) {
                 let exp = new Date();
+                // Move to the target month
                 exp.setMonth(exp.getMonth() + monthsToAdd);
+                // Snap to the 1st day of that month
                 exp.setDate(1);
+                // Set to midnight for clean comparisons
                 exp.setHours(0, 0, 0, 0);
                 expirationDate = exp;
             }
@@ -511,6 +531,7 @@ async function submitHacMemberSignup() {
                 driverLicense: hacModalDriverLicenseInput.value.trim() || null,
                 email: hacModalEmailInput.value.trim().toLowerCase() || null,
                 isEligible: true,
+                tier: activeHacTier,
                 membershipDuration: activeHacDuration,
                 expirationDate: expirationDate,
                 membershipPurchaseDate: firestore.serverTimestamp(),
@@ -622,12 +643,17 @@ function renderHacSearchResultsForStaff(members) {
                 const eligText = mem.isEligible ? 'ELIGIBLE' : 'NOT ELIGIBLE';
                 const purchaseDate = mem.membershipPurchaseDate?.toDate ? mem.membershipPurchaseDate.toDate().toLocaleDateString() : 'N/A';
                 
+                // --- TIER LOGIC ---
+                const tier = mem.tier || 1;
+                const tierLabel = tier === 2 ? `<span style="color: #f6e05e; font-weight: bold; margin-left: 5px;">(Tier 2)</span>` : `<span style="color: #61dafb; font-size: 0.8em; margin-left: 5px;">(Tier 1)</span>`;
+
                 // --- EXPIRATION DISPLAY ---
                 let expirationHtml = '';
-                if (mem.expirationDate) {
+                if (tier === 2 && mem.expirationDate) {
                     const expiry = mem.expirationDate.toDate();
                     const expiryStr = expiry.toLocaleDateString();
                     const isExpired = now > expiry;
+                    
                     expirationHtml = isExpired 
                         ? `<br><span style="color: #e53e3e; font-weight: bold;">EXPIRED: Membership ended on ${expiryStr}</span>`
                         : `<br><span style="color: #48bb78;">VALID: Active until ${expiryStr}</span>`;
@@ -635,9 +661,10 @@ function renderHacSearchResultsForStaff(members) {
                     expirationHtml = `<br><span style="color: #cbd5e0;">Status: Lifetime Member</span>`;
                 }
 
-                // Show claim button for all eligible members
-                let claimBtnHTML = '';
-                if (mem.isEligible) {
+                // --- BUTTON LOGIC (RESTRICTED TO TIER 1) ---
+                let claimBtnHTML = ''; 
+                // Only show the button if they are NOT Tier 2 and are ELIGIBLE
+                if (tier !== 2 && mem.isEligible) {
                     claimBtnHTML = `<button class="action-button claim-benefit-button" data-member-id="${mem.id}" data-member-name="${mem.firstName} ${mem.lastName}">Claim Benefit</button>`;
                 }
 
@@ -645,6 +672,7 @@ function renderHacSearchResultsForStaff(members) {
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
                         <span>
                             <strong>${mem.firstName} ${mem.lastName}</strong> 
+                            ${tierLabel}
                             <span class="${eligClass}">${eligText}</span>
                         </span>
                         ${claimBtnHTML}
@@ -1032,12 +1060,14 @@ function updateDisplayBox() {
         boxDiv.style.maxHeight = '0px';
         boxDiv.style.paddingTop = '0px';
         boxDiv.style.paddingBottom = '0px';
+        boxDiv.style.marginTop = '0px';   // clear the margin so no ghost line
+        boxDiv.style.display = 'none';    // fully hide so nothing bleeds through
         return;
     }
 
     boxDiv.style.display = 'block';
     boxDiv.style.padding = '15px';
-    boxDiv.style.marginTop = '20px';
+    boxDiv.style.marginTop = '12px';
     
     entries.forEach(([item, count]) => {
         const div = document.createElement('div');
