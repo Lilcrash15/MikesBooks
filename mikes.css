@@ -764,12 +764,62 @@ button:disabled, .action-button:disabled { opacity: 0.4 !important; cursor: not-
 /* HAC search area */
 .hac-search-container { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 14px; }
 .hac-member-results-display {
-    min-height: 60px; max-height: 300px; overflow-y: auto;
-    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-    border-radius: var(--radius-md); padding: 12px;
+    min-height: 60px; max-height: 380px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 8px;
+    background: transparent; border: none;
+    padding: 2px 0;
     font-size: 0.88rem; color: var(--text-secondary);
 }
-.current-promo-staff { margin-top: 14px; }
+
+/* Each member result card */
+.member-result-item {
+    background: rgba(20, 25, 36, 0.9);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    transition: border-color var(--transition);
+}
+.member-result-item:hover { border-color: rgba(255,255,255,0.15); }
+
+/* Name row */
+.member-result-item > div:first-child {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 8px !important; flex-wrap: wrap; gap: 8px;
+}
+.member-result-item strong {
+    color: var(--text-primary); font-size: 0.95rem; font-weight: 700;
+}
+
+/* Eligibility badges */
+.hac-eligible {
+    display: inline-block; padding: 2px 9px; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 700; margin-left: 6px;
+    background: rgba(16,185,129,0.15); color: #6ee7b7;
+    border: 1px solid rgba(16,185,129,0.3); vertical-align: middle;
+    text-transform: uppercase; letter-spacing: 0.05em;
+}
+.hac-not-eligible {
+    display: inline-block; padding: 2px 9px; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 700; margin-left: 6px;
+    background: rgba(239,68,68,0.12); color: #fca5a5;
+    border: 1px solid rgba(239,68,68,0.25); vertical-align: middle;
+    text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* Member meta info row */
+.member-result-item > div:last-child {
+    font-size: 0.8rem !important; color: var(--text-secondary) !important;
+    line-height: 1.7;
+}
+
+/* Claim benefit button */
+.claim-benefit-button {
+    background: var(--success) !important; border-color: var(--success-hover) !important;
+    color: white !important; padding: 7px 16px !important; font-size: 0.82rem !important;
+    font-weight: 700 !important; border-radius: var(--radius-sm) !important;
+    white-space: nowrap; flex-shrink: 0;
+}
+.claim-benefit-button:hover { background: var(--success-hover) !important; }
 
 /* HAC promo builder */
 .hac-item-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
