@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // --- END: Loading screen logic ---
 
+    // --- Number formatter: comma-separated, no decimals (e.g. 7410 → "7,410") ---
+    function fmt(n) {
+        return Math.round(parseFloat(n) || 0).toLocaleString('en-US');
+    }
+
     console.log("manager.js: DOMContentLoaded fired. Waiting for firebaseReady event...");
     let appLogicHasRun_Manager = false;
     let db_manager, firestore_manager;
@@ -651,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         function renderTransactions_ManagerPage(logToRender) {
             const targetDiv = document.getElementById('transactions'); if (!targetDiv) { return; } targetDiv.innerHTML = ''; if (!logToRender || logToRender.length === 0) { targetDiv.innerHTML = "<p><i>No transaction records found.</i></p>"; return; } const table = document.createElement('table'); table.innerHTML = `<thead><tr><th>Employee</th><th>Rank</th><th>Date</th><th>Details</th><th>SubTotal/Net ($)</th><th>Fee Rate</th><th>Fee/MikesNet ($)</th><th>Emp. Net ($)</th><th>Type</th></tr></thead><tbody></tbody>`; const tbody = table.querySelector('tbody');
-            logToRender.forEach(t => { if (!t || typeof t !== 'object') { return; } const row = tbody.insertRow(); let itemsStr = 'N/A'; if (t.items && Array.isArray(t.items) && t.items.length > 0) { itemsStr = t.items.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1})`).join('; '); } else if (t.itemsTraded && Array.isArray(t.itemsTraded) && t.itemsTraded.length > 0) { itemsStr = t.itemsTraded.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1}) [${it.type || 'N/A'}]`).join('; '); } itemsStr = `"${itemsStr.replace(/"/g, '""')}"`; let subTotalVal = 0; if (t.transactionType === "Buy/Sell Trade") { subTotalVal = (parseFloat(t.totalValueSoldToCustomer) || 0) - (parseFloat(t.totalValueBoughtFromCustomer) || 0); } else { subTotalVal = parseFloat(t.subTotal !== undefined ? t.subTotal : t.fullSaleTotal) || 0; } let feePaidVal = 0; if (t.transactionType === "Buy/Sell Trade") { feePaidVal = parseFloat(t.netAmountForMikes) || 0; } else { feePaidVal = parseFloat(t.taxAmountPaidToMikes) || 0; } let netEmpVal = '0.00'; if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A'; } else { netEmpVal = (parseFloat(t.netTotalForEmployee) || 0).toFixed(2); } const taxRateDisplay = t.taxRateApplied || (t.transactionType === "Buy/Sell Trade" ? 'N/A' : '0%'); const displayDate = t.displayDate || (t.createdAt && t.createdAt.toDate ? t.createdAt.toDate().toLocaleString() : 'N/A'); row.innerHTML = `<td>${t.employeeName||'N/A'}</td><td>${t.employeeRank||'N/A'}</td><td>${displayDate}</td><td>${itemsStr==='"N/A"'?'N/A':itemsStr.substring(1,itemsStr.length-1)}</td><td>${subTotalVal.toFixed(2)}</td><td>${taxRateDisplay}</td><td>${feePaidVal.toFixed(2)}</td><td>${netEmpVal}</td><td>${t.transactionType||'Unknown'}</td>`; });
+            logToRender.forEach(t => { if (!t || typeof t !== 'object') { return; } const row = tbody.insertRow(); let itemsStr = 'N/A'; if (t.items && Array.isArray(t.items) && t.items.length > 0) { itemsStr = t.items.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1})`).join('; '); } else if (t.itemsTraded && Array.isArray(t.itemsTraded) && t.itemsTraded.length > 0) { itemsStr = t.itemsTraded.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1}) [${it.type || 'N/A'}]`).join('; '); } itemsStr = `"${itemsStr.replace(/"/g, '""')}"`; let subTotalVal = 0; if (t.transactionType === "Buy/Sell Trade") { subTotalVal = (parseFloat(t.totalValueSoldToCustomer) || 0) - (parseFloat(t.totalValueBoughtFromCustomer) || 0); } else { subTotalVal = parseFloat(t.subTotal !== undefined ? t.subTotal : t.fullSaleTotal) || 0; } let feePaidVal = 0; if (t.transactionType === "Buy/Sell Trade") { feePaidVal = parseFloat(t.netAmountForMikes) || 0; } else { feePaidVal = parseFloat(t.taxAmountPaidToMikes) || 0; } let netEmpVal = '$0'; if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A'; } else { netEmpVal = '$' + fmt(t.netTotalForEmployee); } const taxRateDisplay = t.taxRateApplied || (t.transactionType === "Buy/Sell Trade" ? 'N/A' : '0%'); const displayDate = t.displayDate || (t.createdAt && t.createdAt.toDate ? t.createdAt.toDate().toLocaleString() : 'N/A'); row.innerHTML = `<td>${t.employeeName||'N/A'}</td><td>${t.employeeRank||'N/A'}</td><td>${displayDate}</td><td>${itemsStr==='"N/A"'?'N/A':itemsStr.substring(1,itemsStr.length-1)}</td><td>$${fmt(subTotalVal)}</td><td>${taxRateDisplay}</td><td>$${fmt(feePaidVal)}</td><td>${t.transactionType==="Buy/Sell Trade"?'N/A':'$'+fmt(t.netTotalForEmployee)}</td><td>${t.transactionType||'Unknown'}</td>`; });
             targetDiv.appendChild(table);
         }
         async function resetAllHacEligibility_ManagerPage() {
@@ -679,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (taxPaymentLogsData_mgr.length === 0) { taxPaymentLogsDisplay_el.innerHTML = "<p><i>No tax payment logs found.</i></p>"; return; }
             const table = document.createElement('table'); table.innerHTML = `<thead><tr><th>Employee (Taxes For)</th><th>Processed By</th><th>Amount Cleared ($)</th><th># Trans.</th><th>Date Cleared</th></tr></thead><tbody></tbody>`;
             const tbody = table.querySelector('tbody');
-            taxPaymentLogsData_mgr.forEach(log => { const row = tbody.insertRow(); row.insertCell().textContent = log.employeeName || 'N/A'; row.insertCell().textContent = log.processingEmployeeName || 'N/A'; row.insertCell().textContent = (log.totalAmountCleared !== undefined ? parseFloat(log.totalAmountCleared).toFixed(2) : '0.00'); row.insertCell().textContent = log.transactionIdsCount || 0; row.insertCell().textContent = log.clearedAt; });
+            taxPaymentLogsData_mgr.forEach(log => { const row = tbody.insertRow(); row.insertCell().textContent = log.employeeName || 'N/A'; row.insertCell().textContent = log.processingEmployeeName || 'N/A'; row.insertCell().textContent = '$' + fmt(log.totalAmountCleared !== undefined ? log.totalAmountCleared : 0); row.insertCell().textContent = log.transactionIdsCount || 0; row.insertCell().textContent = log.clearedAt; });
             taxPaymentLogsDisplay_el.appendChild(table);
         }
 
@@ -1081,6 +1086,130 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hideLoadingScreen();
 
+        // --- SELF-CONTAINED TIER 2 MANAGER FUNCTION ---
+async function initializeTier2Manager() {
+    const t2SearchBtn = document.getElementById('t2-search-button');
+    const t2SearchInput = document.getElementById('t2-search-term');
+    const t2Display = document.getElementById('t2-member-list-display');
+    const t2PurgeBtn = document.getElementById('t2-purge-button');
+    const t2BackupBtn = document.getElementById('t2-backup-button');
+    const t2Status = document.getElementById('t2-status-msg');
+
+    // 1. Search Logic (Tier 2 Only) — use * to show all T2 members
+    t2SearchBtn.onclick = async () => {
+        const raw = t2SearchInput.value.trim();
+        const term = raw.toLowerCase();
+        const isWildcard = raw === '*';
+
+        if (!raw) {
+            t2Display.innerHTML = '<p style="color:#a0aec0;"><em>Enter a name to search, or type * to show all Tier 2 members.</em></p>';
+            return;
+        }
+
+        t2Display.innerHTML = isWildcard ? "Loading all Tier 2 members..." : "Searching...";
+
+        try {
+            const q = firestore_manager.query(
+                firestore_manager.collection(db_manager, "hacMembers"),
+                firestore_manager.where("tier", "==", 2),
+                firestore_manager.orderBy("lastName")
+            );
+            const snap = await firestore_manager.getDocs(q);
+            t2Display.innerHTML = '';
+
+            let foundCount = 0;
+            snap.forEach(doc => {
+                const m = doc.data();
+                const fullName = `${m.firstName} ${m.lastName}`;
+                // Wildcard shows all; otherwise filter by name/phone match
+                const matches = isWildcard || fullName.toLowerCase().includes(term) || (m.phoneNumber || '').toLowerCase().includes(term);
+                if (!matches) return;
+
+                foundCount++;
+                const div = document.createElement('div');
+                div.className = 'employee-list-item';
+                div.innerHTML = `
+                    <span><strong>${fullName}</strong> - T2</span>
+                    <button class="action-button clear-cart-btn" onclick="deleteIndividualT2('${doc.id}')">Delete</button>
+                `;
+                t2Display.appendChild(div);
+            });
+
+            if (foundCount === 0) {
+                t2Display.innerHTML = isWildcard
+                    ? '<p>No Tier 2 members exist yet.</p>'
+                    : '<p>No Tier 2 members found matching that search.</p>';
+            } else if (isWildcard) {
+                // Prepend a count banner when showing all
+                const banner = document.createElement('p');
+                banner.style.cssText = 'color:#68d391; font-weight:bold; margin-bottom:10px;';
+                banner.textContent = `Showing all ${foundCount} Tier 2 member${foundCount !== 1 ? 's' : ''}`;
+                t2Display.insertBefore(banner, t2Display.firstChild);
+            }
+        } catch (e) {
+            console.error(e);
+            t2Display.innerHTML = '<p style="color:#e74c3c;">Error loading members. Check console.</p>';
+        }
+    };
+
+    // Allow pressing Enter in the search field to trigger search
+    t2SearchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') t2SearchBtn.click();
+    });
+
+    // 2. Individual Delete Helper
+    window.deleteIndividualT2 = async (id) => {
+        if (confirm("Permanently delete this specific Tier 2 member?")) {
+            await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", id));
+            t2SearchBtn.click(); // Refresh list
+        }
+    };
+
+    // 3. Purge All Tier 2 Logic
+    t2PurgeBtn.onclick = async () => {
+        if (!confirm("Are you sure? This will delete EVERY Tier 2 member in the database. Tier 1 (Lifetime) will not be touched.")) return;
+        t2Status.textContent = "Purging database...";
+        
+        try {
+            const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.where("tier", "==", 2));
+            const snap = await firestore_manager.getDocs(q);
+            const promises = snap.docs.map(d => firestore_manager.deleteDoc(d.ref));
+            await Promise.all(promises);
+            
+            t2Status.style.color = "limegreen";
+            t2Status.textContent = `Success! Removed ${promises.length} Tier 2 entries.`;
+            t2Display.innerHTML = '';
+        } catch (e) {
+            t2Status.style.color = "red";
+            t2Status.textContent = "Error: " + e.message;
+        }
+    };
+
+    // 4. Backup Logic (Full collection backup for safety)
+    t2BackupBtn.onclick = async () => {
+        t2Status.textContent = "Generating CSV...";
+        try {
+            const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers"));
+            let rows = [["First Name", "Last Name", "Tier", "Phone", "DL", "Eligible"]];
+            snap.forEach(d => {
+                const m = d.data();
+                rows.push([m.firstName, m.lastName, m.tier || 1, m.phoneNumber || "N/A", m.driverLicense || "N/A", m.isEligible]);
+            });
+            const csv = rows.map(r => r.join(",")).join("\n");
+            const blob = new Blob(["\uFEFF" + csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "HAC_Full_Backup.csv";
+            link.click();
+            t2Status.textContent = "Backup Complete.";
+        } catch (e) { alert("Backup failed."); }
+    };
+}
+
+// 5. CALL THE FUNCTION
+initializeTier2Manager();
+
 // --- SELF-CONTAINED PRIZE WHEEL FUNCTION ---
 async function initializeHacPrizeWheel() {
     const canvas = document.getElementById('hac-wheel-canvas');
@@ -1099,7 +1228,7 @@ async function initializeHacPrizeWheel() {
     let spinTimeTotal = 0;
     let ctx = canvas.getContext("2d");
 
-    // 1. Load Data - 1 entry per member
+    // 1. Load Data with Tier Logic
     loadBtn.onclick = async () => {
         winnerText.textContent = "Importing members...";
         try {
@@ -1109,7 +1238,13 @@ async function initializeHacPrizeWheel() {
             snap.forEach(doc => {
                 const m = doc.data();
                 const name = `${m.firstName} ${m.lastName}`;
-                wheelEntries.push(name);
+                
+                // Tier 2 gets 2 entries, Tier 1 gets 1 entry
+                const tickets = parseInt(m.tier) === 2 ? 2 : 1;
+                
+                for (let i = 0; i < tickets; i++) {
+                    wheelEntries.push(name);
+                }
             });
 
             if (wheelEntries.length === 0) {
@@ -1117,13 +1252,13 @@ async function initializeHacPrizeWheel() {
                 return;
             }
 
-            // Shuffle entries
+            // Shuffle so T2 entries aren't always side-by-side
             wheelEntries.sort(() => Math.random() - 0.5);
 
             arc = Math.PI / (wheelEntries.length / 2);
             drawWheel();
             spinBtn.disabled = false;
-            winnerText.textContent = `Ready! (${wheelEntries.length} entries)`;
+            winnerText.textContent = `Ready! (${wheelEntries.length} tickets)`;
 
         } catch (e) { console.error(e); winnerText.textContent = "Load Error."; }
     };
@@ -1360,7 +1495,7 @@ initializeHacPrizeWheel();
                     const itemsString = (d.items || []).map(i => `${i.item}(x${i.qty})`).join('; ');
                     const dateString = d.createdAt?.toDate?.().toLocaleString() || 'N/A';
                     const row = tbody.insertRow();
-                    row.innerHTML = `<td>${d.employeeName||'N/A'}</td><td>${d.bankAccount||'N/A'}</td><td>${(d.totalAmount||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td><td style="white-space:normal;">${itemsString}</td><td>${dateString}</td>`;
+                    row.innerHTML = `<td>${d.employeeName||'N/A'}</td><td>${d.bankAccount||'N/A'}</td><td>$${fmt(d.totalAmount||0)}</td><td style="white-space:normal;">${itemsString}</td><td>${dateString}</td>`;
                 });
                 logDisplay.innerHTML = '';
                 logDisplay.appendChild(table);
