@@ -13,6 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return Math.round(parseFloat(n) || 0).toLocaleString('en-US');
     }
 
+    // --- Table row filter by employee name (column 0 = employee name) ---
+    function attachTableSearch(inputId, tableContainerId) {
+        const input = document.getElementById(inputId);
+        const container = document.getElementById(tableContainerId);
+        if (!input || !container) return;
+        // Remove old listener if any
+        input.oninput = () => {
+            const term = input.value.toLowerCase().trim();
+            const tbody = container.querySelector('tbody');
+            if (!tbody) return;
+            Array.from(tbody.rows).forEach(row => {
+                const empName = (row.cells[0]?.textContent || '').toLowerCase();
+                row.style.display = (!term || empName.includes(term)) ? '' : 'none';
+            });
+        };
+    }
+
     console.log("manager.js: DOMContentLoaded fired. Waiting for firebaseReady event...");
     let appLogicHasRun_Manager = false;
     let db_manager, firestore_manager;
@@ -658,6 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetDiv = document.getElementById('transactions'); if (!targetDiv) { return; } targetDiv.innerHTML = ''; if (!logToRender || logToRender.length === 0) { targetDiv.innerHTML = "<p><i>No transaction records found.</i></p>"; return; } const table = document.createElement('table'); table.innerHTML = `<thead><tr><th>Employee</th><th>Rank</th><th>Date</th><th>Details</th><th>SubTotal/Net ($)</th><th>Fee Rate</th><th>Fee/MikesNet ($)</th><th>Emp. Net ($)</th><th>Type</th></tr></thead><tbody></tbody>`; const tbody = table.querySelector('tbody');
             logToRender.forEach(t => { if (!t || typeof t !== 'object') { return; } const row = tbody.insertRow(); let itemsStr = 'N/A'; if (t.items && Array.isArray(t.items) && t.items.length > 0) { itemsStr = t.items.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1})`).join('; '); } else if (t.itemsTraded && Array.isArray(t.itemsTraded) && t.itemsTraded.length > 0) { itemsStr = t.itemsTraded.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1}) [${it.type || 'N/A'}]`).join('; '); } itemsStr = `"${itemsStr.replace(/"/g, '""')}"`; let subTotalVal = 0; if (t.transactionType === "Buy/Sell Trade") { subTotalVal = (parseFloat(t.totalValueSoldToCustomer) || 0) - (parseFloat(t.totalValueBoughtFromCustomer) || 0); } else { subTotalVal = parseFloat(t.subTotal !== undefined ? t.subTotal : t.fullSaleTotal) || 0; } let feePaidVal = 0; if (t.transactionType === "Buy/Sell Trade") { feePaidVal = parseFloat(t.netAmountForMikes) || 0; } else { feePaidVal = parseFloat(t.taxAmountPaidToMikes) || 0; } let netEmpVal = '$0'; if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A'; } else { netEmpVal = '$' + fmt(t.netTotalForEmployee); } const taxRateDisplay = t.taxRateApplied || (t.transactionType === "Buy/Sell Trade" ? 'N/A' : '0%'); const displayDate = t.displayDate || (t.createdAt && t.createdAt.toDate ? t.createdAt.toDate().toLocaleString() : 'N/A'); row.innerHTML = `<td>${t.employeeName||'N/A'}</td><td>${t.employeeRank||'N/A'}</td><td>${displayDate}</td><td>${itemsStr==='"N/A"'?'N/A':itemsStr.substring(1,itemsStr.length-1)}</td><td>$${fmt(subTotalVal)}</td><td>${taxRateDisplay}</td><td>$${fmt(feePaidVal)}</td><td>${t.transactionType==="Buy/Sell Trade"?'N/A':'$'+fmt(t.netTotalForEmployee)}</td><td>${t.transactionType||'Unknown'}</td>`; });
             targetDiv.appendChild(table);
+            attachTableSearch('txn-search', 'transactions');
         }
         async function resetAllHacEligibility_ManagerPage() {
              if(!confirm("Reset ALL?")) return; if(resetHacEligibilityButton)resetHacEligibilityButton.disabled=true; if(hacResetStatus)hacResetStatus.textContent="Processing...";
@@ -686,6 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tbody = table.querySelector('tbody');
             taxPaymentLogsData_mgr.forEach(log => { const row = tbody.insertRow(); row.insertCell().textContent = log.employeeName || 'N/A'; row.insertCell().textContent = log.processingEmployeeName || 'N/A'; row.insertCell().textContent = '$' + fmt(log.totalAmountCleared !== undefined ? log.totalAmountCleared : 0); row.insertCell().textContent = log.transactionIdsCount || 0; row.insertCell().textContent = log.clearedAt; });
             taxPaymentLogsDisplay_el.appendChild(table);
+            attachTableSearch('tax-log-search', 'tax-payment-logs-display');
         }
 
         function attachManagerEventListeners_ManagerPage() {
@@ -1499,6 +1518,7 @@ initializeHacPrizeWheel();
                 });
                 logDisplay.innerHTML = '';
                 logDisplay.appendChild(table);
+                attachTableSearch('reimb-log-search', 'reimbursement-log-display');
             } catch (err) {
                 console.error('Error rendering log:', err);
                 logDisplay.innerHTML = '<p><i>Error loading logs. Please check console (F12).</i></p>';

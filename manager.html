@@ -394,7 +394,10 @@
                     <!-- Transaction Records -->
                     <div class="content-block">
                         <h2 style="margin-top:0;">Transaction Records</h2>
-                        <button id="export" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); margin-bottom:14px;">Export to CSV</button>
+                        <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
+                            <input type="text" id="txn-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
+                            <button id="export" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export to CSV</button>
+                        </div>
                         <div id="transactions" class="transactions-table-container" style="max-height:400px; overflow-y:auto;">
                             <p class="loading-message">Loading transactions...</p>
                         </div>
@@ -403,7 +406,10 @@
                     <!-- Tax Payment Log -->
                     <div class="content-block">
                         <h2 style="margin-top:0;">Tax Payment Log</h2>
-                        <button id="export-tax-logs" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); margin-bottom:14px;">Export Tax Logs</button>
+                        <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
+                            <input type="text" id="tax-log-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
+                            <button id="export-tax-logs" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export Tax Logs</button>
+                        </div>
                         <div id="tax-payment-logs-display" class="transactions-table-container" style="max-height:400px; overflow-y:auto;">
                             <p class="loading-message">Loading tax payment logs...</p>
                         </div>
@@ -412,7 +418,10 @@
                     <!-- Reimbursement Log -->
                     <div class="reimbursement-log-section content-block">
                         <h2 style="margin-top:0;">Reimbursement Log</h2>
-                        <button id="export-reimbursement-log-button" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); margin-bottom:14px;">Export Log to CSV</button>
+                        <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
+                            <input type="text" id="reimb-log-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
+                            <button id="export-reimbursement-log-button" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export Log to CSV</button>
+                        </div>
                         <div id="reimbursement-log-display" class="transactions-table-container" style="max-height:400px; overflow-y:auto;">
                             <p class="loading-message">Loading reimbursement logs...</p>
                         </div>
@@ -464,14 +473,9 @@
 
     </div><!-- end .page-content-wrapper -->
 
-<footer>
-  <div style="text-align: center; margin-top: 40px;">
-  <small style="font-size: 1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px black, -1px -1px 2px black;">
-    Website designed by Preston Stone / Lilcrash15.<br>
-    Website to be used by Mikes Sporting Goods employees on BLRP only.
-  </small>
-</div>
-</footer>
+    <footer>
+        <small>Website designed by Preston Stone / Lilcrash15 · Mike's Sporting Goods · BLRP Only</small>
+    </footer>
 
     <!-- Tab switching script -->
     <script>
