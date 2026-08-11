@@ -1,13 +1,3 @@
-# Dynasty 8 — Clean URL rewrites
-# Format: /clean-url  /actual-file.html  200
-# The 200 means rewrite (URL stays clean, right file is served)
-
-/home               /index.html             200
-/manager            /manager.html           200
-/leadership         /manager.html           200
-/ads                /ads.html               200
-/interiors          /interiors.html         200
-/projects           /projects.html          200
-/requests           /design-requests.html   200
-/design-requests    /design-requests.html   200
-/sop                /sop.html               200
+/manager    /manager.html   200
+/taxes      /taxes.html     200
+/ads        /ads.html       200
