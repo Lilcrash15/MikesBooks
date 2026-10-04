@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "MSG Keychain", "MSG Cooler", "MK2 Skins",
                 "Mount with Tusk/Antler",
                 // Additional items from POS
-                "Fish Jerky", "GPS", "Peyote Chunk", "Tire Repair Kit", "Weapon Disable Tool"
+                "Fish Jerky", "GPS", "Peyote Chunk", "Tire Repair Kit", "Weapon Disable Tool", "MSG Candy Bucket",
             ].sort();
         }
 
