@@ -222,11 +222,14 @@ const MikesTimeClock = (() => {
         return h ? `${h}h ${String(m).padStart(2, '0')}m` : `${m}m`;
     }
 
-    // Latest transaction by this employee between clock-in and `until`.
+    // Latest transaction by this employee between clock-in and `until`, looking at most 24 hours past
+    // clock-in (keeps Firebase reads small; LCAI uses the same window).
     // Single-field range query (no composite index needed); filtered by name here.
     async function lastSaleDuring(db, fs, shift, until) {
         const a = toDate(shift.clockIn);
-        const q = fs.query(fs.collection(db, 'transactions'), fs.where('createdAt', '>=', a));
+        const windowEnd = new Date(a.getTime() + 24 * 3600000);
+        if (until > windowEnd) until = windowEnd;
+        const q = fs.query(fs.collection(db, 'transactions'), fs.where('createdAt', '>=', a), fs.where('createdAt', '<=', until));
         const snap = await fs.getDocs(q);
         let last = null;
         snap.forEach(d => {
