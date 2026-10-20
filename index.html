@@ -8,7 +8,7 @@
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       const firebaseConfig = {
         apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10",
         authDomain: "msg-website-bca5f.firebaseapp.com",
@@ -21,7 +21,7 @@
       try {
         const app = initializeApp(firebaseConfig);
         window.db = getFirestore(app);
-        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc };
+        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp };
         window.isFirebaseReady = true;
         document.dispatchEvent(new CustomEvent('firebaseReady', { detail: { db: window.db, functions: window.firestoreFunctions } }));
       } catch (error) {
@@ -84,14 +84,43 @@
             <p id="main-login-error" class="login-error" style="display:none;">Incorrect password. Please try again.</p>
         </div>
 
+        <!-- CLOCK IN CARD — shown after login until the employee clocks in -->
+        <div id="clock-in-container" class="login-card clock-card" style="display:none;">
+            <div class="login-card-header">
+                <h2 class="login-card-title">Ready to work?</h2>
+                <p class="login-card-subtitle">Signed in as <strong id="clock-in-employee-name"></strong></p>
+            </div>
+            <p id="clock-in-notice" class="clock-notice" style="display:none;"></p>
+            <div id="clock-in-progress" class="clock-progress" style="display:none;">
+                <div class="clock-progress-head">
+                    <span id="clock-progress-label">This month</span>
+                    <span id="clock-progress-value">0m of 8h</span>
+                </div>
+                <div class="clock-progress-track"><div id="clock-progress-bar" class="clock-progress-bar"></div></div>
+                <p id="clock-progress-note" class="clock-progress-note"></p>
+            </div>
+            <button type="button" id="clock-in-btn" class="login-btn clock-in-btn">⏱ Clock In</button>
+            <p id="clock-in-error" class="login-error" style="display:none;"></p>
+            <a href="#" id="clock-in-logout" class="clock-in-logout">Not you? Log out</a>
+        </div>
+
         <!-- MAIN APP CONTENT -->
         <div id="application-main-content" style="display:none; width:100%;">
             <select id="processing-employee-select" style="display:none;"></select>
 
-            <!-- Active employee badge -->
-            <div id="active-employee-display" style="display:none; text-align:center; margin-bottom:16px;">
-                <p style="font-size:0.72rem; color:var(--success); margin:0; text-transform:uppercase; letter-spacing:0.07em; font-weight:600;">Logged in as</p>
-                <p id="active-employee-name" style="font-size:1rem; font-weight:700; color:#6ee7b7; margin:0;"></p>
+            <!-- Active employee + shift bar -->
+            <div id="shift-bar" class="shift-bar">
+                <div id="active-employee-display" class="shift-bar-who" style="display:none;">
+                    <span class="shift-bar-label">Logged in as</span>
+                    <span id="active-employee-name" class="shift-bar-name"></span>
+                </div>
+                <div class="shift-bar-clock">
+                    <span class="shift-dot"></span>
+                    <span>On shift since <strong id="shift-started-at">—</strong></span>
+                    <span class="shift-elapsed" id="shift-elapsed">0m</span>
+                    <span class="shift-txns" id="shift-txns" title="Transactions you've rung up this shift">🧾 0 transactions</span>
+                </div>
+                <button type="button" id="clock-out-btn" class="action-button clock-out-btn">⏹ Clock Out</button>
             </div>
 
             <!-- Shift Note Banner -->
@@ -251,8 +280,9 @@
                         </div>
                     </div>
 
-                    <!-- RIGHT: Cart Sidebar -->
+                    <!-- RIGHT: Cart Sidebar (floats with the screen — see fitCartColumn in script.js) -->
                     <div class="pos-cart-col">
+                      <div class="pos-cart-float" id="pos-cart-float">
                         <div class="pos-cart-panel">
                             <h2>🛒 Cart</h2>
 
@@ -269,11 +299,10 @@
                                 <span class="cart-total-amount">$<span id="total">0.00</span></span>
                             </div>
 
-                            <div class="cart-actions">
+                            <div class="cart-actions cart-actions-pos">
                                 <button id="clear-cart-button-pos" class="action-button clear-cart-btn">Clear</button>
+                                <button id="checkout-button-pos" class="checkout-button">✓ Checkout</button>
                             </div>
-
-                            <button id="checkout-button-pos" class="checkout-button">✓ Checkout</button>
                             <p id="pos-status-message" style="margin-top:10px; font-weight:bold; text-align:center; font-size:0.85rem;"></p>
                         </div>
 
@@ -291,7 +320,7 @@
                                 <button id="hac-staff-search-button" class="action-button" style="padding:9px 14px; font-size:0.82rem; background:var(--accent); color:white; border-color:var(--accent); flex-shrink:0;">Search</button>
                                 <button id="hac-staff-clear-search-button" class="action-button clear-cart-btn" style="padding:9px 12px; font-size:0.82rem; flex-shrink:0;">✕</button>
                             </div>
-                            <div id="hac-staff-search-results" class="hac-member-results-display" style="max-height:260px;">
+                            <div id="hac-staff-search-results" class="hac-member-results-display">
                                 <p style="color:var(--text-muted); font-style:italic; text-align:center; padding:8px 0; font-size:0.82rem;">Search a name or phone number.</p>
                             </div>
                             <div id="hac-current-promo-display-staff" style="display:none; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-size:0.82rem;">
@@ -299,6 +328,7 @@
                                 <p style="color:var(--text-secondary);"><span id="hac-promo-text-staff"></span></p>
                             </div>
                         </div>
+                      </div><!-- end .pos-cart-float -->
                     </div>
 
                 </div><!-- end .pos-layout -->

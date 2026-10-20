@@ -176,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             statusMessage.textContent = 'Taxes successfully marked as paid!';
             statusMessage.style.color = 'green';
+            await remindToClockOut(processingEmployee);
 
             // Update the display to zero for instant feedback
             totalTaxesOwedDisplay.textContent = "$0.00"; 
@@ -195,6 +196,32 @@ document.addEventListener('DOMContentLoaded', () => {
             statusMessage.style.color = '#e74c3c';
             markPaidButton.disabled = false; // Re-enable button on error
         }
+    }
+
+    // After paying taxes: still on the clock? Remind them to clock out (with a button to the register).
+    async function remindToClockOut(employeeName) {
+        let onShift = false;
+        try {
+            const q = firestore.query(firestore.collection(db, 'timeClock'),
+                firestore.where('employeeName', '==', employeeName), firestore.where('status', '==', 'open'));
+            onShift = !(await firestore.getDocs(q)).empty;
+        } catch (e) {
+            // can't check the time clock — fall back to what this browser knows
+            onShift = employeeName === localStorage.getItem('loggedInEmployeeName') && typeof isMarkedOnShift === 'function' && isMarkedOnShift();
+        }
+        let box = document.getElementById('taxes-clockout-reminder');
+        if (!onShift) { if (box) box.remove(); return; }
+        if (!box) {
+            box = document.createElement('div');
+            box.id = 'taxes-clockout-reminder';
+            box.className = 'clock-notice';
+            box.style.marginTop = '14px';
+            box.style.textAlign = 'center';
+            statusMessage.insertAdjacentElement('afterend', box);
+        }
+        box.innerHTML = `<strong style="display:block; font-size:0.95rem; margin-bottom:6px;">⏱ Don't forget to clock out!</strong>
+            You're still clocked in on the books.
+            <div style="margin-top:10px;"><a href="index.html" class="action-button" style="display:inline-block; text-decoration:none; padding:8px 16px;">Go to the register to clock out</a></div>`;
     }
 
     employeeSelect.addEventListener('change', (e) => fetchAndCalculateTaxes(e.target.value));

@@ -143,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateLoginView(isLoggedIn) {
+            const clockCard = document.getElementById('clock-in-container');
+            if (clockCard) clockCard.style.display = 'none';
             if (isLoggedIn) {
                 if (employeeLoginContainer) employeeLoginContainer.style.display = 'none';
                 if (applicationMainContent) applicationMainContent.style.display = 'block';
@@ -156,6 +158,232 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (viewSwitcher) viewSwitcher.style.display = 'none';
             }
         }
+
+        // ===== TIME CLOCK =====
+        // Login → Clock In card → POS. Rules live in MikesTimeClock (utility.js).
+        const TC = MikesTimeClock;
+        let currentEmployee = null;      // employee doc of whoever is logged in
+        let activeShift = null;          // { id, ...data } while clocked in
+        let shiftTimer = null;
+        let posContentLoaded = false;
+        let tcSettings = null;
+
+        async function getTcSettings() {
+            if (!tcSettings) tcSettings = await TC.loadSettings(db, firestore);
+            return tcSettings;
+        }
+
+        function fmtTime(d) {
+            return d ? d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : '—';
+        }
+
+        async function findOpenShifts(emp) {
+            const q = firestore.query(firestore.collection(db, 'timeClock'),
+                firestore.where('employeeId', '==', emp.id), firestore.where('status', '==', 'open'));
+            const snap = await firestore.getDocs(q);
+            return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        }
+
+        // Decide where a freshly logged-in employee goes: straight to the POS if they are
+        // still on a shift, otherwise the Clock In card. Forgotten shifts get closed here.
+        async function routeAfterLogin(emp) {
+            currentEmployee = emp;
+            localStorage.setItem('loggedInEmployeeName', emp.fullName);
+            localStorage.setItem('loggedInEmployeeId', emp.id);
+            const settings = await getTcSettings();
+            let notice = '';
+            let open = [];
+            try { open = await findOpenShifts(emp); } catch (e) { console.error('Could not check shifts:', e); }
+            open.sort((a, b) => (TC.toDate(b.clockIn) || 0) - (TC.toDate(a.clockIn) || 0));
+            let keep = null;
+            for (const sh of open) {
+                if (!keep && !TC.isStale(sh, settings)) { keep = sh; continue; }
+                try {
+                    const closed = await TC.closeStaleShift(db, firestore, sh.id, sh);
+                    const mins = TC.minutesInRange(closed, new Date(0), new Date(8.64e15));
+                    notice = `Your last shift (${TC.toDate(sh.clockIn).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}) ` +
+                        `was never clocked out, so it was closed at your last sale and counted as ${TC.fmtHM(mins)}. A manager can fix it if that's wrong.`;
+                } catch (e) { console.error('Could not close forgotten shift:', e); }
+            }
+            if (keep) { await enterPos(keep); return; }
+            await showClockInCard(notice);
+        }
+
+        async function showClockInCard(notice) {
+            stopShiftTimer();
+            activeShift = null;
+            markOnShift(null);
+            if (employeeLoginContainer) employeeLoginContainer.style.display = 'none';
+            if (applicationMainContent) applicationMainContent.style.display = 'none';
+            if (viewSwitcher) viewSwitcher.style.display = 'none';
+            if (typeof addLogoutButton === "function") addLogoutButton();
+            const card = document.getElementById('clock-in-container');
+            const nameEl = document.getElementById('clock-in-employee-name');
+            const noticeEl = document.getElementById('clock-in-notice');
+            const errEl = document.getElementById('clock-in-error');
+            if (nameEl) nameEl.textContent = currentEmployee ? currentEmployee.fullName : '';
+            if (noticeEl) { noticeEl.textContent = notice || ''; noticeEl.style.display = notice ? 'block' : 'none'; }
+            if (errEl) errEl.style.display = 'none';
+            if (card) card.style.display = 'block';
+            hideLoadingScreen();
+            await renderHoursProgress();
+        }
+
+        async function renderHoursProgress() {
+            const box = document.getElementById('clock-in-progress');
+            if (!box || !currentEmployee) return;
+            const settings = await getTcSettings();
+            const range = TC.periodRange(settings, new Date(), 0);
+            const label = document.getElementById('clock-progress-label');
+            const value = document.getElementById('clock-progress-value');
+            const bar = document.getElementById('clock-progress-bar');
+            const note = document.getElementById('clock-progress-note');
+            let minutes = 0;
+            try {
+                const q = firestore.query(firestore.collection(db, 'timeClock'), firestore.where('employeeId', '==', currentEmployee.id));
+                const snap = await firestore.getDocs(q);
+                snap.forEach(d => { minutes += TC.minutesInRange(d.data(), range.start, range.end); });
+            } catch (e) { console.error('Could not load hours:', e); }
+            if (label) label.textContent = range.label;
+            if (TC.isExempt(currentEmployee)) {
+                if (value) value.textContent = TC.fmtHM(minutes);
+                if (bar) bar.style.width = '100%';
+                if (note) note.textContent = 'Managers have no hour requirement.';
+            } else {
+                const req = TC.requiredHours(settings);
+                const pct = req > 0 ? Math.min(100, (minutes / (req * 60)) * 100) : 100;
+                if (value) value.textContent = `${TC.fmtHM(minutes)} of ${req}h`;
+                if (bar) { bar.style.width = pct + '%'; bar.classList.toggle('met', pct >= 100); }
+                if (note) note.textContent = pct >= 100 ? '✓ Requirement met for this period.'
+                    : `${TC.fmtHM(req * 60 - minutes)} left to meet the ${req}-hour ${range.period === 'week' ? 'weekly' : 'monthly'} requirement.`;
+            }
+            box.style.display = 'block';
+        }
+
+        async function clockIn() {
+            const btn = document.getElementById('clock-in-btn');
+            const errEl = document.getElementById('clock-in-error');
+            if (!currentEmployee) return;
+            if (btn) { btn.disabled = true; btn.textContent = 'Clocking in...'; }
+            try {
+                // Someone may have clocked in on another tab/device in the meantime
+                const open = (await findOpenShifts(currentEmployee)).filter(sh => !TC.isStale(sh, tcSettings || TC.DEFAULTS));
+                if (open.length) { await enterPos(open[0]); return; }
+                const data = {
+                    employeeId: currentEmployee.id,
+                    employeeName: currentEmployee.fullName,
+                    rank: currentEmployee.rank || null,
+                    isManager: currentEmployee.isManager === true,
+                    clockIn: firestore.serverTimestamp(),
+                    clockOut: null,
+                    status: 'open',
+                    closedBy: null,
+                    flagged: false,
+                    flagReason: null
+                };
+                const ref = await firestore.addDoc(firestore.collection(db, 'timeClock'), data);
+                await enterPos({ id: ref.id, ...data, clockIn: new Date() });
+            } catch (e) {
+                console.error('Clock in failed:', e);
+                if (errEl) { errEl.textContent = 'Could not clock in: ' + e.message; errEl.style.display = 'block'; }
+            } finally {
+                if (btn) { btn.disabled = false; btn.textContent = '⏱ Clock In'; }
+            }
+        }
+
+        async function clockOut(skipConfirm) {
+            if (!activeShift) return false;
+            const started = TC.toDate(activeShift.clockIn) || new Date();
+            const worked = TC.fmtHM((Date.now() - started.getTime()) / 60000);
+            if (!skipConfirm && !confirm(`Clock out now? This shift: ${worked}.`)) return false;
+            const btn = document.getElementById('clock-out-btn');
+            if (btn) { btn.disabled = true; btn.textContent = 'Clocking out...'; }
+            try {
+                await firestore.updateDoc(firestore.doc(db, 'timeClock', activeShift.id), {
+                    clockOut: firestore.serverTimestamp(), status: 'closed', closedBy: 'self'
+                });
+                activeShift = null;
+                markOnShift(null);
+                stopShiftTimer();
+                return worked;
+            } catch (e) {
+                alert('Could not clock out: ' + e.message);
+                return false;
+            } finally {
+                if (btn) { btn.disabled = false; btn.textContent = '⏹ Clock Out'; }
+            }
+        }
+
+        async function enterPos(shift) {
+            activeShift = shift;
+            markOnShift(shift.id);
+            const clockCard = document.getElementById('clock-in-container');
+            if (clockCard) clockCard.style.display = 'none';
+            updateLoginView(true);
+            startShiftTimer();
+            loadShiftTxns();
+            if (!posContentLoaded) {
+                posContentLoaded = true;
+                await initializePageContentAfterLogin();
+            }
+            hideLoadingScreen();
+        }
+
+        // Transactions rung up this shift (POS sales + buy/sell trades by this employee since clock-in)
+        let shiftTxns = 0;
+        function renderShiftTxns(bump) {
+            const el = document.getElementById('shift-txns');
+            if (!el) return;
+            el.textContent = `🧾 ${shiftTxns} transaction${shiftTxns === 1 ? '' : 's'}`;
+            if (bump) { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+        }
+        async function loadShiftTxns() {
+            shiftTxns = 0;
+            renderShiftTxns();
+            const since = TC.toDate(activeShift && activeShift.clockIn);
+            if (!since || !currentEmployee) return;
+            try {
+                // single-field range query (no index needed), then keep only this employee's
+                const q = firestore.query(firestore.collection(db, 'transactions'), firestore.where('createdAt', '>=', since));
+                const snap = await firestore.getDocs(q);
+                snap.forEach(d => { if (d.data().employeeName === currentEmployee.fullName) shiftTxns++; });
+            } catch (e) { console.error('Could not count shift transactions:', e); }
+            renderShiftTxns();
+        }
+        function countShiftTxn() {
+            if (!activeShift) return;
+            shiftTxns++;
+            renderShiftTxns(true);
+        }
+
+        function startShiftTimer() {
+            stopShiftTimer();
+            const startedEl = document.getElementById('shift-started-at');
+            const elapsedEl = document.getElementById('shift-elapsed');
+            const started = TC.toDate(activeShift && activeShift.clockIn) || new Date();
+            if (startedEl) startedEl.textContent = fmtTime(started);
+            const tick = () => { if (elapsedEl) elapsedEl.textContent = TC.fmtHM((Date.now() - started.getTime()) / 60000); };
+            tick();
+            shiftTimer = setInterval(tick, 30000);
+        }
+
+        function stopShiftTimer() {
+            if (shiftTimer) { clearInterval(shiftTimer); shiftTimer = null; }
+        }
+
+        function requireShift() {
+            if (activeShift) return true;
+            alert("You're not clocked in. Clock in before ringing up sales.");
+            return false;
+        }
+
+        // Logging out while on shift: offer to clock out first
+        window.beforeLogout = async () => {
+            if (!activeShift) return;
+            if (confirm('You are still clocked in. Clock out before logging out?\n\nOK = clock out and log out\nCancel = log out and stay on the clock')) {
+                await clockOut(true);
+            }
+        };
 
         // ===== SHIFT NOTE BANNER =====
         async function loadShiftNoteBanner() {
@@ -378,6 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const employeeData = JSON.parse(selectedOpt.dataset.employeeData);
             const employeeName = employeeData.fullName;
             const employeeRank = employeeData.rank;
+            if (!requireShift()) return;
 
             const currentTotal = parseFloat(posTotalDisplay.textContent.replace(/,/g, '')) || 0;
             
@@ -447,6 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 await firestore.addDoc(firestore.collection(db, "transactions"), transactionData);
+                countShiftTxn();
                 alert( `POS Transaction Completed for: ${employeeName} (${employeeRank || 'N/A'})\n` + 
                        (isRewardActive ? `*** 0% TAX REWARD APPLIED ***\n` : '') +
                        `---------------------------------------\n` + 
@@ -687,6 +917,7 @@ function renderHacSearchResultsForStaff(members) {
             });
 
             hacStaffSearchResultsDisplayEl.querySelectorAll('.claim-benefit-button').forEach(b => b.addEventListener('click', handleClaimBenefitClick));
+            requestAnimationFrame(() => { if (window.mikesMakeRoomForHac) window.mikesMakeRoomForHac(); });
             
             if(hacPromoMonthStaffDisplayEl && hacPromoTextStaffDisplayEl && hacCurrentPromoDisplayStaffEl){
                 hacPromoMonthStaffDisplayEl.textContent = currentHacPromo.month;
@@ -776,6 +1007,7 @@ function renderHacSearchResultsForStaff(members) {
         }
         async function finalizeBuySellTrade() {
             if (!processingEmployeeSelect || !processingEmployeeSelect.value) { alert("No employee is logged in. Please log out and log back in."); return; }
+            if (!requireShift()) return;
             const empOpt = processingEmployeeSelect.options[processingEmployeeSelect.selectedIndex];
             const empName = empOpt.value;
             let empRank = empOpt.dataset.rank;
@@ -791,6 +1023,7 @@ function renderHacSearchResultsForStaff(members) {
             const data = { transactionType:"Buy/Sell Trade", employeeName:empName, employeeRank:empRank || 'N/A', itemsTraded, totalValueBoughtFromCustomer:boughtVal, totalValueSoldToCustomer:soldVal, netAmountForMikes: soldVal - boughtVal, createdAt: firestore.serverTimestamp() };
             try {
                 const ref = await firestore.addDoc(firestore.collection(db, "transactions"), data);
+                countShiftTxn();
                 if(buySellStatusMessage){buySellStatusMessage.textContent="Trade finalized!";buySellStatusMessage.style.color="green";}
                 clearBuySellSelections(); setTimeout(()=> {if(buySellStatusMessage)buySellStatusMessage.textContent=''},3000);
             } catch(e){ if(buySellStatusMessage){buySellStatusMessage.textContent="Error: " + e.message ;buySellStatusMessage.style.color="red";}}
@@ -825,15 +1058,22 @@ function renderHacSearchResultsForStaff(members) {
                     const emp = loginEmployeeList.find(em => em.id === selectedId);
                     if (emp && emp.loginPassword && emp.loginPassword === enteredPassword) {
                         if (typeof grantEmployeeSession === "function") grantEmployeeSession();
-                        localStorage.setItem('loggedInEmployeeName', emp.fullName);
-                        updateLoginView(true);
-                        await initializePageContentAfterLogin();
+                        await routeAfterLogin(emp);
                     } else {
                         if (mainLoginError) { mainLoginError.textContent = "Incorrect password. Please try again."; mainLoginError.style.display = 'block'; }
                         if (employeePasswordInput) employeePasswordInput.value = "";
                     }
                 });
             }
+            const clockInBtn = document.getElementById('clock-in-btn');
+            const clockOutBtn = document.getElementById('clock-out-btn');
+            const clockInLogout = document.getElementById('clock-in-logout');
+            if (clockInBtn) clockInBtn.addEventListener('click', clockIn);
+            if (clockOutBtn) clockOutBtn.addEventListener('click', async () => {
+                const worked = await clockOut(false);
+                if (worked) await showClockInCard(`Clocked out. That shift was ${worked}.`);
+            });
+            if (clockInLogout) clockInLogout.addEventListener('click', (e) => { e.preventDefault(); clearAllSessions(); });
             if (showPosViewBtn) showPosViewBtn.addEventListener('click', switchToPosView);
             if (showBuySellViewBtn) showBuySellViewBtn.addEventListener('click', switchToBuySellView);
             if (posClearCartButton) posClearCartButton.addEventListener('click', clearMainPOSCart);
@@ -924,8 +1164,17 @@ posItemsContainer.addEventListener('input', (e) => {
         async function initializePageOnLoad() {
             attachAllEventListeners();
             if (typeof checkEmployeeSession === "function" && checkEmployeeSession()) {
-                updateLoginView(true);
-                await initializePageContentAfterLogin();
+                await loadLoginEmployeeList();
+                const savedId = localStorage.getItem('loggedInEmployeeId');
+                const savedName = localStorage.getItem('loggedInEmployeeName');
+                const emp = loginEmployeeList.find(e => e.id === savedId) || loginEmployeeList.find(e => e.fullName === savedName);
+                if (emp) {
+                    await routeAfterLogin(emp);
+                } else {
+                    // Session left over from before the time clock, or the employee was removed
+                    localStorage.removeItem('isEmployeeAccessGranted_PumpDump');
+                    updateLoginView(false);
+                }
             } else {
                 if (typeof checkEmployeeSession !== "function") console.error("Index page: checkEmployeeSession from utility.js is not available!");
                 updateLoginView(false);
@@ -974,6 +1223,11 @@ posItemsContainer.addEventListener('input', (e) => {
             setupErrorUI("Firebase SDK init failed in HTML. " + (e.detail?.error?.message || "Unknown error."));
         }
     });
+    // Firebase often finishes before this listener exists (cached reloads) — start right away then.
+    if (window.isFirebaseReady === true && window.db && window.firestoreFunctions && !firebaseReadyProcessed) {
+        firebaseReadyProcessed = true;
+        executeMainAppLogic({ db: window.db, functions: window.firestoreFunctions });
+    }
     setTimeout(() => {
         if (!appLogicHasRun && !firebaseReadyProcessed) {
             if (window.isFirebaseReady === true && window.db && window.firestoreFunctions) {
@@ -987,6 +1241,58 @@ posItemsContainer.addEventListener('input', (e) => {
     }, 3500);
 
 });
+
+// Keep the cart + HAC column inside the screen: from wherever it starts (lower at the very top of the page,
+// 76px once it sticks) down to the bottom of the window. The HAC member list takes whatever room is left.
+(function fitCartColumn() {
+    // The cart + HAC column floats: it starts in its normal spot and stays pinned under the menu bar
+    // as you scroll (all the way to the bottom of the page), always fitting the window. The HAC member
+    // list takes the room that's left. It lives directly under <body> on wider screens because the
+    // page's blurred panels would otherwise stop it from staying on screen.
+    let queued = false;
+    const STICK_AT = 76; // just under the top menu bar
+    function fit() {
+        queued = false;
+        const col = document.querySelector('.pos-cart-col');
+        const fl = document.getElementById('pos-cart-float');
+        if (!col || !fl) return;
+        if (window.innerWidth <= 768) {  // phones: back into the normal page flow
+            if (fl.parentElement !== col) col.appendChild(fl);
+            fl.classList.remove('floating'); fl.style.cssText = '';
+            return;
+        }
+        if (fl.parentElement !== document.body) document.body.appendChild(fl);
+        const r = col.getBoundingClientRect();
+        if (r.width === 0) { fl.style.display = 'none'; return; }   // register not showing
+        const top = Math.max(r.top, STICK_AT);
+        fl.classList.add('floating');
+        fl.style.display = '';
+        fl.style.left = r.left + 'px';
+        fl.style.top = top + 'px';
+        fl.style.maxHeight = Math.max(240, window.innerHeight - top - 16) + 'px';
+    }
+    function queue() { if (!queued) { queued = true; requestAnimationFrame(fit); } }
+    // After a HAC search: if the results don't fit where the column is, scroll the page just enough
+    // for the column to pin under the menu bar (it then has the whole window height).
+    window.mikesMakeRoomForHac = function () {
+        fit();
+        const col = document.querySelector('.pos-cart-col');
+        const fl = document.getElementById('pos-cart-float');
+        if (!col || !fl || window.innerWidth <= 768) return;
+        const sec = document.getElementById('hac-lookup-section');
+        const list = document.getElementById('hac-staff-search-results');
+        // how much is cut off: the column itself, or the HAC panel squeezing its list below a usable size
+        const over = Math.max(fl.scrollHeight - fl.clientHeight,
+                              sec ? sec.scrollHeight - sec.clientHeight : 0,
+                              list ? 160 - list.clientHeight : 0);
+        const r = col.getBoundingClientRect();
+        if (over > 2 && r.top > STICK_AT) window.scrollBy({ top: Math.min(over, r.top - STICK_AT), behavior: 'smooth' });
+    };
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    document.addEventListener('DOMContentLoaded', queue);
+    new MutationObserver(queue).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+})();
 
 const packDefinitions = {
   hunting_pack: { "Hunting Rifle": 1, "30.06 Ammo": 100, "Bait (Choice Of)": 10, "Knife": 1, "Hunting Map": 1, "Orange Hunting Vest": 1, },

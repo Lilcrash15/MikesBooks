@@ -994,6 +994,250 @@ document.addEventListener('DOMContentLoaded', () => {
             taxSummaryInterval = setInterval(loadTaxSummary, 10 * 60 * 1000);
         }
 
+        // ===== TIME CLOCK TAB =====
+        // Rules are shared with the POS through MikesTimeClock (utility.js).
+        let tcWired = false;
+        let tcShifts = [];         // [{id, ...data}] overlapping the shown period
+        let tcEmployees = [];
+        let tcSettingsMgr = null;
+
+        function tcEsc(v) {
+            return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+        function tcFmtDT(d) {
+            return d ? d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : '—';
+        }
+        function tcToLocalInput(d) {
+            if (!d) return '';
+            const pad = n => String(n).padStart(2, '0');
+            return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        }
+        function tcTs(d) { return firestore_manager.Timestamp.fromDate(d); }
+
+        async function loadTimeClock() {
+            const TC = MikesTimeClock;
+            const hoursEl = document.getElementById('tc-hours-table');
+            const offset = parseInt(document.getElementById('tc-period-offset')?.value || '0', 10);
+            tcSettingsMgr = await TC.loadSettings(db_manager, firestore_manager);
+            fillTcSettingsForm(tcSettingsMgr);
+            const range = TC.periodRange(tcSettingsMgr, new Date(), offset);
+            const req = TC.requiredHours(tcSettingsMgr);
+            document.getElementById('tc-period-label').textContent = range.label;
+            document.getElementById('tc-requirement-label').textContent =
+                `Requirement: ${req}h per ${range.period} (managers exempt)`;
+
+            try {
+                const empSnap = await firestore_manager.getDocs(
+                    firestore_manager.query(firestore_manager.collection(db_manager, 'employees'), firestore_manager.orderBy('fullName')));
+                tcEmployees = empSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+                // Shifts that started in (or just before) the period, plus anything still open.
+                const col = firestore_manager.collection(db_manager, 'timeClock');
+                const from = new Date(range.start.getTime() - 2 * 86400000);
+                const [rangeSnap, openSnap] = await Promise.all([
+                    firestore_manager.getDocs(firestore_manager.query(col,
+                        firestore_manager.where('clockIn', '>=', tcTs(from)), firestore_manager.where('clockIn', '<', tcTs(range.end)))),
+                    firestore_manager.getDocs(firestore_manager.query(col, firestore_manager.where('status', '==', 'open')))
+                ]);
+                const byId = new Map();
+                [...rangeSnap.docs, ...openSnap.docs].forEach(d => byId.set(d.id, { id: d.id, ...d.data() }));
+                const now = new Date();
+                tcShifts = [...byId.values()]
+                    .filter(sh => TC.toDate(sh.clockIn) < range.end)
+                    .filter(sh => sh.status === 'open' || (TC.toDate(sh.clockOut) || now) > range.start)
+                    .sort((a, b) => TC.toDate(b.clockIn) - TC.toDate(a.clockIn));
+            } catch (e) {
+                console.error('Time clock load failed:', e);
+                if (hoursEl) hoursEl.innerHTML = `<p class="loading-message">Could not load the time clock: ${tcEsc(e.message)}</p>`;
+                return;
+            }
+
+            // Hours per employee
+            const now = new Date();
+            const rows = tcEmployees.map(emp => {
+                const mine = tcShifts.filter(sh => sh.employeeId === emp.id);
+                const minutes = mine.reduce((m, sh) => m + TC.minutesInRange(sh, range.start, range.end, now), 0);
+                const onShift = mine.some(sh => sh.status === 'open' && !TC.isStale(sh, tcSettingsMgr, now));
+                const exempt = TC.isExempt(emp);
+                const met = minutes >= req * 60;
+                return { emp, minutes, onShift, exempt, met };
+            }).sort((a, b) => (a.exempt - b.exempt) || (a.met - b.met) || (a.minutes - b.minutes));
+
+            if (hoursEl) {
+                const short = rows.filter(r => !r.exempt && !r.met).length;
+                hoursEl.innerHTML = `<p style="font-size:0.85rem; color:var(--text-secondary); margin:0 0 10px;">${short === 0 ? '✓ Everyone has met the requirement.' : `${short} employee${short === 1 ? '' : 's'} short of ${req}h.`}</p>
+                <table><thead><tr><th>Employee</th><th>Rank</th><th>Hours</th><th>Status</th></tr></thead><tbody>
+                ${rows.map(r => `<tr>
+                    <td><strong>${tcEsc(r.emp.fullName)}</strong> ${r.onShift ? '<span class="tc-status-pill tc-onshift">On shift</span>' : ''}</td>
+                    <td>${tcEsc(r.emp.rank || '')}</td>
+                    <td>${TC.fmtHM(r.minutes)}${r.exempt ? '' : ` <span style="color:var(--text-muted);">/ ${req}h</span>`}</td>
+                    <td>${r.exempt ? '<span class="tc-status-pill tc-exempt">Exempt</span>'
+                        : r.met ? '<span class="tc-status-pill tc-met">Met</span>'
+                        : `<span class="tc-status-pill tc-short">Short ${TC.fmtHM(req * 60 - r.minutes)}</span>`}</td>
+                </tr>`).join('')}
+                </tbody></table>`;
+            }
+            renderTcShifts();
+            fillTcAddEmployees();
+        }
+
+        function renderTcShifts() {
+            const TC = MikesTimeClock;
+            const el = document.getElementById('tc-shifts-table');
+            if (!el) return;
+            const term = (document.getElementById('tc-shift-search')?.value || '').toLowerCase().trim();
+            const flaggedOnly = document.getElementById('tc-flagged-only')?.checked;
+            const now = new Date();
+            const list = tcShifts.filter(sh =>
+                (!term || (sh.employeeName || '').toLowerCase().includes(term)) &&
+                (!flaggedOnly || sh.flagged || TC.isStale(sh, tcSettingsMgr, now)));
+            if (!list.length) { el.innerHTML = '<p class="loading-message">No shifts in this period.</p>'; return; }
+            el.innerHTML = `<table><thead><tr><th>Employee</th><th>Clock in</th><th>Clock out</th><th>Length</th><th>Notes</th><th></th></tr></thead><tbody>
+            ${list.map(sh => {
+                const a = TC.toDate(sh.clockIn), b = TC.toDate(sh.clockOut);
+                const stale = TC.isStale(sh, tcSettingsMgr, now);
+                const len = TC.minutesInRange(sh, new Date(0), new Date(8.64e15), now);
+                const note = stale ? '<span class="tc-flag">⚠ Never clocked out</span>'
+                    : sh.flagged ? `<span class="tc-flag">⚠ ${tcEsc(sh.flagReason || 'Needs review')}</span>`
+                    : sh.status === 'open' ? '<span class="tc-status-pill tc-onshift">On shift</span>'
+                    : sh.editedBy ? `<span style="color:var(--text-muted); font-size:0.75rem;">Edited by ${tcEsc(sh.editedBy)}</span>` : '';
+                return `<tr data-shift-id="${sh.id}">
+                    <td>${tcEsc(sh.employeeName)}</td>
+                    <td>${tcFmtDT(a)}</td>
+                    <td>${b ? tcFmtDT(b) : '—'}</td>
+                    <td>${TC.fmtHM(len)}</td>
+                    <td>${note}</td>
+                    <td style="white-space:nowrap;">
+                        ${sh.status === 'open' ? `<button class="action-button tc-small-btn" data-tc-action="close">Clock out</button>` : ''}
+                        ${sh.flagged ? `<button class="action-button tc-small-btn" data-tc-action="ok">Looks right</button>` : ''}
+                        <button class="action-button tc-small-btn" data-tc-action="edit">Edit</button>
+                        <button class="action-button tc-small-btn clear-cart-btn" data-tc-action="delete">Delete</button>
+                    </td></tr>`;
+            }).join('')}</tbody></table>`;
+        }
+
+        async function onTcShiftAction(e) {
+            const btn = e.target.closest('[data-tc-action]');
+            if (!btn) return;
+            const row = btn.closest('tr');
+            const id = row?.dataset.shiftId || row?.dataset.editFor;
+            const sh = tcShifts.find(x => x.id === id);
+            if (!sh) return;
+            const ref = firestore_manager.doc(db_manager, 'timeClock', id);
+            const who = localStorage.getItem('loggedInEmployeeName') || 'Manager';
+            const action = btn.dataset.tcAction;
+            try {
+                if (action === 'close') {
+                    if (!confirm(`Clock ${sh.employeeName} out now?`)) return;
+                    await firestore_manager.updateDoc(ref, { clockOut: firestore_manager.serverTimestamp(), status: 'closed', closedBy: 'manager', editedBy: who, editedAt: firestore_manager.serverTimestamp() });
+                } else if (action === 'ok') {
+                    await firestore_manager.updateDoc(ref, { flagged: false, editedBy: who, editedAt: firestore_manager.serverTimestamp() });
+                } else if (action === 'delete') {
+                    if (!confirm(`Delete this shift for ${sh.employeeName}? Its hours stop counting.`)) return;
+                    await firestore_manager.deleteDoc(ref);
+                } else if (action === 'edit') {
+                    document.querySelectorAll('.tc-edit-row').forEach(r => r.remove());
+                    const er = document.createElement('tr');
+                    er.className = 'tc-edit-row'; er.dataset.editFor = id;
+                    er.innerHTML = `<td colspan="6" style="padding:12px;">
+                        <label style="font-size:0.8rem;">In <input type="datetime-local" class="tc-edit-in" value="${tcToLocalInput(MikesTimeClock.toDate(sh.clockIn))}"></label>
+                        <label style="font-size:0.8rem; margin-left:10px;">Out <input type="datetime-local" class="tc-edit-out" value="${tcToLocalInput(MikesTimeClock.toDate(sh.clockOut))}"></label>
+                        <button class="action-button tc-small-btn" data-tc-action="save" style="margin-left:10px; background:var(--accent); color:white;">Save</button>
+                        <button class="action-button tc-small-btn clear-cart-btn" data-tc-action="cancel">Cancel</button></td>`;
+                    row.after(er);
+                    return;
+                } else if (action === 'cancel') {
+                    row.remove(); return;
+                } else if (action === 'save') {
+                    const vin = row.querySelector('.tc-edit-in').value, vout = row.querySelector('.tc-edit-out').value;
+                    if (!vin || !vout) { alert('Enter both a clock-in and a clock-out time.'); return; }
+                    const din = new Date(vin), dout = new Date(vout);
+                    if (dout <= din) { alert('Clock-out has to be after clock-in.'); return; }
+                    await firestore_manager.updateDoc(ref, { clockIn: tcTs(din), clockOut: tcTs(dout), status: 'closed',
+                        closedBy: sh.closedBy || 'manager', flagged: false, editedBy: who, editedAt: firestore_manager.serverTimestamp() });
+                }
+                await loadTimeClock();
+            } catch (err) {
+                console.error('Time clock action failed:', err);
+                alert('That did not save: ' + err.message);
+            }
+        }
+
+        function fillTcAddEmployees() {
+            const sel = document.getElementById('tc-add-employee');
+            if (!sel) return;
+            const keep = sel.value;
+            sel.innerHTML = '<option value="">-- Select Employee --</option>' +
+                tcEmployees.map(e => `<option value="${e.id}">${tcEsc(e.fullName)}</option>`).join('');
+            sel.value = keep;
+        }
+
+        async function addTcShift() {
+            const status = document.getElementById('tc-add-status');
+            const empId = document.getElementById('tc-add-employee').value;
+            const vin = document.getElementById('tc-add-in').value, vout = document.getElementById('tc-add-out').value;
+            const emp = tcEmployees.find(e => e.id === empId);
+            if (!emp || !vin || !vout) { status.textContent = 'Pick an employee and both times.'; status.style.color = '#fca5a5'; return; }
+            const din = new Date(vin), dout = new Date(vout);
+            if (dout <= din) { status.textContent = 'Clock-out has to be after clock-in.'; status.style.color = '#fca5a5'; return; }
+            const who = localStorage.getItem('loggedInEmployeeName') || 'Manager';
+            try {
+                await firestore_manager.addDoc(firestore_manager.collection(db_manager, 'timeClock'), {
+                    employeeId: emp.id, employeeName: emp.fullName, rank: emp.rank || null, isManager: emp.isManager === true,
+                    clockIn: tcTs(din), clockOut: tcTs(dout), status: 'closed', closedBy: 'manager',
+                    flagged: false, flagReason: null, editedBy: who, editedAt: firestore_manager.serverTimestamp()
+                });
+                status.textContent = 'Shift added.'; status.style.color = '#6ee7b7';
+                document.getElementById('tc-add-in').value = ''; document.getElementById('tc-add-out').value = '';
+                await loadTimeClock();
+            } catch (e) { status.textContent = 'Error: ' + e.message; status.style.color = '#fca5a5'; }
+        }
+
+        function fillTcSettingsForm(st) {
+            const set = (id, v) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = v; };
+            set('tc-set-period', st.period);
+            set('tc-set-week', st.requiredHoursWeek);
+            set('tc-set-month', st.requiredHoursMonth);
+            set('tc-set-stale', st.staleHours);
+        }
+
+        async function saveTcSettings() {
+            const status = document.getElementById('tc-settings-status');
+            const num = id => parseFloat(document.getElementById(id).value);
+            const data = {
+                period: document.getElementById('tc-set-period').value === 'week' ? 'week' : 'month',
+                requiredHoursWeek: num('tc-set-week'),
+                requiredHoursMonth: num('tc-set-month'),
+                staleHours: Math.round(num('tc-set-stale')),
+                weekStartsOn: 'Monday',
+                timezone: (tcSettingsMgr && tcSettingsMgr.timezone) || MikesTimeClock.DEFAULTS.timezone,
+                updatedBy: localStorage.getItem('loggedInEmployeeName') || 'Manager',
+                updatedAt: firestore_manager.serverTimestamp()
+            };
+            if ([data.requiredHoursWeek, data.requiredHoursMonth].some(v => isNaN(v) || v < 0) || isNaN(data.staleHours) || data.staleHours < 1) {
+                status.textContent = 'Check the numbers.'; status.style.color = '#fca5a5'; return;
+            }
+            try {
+                await firestore_manager.setDoc(firestore_manager.doc(db_manager, 'siteSettings', 'timeClock'), data, { merge: true });
+                status.textContent = 'Saved.'; status.style.color = '#6ee7b7';
+                await loadTimeClock();
+            } catch (e) { status.textContent = 'Error: ' + e.message; status.style.color = '#fca5a5'; }
+        }
+
+        function initTimeClockTab() {
+            if (!tcWired) {
+                tcWired = true;
+                document.getElementById('tc-refresh-btn')?.addEventListener('click', loadTimeClock);
+                document.getElementById('tc-period-offset')?.addEventListener('change', loadTimeClock);
+                document.getElementById('tc-shift-search')?.addEventListener('input', renderTcShifts);
+                document.getElementById('tc-flagged-only')?.addEventListener('change', renderTcShifts);
+                document.getElementById('tc-shifts-table')?.addEventListener('click', onTcShiftAction);
+                document.getElementById('tc-add-btn')?.addEventListener('click', addTcShift);
+                document.getElementById('tc-save-settings-btn')?.addEventListener('click', saveTcSettings);
+                document.querySelector('[data-tab="tab-timeclock"]')?.addEventListener('click', loadTimeClock);
+            }
+            loadTimeClock();
+        }
+
         async function initializeManagerPortal() {
             await Promise.all([
                 loadEmployees_ManagerPage(),
@@ -1021,6 +1265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resetHacMemberForm_ManagerPage();
             if (hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Search for HAC members.</i></p>";
             attachManagerEventListeners_ManagerPage();
+            initTimeClockTab();
         }
 
         // --- Manager login: populate dropdown, show password on selection ---
