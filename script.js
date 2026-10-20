@@ -771,6 +771,7 @@ async function submitHacMemberSignup() {
 
             try {
                 await firestore.addDoc(firestore.collection(db, "hacMembers"), newMemberData);
+                hacListCache = null;
                 if(hacModalStatusEl) { hacModalStatusEl.textContent = "Signup successful!"; hacModalStatusEl.style.color = "green"; }
                 
                 // Mark item in POS as sold to include in checkout total
@@ -837,6 +838,7 @@ async function submitHacMemberSignup() {
                 if(hacPromoTextStaffDisplayEl) hacPromoTextStaffDisplayEl.innerHTML = formatPromoAsBullets(currentHacPromo.items, currentHacPromo.text);
             } catch (e) { currentHacPromo = { month: 'Error', text: 'Load failed.' };}
         }
+        let hacListCache = null;  // HAC members, reused for 5 minutes; cleared after a sign-up or claim
         async function searchHacMembersForStaff() {
             if (!hacStaffSearchTermInputEl || !hacStaffSearchResultsDisplayEl) return;
             const searchTerm = hacStaffSearchTermInputEl.value.trim().toLowerCase();
@@ -846,9 +848,16 @@ async function submitHacMemberSignup() {
             }
             hacStaffSearchResultsDisplayEl.innerHTML = "<p><i>Searching...</i></p>";
             try {
-                const q = firestore.query(firestore.collection(db, "hacMembers"), firestore.orderBy("lastName"), firestore.orderBy("firstName"));
-                const snap = await firestore.getDocs(q);
-                let all = []; snap.forEach(d => all.push({id: d.id, ...d.data()}));
+                // reuse the member list for 5 minutes (each search used to read every member)
+                let all;
+                if (hacListCache && Date.now() - hacListCache.at < 5 * 60000) {
+                    all = hacListCache.list;
+                } else {
+                    const q = firestore.query(firestore.collection(db, "hacMembers"), firestore.orderBy("lastName"), firestore.orderBy("firstName"));
+                    const snap = await firestore.getDocs(q);
+                    all = []; snap.forEach(d => all.push({id: d.id, ...d.data()}));
+                    hacListCache = { at: Date.now(), list: all };
+                }
                 const filtered = all.filter(m => `${m.firstName||''} ${m.lastName||''}`.toLowerCase().includes(searchTerm) || m.phoneNumber?.includes(searchTerm) || m.driverLicense?.toLowerCase().includes(searchTerm) || m.email?.toLowerCase().includes(searchTerm)  );
                 renderHacSearchResultsForStaff(filtered);
             } catch(e) { hacStaffSearchResultsDisplayEl.innerHTML = "<p>Search error.</p>"; }
@@ -931,6 +940,7 @@ function renderHacSearchResultsForStaff(members) {
             btn.disabled = true; btn.textContent = "Processing...";
             try {
                 await firestore.updateDoc(firestore.doc(db, "hacMembers", id), { isEligible: false });
+                hacListCache = null;
                 alert(`${name}'s benefit claimed.`); searchHacMembersForStaff();
             } catch (e) { alert("Error."); btn.disabled = false; btn.textContent = "Claim Benefit"; }
         }

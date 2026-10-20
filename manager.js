@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return Math.round(parseFloat(n) || 0).toLocaleString('en-US');
     }
 
+    // --- Firebase reads: lists show the last 60 days (each document loaded = 1 of the 50,000 free daily reads) ---
+    const LIST_DAYS = 60;
+    function sinceDays(days) { return new Date(Date.now() - days * 86400000); }
+
     // --- Table row filter by employee name (column 0 = employee name) ---
     function attachTableSearch(inputId, tableContainerId) {
         const input = document.getElementById(inputId);
@@ -646,17 +650,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if(saveHacMemberButton_ManagerPage) saveHacMemberButton_ManagerPage.disabled = false; if(cancelEditHacMemberButton_ManagerPage) cancelEditHacMemberButton_ManagerPage.style.display = 'inline-block';
         }
         async function saveOrUpdateHacMember_ManagerPage() {
-            if(!editingHacMemberId_mgr_page) return; const data = { firstName: hacFirstNameInput_ManagerPage.value.trim(), lastName: hacLastNameInput_ManagerPage.value.trim(), phoneNumber: hacPhoneNumberInput_ManagerPage.value.trim()||null, driverLicense: hacDriverLicenseInput_ManagerPage.value.trim()||null, email: hacEmailInput_ManagerPage.value.trim().toLowerCase()||null }; if(!data.firstName || !data.lastName){alert("Name req.");return;} try { await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "hacMembers", editingHacMemberId_mgr_page), data); alert("HAC updated."); await searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage(); } catch(e) {console.error(e); alert("HAC update err.");}
+            if(!editingHacMemberId_mgr_page) return; const data = { firstName: hacFirstNameInput_ManagerPage.value.trim(), lastName: hacLastNameInput_ManagerPage.value.trim(), phoneNumber: hacPhoneNumberInput_ManagerPage.value.trim()||null, driverLicense: hacDriverLicenseInput_ManagerPage.value.trim()||null, email: hacEmailInput_ManagerPage.value.trim().toLowerCase()||null }; if(!data.firstName || !data.lastName){alert("Name req.");return;} try { window.__hacMgrCache = null; await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "hacMembers", editingHacMemberId_mgr_page), data); alert("HAC updated."); await searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage(); } catch(e) {console.error(e); alert("HAC update err.");}
         }
         async function removeHacMember_ManagerPage(memberId) {
-             try { await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", memberId)); alert("HAC removed."); await searchHacMembers_ManagerPage(); if(editingHacMemberId_mgr_page===memberId)resetHacMemberForm_ManagerPage(); }
+             try { window.__hacMgrCache = null; await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", memberId)); alert("HAC removed."); await searchHacMembers_ManagerPage(); if(editingHacMemberId_mgr_page===memberId)resetHacMemberForm_ManagerPage(); }
              catch(e){console.error(e); alert("HAC delete err.");}
         }
         async function searchHacMembers_ManagerPage() {
             if (!hacSearchTermInput || !hacMemberListDisplay) return; const term = hacSearchTermInput.value.trim().toLowerCase(); if(!term) { hacMembers_mgr = []; renderHacMemberList_ManagerPage(hacMembers_mgr); if(hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Enter search term.</i></p>"; return; } hacMemberListDisplay.innerHTML = "<p><i>Searching...</i></p>";
             try {
-                const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.orderBy("lastName"));
-                const snap = await firestore_manager.getDocs(q); let all=[]; snap.forEach(d=>all.push({id:d.id, ...d.data()}));
+                // reuse the member list for 5 minutes (each search used to read every member)
+                let all;
+                if (window.__hacMgrCache && Date.now() - window.__hacMgrCache.at < 5 * 60000) {
+                    all = window.__hacMgrCache.list;
+                } else {
+                    const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.orderBy("lastName"));
+                    const snap = await firestore_manager.getDocs(q); all=[]; snap.forEach(d=>all.push({id:d.id, ...d.data()}));
+                    window.__hacMgrCache = { at: Date.now(), list: all };
+                }
                 hacMembers_mgr = all;
                 const filtered = hacMembers_mgr.filter(m=> `${m.firstName||''} ${m.lastName||''}`.toLowerCase().includes(term) || m.phoneNumber?.includes(term) || m.driverLicense?.toLowerCase().includes(term) || m.email?.toLowerCase().includes(term));
                 renderHacMemberList_ManagerPage(filtered);
@@ -669,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hacMemberListDisplay.querySelectorAll('.remove-hac-member-btn').forEach(b=>b.addEventListener('click',async e=>{if(confirm("Remove?"))await removeHacMember_ManagerPage(e.target.dataset.id);}));
         }
         async function loadTransactions_ManagerPage() {
-            if (!firestore_manager.collection || !firestore_manager.query || !firestore_manager.orderBy || !firestore_manager.getDocs) { transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = "<p><i>Error: DB functions missing.</i></p>"; return; } try{ const q = firestore_manager.query(firestore_manager.collection(db_manager, "transactions"), firestore_manager.orderBy("createdAt", "desc")); const snap = await firestore_manager.getDocs(q); transactionsFromFirestore_mgr = []; snap.forEach(d => { const data = d.data(); let dispDate = "N/A"; if (data.createdAt && typeof data.createdAt.toDate === 'function') { dispDate = data.createdAt.toDate().toLocaleString(); } else if (data.date) { dispDate = data.date; } transactionsFromFirestore_mgr.push({id:d.id, ...data, displayDate:dispDate}); });} catch(e) { console.error("Manager: Error loading txns:", e); transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = `<p><i>Error loading txns: ${e.message}</i></p>`;}
+            if (!firestore_manager.collection || !firestore_manager.query || !firestore_manager.orderBy || !firestore_manager.getDocs) { transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = "<p><i>Error: DB functions missing.</i></p>"; return; } try{ const q = firestore_manager.query(firestore_manager.collection(db_manager, "transactions"), firestore_manager.where("createdAt", ">=", sinceDays(LIST_DAYS)), firestore_manager.orderBy("createdAt", "desc")); const snap = await firestore_manager.getDocs(q); transactionsFromFirestore_mgr = []; snap.forEach(d => { const data = d.data(); let dispDate = "N/A"; if (data.createdAt && typeof data.createdAt.toDate === 'function') { dispDate = data.createdAt.toDate().toLocaleString(); } else if (data.date) { dispDate = data.date; } transactionsFromFirestore_mgr.push({id:d.id, ...data, displayDate:dispDate}); });} catch(e) { console.error("Manager: Error loading txns:", e); transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = `<p><i>Error loading txns: ${e.message}</i></p>`;}
         }
         function renderTransactions_ManagerPage(logToRender) {
             const targetDiv = document.getElementById('transactions'); if (!targetDiv) { return; } targetDiv.innerHTML = ''; if (!logToRender || logToRender.length === 0) { targetDiv.innerHTML = "<p><i>No transaction records found.</i></p>"; return; } const table = document.createElement('table'); table.innerHTML = `<thead><tr><th>Employee</th><th>Rank</th><th>Date</th><th>Details</th><th>SubTotal/Net ($)</th><th>Fee Rate</th><th>Fee/MikesNet ($)</th><th>Emp. Net ($)</th><th>Type</th></tr></thead><tbody></tbody>`; const tbody = table.querySelector('tbody');
@@ -680,7 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
         async function resetAllHacEligibility_ManagerPage() {
              if(!confirm("Reset ALL?")) return; if(resetHacEligibilityButton)resetHacEligibilityButton.disabled=true; if(hacResetStatus)hacResetStatus.textContent="Processing...";
             try {
-                const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers")); if(snap.empty){if(hacResetStatus)hacResetStatus.textContent="No members."; if(resetHacEligibilityButton) resetHacEligibilityButton.disabled=false; return;}
+                window.__hacMgrCache = null; const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers")); if(snap.empty){if(hacResetStatus)hacResetStatus.textContent="No members."; if(resetHacEligibilityButton) resetHacEligibilityButton.disabled=false; return;}
                 const updates = snap.docs.map(d_1 => firestore_manager.updateDoc(d_1.ref, {isEligible: true, lastEligibilityReset: firestore_manager.serverTimestamp()}));
                 await Promise.all(updates); if(hacResetStatus)hacResetStatus.textContent=`Reset ${updates.length}.`;
                 if(hacSearchTermInput?.value.trim()) await searchHacMembers_ManagerPage(); else if(hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Eligibility reset. Search to see updated HAC member details.</i></p>";
@@ -691,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!taxPaymentLogsDisplay_el) return; taxPaymentLogsDisplay_el.innerHTML = "<p><i>Loading logs...</i></p>";
             try {
                 const logsColRef = firestore_manager.collection(db_manager, "taxPaymentLogs");
-                const q = firestore_manager.query(logsColRef, firestore_manager.orderBy("clearedAt", "desc"));
+                const q = firestore_manager.query(logsColRef, firestore_manager.where("clearedAt", ">=", sinceDays(LIST_DAYS)), firestore_manager.orderBy("clearedAt", "desc"));
                 const snapshot = await firestore_manager.getDocs(q); taxPaymentLogsData_mgr = [];
                 snapshot.forEach(doc => { const data = doc.data(); taxPaymentLogsData_mgr.push({ id: doc.id, employeeName: data.employeeName, processingEmployeeName: data.processingEmployeeName, totalAmountCleared: data.totalAmountCleared, clearedAt: data.clearedAt?.toDate ? data.clearedAt.toDate().toLocaleString() : 'N/A', transactionIdsCount: data.transactionIds ? data.transactionIds.length : (data.transactionIdsCleared ? data.transactionIdsCleared.length : 0) }); });
                 renderTaxPaymentLogs_ManagerPage();
@@ -928,15 +939,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Step 2: For each employee, query their uncleared transactions
-                // We batch these with Promise.all but each is one query = N reads where N = transaction count
+                // Step 2: For each employee, total their uncleared transactions. Firebase adds them up itself
+                // (about 1 read per employee), instead of sending every transaction (1 read each).
+                const fm = firestore_manager;
                 const results = await Promise.all(employees.map(async emp => {
-                    const q = firestore_manager.query(
-                        firestore_manager.collection(db_manager, 'transactions'),
-                        firestore_manager.where('employeeName', '==', emp.fullName),
-                        firestore_manager.where('taxesCleared', '==', false)
+                    const q = fm.query(
+                        fm.collection(db_manager, 'transactions'),
+                        fm.where('employeeName', '==', emp.fullName),
+                        fm.where('taxesCleared', '==', false)
                     );
-                    const snap = await firestore_manager.getDocs(q);
+                    if (fm.getAggregateFromServer && fm.sum && fm.count) {
+                        try {
+                            const agg = (await fm.getAggregateFromServer(q, { total: fm.sum('taxAmountPaidToMikes'), n: fm.count() })).data();
+                            return { name: emp.fullName, rank: emp.rank || '', total: agg.total || 0, count: agg.n || 0 };
+                        } catch (aggErr) {
+                            console.warn('Tax summary: total-by-Firebase failed, reading the sales instead', aggErr);
+                        }
+                    }
+                    const snap = await fm.getDocs(q);
                     let total = 0;
                     snap.forEach(doc => {
                         const d = doc.data();
@@ -988,10 +1008,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function startTaxSummaryAutoRefresh() {
-            // Load immediately, then every 10 minutes
+            // Load once when the page opens; the ⟳ Refresh button reloads it.
+            // (It used to re-check every employee every 10 minutes, which used a lot of Firebase reads.)
             loadTaxSummary();
-            if (taxSummaryInterval) clearInterval(taxSummaryInterval);
-            taxSummaryInterval = setInterval(loadTaxSummary, 10 * 60 * 1000);
+            if (taxSummaryInterval) { clearInterval(taxSummaryInterval); taxSummaryInterval = null; }
         }
 
         // ===== TIME CLOCK TAB =====
@@ -1424,7 +1444,7 @@ async function initializeTier2Manager() {
     // 2. Individual Delete Helper
     window.deleteIndividualT2 = async (id) => {
         if (confirm("Permanently delete this specific Tier 2 member?")) {
-            await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", id));
+            window.__hacMgrCache = null; await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", id));
             t2SearchBtn.click(); // Refresh list
         }
     };
@@ -1437,6 +1457,7 @@ async function initializeTier2Manager() {
         try {
             const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.where("tier", "==", 2));
             const snap = await firestore_manager.getDocs(q);
+            window.__hacMgrCache = null;
             const promises = snap.docs.map(d => firestore_manager.deleteDoc(d.ref));
             await Promise.all(promises);
             
@@ -1745,7 +1766,7 @@ initializeHacPrizeWheel();
             if (!logDisplay) return;
             logDisplay.innerHTML = '<p><i>Loading logs...</i></p>';
             try {
-                const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.orderBy('createdAt', 'desc'));
+                const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.where('createdAt', '>=', new Date(Date.now() - 60 * 86400000)), firestore.orderBy('createdAt', 'desc'));
                 const snap = await firestore.getDocs(q);
                 if (snap.empty) {
                     logDisplay.innerHTML = '<p><i>No reimbursement logs found.</i></p>';
@@ -1876,7 +1897,7 @@ initializeHacPrizeWheel();
         if (exportLogBtn) {
             exportLogBtn.addEventListener('click', async () => {
                 try {
-                    const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.orderBy('createdAt', 'desc'));
+                    const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.where('createdAt', '>=', new Date(Date.now() - 60 * 86400000)), firestore.orderBy('createdAt', 'desc'));
                     const snap = await firestore.getDocs(q);
                     if (snap.empty) { alert('No logs to export.'); return; }
                     const rows = [["Employee", "Bank Account", "Total ($)", "Items / Reason", "Date"]];

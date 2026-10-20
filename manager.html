@@ -8,7 +8,7 @@
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp, getAggregateFromServer, sum, count } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       const firebaseConfig = {
         apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10",
         authDomain: "msg-website-bca5f.firebaseapp.com",
@@ -21,7 +21,7 @@
       try {
         const app = initializeApp(firebaseConfig);
         window.db = getFirestore(app);
-        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp };
+        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp, getAggregateFromServer, sum, count };
         window.isFirebaseReady = true;
         document.dispatchEvent(new CustomEvent('firebaseReady', { detail: { db: window.db, functions: window.firestoreFunctions } }));
       } catch (error) {
@@ -421,7 +421,7 @@
                         <div id="tax-summary-list">
                             <p class="loading-message">Click Refresh to load...</p>
                         </div>
-                        <p style="font-size:0.72rem; color:var(--text-muted); margin-top:12px; margin-bottom:0;">Auto-refreshes every 10 minutes while this page is open.</p>
+                        <p style="font-size:0.72rem; color:var(--text-muted); margin-top:12px; margin-bottom:0;">Loads when you open the page. Click ⟳ Refresh for the latest.</p>
                     </div>
 
                     <!-- Reimbursement Calculator -->
@@ -472,6 +472,7 @@
                     <!-- Transaction Records -->
                     <div class="content-block">
                         <h2 style="margin-top:0;">Transaction Records</h2>
+                        <p class="days-note">Last 60 days · older records stay in Firebase</p>
                         <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
                             <input type="text" id="txn-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
                             <button id="export" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export to CSV</button>
@@ -484,6 +485,7 @@
                     <!-- Tax Payment Log -->
                     <div class="content-block">
                         <h2 style="margin-top:0;">Tax Payment Log</h2>
+                        <p class="days-note">Last 60 days · older records stay in Firebase</p>
                         <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
                             <input type="text" id="tax-log-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
                             <button id="export-tax-logs" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export Tax Logs</button>
@@ -496,6 +498,7 @@
                     <!-- Reimbursement Log -->
                     <div class="reimbursement-log-section content-block">
                         <h2 style="margin-top:0;">Reimbursement Log</h2>
+                        <p class="days-note">Last 60 days · older records stay in Firebase</p>
                         <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
                             <input type="text" id="reimb-log-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
                             <button id="export-reimbursement-log-button" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export Log to CSV</button>

@@ -1037,6 +1037,9 @@ p#pos-status-message, #buysell-status-message { margin-top: 12px; font-weight: 6
 .clock-out-btn:hover { background: rgba(239,68,68,0.22); }
 @media (max-width: 600px) { .shift-bar { flex-direction: column; align-items: stretch; text-align: center; } .shift-bar-clock { justify-content: center; } }
 
+/* Manager — "last 60 days" note under log headings */
+.days-note { font-size: 0.75rem; color: var(--text-muted); margin: -8px 0 12px; text-align: center; }
+
 /* Manager — Time Clock tab */
 .tc-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
 .tc-toolbar select, .tc-toolbar input {
