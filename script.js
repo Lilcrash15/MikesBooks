@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let activeHacTier = 1;
         let activeHacDuration = "Lifetime";
         let activeHacItemRef = null;
-        const taxRatesByRank = { "Trainee": 0.20, "Staff": 0.15, "Senior Staff": 0.10, "Manager": 0.00 };
+        const taxRatesByRank = { "Trainee": 0.20, "Staff": 0.15, "Senior Staff": 0.10, "Retired": 0.10, "Manager": 0.00 };
         const buySellItemDefinitions = {
              buy: {
                 "Crab": { price: 87, image: "fs-crab.webp" }, "Minnow": { price: 175, image: "fs-minnow.webp" },
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (TC.isExempt(currentEmployee)) {
                 if (value) value.textContent = TC.fmtHM(minutes);
                 if (bar) bar.style.width = '100%';
-                if (note) note.textContent = 'Managers have no hour requirement.';
+                if (note) note.textContent = currentEmployee.rank === 'Retired' ? 'Retired staff have no hour requirement.' : 'Managers have no hour requirement.';
             } else {
                 const req = TC.requiredHours(settings);
                 const pct = req > 0 ? Math.min(100, (minutes / (req * 60)) * 100) : 100;

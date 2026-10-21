@@ -108,7 +108,7 @@ window.addEventListener('beforeunload', (e) => {
 //   siteSettings/timeClock  { period: "month"|"week", requiredHoursWeek: 2,
 //                             requiredHoursMonth: 8, weekStartsOn: "Monday",
 //                             timezone: "America/New_York", staleHours: 12 }
-// Managers have no hour requirement.
+// Managers and Retired staff have no hour requirement (Retired still pays 10% tax, like Senior Staff).
 // A shift still open after staleHours is "forgotten": it closes at that
 // employee's last sale during the shift (or at clock-in if they made none)
 // and is flagged for a manager to check.
@@ -133,8 +133,10 @@ const MikesTimeClock = (() => {
         }
     }
 
+    // No hour requirement: managers and retired staff. (Taxes are separate: Retired pays 10% like Senior Staff.)
+    const HOURS_EXEMPT_RANKS = ['Manager', 'Retired'];
     function isExempt(emp) {
-        return !!emp && (emp.isManager === true || emp.rank === 'Manager');
+        return !!emp && (emp.isManager === true || HOURS_EXEMPT_RANKS.includes(emp.rank));
     }
 
     function requiredHours(settings, period) {

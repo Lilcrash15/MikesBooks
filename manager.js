@@ -1044,7 +1044,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const req = TC.requiredHours(tcSettingsMgr);
             document.getElementById('tc-period-label').textContent = range.label;
             document.getElementById('tc-requirement-label').textContent =
-                `Requirement: ${req}h per ${range.period} (managers exempt)`;
+                `Requirement: ${req}h per ${range.period} (managers and retired exempt)`;
 
             try {
                 const empSnap = await firestore_manager.getDocs(
