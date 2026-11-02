@@ -256,13 +256,13 @@
     const btn = document.createElement('button');
     btn.id = 'ai-widget-btn';
     btn.title = "Mike's AI Assistant";
-    btn.innerHTML = '🤖<span class="ai-notif" id="ai-notif"></span>';
+    btn.innerHTML = '<img src="ai-widget-logo.png" alt="AI" style="width:30px;height:30px;object-fit:contain;filter:brightness(0) invert(1);"><span class="ai-notif" id="ai-notif"></span>';
 
     const panel = document.createElement('div');
     panel.id = 'ai-widget-panel';
     panel.innerHTML = `
         <div class="ai-panel-header">
-            <span class="ai-avatar">🤖</span>
+            <span class="ai-avatar"><img src="ai-widget-logo.png" alt="" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;filter:brightness(0) invert(1);"></span>
             <div class="ai-title">Mike's AI<div class="ai-subtitle">Sky ads · Hours · Questions</div></div>
             <button id="ai-close-btn" title="Close">✕</button>
         </div>
