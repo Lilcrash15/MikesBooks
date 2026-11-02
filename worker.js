@@ -79,13 +79,15 @@ export default {
       temperature: 0.7,
     };
 
+    const groqKey = env.GROQ_API_KEY || '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';
+
     let groqRes;
     try {
       groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${env.GROQ_API_KEY}`,
+          'Authorization': `Bearer ${groqKey}`,
         },
         body: JSON.stringify(groqPayload),
       });
@@ -121,7 +123,7 @@ export default {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${env.GROQ_API_KEY}`,
+              'Authorization': `Bearer ${groqKey}`,
             },
             body: JSON.stringify({ ...groqPayload, messages: retryMessages }),
           });
