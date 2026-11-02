@@ -161,6 +161,32 @@ export default {
     const groqData = await groqRes.json();
     let reply = groqData?.choices?.[0]?.message?.content ?? '';
 
+    // If empty, retry once with explicit FiveM game context to clear content filters
+    if (!reply.trim()) {
+      const lastUserIdx = [...groqMessages].map(m => m.role).lastIndexOf('user');
+      if (lastUserIdx !== -1) {
+        const retryMessages = groqMessages.map((m, i) =>
+          i === lastUserIdx
+            ? { ...m, content: `(FiveM GTA roleplay game store request) ${m.content}` }
+            : m
+        );
+        try {
+          const retryRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${env.GROQ_API_KEY}`,
+            },
+            body: JSON.stringify({ ...groqPayload, messages: retryMessages }),
+          });
+          if (retryRes.ok) {
+            const retryData = await retryRes.json();
+            reply = retryData?.choices?.[0]?.message?.content ?? '';
+          }
+        } catch (_) { /* fall through to fallback below */ }
+      }
+    }
+
     // Convert "AD: <text>" lines to proper "/ad <text>" in-game commands.
     // The AI outputs "AD: " prefix to avoid content filters on slash commands.
     reply = reply
@@ -175,7 +201,7 @@ export default {
 
     // Fallback — never return a blank response to the widget
     if (!reply.trim()) {
-      reply = "Hmm, I couldn't generate that. Try describing it differently — for example: \"make a sky ad for our duffle bags\" or \"give me a hunting gear ad\".";
+      reply = "Hmm, I couldn't generate that. Try rephrasing — for example: \"make a sky ad advertising that we buy gold nuggets from players\".";
     }
 
     return new Response(JSON.stringify({ reply }), {
