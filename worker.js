@@ -19,6 +19,7 @@ SKY ADS — write for ANY product the employee asks about. Rules:
 • Colors: ^1=red ^2=green ^3=yellow ^4=blue ^5=cyan ^6=purple ^7=white ^8=orange ^9=reset. ^*=bold ^_=underline.
 • Color PERSISTS until changed: ^3Gold Nuggets^9 colors BOTH words yellow — never break a phrase unless you want a color change.
 • ALWAYS apply these color rules: prices & dollar amounts→^2 | "Mike's" brand name→^8 | gold/precious items→^3 | fish/nature→^5 | fire/flares→^1 | hunting gear→^3 or ^8 | ammo→^1.
+• NO markdown — no **bold**, no *italics*, no bullet symbols. Plain text only.
 • NO invented discounts or sale % unless the employee explicitly mentions a real promotion.
 • CTA rules: Mike's BUYS from players → "Bring it in!" / "Sell to us!" / "We're buying!" | Mike's SELLS to players → "Grab yours!" / "In stock now!" / "Stop in today!"
 • Example (gold buy ad): AD: ^8💰 Mike's^9 buys ^3Gold Nuggets^9 — ^2$32^9 each! ^8Bring it in!^9
@@ -126,6 +127,13 @@ export default {
         } catch (_) { /* fall through to fallback below */ }
       }
     }
+
+    // Strip markdown formatting — the widget renders plain text, not markdown
+    reply = reply
+      .replace(/\*\*(.+?)\*\*/g, '$1')  // **bold** → bold
+      .replace(/\*(.+?)\*/g, '$1')       // *italic* → italic
+      .replace(/`(.+?)`/g, '$1')         // `code` → code
+      .replace(/^#{1,6}\s+/gm, '');      // ## headings → plain
 
     // Convert "AD: <text>" lines to proper "/ad <text>" in-game commands.
     // The AI outputs "AD: " prefix to avoid content filters on slash commands.
