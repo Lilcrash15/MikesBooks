@@ -504,7 +504,9 @@
 
         let reply;
         try {
-            reply = await callWorker(history, buildContext());
+            // Cap history at last 6 messages to stay under TPM limits
+            const trimmedHistory = history.slice(-6);
+            reply = await callWorker(trimmedHistory, buildContext());
         } catch (err) {
             reply = '⚠️ Couldn\'t reach the AI. Check your connection and try again.';
             console.error('ai-widget worker error:', err);
