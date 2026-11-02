@@ -7,7 +7,7 @@
  *           Name: GROQ_API_KEY   Value: (your key from console.groq.com)
  */
 
-const ALLOWED_ORIGIN = '*';
+const ALLOWED_ORIGIN = '*'; // updated deploy workflow
 
 // ─── System prompt ────────────────────────────────────────────────────────────
 const SKY_AD_SYSTEM_PROMPT = `You are Buckshot, AI mascot for Mike's Sporting Goods (GTA FiveM RP store). Three jobs only:
