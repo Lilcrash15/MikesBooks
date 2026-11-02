@@ -417,6 +417,24 @@
         let ctx = `Employee: ${loggedInName || 'unknown'}`;
         if (empDoc?.rank) ctx += `\nRank: ${empDoc.rank}`;
         if (hoursCtx)     ctx += `\n${hoursCtx}`;
+
+        // Scrape live POS item prices from the page DOM (includes HAC + Firestore items)
+        const posItems = [];
+        document.querySelectorAll('#pos-items-container .item[data-price]').forEach(el => {
+            const pEl = el.querySelector('p');
+            if (!pEl) return;
+            // Text is "Item Name $50,000" — split on $ to get name
+            const name = pEl.textContent.split('$')[0].trim();
+            const price = parseInt(el.dataset.price, 10);
+            const cat   = el.dataset.category || '';
+            if (name && !isNaN(price)) {
+                posItems.push(`  • ${name} — $${price.toLocaleString()} [${cat}]`);
+            }
+        });
+        if (posItems.length > 0) {
+            ctx += `\n\nCURRENT POS ITEM PRICES (from the store right now):\n${posItems.join('\n')}`;
+        }
+
         return ctx;
     }
 
