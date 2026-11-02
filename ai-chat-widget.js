@@ -502,6 +502,15 @@
 
         const typing = addTyping();
 
+        // Refresh live data before sending if the message is about taxes or hours
+        if (/tax|owe|balance|outstanding/i.test(text)) {
+            await loadTaxes();
+        }
+        if (/hour|shift|clock|time|worked|requirement/i.test(text)) {
+            hoursLoaded = false; // allow re-fetch
+            await loadHours();
+        }
+
         let reply;
         try {
             // Cap history at last 6 messages to stay under TPM limits
