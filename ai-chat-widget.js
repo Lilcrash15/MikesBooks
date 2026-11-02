@@ -12,14 +12,21 @@
 
     const WORKER_URL = 'https://rough-glitter-fc6f.lilcrash19.workers.dev';
 
+    // ── Cooldown config ───────────────────────────────────────────────────────
+    const SEND_COOLDOWN_MS  = 10000; // 10s between any messages
+    const DATA_COOLDOWN_MS  = 60000; // 60s between tax/hours re-fetches
+
     // ── State ─────────────────────────────────────────────────────────────────
-    let history      = []; // { role, content }[]
-    let empDoc       = null;
-    let hoursCtx     = null;
-    let taxCtx       = null;
-    let hoursLoaded  = false;
-    let isOpen       = false;
-    let isBusy       = false;
+    let history          = []; // { role, content }[]
+    let empDoc           = null;
+    let hoursCtx         = null;
+    let taxCtx           = null;
+    let hoursLoaded      = false;
+    let isOpen           = false;
+    let isBusy           = false;
+    let lastSentAt       = 0;
+    let lastTaxFetchAt   = 0;
+    let lastHoursFetchAt = 0;
     const loggedInName = localStorage.getItem('loggedInEmployeeName') || null;
 
     // ── Inject styles ─────────────────────────────────────────────────────────
@@ -238,6 +245,20 @@
     }
     #ai-send-btn:hover { opacity: 0.85; }
     #ai-send-btn:disabled { opacity: 0.35; cursor: default; }
+    #ai-send-btn.cooldown {
+        background: #2d3748;
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+    }
+
+    .ai-disclaimer {
+        text-align: center;
+        font-size: 0.67rem;
+        color: #4a5568;
+        padding: 2px 14px 7px;
+        flex-shrink: 0;
+        line-height: 1.35;
+    }
 
     .ai-not-logged-in {
         padding: 20px 14px;
@@ -279,6 +300,7 @@
             <textarea id="ai-input" rows="1" placeholder='Ask me anything…'></textarea>
             <button id="ai-send-btn">➤</button>
         </div>
+        <div class="ai-disclaimer">⚠️ Buckshot can make mistakes — always double-check ads before posting.</div>
     `;
 
     document.body.appendChild(btn);
@@ -484,31 +506,76 @@
         return ctx;
     }
 
+    // ── Cooldown display — runs after a send, ticks countdown on button ────────
+    function startCooldownDisplay() {
+        const sendBtn = document.getElementById('ai-send-btn');
+        if (!sendBtn) return;
+        const endAt = lastSentAt + SEND_COOLDOWN_MS;
+
+        const tick = () => {
+            const left = endAt - Date.now();
+            if (left <= 0) {
+                // Cooldown expired — re-enable only if AI is also done
+                if (!isBusy) {
+                    sendBtn.disabled = false;
+                    sendBtn.classList.remove('cooldown');
+                    sendBtn.textContent = '➤';
+                }
+                return; // stop ticking
+            }
+            // Still in cooldown — show countdown only while AI is not processing
+            if (!isBusy) {
+                sendBtn.disabled = true;
+                sendBtn.classList.add('cooldown');
+                sendBtn.textContent = Math.ceil(left / 1000) + 's';
+            }
+            setTimeout(tick, 500);
+        };
+        setTimeout(tick, 500);
+    }
+
     // ── Handle send ───────────────────────────────────────────────────────────
     async function handleSend() {
         if (isBusy) return;
+
+        // Enforce general send cooldown
+        if (Date.now() - lastSentAt < SEND_COOLDOWN_MS) return;
+
         const input   = document.getElementById('ai-input');
         const sendBtn = document.getElementById('ai-send-btn');
         const text    = input.value.trim();
         if (!text) return;
 
+        lastSentAt = Date.now();
         input.value = '';
         input.style.height = 'auto';
         isBusy = true;
         sendBtn.disabled = true;
+        sendBtn.classList.remove('cooldown');
+        sendBtn.textContent = '➤';
+
+        // Start cooldown countdown running in background
+        startCooldownDisplay();
 
         addUserMsg(text);
         history.push({ role: 'user', content: text });
 
         const typing = addTyping();
 
-        // Refresh live data before sending if the message is about taxes or hours
+        // Refresh live data — but only if not fetched recently (rate-limit guard)
+        const now = Date.now();
         if (/tax|owe|balance|outstanding/i.test(text)) {
-            await loadTaxes();
+            if (now - lastTaxFetchAt >= DATA_COOLDOWN_MS) {
+                await loadTaxes();
+                lastTaxFetchAt = Date.now();
+            }
         }
         if (/hour|shift|clock|time|worked|requirement/i.test(text)) {
-            hoursLoaded = false; // allow re-fetch
-            await loadHours();
+            if (now - lastHoursFetchAt >= DATA_COOLDOWN_MS) {
+                hoursLoaded = false;
+                await loadHours();
+                lastHoursFetchAt = Date.now();
+            }
         }
 
         let reply;
@@ -526,7 +593,20 @@
         history.push({ role: 'assistant', content: reply });
 
         isBusy = false;
-        sendBtn.disabled = false;
+
+        // Re-enable button only if cooldown has already expired
+        const cdLeft = (lastSentAt + SEND_COOLDOWN_MS) - Date.now();
+        if (cdLeft <= 0) {
+            sendBtn.disabled = false;
+            sendBtn.classList.remove('cooldown');
+            sendBtn.textContent = '➤';
+        } else {
+            // Show remaining countdown — startCooldownDisplay will re-enable when done
+            sendBtn.disabled = true;
+            sendBtn.classList.add('cooldown');
+            sendBtn.textContent = Math.ceil(cdLeft / 1000) + 's';
+        }
+
         input.focus();
 
         // If panel is closed, show notification dot
