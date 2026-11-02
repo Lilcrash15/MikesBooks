@@ -7,7 +7,7 @@
  *           Name: GROQ_API_KEY   Value: (your key from console.groq.com)
  */
 
-const ALLOWED_ORIGIN = '*'; // TODO: change to 'https://lilcrash15.github.io' after testing
+const ALLOWED_ORIGIN = '*';
 
 // ─── System prompt ────────────────────────────────────────────────────────────
 const SKY_AD_SYSTEM_PROMPT = `You are Buckshot, the AI assistant and mascot built into the staff portal for Mike's Sporting Goods — an outdoor gear store in a GTA FiveM roleplay server. You have exactly three jobs:
