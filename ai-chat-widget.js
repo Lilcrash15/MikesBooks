@@ -16,6 +16,7 @@
     let history      = []; // { role, content }[]
     let empDoc       = null;
     let hoursCtx     = null;
+    let taxCtx       = null;
     let hoursLoaded  = false;
     let isOpen       = false;
     let isBusy       = false;
@@ -26,7 +27,7 @@
     #ai-widget-btn {
         position: fixed;
         bottom: 22px;
-        left: 22px;
+        right: 22px;
         z-index: 9000;
         width: 52px;
         height: 52px;
@@ -56,7 +57,7 @@
     #ai-widget-panel {
         position: fixed;
         bottom: 86px;
-        left: 22px;
+        right: 22px;
         z-index: 9001;
         width: 340px;
         max-width: calc(100vw - 32px);
@@ -263,12 +264,13 @@
     panel.innerHTML = `
         <div class="ai-panel-header">
             <span class="ai-avatar"><img src="ai-widget-logo.png" alt="" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;filter:brightness(0) invert(1);"></span>
-            <div class="ai-title">Mike's AI<div class="ai-subtitle">Sky ads · Hours · Questions</div></div>
+            <div class="ai-title">Mike's AI<div class="ai-subtitle">Sky ads · Hours · Taxes</div></div>
             <button id="ai-close-btn" title="Close">✕</button>
         </div>
         <div id="ai-messages"></div>
         <div class="ai-chips" id="ai-chips">
             <button class="ai-chip" data-p="How many hours am I at?">⏱️ My hours</button>
+            <button class="ai-chip" data-p="How much do I owe in taxes?">💰 My taxes</button>
             <button class="ai-chip" data-p="Make me a sky ad for a fishing sale">🎣 Fishing ad</button>
             <button class="ai-chip" data-p="Make me a sky ad for a hunting gear sale">🦌 Hunting ad</button>
             <button class="ai-chip" data-p="Make me a few sky ad options for a big event">🎉 Event ads</button>
@@ -337,11 +339,12 @@
 
         addBotMsg(`Hey ${loggedInName}! 👋 Need a sky ad or want to check your hours?`);
 
-        // Start loading hours in background
+        // Start loading hours + taxes in background
         if (window.isFirebaseReady && window.db) {
             loadHours();
+            loadTaxes();
         } else {
-            document.addEventListener('firebaseReady', loadHours, { once: true });
+            document.addEventListener('firebaseReady', () => { loadHours(); loadTaxes(); }, { once: true });
         }
     }
 
@@ -412,11 +415,42 @@
         }
     }
 
+    // ── Load outstanding taxes from transactions collection ───────────────────
+    async function loadTaxes() {
+        if (!loggedInName || !window.db) return;
+
+        const fs = window.firestoreFunctions;
+        const db = window.db;
+
+        try {
+            const taxSnap = await fs.getDocs(
+                fs.query(
+                    fs.collection(db, 'transactions'),
+                    fs.where('employeeName', '==', loggedInName),
+                    fs.where('taxesCleared', '==', false)
+                )
+            );
+            let totalTax = 0;
+            let txCount  = 0;
+            taxSnap.forEach(d => {
+                const amt = d.data().taxAmountPaidToMikes;
+                if (typeof amt === 'number' && amt > 0) { totalTax += amt; txCount++; }
+            });
+            taxCtx = totalTax > 0
+                ? `Outstanding taxes owed: $${totalTax.toLocaleString()} (${txCount} uncleared transaction${txCount !== 1 ? 's' : ''})`
+                : 'Outstanding taxes owed: $0 (all clear ✅)';
+        } catch (e) {
+            console.warn('ai-widget: taxes load failed', e);
+            taxCtx = 'Outstanding taxes: could not be loaded right now.';
+        }
+    }
+
     // ── Build context for Worker ───────────────────────────────────────────────
     function buildContext() {
         let ctx = `Employee: ${loggedInName || 'unknown'}`;
         if (empDoc?.rank) ctx += `\nRank: ${empDoc.rank}`;
         if (hoursCtx)     ctx += `\n${hoursCtx}`;
+        if (taxCtx)       ctx += `\n${taxCtx}`;
 
         // Scrape live POS item prices from the page DOM (includes HAC + Firestore items)
         const posItems = [];
