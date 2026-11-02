@@ -19,7 +19,3 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          secrets: |
-            GROQ_API_KEY
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
