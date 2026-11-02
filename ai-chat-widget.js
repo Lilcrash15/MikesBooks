@@ -284,6 +284,18 @@
     document.body.appendChild(btn);
     document.body.appendChild(panel);
 
+    // ── Hide button until logged in ───────────────────────────────────────────
+    if (!loggedInName) {
+        btn.style.display = 'none';
+    }
+
+    // Show button if login happens on this page without a reload
+    window.addEventListener('storage', e => {
+        if (e.key === 'loggedInEmployeeName' && e.newValue) {
+            btn.style.display = '';
+        }
+    });
+
     // ── Toggle open/close ─────────────────────────────────────────────────────
     btn.addEventListener('click', () => {
         isOpen = !isOpen;
