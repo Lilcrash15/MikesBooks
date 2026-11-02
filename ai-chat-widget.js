@@ -26,7 +26,7 @@
     #ai-widget-btn {
         position: fixed;
         bottom: 22px;
-        right: 22px;
+        left: 22px;
         z-index: 9000;
         width: 52px;
         height: 52px;
@@ -56,7 +56,7 @@
     #ai-widget-panel {
         position: fixed;
         bottom: 86px;
-        right: 22px;
+        left: 22px;
         z-index: 9001;
         width: 340px;
         max-width: calc(100vw - 32px);
