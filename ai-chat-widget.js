@@ -292,9 +292,9 @@
         <div class="ai-chips" id="ai-chips">
             <button class="ai-chip" data-p="How many hours am I at?">⏱️ My hours</button>
             <button class="ai-chip" data-p="How much do I owe in taxes?">💰 My taxes</button>
-            <button class="ai-chip" data-p="Make me a sky ad for a fishing sale">🎣 Fishing ad</button>
-            <button class="ai-chip" data-p="Make me a sky ad for a hunting gear sale">🦌 Hunting ad</button>
-            <button class="ai-chip" data-p="Make me a few sky ad options for a big event">🎉 Event ads</button>
+            <button class="ai-chip" data-p="Write me a sky ad advertising that Mike's buys fish from players">🎣 Fishing ad</button>
+            <button class="ai-chip" data-p="Write me a sky ad for hunting gear at Mike's Sporting Goods">🦌 Hunting ad</button>
+            <button class="ai-chip" data-p="Write me a few sky ad options to promote Mike's Sporting Goods">🎉 Store ads</button>
         </div>
         <div class="ai-input-row">
             <textarea id="ai-input" rows="1" placeholder='Ask me anything…'></textarea>
