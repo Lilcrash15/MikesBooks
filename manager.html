@@ -8,7 +8,7 @@
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp, getAggregateFromServer, sum, count } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       const firebaseConfig = {
         apiKey: "AIzaSyBFrMPV1Gn_XjFVqj-wtcFad0LBsNEqo10",
         authDomain: "msg-website-bca5f.firebaseapp.com",
@@ -21,7 +21,7 @@
       try {
         const app = initializeApp(firebaseConfig);
         window.db = getFirestore(app);
-        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp, getAggregateFromServer, sum, count };
+        window.firestoreFunctions = { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, getDoc, setDoc, Timestamp };
         window.isFirebaseReady = true;
         document.dispatchEvent(new CustomEvent('firebaseReady', { detail: { db: window.db, functions: window.firestoreFunctions } }));
       } catch (error) {
@@ -31,6 +31,7 @@
     </script>
     <script src="utility.js"></script>
     <script defer src="manager.js"></script>
+    <script defer src="ai-chat-widget.js"></script>
 </head>
 <body class="htmlbackground">
 
@@ -90,7 +91,6 @@
                     <button class="manager-tab-btn" data-tab="tab-pos-items">🛒 POS Items</button>
                     <button class="manager-tab-btn" data-tab="tab-hac">🏆 HAC Members</button>
                     <button class="manager-tab-btn" data-tab="tab-promo">🎁 Promo & Wheel</button>
-                    <button class="manager-tab-btn" data-tab="tab-timeclock">⏱ Time Clock</button>
                     <button class="manager-tab-btn" data-tab="tab-logs">📋 Logs & Taxes</button>
                     <button class="manager-tab-btn" data-tab="tab-shift">📝 Shift Notes</button>
                 </div>
@@ -121,7 +121,6 @@
                                         <option value="Trainee">Trainee</option>
                                         <option value="Staff">Staff</option>
                                         <option value="Senior Staff">Senior Staff</option>
-                                        <option value="Retired">Retired</option>
                                         <option value="Manager">Manager</option>
                                     </select>
                                 </div>
@@ -314,6 +313,53 @@
                         </div>
                     </div>
 
+                    <!-- Promo Codes -->
+                    <div class="content-block">
+                        <h2 style="margin-top:0;">🏷️ Promo Codes</h2>
+                        <div style="background:rgba(255,255,255,0.02); padding:20px; border-radius:10px; border:1px solid var(--border); margin-bottom:20px;">
+                            <h3 style="margin-top:0;">Create New Promo Code</h3>
+                            <div class="form-group">
+                                <label for="promo-code-name">Code Name</label>
+                                <input type="text" id="promo-code-name" placeholder="e.g. SUMMER20" style="text-transform:uppercase;">
+                            </div>
+                            <div class="form-group">
+                                <label for="promo-discount-type">Discount Type</label>
+                                <select id="promo-discount-type">
+                                    <option value="percent">Percentage (%)</option>
+                                    <option value="flat">Flat Amount ($)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="promo-discount-amount">Discount Amount</label>
+                                <input type="number" id="promo-discount-amount" placeholder="e.g. 10" min="0" step="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="promo-max-uses">Max Uses <span style="color:#a0aec0; font-size:0.85rem;">(leave blank for unlimited)</span></label>
+                                <input type="number" id="promo-max-uses" placeholder="e.g. 1  —  blank = unlimited" min="1" step="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="promo-apply-to">Apply To</label>
+                                <select id="promo-apply-to">
+                                    <option value="all">All Items (General Discount)</option>
+                                    <option value="specific">Specific Items Only</option>
+                                    <option value="exclude">All Items Except...</option>
+                                </select>
+                            </div>
+                            <div id="promo-item-picker" style="display:none; background:rgba(0,0,0,0.15); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+                                <p id="promo-item-picker-label" style="margin:0 0 10px 0; color:#a0aec0; font-size:0.85rem;">Select items this code applies to:</p>
+                                <div id="promo-item-checkboxes" style="display:flex; flex-direction:column; gap:8px; max-height:200px; overflow-y:auto;">
+                                    <p style="color:#a0aec0; margin:0;"><i>Loading items...</i></p>
+                                </div>
+                            </div>
+                            <button type="button" id="save-promo-code-btn" class="action-button" style="background:var(--accent); border-color:var(--accent-hover); color:white; padding:11px 24px;">Create Promo Code</button>
+                            <p id="promo-code-status" style="margin-top:10px;"></p>
+                        </div>
+                        <h3 style="margin-bottom:12px;">Active Promo Codes</h3>
+                        <div id="promo-codes-list" class="employee-list" style="display:flex; flex-direction:column; gap:8px;">
+                            <p class="loading-message">Loading promo codes...</p>
+                        </div>
+                    </div>
+
                     <!-- Prize Wheel -->
                     <div class="content-block hac-prize-wheel-section">
                         <h2 style="margin-top:0; text-align:center;">HAC Prize Wheel</h2>
@@ -327,83 +373,6 @@
                             </div>
                             <h3 id="hac-wheel-winner-display" style="text-align:center; color:#fcd34d; font-size:1.8rem; height:1.2em; text-shadow:0 0 20px rgba(252,211,77,0.5);"></h3>
                         </div>
-                    </div>
-                </div>
-
-                <!-- ==================== TAB: TIME CLOCK ==================== -->
-                <div class="manager-tab-panel" id="tab-timeclock">
-
-                    <!-- Hours vs requirement -->
-                    <div class="content-block">
-                        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
-                            <h2 style="margin:0; border-bottom:none; padding-bottom:0;">Hours</h2>
-                            <div class="tc-toolbar" style="margin:0;">
-                                <select id="tc-period-offset">
-                                    <option value="0">This period</option>
-                                    <option value="-1">Last period</option>
-                                    <option value="-2">2 periods ago</option>
-                                </select>
-                                <button id="tc-refresh-btn" class="action-button" style="padding:6px 14px; font-size:0.8rem;">⟳ Refresh</button>
-                            </div>
-                        </div>
-                        <p style="margin:0 0 12px;"><span class="tc-period-label" id="tc-period-label">—</span>
-                            <span id="tc-requirement-label" style="color:var(--text-secondary); font-size:0.85rem; margin-left:8px;"></span></p>
-                        <div id="tc-hours-table" class="transactions-table-container">
-                            <p class="loading-message">Loading hours...</p>
-                        </div>
-                    </div>
-
-                    <!-- Shifts -->
-                    <div class="content-block">
-                        <h2 style="margin-top:0;">Shifts</h2>
-                        <div class="tc-toolbar">
-                            <input type="text" id="tc-shift-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px;">
-                            <label style="display:flex; align-items:center; gap:6px; font-size:0.82rem; color:var(--text-secondary);">
-                                <input type="checkbox" id="tc-flagged-only"> Needs review only
-                            </label>
-                        </div>
-                        <div id="tc-shifts-table" class="transactions-table-container" style="max-height:480px; overflow-y:auto;">
-                            <p class="loading-message">Loading shifts...</p>
-                        </div>
-                        <details style="margin-top:16px;">
-                            <summary style="cursor:pointer; color:var(--text-secondary); font-size:0.88rem;">➕ Add a missed shift</summary>
-                            <div class="tc-settings-grid" style="margin-top:12px;">
-                                <div class="form-group"><label for="tc-add-employee">Employee</label><select id="tc-add-employee"></select></div>
-                                <div class="form-group"><label for="tc-add-in">Clock in</label><input type="datetime-local" id="tc-add-in"></div>
-                                <div class="form-group"><label for="tc-add-out">Clock out</label><input type="datetime-local" id="tc-add-out"></div>
-                            </div>
-                            <button id="tc-add-btn" class="action-button" style="background:var(--accent); color:white; border-color:var(--accent);">Add Shift</button>
-                            <span id="tc-add-status" style="font-size:0.85rem; margin-left:10px;"></span>
-                        </details>
-                    </div>
-
-                    <!-- Settings -->
-                    <div class="content-block">
-                        <h2 style="margin-top:0;">Time Clock Settings</h2>
-                        <div class="tc-settings-grid">
-                            <div class="form-group">
-                                <label for="tc-set-period">Report period</label>
-                                <select id="tc-set-period">
-                                    <option value="month">Monthly</option>
-                                    <option value="week">Weekly (starts Monday)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tc-set-week">Required hours per week</label>
-                                <input type="number" id="tc-set-week" min="0" step="0.5">
-                            </div>
-                            <div class="form-group">
-                                <label for="tc-set-month">Required hours per month</label>
-                                <input type="number" id="tc-set-month" min="0" step="0.5">
-                            </div>
-                            <div class="form-group">
-                                <label for="tc-set-stale">Forgotten clock-out after (hours)</label>
-                                <input type="number" id="tc-set-stale" min="1" step="1">
-                            </div>
-                        </div>
-                        <p style="font-size:0.78rem; color:var(--text-muted); margin:0 0 12px;">Managers and Retired staff have no hour requirement. A shift still open after the forgotten clock-out time closes at the employee's last sale and shows up under "Needs review".</p>
-                        <button id="tc-save-settings-btn" class="action-button" style="background:var(--accent); color:white; border-color:var(--accent);">Save Settings</button>
-                        <span id="tc-settings-status" style="font-size:0.85rem; margin-left:10px;"></span>
                     </div>
                 </div>
 
@@ -422,7 +391,7 @@
                         <div id="tax-summary-list">
                             <p class="loading-message">Click Refresh to load...</p>
                         </div>
-                        <p style="font-size:0.72rem; color:var(--text-muted); margin-top:12px; margin-bottom:0;">Loads when you open the page. Click ⟳ Refresh for the latest.</p>
+                        <p style="font-size:0.72rem; color:var(--text-muted); margin-top:12px; margin-bottom:0;">Auto-refreshes every 10 minutes while this page is open.</p>
                     </div>
 
                     <!-- Reimbursement Calculator -->
@@ -473,7 +442,6 @@
                     <!-- Transaction Records -->
                     <div class="content-block">
                         <h2 style="margin-top:0;">Transaction Records</h2>
-                        <p class="days-note">Last 60 days · older records stay in Firebase</p>
                         <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
                             <input type="text" id="txn-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
                             <button id="export" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export to CSV</button>
@@ -486,7 +454,6 @@
                     <!-- Tax Payment Log -->
                     <div class="content-block">
                         <h2 style="margin-top:0;">Tax Payment Log</h2>
-                        <p class="days-note">Last 60 days · older records stay in Firebase</p>
                         <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
                             <input type="text" id="tax-log-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
                             <button id="export-tax-logs" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export Tax Logs</button>
@@ -499,7 +466,6 @@
                     <!-- Reimbursement Log -->
                     <div class="reimbursement-log-section content-block">
                         <h2 style="margin-top:0;">Reimbursement Log</h2>
-                        <p class="days-note">Last 60 days · older records stay in Firebase</p>
                         <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;">
                             <input type="text" id="reimb-log-search" placeholder="Filter by employee name..." style="flex:1; min-width:200px; padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-input); color:var(--text-primary); font-size:0.88rem;">
                             <button id="export-reimbursement-log-button" class="action-button" style="background:var(--accent-dim); color:#93c5fd; border-color:rgba(59,130,246,0.3); flex-shrink:0;">Export Log to CSV</button>

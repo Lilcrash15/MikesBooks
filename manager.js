@@ -13,10 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return Math.round(parseFloat(n) || 0).toLocaleString('en-US');
     }
 
-    // --- Firebase reads: lists show the last 60 days (each document loaded = 1 of the 50,000 free daily reads) ---
-    const LIST_DAYS = 60;
-    function sinceDays(days) { return new Date(Date.now() - days * 86400000); }
-
     // --- Table row filter by employee name (column 0 = employee name) ---
     function attachTableSearch(inputId, tableContainerId) {
         const input = document.getElementById(inputId);
@@ -650,24 +646,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if(saveHacMemberButton_ManagerPage) saveHacMemberButton_ManagerPage.disabled = false; if(cancelEditHacMemberButton_ManagerPage) cancelEditHacMemberButton_ManagerPage.style.display = 'inline-block';
         }
         async function saveOrUpdateHacMember_ManagerPage() {
-            if(!editingHacMemberId_mgr_page) return; const data = { firstName: hacFirstNameInput_ManagerPage.value.trim(), lastName: hacLastNameInput_ManagerPage.value.trim(), phoneNumber: hacPhoneNumberInput_ManagerPage.value.trim()||null, driverLicense: hacDriverLicenseInput_ManagerPage.value.trim()||null, email: hacEmailInput_ManagerPage.value.trim().toLowerCase()||null }; if(!data.firstName || !data.lastName){alert("Name req.");return;} try { window.__hacMgrCache = null; await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "hacMembers", editingHacMemberId_mgr_page), data); alert("HAC updated."); await searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage(); } catch(e) {console.error(e); alert("HAC update err.");}
+            if(!editingHacMemberId_mgr_page) return; const data = { firstName: hacFirstNameInput_ManagerPage.value.trim(), lastName: hacLastNameInput_ManagerPage.value.trim(), phoneNumber: hacPhoneNumberInput_ManagerPage.value.trim()||null, driverLicense: hacDriverLicenseInput_ManagerPage.value.trim()||null, email: hacEmailInput_ManagerPage.value.trim().toLowerCase()||null }; if(!data.firstName || !data.lastName){alert("Name req.");return;} try { await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "hacMembers", editingHacMemberId_mgr_page), data); alert("HAC updated."); await searchHacMembers_ManagerPage(); resetHacMemberForm_ManagerPage(); } catch(e) {console.error(e); alert("HAC update err.");}
         }
         async function removeHacMember_ManagerPage(memberId) {
-             try { window.__hacMgrCache = null; await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", memberId)); alert("HAC removed."); await searchHacMembers_ManagerPage(); if(editingHacMemberId_mgr_page===memberId)resetHacMemberForm_ManagerPage(); }
+             try { await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", memberId)); alert("HAC removed."); await searchHacMembers_ManagerPage(); if(editingHacMemberId_mgr_page===memberId)resetHacMemberForm_ManagerPage(); }
              catch(e){console.error(e); alert("HAC delete err.");}
         }
         async function searchHacMembers_ManagerPage() {
             if (!hacSearchTermInput || !hacMemberListDisplay) return; const term = hacSearchTermInput.value.trim().toLowerCase(); if(!term) { hacMembers_mgr = []; renderHacMemberList_ManagerPage(hacMembers_mgr); if(hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Enter search term.</i></p>"; return; } hacMemberListDisplay.innerHTML = "<p><i>Searching...</i></p>";
             try {
-                // reuse the member list for 5 minutes (each search used to read every member)
-                let all;
-                if (window.__hacMgrCache && Date.now() - window.__hacMgrCache.at < 5 * 60000) {
-                    all = window.__hacMgrCache.list;
-                } else {
-                    const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.orderBy("lastName"));
-                    const snap = await firestore_manager.getDocs(q); all=[]; snap.forEach(d=>all.push({id:d.id, ...d.data()}));
-                    window.__hacMgrCache = { at: Date.now(), list: all };
-                }
+                const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.orderBy("lastName"));
+                const snap = await firestore_manager.getDocs(q); let all=[]; snap.forEach(d=>all.push({id:d.id, ...d.data()}));
                 hacMembers_mgr = all;
                 const filtered = hacMembers_mgr.filter(m=> `${m.firstName||''} ${m.lastName||''}`.toLowerCase().includes(term) || m.phoneNumber?.includes(term) || m.driverLicense?.toLowerCase().includes(term) || m.email?.toLowerCase().includes(term));
                 renderHacMemberList_ManagerPage(filtered);
@@ -680,18 +669,18 @@ document.addEventListener('DOMContentLoaded', () => {
             hacMemberListDisplay.querySelectorAll('.remove-hac-member-btn').forEach(b=>b.addEventListener('click',async e=>{if(confirm("Remove?"))await removeHacMember_ManagerPage(e.target.dataset.id);}));
         }
         async function loadTransactions_ManagerPage() {
-            if (!firestore_manager.collection || !firestore_manager.query || !firestore_manager.orderBy || !firestore_manager.getDocs) { transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = "<p><i>Error: DB functions missing.</i></p>"; return; } try{ const q = firestore_manager.query(firestore_manager.collection(db_manager, "transactions"), firestore_manager.where("createdAt", ">=", sinceDays(LIST_DAYS)), firestore_manager.orderBy("createdAt", "desc")); const snap = await firestore_manager.getDocs(q); transactionsFromFirestore_mgr = []; snap.forEach(d => { const data = d.data(); let dispDate = "N/A"; if (data.createdAt && typeof data.createdAt.toDate === 'function') { dispDate = data.createdAt.toDate().toLocaleString(); } else if (data.date) { dispDate = data.date; } transactionsFromFirestore_mgr.push({id:d.id, ...data, displayDate:dispDate}); });} catch(e) { console.error("Manager: Error loading txns:", e); transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = `<p><i>Error loading txns: ${e.message}</i></p>`;}
+            if (!firestore_manager.collection || !firestore_manager.query || !firestore_manager.orderBy || !firestore_manager.getDocs) { transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = "<p><i>Error: DB functions missing.</i></p>"; return; } try{ const q = firestore_manager.query(firestore_manager.collection(db_manager, "transactions"), firestore_manager.orderBy("createdAt", "desc")); const snap = await firestore_manager.getDocs(q); transactionsFromFirestore_mgr = []; snap.forEach(d => { const data = d.data(); let dispDate = "N/A"; if (data.createdAt && typeof data.createdAt.toDate === 'function') { dispDate = data.createdAt.toDate().toLocaleString(); } else if (data.date) { dispDate = data.date; } transactionsFromFirestore_mgr.push({id:d.id, ...data, displayDate:dispDate}); });} catch(e) { console.error("Manager: Error loading txns:", e); transactionsFromFirestore_mgr = []; if(transactionsDiv) transactionsDiv.innerHTML = `<p><i>Error loading txns: ${e.message}</i></p>`;}
         }
         function renderTransactions_ManagerPage(logToRender) {
             const targetDiv = document.getElementById('transactions'); if (!targetDiv) { return; } targetDiv.innerHTML = ''; if (!logToRender || logToRender.length === 0) { targetDiv.innerHTML = "<p><i>No transaction records found.</i></p>"; return; } const table = document.createElement('table'); table.innerHTML = `<thead><tr><th>Employee</th><th>Rank</th><th>Date</th><th>Details</th><th>SubTotal/Net ($)</th><th>Fee Rate</th><th>Fee/MikesNet ($)</th><th>Emp. Net ($)</th><th>Type</th></tr></thead><tbody></tbody>`; const tbody = table.querySelector('tbody');
-            logToRender.forEach(t => { if (!t || typeof t !== 'object') { return; } const row = tbody.insertRow(); let itemsStr = 'N/A'; if (t.items && Array.isArray(t.items) && t.items.length > 0) { itemsStr = t.items.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1})`).join('; '); } else if (t.itemsTraded && Array.isArray(t.itemsTraded) && t.itemsTraded.length > 0) { itemsStr = t.itemsTraded.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1}) [${it.type || 'N/A'}]`).join('; '); } itemsStr = `"${itemsStr.replace(/"/g, '""')}"`; let subTotalVal = 0; if (t.transactionType === "Buy/Sell Trade") { subTotalVal = (parseFloat(t.totalValueSoldToCustomer) || 0) - (parseFloat(t.totalValueBoughtFromCustomer) || 0); } else { subTotalVal = parseFloat(t.subTotal !== undefined ? t.subTotal : t.fullSaleTotal) || 0; } let feePaidVal = 0; if (t.transactionType === "Buy/Sell Trade") { feePaidVal = parseFloat(t.netAmountForMikes) || 0; } else { feePaidVal = parseFloat(t.taxAmountPaidToMikes) || 0; } let netEmpVal = '$0'; if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A'; } else { netEmpVal = '$' + fmt(t.netTotalForEmployee); } const taxRateDisplay = t.taxRateApplied || (t.transactionType === "Buy/Sell Trade" ? 'N/A' : '0%'); const displayDate = t.displayDate || (t.createdAt && t.createdAt.toDate ? t.createdAt.toDate().toLocaleString() : 'N/A'); row.innerHTML = `<td>${t.employeeName||'N/A'}</td><td>${t.employeeRank||'N/A'}</td><td>${displayDate}</td><td>${itemsStr==='"N/A"'?'N/A':itemsStr.substring(1,itemsStr.length-1)}</td><td>$${fmt(subTotalVal)}</td><td>${taxRateDisplay}</td><td>$${fmt(feePaidVal)}</td><td>${t.transactionType==="Buy/Sell Trade"?'N/A':'$'+fmt(t.netTotalForEmployee)}</td><td>${t.transactionType||'Unknown'}</td>`; });
+            logToRender.forEach(t => { if (!t || typeof t !== 'object') { return; } const row = tbody.insertRow(); let itemsStr = 'N/A'; if (t.items && Array.isArray(t.items) && t.items.length > 0) { itemsStr = t.items.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1})`).join('; '); } else if (t.itemsTraded && Array.isArray(t.itemsTraded) && t.itemsTraded.length > 0) { itemsStr = t.itemsTraded.map(it => `${it.itemName || 'Item'} (x${it.quantity || 1}) [${it.type || 'N/A'}]`).join('; '); } itemsStr = `"${itemsStr.replace(/"/g, '""')}"`; let subTotalVal = 0; if (t.transactionType === "Buy/Sell Trade") { subTotalVal = (parseFloat(t.totalValueSoldToCustomer) || 0) - (parseFloat(t.totalValueBoughtFromCustomer) || 0); } else { subTotalVal = parseFloat(t.subTotal !== undefined ? t.subTotal : t.fullSaleTotal) || 0; } let feePaidVal = 0; if (t.transactionType === "Buy/Sell Trade") { feePaidVal = parseFloat(t.netAmountForMikes) || 0; } else { feePaidVal = parseFloat(t.taxAmountPaidToMikes) || 0; } let netEmpVal = '$0'; if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A'; } else { netEmpVal = '$' + fmt(t.netTotalForEmployee); } const taxRateDisplay = t.taxRateApplied || (t.transactionType === "Buy/Sell Trade" ? 'N/A' : '0%'); const displayDate = t.displayDate || (t.createdAt && t.createdAt.toDate ? t.createdAt.toDate().toLocaleString() : 'N/A'); const promoLine = t.promoCodeUsed ? `<br><span style="color:#68d391;font-size:0.82rem;">🏷️ ${t.promoCodeUsed} (-$${fmt(t.promoDiscountAmount || 0)})</span>` : ''; const empRec = employees_mgr.find(e => e.fullName === t.employeeName); const bankStr = empRec?.bankAccountNumber ? `<br><small style="color:#a0aec0;font-size:0.82em">(${empRec.bankAccountNumber})</small>` : ''; row.innerHTML = `<td>${t.employeeName||'N/A'}${bankStr}</td><td>${t.employeeRank||'N/A'}</td><td>${displayDate}</td><td>${itemsStr==='"N/A"'?'N/A':itemsStr.substring(1,itemsStr.length-1)}${promoLine}</td><td>$${fmt(subTotalVal)}</td><td>${taxRateDisplay}</td><td>$${fmt(feePaidVal)}</td><td>${t.transactionType==="Buy/Sell Trade"?'N/A':'$'+fmt(t.netTotalForEmployee)}</td><td>${t.transactionType||'Unknown'}</td>`; });
             targetDiv.appendChild(table);
             attachTableSearch('txn-search', 'transactions');
         }
         async function resetAllHacEligibility_ManagerPage() {
              if(!confirm("Reset ALL?")) return; if(resetHacEligibilityButton)resetHacEligibilityButton.disabled=true; if(hacResetStatus)hacResetStatus.textContent="Processing...";
             try {
-                window.__hacMgrCache = null; const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers")); if(snap.empty){if(hacResetStatus)hacResetStatus.textContent="No members."; if(resetHacEligibilityButton) resetHacEligibilityButton.disabled=false; return;}
+                const snap = await firestore_manager.getDocs(firestore_manager.collection(db_manager, "hacMembers")); if(snap.empty){if(hacResetStatus)hacResetStatus.textContent="No members."; if(resetHacEligibilityButton) resetHacEligibilityButton.disabled=false; return;}
                 const updates = snap.docs.map(d_1 => firestore_manager.updateDoc(d_1.ref, {isEligible: true, lastEligibilityReset: firestore_manager.serverTimestamp()}));
                 await Promise.all(updates); if(hacResetStatus)hacResetStatus.textContent=`Reset ${updates.length}.`;
                 if(hacSearchTermInput?.value.trim()) await searchHacMembers_ManagerPage(); else if(hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Eligibility reset. Search to see updated HAC member details.</i></p>";
@@ -702,7 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!taxPaymentLogsDisplay_el) return; taxPaymentLogsDisplay_el.innerHTML = "<p><i>Loading logs...</i></p>";
             try {
                 const logsColRef = firestore_manager.collection(db_manager, "taxPaymentLogs");
-                const q = firestore_manager.query(logsColRef, firestore_manager.where("clearedAt", ">=", sinceDays(LIST_DAYS)), firestore_manager.orderBy("clearedAt", "desc"));
+                const q = firestore_manager.query(logsColRef, firestore_manager.orderBy("clearedAt", "desc"));
                 const snapshot = await firestore_manager.getDocs(q); taxPaymentLogsData_mgr = [];
                 snapshot.forEach(doc => { const data = doc.data(); taxPaymentLogsData_mgr.push({ id: doc.id, employeeName: data.employeeName, processingEmployeeName: data.processingEmployeeName, totalAmountCleared: data.totalAmountCleared, clearedAt: data.clearedAt?.toDate ? data.clearedAt.toDate().toLocaleString() : 'N/A', transactionIdsCount: data.transactionIds ? data.transactionIds.length : (data.transactionIdsCleared ? data.transactionIdsCleared.length : 0) }); });
                 renderTaxPaymentLogs_ManagerPage();
@@ -738,12 +727,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             // saveEmployeePasswordButton removed - individual passwords handled per-employee
             if (resetHacEligibilityButton) resetHacEligibilityButton.addEventListener('click', resetAllHacEligibility_ManagerPage);
+            const savePromoBtn = document.getElementById('save-promo-code-btn');
+            if (savePromoBtn) savePromoBtn.addEventListener('click', savePromoCode);
+            const promoApplyToSelect = document.getElementById('promo-apply-to');
+            if (promoApplyToSelect) {
+                promoApplyToSelect.addEventListener('change', () => {
+                    const picker = document.getElementById('promo-item-picker');
+                    const label = document.getElementById('promo-item-picker-label');
+                    const val = promoApplyToSelect.value;
+                    if (val === 'all') {
+                        if (picker) picker.style.display = 'none';
+                    } else {
+                        if (picker) picker.style.display = 'block';
+                        if (label) label.textContent = val === 'specific'
+                            ? 'Select items this code applies to:'
+                            : 'Select items to exclude from this discount:';
+                        loadPromoItemPicker();
+                    }
+                });
+            }
             if (exportButton) {
                 exportButton.addEventListener('click', async () => {
                     if (transactionsFromFirestore_mgr.length === 0) { await loadTransactions_ManagerPage(); }
                     if (transactionsFromFirestore_mgr.length === 0) { alert("No transactions to export."); return; }
                     
-                    const csvHeader = ["Employee", "Rank", "Date", "Items", "SubTotal ($)", "Fee Rate (%)", "Fee Paid ($)", "Net Earned ($)", "Type"];
+                    const csvHeader = ["Employee", "Rank", "Date", "Items", "SubTotal ($)", "Fee Rate (%)", "Fee Paid ($)", "Net Earned ($)", "Type", "Promo Code", "Discount ($)"];
                     const csvRows = [csvHeader.join(",")];
                     
                     transactionsFromFirestore_mgr.forEach(t => {
@@ -768,7 +776,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (t.transactionType === "Buy/Sell Trade") { netEmpVal = 'N/A';
                         } else { netEmpVal = (parseFloat(t.netTotalForEmployee) || 0).toFixed(2); }
                         const transType = `"${(t.transactionType || "Unknown").replace(/"/g, '""')}"`;
-                        csvRows.push([emp, rankVal, dt, itemsStr, sTotal, rateNum, feePaid, netEmpVal, transType].join(","));
+                        const promoCode = t.promoCodeUsed ? `"${t.promoCodeUsed.replace(/"/g, '""')}"` : '""';
+                        const promoDiscount = t.promoDiscountAmount ? parseFloat(t.promoDiscountAmount).toFixed(2) : '0.00';
+                        csvRows.push([emp, rankVal, dt, itemsStr, sTotal, rateNum, feePaid, netEmpVal, transType, promoCode, promoDiscount].join(","));
                     });
                     if (csvRows.length <= 1) { alert("No valid data to export."); return; }
                     const csvContent = csvRows.join("\n");
@@ -939,24 +949,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Step 2: For each employee, total their uncleared transactions. Firebase adds them up itself
-                // (about 1 read per employee), instead of sending every transaction (1 read each).
-                const fm = firestore_manager;
+                // Step 2: For each employee, query their uncleared transactions
+                // We batch these with Promise.all but each is one query = N reads where N = transaction count
                 const results = await Promise.all(employees.map(async emp => {
-                    const q = fm.query(
-                        fm.collection(db_manager, 'transactions'),
-                        fm.where('employeeName', '==', emp.fullName),
-                        fm.where('taxesCleared', '==', false)
+                    const q = firestore_manager.query(
+                        firestore_manager.collection(db_manager, 'transactions'),
+                        firestore_manager.where('employeeName', '==', emp.fullName),
+                        firestore_manager.where('taxesCleared', '==', false)
                     );
-                    if (fm.getAggregateFromServer && fm.sum && fm.count) {
-                        try {
-                            const agg = (await fm.getAggregateFromServer(q, { total: fm.sum('taxAmountPaidToMikes'), n: fm.count() })).data();
-                            return { name: emp.fullName, rank: emp.rank || '', total: agg.total || 0, count: agg.n || 0 };
-                        } catch (aggErr) {
-                            console.warn('Tax summary: total-by-Firebase failed, reading the sales instead', aggErr);
-                        }
-                    }
-                    const snap = await fm.getDocs(q);
+                    const snap = await firestore_manager.getDocs(q);
                     let total = 0;
                     snap.forEach(doc => {
                         const d = doc.data();
@@ -1008,254 +1009,177 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function startTaxSummaryAutoRefresh() {
-            // Load once when the page opens; the ⟳ Refresh button reloads it.
-            // (It used to re-check every employee every 10 minutes, which used a lot of Firebase reads.)
+            // Load immediately, then every 10 minutes
             loadTaxSummary();
-            if (taxSummaryInterval) { clearInterval(taxSummaryInterval); taxSummaryInterval = null; }
+            if (taxSummaryInterval) clearInterval(taxSummaryInterval);
+            taxSummaryInterval = setInterval(loadTaxSummary, 10 * 60 * 1000);
         }
 
-        // ===== TIME CLOCK TAB =====
-        // Rules are shared with the POS through MikesTimeClock (utility.js).
-        let tcWired = false;
-        let tcShifts = [];         // [{id, ...data}] overlapping the shown period
-        let tcEmployees = [];
-        let tcSettingsMgr = null;
-
-        function tcEsc(v) {
-            return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-        }
-        function tcFmtDT(d) {
-            return d ? d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : '—';
-        }
-        function tcToLocalInput(d) {
-            if (!d) return '';
-            const pad = n => String(n).padStart(2, '0');
-            return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-        }
-        function tcTs(d) { return firestore_manager.Timestamp.fromDate(d); }
-
-        async function loadTimeClock() {
-            const TC = MikesTimeClock;
-            const hoursEl = document.getElementById('tc-hours-table');
-            const offset = parseInt(document.getElementById('tc-period-offset')?.value || '0', 10);
-            tcSettingsMgr = await TC.loadSettings(db_manager, firestore_manager);
-            fillTcSettingsForm(tcSettingsMgr);
-            const range = TC.periodRange(tcSettingsMgr, new Date(), offset);
-            const req = TC.requiredHours(tcSettingsMgr);
-            document.getElementById('tc-period-label').textContent = range.label;
-            document.getElementById('tc-requirement-label').textContent =
-                `Requirement: ${req}h per ${range.period} (managers and retired exempt)`;
-
+        async function loadPromoCodes() {
+            const listEl = document.getElementById('promo-codes-list');
             try {
-                const empSnap = await firestore_manager.getDocs(
-                    firestore_manager.query(firestore_manager.collection(db_manager, 'employees'), firestore_manager.orderBy('fullName')));
-                tcEmployees = empSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-                // Shifts that started in (or just before) the period, plus anything still open.
-                const col = firestore_manager.collection(db_manager, 'timeClock');
-                const from = new Date(range.start.getTime() - 2 * 86400000);
-                const [rangeSnap, openSnap] = await Promise.all([
-                    firestore_manager.getDocs(firestore_manager.query(col,
-                        firestore_manager.where('clockIn', '>=', tcTs(from)), firestore_manager.where('clockIn', '<', tcTs(range.end)))),
-                    firestore_manager.getDocs(firestore_manager.query(col, firestore_manager.where('status', '==', 'open')))
-                ]);
-                const byId = new Map();
-                [...rangeSnap.docs, ...openSnap.docs].forEach(d => byId.set(d.id, { id: d.id, ...d.data() }));
-                const now = new Date();
-                tcShifts = [...byId.values()]
-                    .filter(sh => TC.toDate(sh.clockIn) < range.end)
-                    .filter(sh => sh.status === 'open' || (TC.toDate(sh.clockOut) || now) > range.start)
-                    .sort((a, b) => TC.toDate(b.clockIn) - TC.toDate(a.clockIn));
+                const q = firestore_manager.query(
+                    firestore_manager.collection(db_manager, "promoCodes"),
+                    firestore_manager.orderBy("createdAt", "desc")
+                );
+                const snap = await firestore_manager.getDocs(q);
+                const codes = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                renderPromoCodes(codes);
             } catch (e) {
-                console.error('Time clock load failed:', e);
-                if (hoursEl) hoursEl.innerHTML = `<p class="loading-message">Could not load the time clock: ${tcEsc(e.message)}</p>`;
+                console.error("Error loading promo codes:", e);
+                if (listEl) listEl.innerHTML = "<p><i>Error loading promo codes.</i></p>";
+            }
+        }
+
+        function renderPromoCodes(codes) {
+            const listEl = document.getElementById('promo-codes-list');
+            if (!listEl) return;
+            listEl.innerHTML = '';
+            if (codes.length === 0) {
+                listEl.innerHTML = "<p><i>No promo codes created yet.</i></p>";
                 return;
             }
-
-            // Hours per employee
-            const now = new Date();
-            const rows = tcEmployees.map(emp => {
-                const mine = tcShifts.filter(sh => sh.employeeId === emp.id);
-                const minutes = mine.reduce((m, sh) => m + TC.minutesInRange(sh, range.start, range.end, now), 0);
-                const onShift = mine.some(sh => sh.status === 'open' && !TC.isStale(sh, tcSettingsMgr, now));
-                const exempt = TC.isExempt(emp);
-                const met = minutes >= req * 60;
-                return { emp, minutes, onShift, exempt, met };
-            }).sort((a, b) => (a.exempt - b.exempt) || (a.met - b.met) || (a.minutes - b.minutes));
-
-            if (hoursEl) {
-                const short = rows.filter(r => !r.exempt && !r.met).length;
-                hoursEl.innerHTML = `<p style="font-size:0.85rem; color:var(--text-secondary); margin:0 0 10px;">${short === 0 ? '✓ Everyone has met the requirement.' : `${short} employee${short === 1 ? '' : 's'} short of ${req}h.`}</p>
-                <table><thead><tr><th>Employee</th><th>Rank</th><th>Hours</th><th>Status</th></tr></thead><tbody>
-                ${rows.map(r => `<tr>
-                    <td><strong>${tcEsc(r.emp.fullName)}</strong> ${r.onShift ? '<span class="tc-status-pill tc-onshift">On shift</span>' : ''}</td>
-                    <td>${tcEsc(r.emp.rank || '')}</td>
-                    <td>${TC.fmtHM(r.minutes)}${r.exempt ? '' : ` <span style="color:var(--text-muted);">/ ${req}h</span>`}</td>
-                    <td>${r.exempt ? '<span class="tc-status-pill tc-exempt">Exempt</span>'
-                        : r.met ? '<span class="tc-status-pill tc-met">Met</span>'
-                        : `<span class="tc-status-pill tc-short">Short ${TC.fmtHM(req * 60 - r.minutes)}</span>`}</td>
-                </tr>`).join('')}
-                </tbody></table>`;
-            }
-            renderTcShifts();
-            fillTcAddEmployees();
+            codes.forEach(code => {
+                const div = document.createElement('div');
+                div.className = 'employee-list-item';
+                const discountLabel = code.discountType === 'percent'
+                    ? `${code.discountAmount}% off`
+                    : `$${code.discountAmount} off`;
+                const statusBadge = code.isActive
+                    ? '<span style="background:#276749; color:#68d391; font-size:0.75rem; padding:2px 8px; border-radius:4px;">ACTIVE</span>'
+                    : '<span style="background:#742a2a; color:#fc8181; font-size:0.75rem; padding:2px 8px; border-radius:4px;">INACTIVE</span>';
+                const scopeNote = code.applyTo === 'specific' && code.itemNames?.length
+                    ? `<br><span style="color:#a0aec0; font-size:0.8rem;">Items: ${code.itemNames.join(', ')}</span>`
+                    : code.applyTo === 'exclude' && code.itemNames?.length
+                    ? `<br><span style="color:#a0aec0; font-size:0.8rem;">Excludes: ${code.itemNames.join(', ')}</span>`
+                    : '';
+                div.innerHTML = `
+                    <div class="employee-details">
+                        <strong>${code.code}</strong> — ${discountLabel} ${statusBadge}
+                        <br><span style="color:#a0aec0; font-size:0.85rem;">Used: ${code.usageCount || 0}${code.maxUses ? ` / ${code.maxUses}` : ''} time${(code.usageCount || 0) !== 1 ? 's' : ''} ${code.maxUses ? '' : '· <em>Unlimited</em>'}</span>${scopeNote}
+                    </div>
+                    <div class="action-buttons-cell">
+                        <button class="toggle-promo-btn action-button" data-id="${code.id}" data-active="${code.isActive}">${code.isActive ? 'Deactivate' : 'Activate'}</button>
+                        <button class="delete-promo-btn action-button clear-cart-btn" data-id="${code.id}">Delete</button>
+                    </div>`;
+                listEl.appendChild(div);
+            });
+            listEl.querySelectorAll('.toggle-promo-btn').forEach(btn => btn.addEventListener('click', e => togglePromoCode(e.target.dataset.id, e.target.dataset.active === 'true')));
+            listEl.querySelectorAll('.delete-promo-btn').forEach(btn => btn.addEventListener('click', e => { if (confirm('Delete this promo code?')) deletePromoCode(e.target.dataset.id); }));
         }
 
-        function renderTcShifts() {
-            const TC = MikesTimeClock;
-            const el = document.getElementById('tc-shifts-table');
-            if (!el) return;
-            const term = (document.getElementById('tc-shift-search')?.value || '').toLowerCase().trim();
-            const flaggedOnly = document.getElementById('tc-flagged-only')?.checked;
-            const now = new Date();
-            const list = tcShifts.filter(sh =>
-                (!term || (sh.employeeName || '').toLowerCase().includes(term)) &&
-                (!flaggedOnly || sh.flagged || TC.isStale(sh, tcSettingsMgr, now)));
-            if (!list.length) { el.innerHTML = '<p class="loading-message">No shifts in this period.</p>'; return; }
-            el.innerHTML = `<table><thead><tr><th>Employee</th><th>Clock in</th><th>Clock out</th><th>Length</th><th>Notes</th><th></th></tr></thead><tbody>
-            ${list.map(sh => {
-                const a = TC.toDate(sh.clockIn), b = TC.toDate(sh.clockOut);
-                const stale = TC.isStale(sh, tcSettingsMgr, now);
-                const len = TC.minutesInRange(sh, new Date(0), new Date(8.64e15), now);
-                const note = stale ? '<span class="tc-flag">⚠ Never clocked out</span>'
-                    : sh.flagged ? `<span class="tc-flag">⚠ ${tcEsc(sh.flagReason || 'Needs review')}</span>`
-                    : sh.status === 'open' ? '<span class="tc-status-pill tc-onshift">On shift</span>'
-                    : sh.editedBy ? `<span style="color:var(--text-muted); font-size:0.75rem;">Edited by ${tcEsc(sh.editedBy)}</span>` : '';
-                return `<tr data-shift-id="${sh.id}">
-                    <td>${tcEsc(sh.employeeName)}</td>
-                    <td>${tcFmtDT(a)}</td>
-                    <td>${b ? tcFmtDT(b) : '—'}</td>
-                    <td>${TC.fmtHM(len)}</td>
-                    <td>${note}</td>
-                    <td style="white-space:nowrap;">
-                        ${sh.status === 'open' ? `<button class="action-button tc-small-btn" data-tc-action="close">Clock out</button>` : ''}
-                        ${sh.flagged ? `<button class="action-button tc-small-btn" data-tc-action="ok">Looks right</button>` : ''}
-                        <button class="action-button tc-small-btn" data-tc-action="edit">Edit</button>
-                        <button class="action-button tc-small-btn clear-cart-btn" data-tc-action="delete">Delete</button>
-                    </td></tr>`;
-            }).join('')}</tbody></table>`;
-        }
+        async function loadPromoItemPicker() {
+            const container = document.getElementById('promo-item-checkboxes');
+            if (!container) return;
+            // Don't reload if already populated
+            if (container.querySelector('.promo-item-checkbox')) return;
+            container.innerHTML = '<p style="color:#a0aec0; margin:0;"><i>Loading...</i></p>';
 
-        async function onTcShiftAction(e) {
-            const btn = e.target.closest('[data-tc-action]');
-            if (!btn) return;
-            const row = btn.closest('tr');
-            const id = row?.dataset.shiftId || row?.dataset.editFor;
-            const sh = tcShifts.find(x => x.id === id);
-            if (!sh) return;
-            const ref = firestore_manager.doc(db_manager, 'timeClock', id);
-            const who = localStorage.getItem('loggedInEmployeeName') || 'Manager';
-            const action = btn.dataset.tcAction;
+            // Static items hardcoded in index.html
+            const staticItems = [
+                "1st Repair","2nd Repair","30.06 Ammo","Armor","Bandages","Beach Ring","Beer",
+                "Big Boy Pack","Binoculars","Bite Size Line","Boar Jerky","Bread","Broke Ass Reel",
+                "Brutas Rod","Buckshot Boost","Camping Pack","Cervid Bait","Cheap Mono Line",
+                "Cigarettes","Deer Jerky","Deer/Boar Mount","Dock Special Pack","Duffle Bag",
+                "Elemental Rod","Fish Finder","Fish R US Reel","Flare Cartridge","Flare Gun",
+                "Flashlight","Gold Pan","HAC Membership","Hook #1","Hook #2","Hook #3","Hook #6",
+                "Hook #10","Hunting Map","Hunting Pack","Hunting Rifle","Jerky Pack","Jerry Can",
+                "King Braid Line","Knife","Leech","Leporid Bait","Lightning Line","Line Sniffer Reel",
+                "MK2 Skins","MSG Chair","MSG Cooler","MSG Cup","MSG Keychain","Maggots",
+                "Magnum XL Rod","Mahi Pack","Mealworms","Mobey Mono Line","Mount w/ Tusk/Antler",
+                "Nero Rod","Nightworms","Noodle Line","Orange Vest","Pike Pack","Radio","Redworms",
+                "Repair Kit","Rock Bottom Reel","Rodent Bait","Scoped Pack","Scoped Rifle",
+                "Scuba Pack","Scuba Tank","Shark Repellent","Summer Camping Pack","Swine Bait",
+                "Tackle Box","The Master Baiter Pack","Thunder Reel","Tiny Biters Pack","Tow Hook",
+                "Trout Pack","Tuna Pack","Value Cast Rod","Waxworms","Zeus Rod","Zilla Reel"
+            ];
+
             try {
-                if (action === 'close') {
-                    if (!confirm(`Clock ${sh.employeeName} out now?`)) return;
-                    await firestore_manager.updateDoc(ref, { clockOut: firestore_manager.serverTimestamp(), status: 'closed', closedBy: 'manager', editedBy: who, editedAt: firestore_manager.serverTimestamp() });
-                } else if (action === 'ok') {
-                    await firestore_manager.updateDoc(ref, { flagged: false, editedBy: who, editedAt: firestore_manager.serverTimestamp() });
-                } else if (action === 'delete') {
-                    if (!confirm(`Delete this shift for ${sh.employeeName}? Its hours stop counting.`)) return;
-                    await firestore_manager.deleteDoc(ref);
-                } else if (action === 'edit') {
-                    document.querySelectorAll('.tc-edit-row').forEach(r => r.remove());
-                    const er = document.createElement('tr');
-                    er.className = 'tc-edit-row'; er.dataset.editFor = id;
-                    er.innerHTML = `<td colspan="6" style="padding:12px;">
-                        <label style="font-size:0.8rem;">In <input type="datetime-local" class="tc-edit-in" value="${tcToLocalInput(MikesTimeClock.toDate(sh.clockIn))}"></label>
-                        <label style="font-size:0.8rem; margin-left:10px;">Out <input type="datetime-local" class="tc-edit-out" value="${tcToLocalInput(MikesTimeClock.toDate(sh.clockOut))}"></label>
-                        <button class="action-button tc-small-btn" data-tc-action="save" style="margin-left:10px; background:var(--accent); color:white;">Save</button>
-                        <button class="action-button tc-small-btn clear-cart-btn" data-tc-action="cancel">Cancel</button></td>`;
-                    row.after(er);
-                    return;
-                } else if (action === 'cancel') {
-                    row.remove(); return;
-                } else if (action === 'save') {
-                    const vin = row.querySelector('.tc-edit-in').value, vout = row.querySelector('.tc-edit-out').value;
-                    if (!vin || !vout) { alert('Enter both a clock-in and a clock-out time.'); return; }
-                    const din = new Date(vin), dout = new Date(vout);
-                    if (dout <= din) { alert('Clock-out has to be after clock-in.'); return; }
-                    await firestore_manager.updateDoc(ref, { clockIn: tcTs(din), clockOut: tcTs(dout), status: 'closed',
-                        closedBy: sh.closedBy || 'manager', flagged: false, editedBy: who, editedAt: firestore_manager.serverTimestamp() });
-                }
-                await loadTimeClock();
-            } catch (err) {
-                console.error('Time clock action failed:', err);
-                alert('That did not save: ' + err.message);
-            }
-        }
+                // Pull dynamically added items from Firestore
+                const snap = await firestore_manager.getDocs(
+                    firestore_manager.collection(db_manager, "posItems")
+                );
+                const firestoreItems = snap.docs.map(d => d.data().name || d.data().itemName || d.id).filter(Boolean);
 
-        function fillTcAddEmployees() {
-            const sel = document.getElementById('tc-add-employee');
-            if (!sel) return;
-            const keep = sel.value;
-            sel.innerHTML = '<option value="">-- Select Employee --</option>' +
-                tcEmployees.map(e => `<option value="${e.id}">${tcEsc(e.fullName)}</option>`).join('');
-            sel.value = keep;
-        }
+                // Merge, deduplicate, sort
+                const allItems = [...new Set([...staticItems, ...firestoreItems])].sort((a, b) => a.localeCompare(b));
 
-        async function addTcShift() {
-            const status = document.getElementById('tc-add-status');
-            const empId = document.getElementById('tc-add-employee').value;
-            const vin = document.getElementById('tc-add-in').value, vout = document.getElementById('tc-add-out').value;
-            const emp = tcEmployees.find(e => e.id === empId);
-            if (!emp || !vin || !vout) { status.textContent = 'Pick an employee and both times.'; status.style.color = '#fca5a5'; return; }
-            const din = new Date(vin), dout = new Date(vout);
-            if (dout <= din) { status.textContent = 'Clock-out has to be after clock-in.'; status.style.color = '#fca5a5'; return; }
-            const who = localStorage.getItem('loggedInEmployeeName') || 'Manager';
-            try {
-                await firestore_manager.addDoc(firestore_manager.collection(db_manager, 'timeClock'), {
-                    employeeId: emp.id, employeeName: emp.fullName, rank: emp.rank || null, isManager: emp.isManager === true,
-                    clockIn: tcTs(din), clockOut: tcTs(dout), status: 'closed', closedBy: 'manager',
-                    flagged: false, flagReason: null, editedBy: who, editedAt: firestore_manager.serverTimestamp()
+                container.innerHTML = '';
+                allItems.forEach(name => {
+                    const label = document.createElement('label');
+                    label.style.cssText = 'display:flex; align-items:center; gap:8px; cursor:pointer; color:#e2e8f0;';
+                    label.innerHTML = `<input type="checkbox" class="promo-item-checkbox" value="${name}" style="width:16px; height:16px; cursor:pointer;"> ${name}`;
+                    container.appendChild(label);
                 });
-                status.textContent = 'Shift added.'; status.style.color = '#6ee7b7';
-                document.getElementById('tc-add-in').value = ''; document.getElementById('tc-add-out').value = '';
-                await loadTimeClock();
-            } catch (e) { status.textContent = 'Error: ' + e.message; status.style.color = '#fca5a5'; }
-        }
-
-        function fillTcSettingsForm(st) {
-            const set = (id, v) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = v; };
-            set('tc-set-period', st.period);
-            set('tc-set-week', st.requiredHoursWeek);
-            set('tc-set-month', st.requiredHoursMonth);
-            set('tc-set-stale', st.staleHours);
-        }
-
-        async function saveTcSettings() {
-            const status = document.getElementById('tc-settings-status');
-            const num = id => parseFloat(document.getElementById(id).value);
-            const data = {
-                period: document.getElementById('tc-set-period').value === 'week' ? 'week' : 'month',
-                requiredHoursWeek: num('tc-set-week'),
-                requiredHoursMonth: num('tc-set-month'),
-                staleHours: Math.round(num('tc-set-stale')),
-                weekStartsOn: 'Monday',
-                timezone: (tcSettingsMgr && tcSettingsMgr.timezone) || MikesTimeClock.DEFAULTS.timezone,
-                updatedBy: localStorage.getItem('loggedInEmployeeName') || 'Manager',
-                updatedAt: firestore_manager.serverTimestamp()
-            };
-            if ([data.requiredHoursWeek, data.requiredHoursMonth].some(v => isNaN(v) || v < 0) || isNaN(data.staleHours) || data.staleHours < 1) {
-                status.textContent = 'Check the numbers.'; status.style.color = '#fca5a5'; return;
+            } catch (e) {
+                console.error("Error loading POS items for picker:", e);
+                // Fall back to static list only
+                container.innerHTML = '';
+                staticItems.forEach(name => {
+                    const label = document.createElement('label');
+                    label.style.cssText = 'display:flex; align-items:center; gap:8px; cursor:pointer; color:#e2e8f0;';
+                    label.innerHTML = `<input type="checkbox" class="promo-item-checkbox" value="${name}" style="width:16px; height:16px; cursor:pointer;"> ${name}`;
+                    container.appendChild(label);
+                });
             }
+        }
+
+        async function savePromoCode() {
+            const nameInput = document.getElementById('promo-code-name');
+            const typeSelect = document.getElementById('promo-discount-type');
+            const amountInput = document.getElementById('promo-discount-amount');
+            const maxUsesInput = document.getElementById('promo-max-uses');
+            const applyToSelect = document.getElementById('promo-apply-to');
+            const statusEl = document.getElementById('promo-code-status');
+            const name = nameInput ? nameInput.value.trim().toUpperCase() : '';
+            const discountType = typeSelect ? typeSelect.value : 'percent';
+            const discountAmount = parseFloat(amountInput ? amountInput.value : '');
+            const maxUsesRaw = maxUsesInput ? maxUsesInput.value.trim() : '';
+            const maxUses = maxUsesRaw !== '' ? parseInt(maxUsesRaw, 10) : null;
+            const applyTo = applyToSelect ? applyToSelect.value : 'all';
+            const itemNames = applyTo !== 'all'
+                ? Array.from(document.querySelectorAll('.promo-item-checkbox:checked')).map(cb => cb.value)
+                : [];
+            if (!name) { if (statusEl) { statusEl.textContent = 'Please enter a code name.'; statusEl.style.color = '#fc8181'; } return; }
+            if (isNaN(discountAmount) || discountAmount <= 0) { if (statusEl) { statusEl.textContent = 'Please enter a valid discount amount.'; statusEl.style.color = '#fc8181'; } return; }
+            if (maxUses !== null && (isNaN(maxUses) || maxUses < 1)) { if (statusEl) { statusEl.textContent = 'Max uses must be at least 1 (or leave blank for unlimited).'; statusEl.style.color = '#fc8181'; } return; }
+            if (applyTo !== 'all' && itemNames.length === 0) { if (statusEl) { statusEl.textContent = 'Please select at least one item.'; statusEl.style.color = '#fc8181'; } return; }
             try {
-                await firestore_manager.setDoc(firestore_manager.doc(db_manager, 'siteSettings', 'timeClock'), data, { merge: true });
-                status.textContent = 'Saved.'; status.style.color = '#6ee7b7';
-                await loadTimeClock();
-            } catch (e) { status.textContent = 'Error: ' + e.message; status.style.color = '#fca5a5'; }
+                await firestore_manager.addDoc(firestore_manager.collection(db_manager, "promoCodes"), {
+                    code: name, discountType, discountAmount,
+                    isActive: true, usageCount: 0,
+                    maxUses: maxUses,
+                    applyTo, itemNames,
+                    createdAt: firestore_manager.serverTimestamp()
+                });
+                if (nameInput) nameInput.value = '';
+                if (amountInput) amountInput.value = '';
+                if (maxUsesInput) maxUsesInput.value = '';
+                if (applyToSelect) applyToSelect.value = 'all';
+                const picker = document.getElementById('promo-item-picker');
+                if (picker) picker.style.display = 'none';
+                const checkboxes = document.querySelectorAll('.promo-item-checkbox');
+                checkboxes.forEach(cb => cb.checked = false);
+                if (statusEl) { statusEl.textContent = '✓ Promo code created!'; statusEl.style.color = '#68d391'; setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 3000); }
+                await loadPromoCodes();
+            } catch (e) {
+                console.error("Error saving promo code:", e);
+                if (statusEl) { statusEl.textContent = 'Error saving promo code.'; statusEl.style.color = '#fc8181'; }
+            }
         }
 
-        function initTimeClockTab() {
-            if (!tcWired) {
-                tcWired = true;
-                document.getElementById('tc-refresh-btn')?.addEventListener('click', loadTimeClock);
-                document.getElementById('tc-period-offset')?.addEventListener('change', loadTimeClock);
-                document.getElementById('tc-shift-search')?.addEventListener('input', renderTcShifts);
-                document.getElementById('tc-flagged-only')?.addEventListener('change', renderTcShifts);
-                document.getElementById('tc-shifts-table')?.addEventListener('click', onTcShiftAction);
-                document.getElementById('tc-add-btn')?.addEventListener('click', addTcShift);
-                document.getElementById('tc-save-settings-btn')?.addEventListener('click', saveTcSettings);
-                document.querySelector('[data-tab="tab-timeclock"]')?.addEventListener('click', loadTimeClock);
-            }
-            loadTimeClock();
+        async function togglePromoCode(id, isCurrentlyActive) {
+            try {
+                await firestore_manager.updateDoc(firestore_manager.doc(db_manager, "promoCodes", id), { isActive: !isCurrentlyActive });
+                await loadPromoCodes();
+            } catch (e) { console.error("Error toggling promo code:", e); alert("Error updating promo code."); }
+        }
+
+        async function deletePromoCode(id) {
+            try {
+                await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "promoCodes", id));
+                await loadPromoCodes();
+            } catch (e) { console.error("Error deleting promo code:", e); alert("Error deleting promo code."); }
         }
 
         async function initializeManagerPortal() {
@@ -1264,7 +1188,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadTransactions_ManagerPage(),
                 loadHacPromo_ManagerPage(),
                 loadTaxPaymentLogs_ManagerPage(),
-                loadPosItems_ManagerPage()
+                loadPosItems_ManagerPage(),
+                loadPromoCodes()
             ]);
 
             // Tax summary panel
@@ -1285,7 +1210,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resetHacMemberForm_ManagerPage();
             if (hacMemberListDisplay) hacMemberListDisplay.innerHTML = "<p><i>Search for HAC members.</i></p>";
             attachManagerEventListeners_ManagerPage();
-            initTimeClockTab();
         }
 
         // --- Manager login: populate dropdown, show password on selection ---
@@ -1444,7 +1368,7 @@ async function initializeTier2Manager() {
     // 2. Individual Delete Helper
     window.deleteIndividualT2 = async (id) => {
         if (confirm("Permanently delete this specific Tier 2 member?")) {
-            window.__hacMgrCache = null; await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", id));
+            await firestore_manager.deleteDoc(firestore_manager.doc(db_manager, "hacMembers", id));
             t2SearchBtn.click(); // Refresh list
         }
     };
@@ -1457,7 +1381,6 @@ async function initializeTier2Manager() {
         try {
             const q = firestore_manager.query(firestore_manager.collection(db_manager, "hacMembers"), firestore_manager.where("tier", "==", 2));
             const snap = await firestore_manager.getDocs(q);
-            window.__hacMgrCache = null;
             const promises = snap.docs.map(d => firestore_manager.deleteDoc(d.ref));
             await Promise.all(promises);
             
@@ -1766,7 +1689,7 @@ initializeHacPrizeWheel();
             if (!logDisplay) return;
             logDisplay.innerHTML = '<p><i>Loading logs...</i></p>';
             try {
-                const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.where('createdAt', '>=', new Date(Date.now() - 60 * 86400000)), firestore.orderBy('createdAt', 'desc'));
+                const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.orderBy('createdAt', 'desc'));
                 const snap = await firestore.getDocs(q);
                 if (snap.empty) {
                     logDisplay.innerHTML = '<p><i>No reimbursement logs found.</i></p>';
@@ -1897,7 +1820,7 @@ initializeHacPrizeWheel();
         if (exportLogBtn) {
             exportLogBtn.addEventListener('click', async () => {
                 try {
-                    const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.where('createdAt', '>=', new Date(Date.now() - 60 * 86400000)), firestore.orderBy('createdAt', 'desc'));
+                    const q = firestore.query(firestore.collection(db, 'reimbursements'), firestore.orderBy('createdAt', 'desc'));
                     const snap = await firestore.getDocs(q);
                     if (snap.empty) { alert('No logs to export.'); return; }
                     const rows = [["Employee", "Bank Account", "Total ($)", "Items / Reason", "Date"]];
