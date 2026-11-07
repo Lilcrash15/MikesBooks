@@ -97,18 +97,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const taxRatesByRank = { "Trainee": 0.20, "Staff": 0.15, "Senior Staff": 0.10, "Retired": 0.10, "Manager": 0.00 };
         const buySellItemDefinitions = {
              buy: {
-                "Crab": { price: 87, image: "fs-crab.webp" }, "Minnow": { price: 175, image: "fs-minnow.webp" },
-                "Haddock": { price: 175, image: "fs-haddock.webp" }, "Pollock": { price: 175, image: "fs-pollock.webp" },
-                "Crappie": { price: 175, image: "fs-crappie.webp" }, "Trout": { price: 175, image: "fs-trout.webp" },
-                "Rainbow Trout": { price: 175, image: "fs-rainbowtrout.webp" }, "Garfish": { price: 185, image: "fs-garfish.webp" },
-                "Striped Bass": { price: 200, image: "fs-stripedbass.webp" }, "Salmon": { price: 200, image: "fs-salmon.png" },
-                "Northern Pike": { price: 225, image: "fs-northernpike.webp" }, "Tuna": { price: 250, image: "fs-tuna.webp" },
-                "Deer Meat": { price: 75, image: "meat.webp" }, "Boar Meat": { price: 175, image: "meat.webp" },
+                // --- Meat ---
+                "Boar Meat": { price: 175, image: "meat.webp" }, "Deer Meat": { price: 75, image: "meat.webp" },
                 "Rabbit Meat": { price: 375, image: "meat.webp" }, "Rat Meat": { price: 475, image: "meat.webp" },
-                "Animal Bones": { price: 225, image: "animal_bones.webp" }, "Salmon Meat": { price: 10, image: "fishmeat_salmon.webp" },
-                "Slimy Fish Meat": { price: 2, image: "fishmeat_slimy.webp" }, "White Fish Meat": { price: 10, image: "fishmeat_white.webp" },
-                "Deer Hide": { price: 125, image: "hide.webp" }, "Boar Hide": { price: 225, image: "hide.webp" },
+                // --- Hide ---
+                "Boar Hide": { price: 225, image: "hide.webp" }, "Deer Hide": { price: 125, image: "hide.webp" },
                 "Rabbit Hide": { price: 325, image: "hide.webp" }, "Rat Hide": { price: 525, image: "hide.webp" },
+                // --- Bones ---
+                "Animal Bones": { price: 225, image: "animal_bones.webp" },
+                // --- Fish ---
+                "Andrean King Crab": { price: 4000, image: "kingcrab.png" }, "Crab": { price: 87, image: "fs-crab.webp" },
+                "Crappie": { price: 180, image: "fs-crappie.webp" }, "Garfish": { price: 190, image: "fs-garfish.webp" },
+                "Haddock": { price: 180, image: "fs-haddock.webp" }, "Lobster": { price: 1000, image: "lobster.png" },
+                "Minnow": { price: 180, image: "fs-minnow.webp" }, "Northern Pike": { price: 230, image: "fs-northernpike.webp" },
+                "Pollock": { price: 180, image: "fs-pollock.webp" }, "Rainbow Trout": { price: 180, image: "fs-rainbowtrout.webp" },
+                "Raw Clam": { price: 100, image: "rawclam.png" }, "Salmon": { price: 205, image: "fs-salmon.png" },
+                "Shrimp": { price: 150, image: "shrimp.png" }, "Snow Crab": { price: 350, image: "snowcrab.png" },
+                "Squid": { price: 225, image: "squid.png" }, "Striped Bass": { price: 205, image: "fs-stripedbass.webp" },
+                "Trout": { price: 180, image: "fs-trout.webp" }, "Tuna": { price: 255, image: "fs-tuna.webp" },
+                "Salmon Meat": { price: 10, image: "fishmeat_salmon.webp" }, "Slimy Fish Meat": { price: 2, image: "fishmeat_slimy.webp" },
+                "White Fish Meat": { price: 10, image: "fishmeat_white.webp" },
+                // --- Gold ---
                 "Gold Nugget": { price: 32, image: "goldNugget.png" },
             },
             sell: {
